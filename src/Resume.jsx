@@ -19,7 +19,7 @@ import { MdOutlineDelete } from 'react-icons/md'
 
 const Resume = () => {
 
-  const [firstname, setfirstname] = useState('')
+  const [job, setjob] = useState('')
   const [name, setname] = useState('')
   const [lastname, setlastname] = useState("")
   const [email, setemail] = useState("")
@@ -159,7 +159,7 @@ const Resume = () => {
   }
 
   const handlechange = (e) => {
-    setfirstname(e.target.value)
+    setjob(e.target.value)
 
 
   }
@@ -592,7 +592,7 @@ const Resume = () => {
             <div className="wanted">
               <div className="job">
                 <label htmlFor="">Wanted job Title</label> <br />
-                <input type="text" value={firstname} onChange={handlechange} className="work" />
+                <input type="text" value={job} onChange={handlechange} className="work" />
               </div>
             </div>
             <div className="photo">
