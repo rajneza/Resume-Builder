@@ -38,15 +38,11 @@ const App=()=>{
         <div>
              <BrowserRouter>
             <Routes>
-                {/* <Route path="/" element={<Add/>}></Route>
-                <Route path="/second" element={<Second/>}></Route>
-                 <Route path="/ttgig" element={<Ttgig/>}></Route>
-                 <Route path="/home" element={<Navbar/>}></Route>
-                 <Route path="/register" element={<Register/>}></Route> */}
+                
                  <Route path="/Table" element={<Table></Table>}></Route>
                  <Route path="/regi" element={<Regi2></Regi2>}></Route>
                  <Route path="/website" element={<Websites></Websites>}></Route>
-                 {/* <Route path='/custom' element={<Custom></Custom>}></Route> */}
+                 
                  <Route path="/course" element={<Course></Course>}></Route>
                  <Route path="/" element={<Navbar></Navbar>}></Route>
                  <Route path="/intership" element={<Internships></Internships>}></Route>
@@ -61,13 +57,10 @@ const App=()=>{
                  <Route path="/skill" element={<Skills></Skills>}></Route>
                  <Route path="/html" element={<Htmlx></Htmlx>}></Route>
                  <Route path="/react" element={<Reactt></Reactt>}></Route>
-                 {/* <Route path="/block" element={<Block/>}></Route> */}
+                 
                 
             </Routes> 
             </BrowserRouter> 
-           {/* <Table></Table> */}
-           {/* <Regi2></Regi2> */}
-           {/* <Log></Log> */}
           
         </div>
     )
