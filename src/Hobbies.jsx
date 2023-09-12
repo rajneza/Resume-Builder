@@ -722,7 +722,7 @@ function Hobbies (){
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">First Name</label> <br />
+                <label htmlFor="">Ankitha</label> <br />
                 <input type="text" className="work" value={name} onChange={handlechange1} />
               </div>
             </div>
@@ -749,7 +749,7 @@ function Hobbies (){
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">Country</label> <br />
+                <label htmlFor="">Country Name sai</label> <br />
                 <input type="text" className="work" value={country} onChange={handlechange5} />
               </div>
             </div>
@@ -768,7 +768,7 @@ function Hobbies (){
                 </div>
               </div>
               <div className="photo">
-                <label htmlFor="">Postal Code</label> <br />
+                <label htmlFor="">Postal code </label> <br />
                 <input type="text" className="work" value={post} onChange={handlechange8} />
               </div>
 
@@ -777,12 +777,11 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
-                    <label htmlFor="">Driving License</label> <br />
-                                    <input type="text" className="work" value={licence} onChange={handlechange9}/>
+
                   </div>
                 </div>
                 <div className="photo">
-                  <label htmlFor="">Nationa</label> <br />
+
                   <input type="text" className="work" value={nation} onChange={handlechange10}/>
                 </div>
 
@@ -1188,7 +1187,7 @@ interests and curiosities'/>
           </div>
         </div>
         <div>
-          <label htmlFor="">Employer</label> <br />
+          <label htmlFor="">Emp</label> <br />
           <input
             type="text"
             value={object.input2}
