@@ -777,7 +777,11 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
+<<<<<<< HEAD
                     <label htmlFor=""> License </label> <br />
+=======
+                    <label htmlFor="">Driving License </label> <br />
+>>>>>>> ca955fb58ac27a94147586ea8a6e3053cba133fb
                     <input type="text" className="work" value={licence} onChange={handlechange9}/>
                   </div>
                 </div>
