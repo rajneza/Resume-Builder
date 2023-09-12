@@ -10,13 +10,13 @@ import Resume from "./Resume";
 
 import Websites from "./Websites";
 
-import Course from "./Course";
+
 import Internships from "./Internship";
 import Hobbies from "./Hobbies";
 import Languages from "./Languages";
 import References from "./Reference";
 import Extracurricular from "./Extra-curricular";
-import Skills from "./Skills";
+
 
 
 
@@ -29,7 +29,7 @@ const App=()=>{
                 
                  <Route path="/website" element={<Websites></Websites>}></Route>
                  
-                 <Route path="/course" element={<Course></Course>}></Route>
+                 
                  <Route path="/" element={<Navbar></Navbar>}></Route>
                  <Route path="/intership" element={<Internships></Internships>}></Route>
                 <Route path="/resume" element={<Resume></Resume>}></Route>
@@ -38,8 +38,8 @@ const App=()=>{
                 <Route path="/reference" element={<References></References>}></Route>
                 <Route path="/extra" element={<Extracurricular></Extracurricular>}></Route>
               
-                 <Route path="/skill" element={<Skills></Skills>}></Route>
-                 <Route path="/html" element={<Htmlx></Htmlx>}></Route>
+                 
+                
                 
                 
             </Routes> 

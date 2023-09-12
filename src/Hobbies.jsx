@@ -12,6 +12,8 @@ import html2canvas from 'html2canvas';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom"
 import { AiOutlineEdit } from "react-icons/ai"
+import "./Second.css"
+import "./Project/React.css"
 
 
 
