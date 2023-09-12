@@ -16,7 +16,7 @@ import Hobbies from "./Hobbies";
 import Languages from "./Languages";
 import References from "./Reference";
 import Extracurricular from "./Extra-curricular";
-import Skills from "./Skills";
+
 
 
 
@@ -38,7 +38,7 @@ const App=()=>{
                 <Route path="/reference" element={<References></References>}></Route>
                 <Route path="/extra" element={<Extracurricular></Extracurricular>}></Route>
               
-                 <Route path="/skill" element={<Skills></Skills>}></Route>
+                 
                  <Route path="/html" element={<Htmlx></Htmlx>}></Route>
                 
                 
