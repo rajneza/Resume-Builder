@@ -1594,7 +1594,7 @@ const Resume = () => {
           <PDFExport
                 scale={1.1}
                 paperSize="A4"
-                margin="2cm"
+                // margin="2cm"
                 ref={pdfExportComponent}
                 className="pdf"
                 keepTogether="p"
