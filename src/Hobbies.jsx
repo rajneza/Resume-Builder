@@ -747,7 +747,7 @@ function Hobbies (){
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">Country</label> <br />
+                <label htmlFor="">Country Name sai</label> <br />
                 <input type="text" className="work" value={country} onChange={handlechange5} />
               </div>
             </div>
