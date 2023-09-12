@@ -720,7 +720,7 @@ function Hobbies (){
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">First Name</label> <br />
+                <label htmlFor="">Ankitha</label> <br />
                 <input type="text" className="work" value={name} onChange={handlechange1} />
               </div>
             </div>
@@ -761,12 +761,12 @@ function Hobbies (){
             <div className="job-title">
               <div className="wanted">
                 <div className="job">
-                  <label htmlFor="">Add</label> <br />
+                  <label htmlFor="">Address</label> <br />
                   <input type="text" className="work" value={address} onChange={handlechange7} />
                 </div>
               </div>
               <div className="photo">
-                <label htmlFor="">Postal code testing git</label> <br />
+                <label htmlFor="">Postal code </label> <br />
                 <input type="text" className="work" value={post} onChange={handlechange8} />
               </div>
 
@@ -775,7 +775,7 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
-                    <label htmlFor="">Driving License testing git</label> <br />
+                    <label htmlFor="">Driving License </label> <br />
                     <input type="text" className="work" value={licence} onChange={handlechange9}/>
                   </div>
                 </div>
