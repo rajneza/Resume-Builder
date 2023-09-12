@@ -1219,7 +1219,7 @@ interests and curiosities'/>
                                 </div> : <span></span>
                               }
                               {
-                                link.name === "Internships" ? <div className={ship? "hidden" : "visible"}>
+                                link.name === "Internships" ? <div>
                                   <div className='emp-div'>
 
 {five.map((object) => (

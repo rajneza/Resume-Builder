@@ -48,6 +48,7 @@ const Resume = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showFullView, setShowFullView] = useState(false);
   
+  
  
 
   const ddData = [
@@ -93,7 +94,7 @@ const Resume = () => {
     }
     
   };
-
+  
 
   let tension = () => {
     setspecific(false)
@@ -579,13 +580,22 @@ const Resume = () => {
         doc.save('sample.pdf');
       });
   };
+ const [bar , setbar] = useState("0%")
 
+ const handleprogress=()=>{
+  if (job !== "") {
+    setbar("20%")
+  }
+ }
 
 
   return (
     <div style={{ display: "flex" }}>
       
       <div className="one">
+        <div className="progress" style={{width:bar}} onChange={handleprogress}>
+
+        </div>
         <div>
           <h2>Personal Details</h2>
           <div className="job-title">
@@ -1633,7 +1643,7 @@ const Resume = () => {
           <h3 className="name2">{lastname}</h3>
         </div>
         <div>
-          <h6 className="name">{firstname}</h6>
+          <h6 className="name">{job}</h6>
         </div>
       </div>
       </div>
@@ -1652,6 +1662,7 @@ editorHtml === "" ? <span></span> : <h3 className="prof">Profile</h3>
         {objects.map((object) => (
           <div key={object.id}>
             <h6 className="fon">{`${object.input1},${object.input2},${object.input3}`}</h6>
+           
             <p className="fontt">{`${object.input4}/${object.input5}`}</p>
             <p className="fonttt">{object.input6}</p>
             
@@ -1827,7 +1838,13 @@ editorHtml === "" ? <span></span> : <h3 className="prof">Profile</h3>
             
             <p className="cit" id="cit">{`${object.input1}`}</p>
             <div className="ski1">
-            <p className="ski">{`${object.input2}/5`}</p>
+              {
+                object.input2 === "" ? <span></span> : <p className="ski">{`${object.input2}/5`}</p>
+              }
+              
+            
+           
+            
             </div>
             
 

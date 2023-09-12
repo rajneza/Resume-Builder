@@ -241,6 +241,18 @@
     
     margin-bottom: 10%;
   }
+  .summry{
+    margin-left: 9%;
+    margin-top: -5%;
+  }
+  .ed{
+    border: none;
+    background-color: white;
+    color: blue;
+    margin-bottom: 5%;
+    margin-top: 2%;
+    font-size: 1.2rem;
+  }
   /* .summary{
     position: relative;
     left: 50px;
@@ -370,6 +382,7 @@
     position: fixed;
     width: 50%;
     left: 50%;
+    background-color: gray;
   }
   .inputt{
     margin-right: 5%;
@@ -425,19 +438,35 @@
     margin-left: 20%;
     width: 100%;
   }
-  .main-fulll{
-    
+  /* .main-fulll{
+    background-color: aliceblue;
     margin-left: 0%;
-  }
+    min-height: 500px;
+    max-height: fit-content;
+  } */
   .rk{
-    
+   
     width: 50%;
+    margin-left: 0%;
+    padding: 0%;
   }
   .full{
     width: 50%;
+    background-color: gray;
+    position: fixed;
+    left: 50%;
+    height: 100vh;
   }
   #drop{
     border: none;
+  }
+  .movement{
+    /* background-color: #c3e5fe; */
+    margin-left: 9%;
+    pointer-events: none;
+  }
+  #link{
+    color: white;
   }
   
   

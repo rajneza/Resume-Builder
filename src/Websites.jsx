@@ -1,43 +1,74 @@
-import React, { useState } from "react";
+// ProgressBarForm.js
+import React, { useState } from 'react';
 
-const Website = () =>{
+const Websites = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    address: '',
+  });
+  const [progress, setProgress] = useState(0);
 
-  const [level , setlevel] = useState("100%")
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
 
-  const butt1=()=>{
-    setlevel("20%")
-  }
-  const butt2=()=>{
-    setlevel("40%")
-  }
-  const butt3=()=>{
-    setlevel("60%")
-  }
-  const butt4=()=>{
-    setlevel("80%")
-  }
-  const butt5=()=>{
-    setlevel("100%")
-  }
+    // Calculate progress based on the number of filled fields
+    const filledFields = Object.values(formData).filter(Boolean).length;
+    const totalFields = Object.keys(formData).length;
+    const newProgress = (filledFields / totalFields) * 100;
+    setProgress(newProgress);
+  };
 
-  return(
+  return (
     <div>
-      <input type="text" />
-      <button>
-        <button onClick={butt1}>1</button>
-        <button onClick={butt2}>2</button>
-        <button onClick={butt3}>3</button>
-        <button onClick={butt4}>4</button>
-        <button onClick={butt5}>5</button>
-      </button>
-
-      <div className="main-bar">
-        <div className="bar" style={{width:level}}></div>
-
+      <h2>Fill in the Form</h2>
+      <div className="progress-bar-container">
+        <div className="progress-bar" style={{ width: `${progress}%` }}>
+          {Math.round(progress)}%
+        </div>
       </div>
-       
+      <form>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Address:
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+          />
+        </label>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default Website
+export default Websites;

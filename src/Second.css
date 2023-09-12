@@ -141,9 +141,9 @@ Popup.css
   .two{
     width: 50%;
     height: 100vh;
-    background-color: black;
-    text-align: center;
-    
+    background-color: gray;
+    /* text-align: center; */
+    pointer-events: none;
   }
   .resume{
     background-color: aquamarine;
@@ -187,7 +187,7 @@ Popup.css
 
   }
   .paragh{
-    width: 94%;
+    width: 100%;
     /* height: 30vh; */
     
     margin-bottom: 10%;
@@ -195,20 +195,20 @@ Popup.css
   .summary{
     
     text-align: left;
-    width: 90%;
-    display: flex;
+    width: 100%;
     flex-wrap: wrap;
     height: fit-content;
     margin-bottom: 0%;
-    margin-left: 10%;
+    margin-left: 0%;
     
   }
   .prof{
     margin-bottom: 0%;
+
   }
   .mess{
     width: 100%;
-    font-size: x-small;
+    font-size: 0.8rem;
     margin-top: 0%;
     display: flex;
     flex-wrap: wrap;
@@ -216,9 +216,9 @@ Popup.css
   .input{
    text-align: left;
   }
-  #pdf-content{
+  /* #pdf-content{
     height: 100%;
-  }
+  } */
   .inp1{
     background-color: aqua;
   }
@@ -262,9 +262,7 @@ Popup.css
       background-color: aqua;
       display: flex;
      }
-     .two{
-      background-color: aqua;
-     }
+     
      .move{
       margin-left: 500px;
       width: 100px;
@@ -304,6 +302,7 @@ Popup.css
       width: 70%;
       min-height: 800px;
       max-height: auto;
+     
       display: flex;
       margin-left: 15%;
       margin-top: 5%;
@@ -312,6 +311,7 @@ Popup.css
      .main-right{
       width: 70%;
       background-color: white;
+      
       min-height: 800px;
       max-height: auto;
      }
@@ -320,6 +320,7 @@ Popup.css
       min-height: 800px;
       max-height: auto;
       background-color: #0f3871;
+     
       color: white;
      }
      .name1{
@@ -332,14 +333,16 @@ Popup.css
      }
      .name{
       margin-top: 0%;
-     
-      width: 100px;
+      width: 150px;
+      margin-left: 10%;
      }
      .cont-1{
       margin-left: 10%;
       margin-top: 5%;
      }
      .fon{
+      font-size: 0.9rem;
+      font-weight: bolder;
       margin-top: 2%;
       margin-bottom: 1%;
      }
@@ -360,7 +363,8 @@ Popup.css
       outline: none;
      }
      .fontt{
-      font-size: smaller;
+      font-size: 0.8rem;
+      font-weight: bold;
       margin-top: 0%;
       margin-bottom: 0%;
      }
@@ -402,9 +406,12 @@ Popup.css
      }
      .heading1{
       font-size: small;
-      margin-top: 7%;
+      margin-top: 10%;
       margin-bottom: 5%;
       color: #c3e5fe;
+     }
+     .top{
+      margin-top: 15%;
      }
      .ill{
       display: flex;
@@ -416,17 +423,20 @@ Popup.css
      .ski1{
       text-align: right;
       margin-bottom: 0%;
-     
+     width: 20px;
+     /* background-color: aqua; */
       margin-top: 0%;
       
      }
      #cit{
       width: 100px;
+      margin-right: 0%;
+      /* background-color: #c3e5fe; */
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0%;
       margin-top: 0%;
-      
+      overflow: hidden;
      }
      .main-full{
       background-color: black;
@@ -451,4 +461,24 @@ Popup.css
       /* background-color: #0f3871; */
       margin-right: 0%;
      }
-     
+     .progress{
+      /* width: 0%; */
+      height: 1vh;
+      background-color: aquamarine;
+     }
+     .arrow{
+      margin-bottom: 2%;
+      margin-top: 0.5%;
+      margin-left: auto!important;
+      
+     }
+     .flex{
+      border: 1px solid gray;
+      width: 77.3%;
+      color: blue;
+      border-radius: 5px
+     }
+     .des{
+      
+      width: 90%;
+     }
