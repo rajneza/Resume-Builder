@@ -777,12 +777,11 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
-                    <label htmlFor="">Driving License </label> <br />
-                    <input type="text" className="work" value={licence} onChange={handlechange9}/>
+
                   </div>
                 </div>
                 <div className="photo">
-                  <label htmlFor="">Nationality</label> <br />
+                  <label htmlFor="">Nation</label> <br />
                   <input type="text" className="work" value={nation} onChange={handlechange10}/>
                 </div>
 
@@ -1188,7 +1187,7 @@ interests and curiosities'/>
           </div>
         </div>
         <div>
-          <label htmlFor="">Employer</label> <br />
+          <label htmlFor="">Emp</label> <br />
           <input
             type="text"
             value={object.input2}
