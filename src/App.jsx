@@ -10,7 +10,7 @@ import Resume from "./Resume";
 
 import Websites from "./Websites";
 
-import Course from "./Course";
+
 import Internships from "./Internship";
 import Hobbies from "./Hobbies";
 import Languages from "./Languages";
@@ -29,7 +29,7 @@ const App=()=>{
                 
                  <Route path="/website" element={<Websites></Websites>}></Route>
                  
-                 <Route path="/course" element={<Course></Course>}></Route>
+                 
                  <Route path="/" element={<Navbar></Navbar>}></Route>
                  <Route path="/intership" element={<Internships></Internships>}></Route>
                 <Route path="/resume" element={<Resume></Resume>}></Route>
@@ -39,7 +39,7 @@ const App=()=>{
                 <Route path="/extra" element={<Extracurricular></Extracurricular>}></Route>
               
                  
-                 <Route path="/html" element={<Htmlx></Htmlx>}></Route>
+                
                 
                 
             </Routes> 
