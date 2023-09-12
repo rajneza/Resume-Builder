@@ -12,6 +12,8 @@ import html2canvas from 'html2canvas';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom"
 import { AiOutlineEdit } from "react-icons/ai"
+import "./Second.css"
+import "./Project/React.css"
 
 
 
@@ -653,7 +655,7 @@ function Hobbies (){
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">Wanted job Title</label> <br />
+                <label htmlFor="">Role</label> <br />
                 <input type="text" value={job} onChange={handlechange} className="work" />
               </div>
             </div>
@@ -738,7 +740,7 @@ function Hobbies (){
               </div>
             </div>
             <div className="photo">
-              <label htmlFor="">Phone</label> <br />
+              <label htmlFor="">Contact</label> <br />
               <input type="number" className="work" value={phone} onChange={handlechange4} />
             </div>
 
@@ -776,7 +778,7 @@ function Hobbies (){
                 <div className="wanted">
                   <div className="job">
                     <label htmlFor="">Driving License</label> <br />
-                    <input type="text" className="work" value={licence} onChange={handlechange9}/>
+                                    <input type="text" className="work" value={licence} onChange={handlechange9}/>
                   </div>
                 </div>
                 <div className="photo">
