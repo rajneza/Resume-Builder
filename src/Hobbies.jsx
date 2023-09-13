@@ -46,6 +46,10 @@ const Data = [
   {
     id:"07",
     name:"Project"
+  },
+  {
+    id:"08",
+    name:"Custom"
   }
 ]
 
@@ -71,6 +75,14 @@ const item = [{
 },
 {
   id:"06",
+  it:[{}]
+},
+{
+  id:"07",
+  it:[{}]
+},
+{
+  id:"08",
   it:[{}]
 }
 ]
@@ -420,18 +432,18 @@ function Hobbies (){
   const [project, setproject] = useState([]);
 
   const createproject = () => {
-    const newObject = { id: four.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
-    setfour([...four, newObject]);
+    const newObject = { id: project.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
+    setproject([...project, newObject]);
   };
 
   const handleInputproject = (e, objectId, inputName) => {
-    const updatedObjects = four.map((object) => {
+    const updatedObjects = project.map((object) => {
       if (object.id === objectId) {
         return { ...object, [inputName]: e.target.value };
       }
       return object;
     });
-    setfour(updatedObjects);
+    setproject(updatedObjects);
     ite.map((value)=>{
       
       if (value.id === "07") {
@@ -443,8 +455,8 @@ function Hobbies (){
   };
 
   const deleteproject = (objectId) => {
-    const updatedObjects = four.filter((object) => object.id !== objectId);
-    setfour(updatedObjects);
+    const updatedObjects = project.filter((object) => object.id !== objectId);
+    setproject(updatedObjects);
     ite.map((value)=>{
       
       if (value.id === "07") {
@@ -453,6 +465,51 @@ function Hobbies (){
         
       }
      })
+  };
+
+  //code for custom
+
+  const [cust, setcust] = useState([]);
+  const [custom , setcustom] = useState("")
+
+  const createcust = () => {
+    const newObject = { id: cust.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '' };
+    setcust([...cust, newObject]);
+    setcustom("hi")
+  };
+
+  const handleInputcust = (e, objectId, inputName) => {
+    const updatedObjects = cust.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: e.target.value };
+      }
+      return object;
+    });
+    setcust(updatedObjects);
+    ite.map((value)=>{
+      
+      if (value.id === "08") {
+        value.it = updatedObjects
+        console.log(value.mob);
+        
+      }
+     })
+  };
+
+  const deletecust = (objectId) => {
+    const updatedObjects = cust.filter((object) => object.id !== objectId);
+    setcust(updatedObjects);
+    ite.map((value)=>{
+      
+      if (value.id === "08") {
+        value.it = updatedObjects
+        console.log(value.mob);
+        
+      }
+     })
+     if (createcust === "") {
+      setcustom("")
+     }
   };
 
 
@@ -1288,6 +1345,84 @@ interests and curiosities'/>
                                 </div> : <span></span>
                               }
                               {
+                                store.name === "Project" ? <div>
+                                  <div className='emp-div'>
+
+{project.map((object) => (
+  <div key={object.id} style={{ display: "flex" }}>
+    <div className='emp-main'>
+
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Project title</label> <br />
+            <input
+              type="text"
+              value={object.input1}
+              className='work'
+              onChange={(e) => handleInputproject(e, object.id, 'input1')}
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">Employer</label> <br />
+          <input
+            type="text"
+            value={object.input2}
+            className='work'
+            onChange={(e) => handleInputproject(e, object.id, 'input2')}
+          />
+        </div>
+      </div>
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Start & End Date</label> <br />
+            <input type='date'
+                                value={object.input4}
+                                className='workk'
+                                onChange={(e) => handleInputproject(e, object.id, 'input4')}
+                              />
+                              <input type='date'
+                                value={object.input5}
+                                className='workk'
+                                onChange={(e) => handleInputproject(e, object.id, 'input5')}
+                              />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">City</label> <br />
+          <input
+            type="text"
+            value={object.input3}
+            className='work'
+            onChange={(e) => handleInputproject(e, object.id, 'input3')}
+          />
+        </div>
+      </div>
+      <div>
+        <div>
+          <label htmlFor="">Project Summary</label> <br />
+          <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputproject(e, object.id, 'input6')}
+            placeholder='e.g. Created and implemented lesson plans based on child-led
+interests and curiosities'/>
+        </div>
+      </div>
+
+
+    </div>
+    <div>
+      <button onClick={() => deleteproject(object.id)} className="delete"><MdOutlineDelete/></button>
+    </div>
+  </div>
+))}
+<button onClick={createproject} className="add"> + Add Project</button>
+
+</div>
+{/* <button onClick={delete7}>delete</button> */}
+                                </div> : <span></span>
+                              }
+                              {
                                 store.name === "Refrence" ? <div>
                                   <div className='emp-div'>
 
@@ -1353,6 +1488,70 @@ interests and curiosities'/>
 
 </div>
 {/* <button onClick={delete3}>delete</button> */}
+                                </div> : <span></span>
+                              }
+                              {
+                                store.name === "Custom" ? <div>
+                                <div className='emp-div'>
+                
+                                  {cust.map((object) => (
+                                    <div key={object.id} style={{ display: "flex" }}>
+                                      <div className='emp-main'>
+                
+                                        <div style={{ display: "flex" }}>
+                                          <div className='wanted'>
+                                            <div>
+                                              <label htmlFor="">Job title</label> <br />
+                                              <input
+                                                type="text"
+                                                value={object.input1}
+                                                className='work'
+                                                onChange={(e) => handleInputcust(e, object.id, 'input1')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <label htmlFor="">Employer</label> <br />
+                                            <input
+                                              type="text"
+                                              value={object.input2}
+                                              className='work'
+                                              onChange={(e) => handleInputcust(e, object.id, 'input2')}
+                                            />
+                                          </div>
+                                        </div>
+                                        <div style={{ display: "flex" }}>
+                                          <div className='wanted'>
+                                            <div>
+                                              <label htmlFor="">Start & End Date</label> <br />
+                                              <input type='date'
+                                                value={object.input4}
+                                                className='work'
+                                                onChange={(e) => handleInputcust(e, object.id, 'input4')}
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <div>
+                                            <label htmlFor="">Description</label> <br />
+                                            <textarea name="" id="" cols="90" rows="15" value={object.input5} onChange={(e) => handleInputcust(e, object.id, 'input5')}
+                                              placeholder='e.g. Created and implemented lesson plans based on child-led
+                               interests and curiosities'/>
+                                          </div>
+                                        </div>
+                
+                
+                                      </div>
+                                      <div>
+                                        <button onClick={() => deletecust(object.id)} className="delete"><MdOutlineDelete/></button>
+                                      </div>
+                                    </div>
+                                  ))}
+                                  <button onClick={createcust} className="add"> + Add one more item</button>
+                
+                                </div>
+                                {/* <button onClick={delete1}>delete</button> */}
                                 </div> : <span></span>
                               }
                               
@@ -1920,6 +2119,51 @@ function Storelist({name, it, id}){
                       <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
               <p className="fontt">{`${item.input4}/${item.input5}`}</p>
               <p className="fonttt">{item.input6}</p>
+                </div>
+              }
+              
+            </div>
+            }
+            
+          </div>
+        ))}
+          </div> : <span></span>
+        }
+        {
+          id === "07" ? <div>
+            {it.map((item,index) => (
+          <div className="store">
+            {
+              item.input1 === undefined ? <span></span> : <div className="store">
+                <h2 className="head">Project</h2>
+              {
+                item.input1 === undefined ? <span></span> : <div>
+                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+              <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+              <p className="fonttt">{item.input6}</p>
+                </div>
+              }
+              
+            </div>
+            }
+            
+          </div>
+        ))}
+          </div> : <span></span>
+        }
+        {
+          id === "08" ? <div>
+           
+            {it.map((item,index) => (
+          <div className="store">
+            {
+              item.input1 === undefined ? <span></span> : <div className="store">
+                <h2 className="head">Custom</h2>
+              {
+                item.input1 === undefined ? <span></span> : <div>
+                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+              <p className="fontt">{`${item.input4}`}</p>
+              <p className="fonttt">{item.input5}</p>
                 </div>
               }
               
