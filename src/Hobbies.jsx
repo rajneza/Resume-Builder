@@ -792,7 +792,7 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
-                    <label htmlFor="">Place of Birth</label> <br />
+                        <label htmlFor="">Place of Birth</label> <br />
                     <input type="text" className="work" value={place} onChange={handlechange11}/>
                   </div>
                 </div>
@@ -813,7 +813,7 @@ function Hobbies (){
         <div className="summary">
           <div>
             <div>
-              <h2>Professional Summary</h2>
+              <h2>Professional </h2>
             </div>
             <div>
               <p>Write 2-4 short & energetic sentences to interest the reader! Mention your role, experience & most importantly - your biggest achievements, best qualities and skills.</p>
