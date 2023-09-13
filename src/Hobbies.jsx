@@ -42,6 +42,10 @@ const Data = [
   {
     id:"06",
     name:"Refrence"
+  },
+  {
+    id:"07",
+    name:"Project"
   }
 ]
 
@@ -410,6 +414,46 @@ function Hobbies (){
       }
      })
   };
+   
+  //code for Project
+
+  const [project, setproject] = useState([]);
+
+  const createproject = () => {
+    const newObject = { id: four.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
+    setfour([...four, newObject]);
+  };
+
+  const handleInputproject = (e, objectId, inputName) => {
+    const updatedObjects = four.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: e.target.value };
+      }
+      return object;
+    });
+    setfour(updatedObjects);
+    ite.map((value)=>{
+      
+      if (value.id === "07") {
+        value.it = updatedObjects
+        console.log(value.mob);
+        
+      }
+     })
+  };
+
+  const deleteproject = (objectId) => {
+    const updatedObjects = four.filter((object) => object.id !== objectId);
+    setfour(updatedObjects);
+    ite.map((value)=>{
+      
+      if (value.id === "07") {
+        value.it = updatedObjects
+        console.log(value.mob);
+        
+      }
+     })
+  };
 
 
   //code for course
@@ -722,7 +766,7 @@ function Hobbies (){
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">First Name</label> <br />
+                <label htmlFor="">Ankitha</label> <br />
                 <input type="text" className="work" value={name} onChange={handlechange1} />
               </div>
             </div>
@@ -749,7 +793,7 @@ function Hobbies (){
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">Country</label> <br />
+                <label htmlFor="">Country Name sai</label> <br />
                 <input type="text" className="work" value={country} onChange={handlechange5} />
               </div>
             </div>
@@ -768,7 +812,7 @@ function Hobbies (){
                 </div>
               </div>
               <div className="photo">
-                <label htmlFor="">Postal Code</label> <br />
+                <label htmlFor="">Postal code </label> <br />
                 <input type="text" className="work" value={post} onChange={handlechange8} />
               </div>
 
@@ -777,12 +821,12 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
-                    <label htmlFor="">Driving </label> <br />
+                      <label htmlFor="">Driving </label> <br />
                                     <input type="text" className="work" value={licence} onChange={handlechange9}/>
                   </div>
                 </div>
                 <div className="photo">
-                  <label htmlFor="">Nation</label> <br />
+                   <label>Nation</label><br />
                   <input type="text" className="work" value={nation} onChange={handlechange10}/>
                 </div>
 
@@ -792,7 +836,7 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
-                    <label htmlFor="">Place Of Birth</label> <br />
+                        <label htmlFor="">Place of Birth</label> <br />
                     <input type="text" className="work" value={place} onChange={handlechange11}/>
                   </div>
                 </div>
@@ -1188,7 +1232,7 @@ interests and curiosities'/>
           </div>
         </div>
         <div>
-          <label htmlFor="">Employe</label> <br />
+          <label htmlFor="">Emp</label> <br />
           <input
             type="text"
             value={object.input2}
