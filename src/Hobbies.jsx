@@ -42,6 +42,10 @@ const Data = [
   {
     id:"06",
     name:"Refrence"
+  },
+  {
+    id:"07",
+    name:"Project"
   }
 ]
 
@@ -404,6 +408,46 @@ function Hobbies (){
     ite.map((value)=>{
       
       if (value.id === "03") {
+        value.it = updatedObjects
+        console.log(value.mob);
+        
+      }
+     })
+  };
+   
+  //code for Project
+
+  const [project, setproject] = useState([]);
+
+  const createproject = () => {
+    const newObject = { id: four.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
+    setfour([...four, newObject]);
+  };
+
+  const handleInputproject = (e, objectId, inputName) => {
+    const updatedObjects = four.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: e.target.value };
+      }
+      return object;
+    });
+    setfour(updatedObjects);
+    ite.map((value)=>{
+      
+      if (value.id === "07") {
+        value.it = updatedObjects
+        console.log(value.mob);
+        
+      }
+     })
+  };
+
+  const deleteproject = (objectId) => {
+    const updatedObjects = four.filter((object) => object.id !== objectId);
+    setfour(updatedObjects);
+    ite.map((value)=>{
+      
+      if (value.id === "07") {
         value.it = updatedObjects
         console.log(value.mob);
         
