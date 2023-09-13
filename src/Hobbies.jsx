@@ -1664,7 +1664,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                         <p className="cont">{address}</p>
                       </div>
                       <div>
-                        <p className="cit">{`${city}   ${post}`}</p>
+                        <p className="cit">{`${city} , ${post}`}</p>
                       </div>
                       <div>
                         <p className="cit">{country}</p>
