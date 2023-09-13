@@ -1188,7 +1188,7 @@ interests and curiosities'/>
           </div>
         </div>
         <div>
-          <label htmlFor="">Employe</label> <br />
+          <label htmlFor="">Emploe</label> <br />
           <input
             type="text"
             value={object.input2}
