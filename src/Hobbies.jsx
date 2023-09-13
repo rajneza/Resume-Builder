@@ -821,8 +821,8 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
-                  <label>Driving Licence</label><br />
-                  <input type="text" className="work" value={licence} onChange={handlechange9}/>
+                      <label htmlFor="">Driving </label> <br />
+                                    <input type="text" className="work" value={licence} onChange={handlechange9}/>
                   </div>
                 </div>
                 <div className="photo">
@@ -1664,7 +1664,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                         <p className="cont">{address}</p>
                       </div>
                       <div>
-                        <p className="cit">{`${city},${post}`}</p>
+                        <p className="cit">{`${city}   ${post}`}</p>
                       </div>
                       <div>
                         <p className="cit">{country}</p>
