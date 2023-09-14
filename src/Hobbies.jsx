@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { DragDropContext , Droppable , Draggable } from "react-beautiful-dnd"
+import React, { useState, useRef, useEffect } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
 import { IoIosArrowUp , IoIosArrowDown } from 'react-icons/io'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -7,27 +7,27 @@ import Dropzone from 'react-dropzone';
 import { GoPerson } from 'react-icons/go'
 import { MdOutlineDelete } from 'react-icons/md'
 import { Scrollbars } from "react-custom-scrollbars"
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-import ProgressBar from "@ramonak/react-progress-bar";
+
+// import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom"
 import { AiOutlineEdit } from "react-icons/ai"
 import { GiSaveArrow } from "react-icons/gi"
 import "./Second.css"
 import "./Project/React.css"
-
+import { render } from 'react-dom';
+import { useReactToPrint } from 'react-to-print';
 
 
 const Data = [
   {
     id: "01",
-    name:"Employment",
-    description:"Show your relevent experince (last 10 years). use bullet points to note your achievements, if possible use numbers/facts(Achieved X, measured by Y, by doing Z)"
+    name: "Employment",
+    description: "Show your relevent experince (last 10 years). use bullet points to note your achievements, if possible use numbers/facts(Achieved X, measured by Y, by doing Z)"
   },
   {
     id: "02",
-    name:"Education",
-    description:"A varied education on your resume sums up the value that your learnings and background will bring to job"
+    name: "Education",
+    description: "A varied education on your resume sums up the value that your learnings and background will bring to job"
   },
   {
     id: "03",
@@ -36,61 +36,50 @@ const Data = [
   {
     id: "04",
     name: "Course"
-  },{
+  }, {
     id: "05",
     name: "Internships"
   },
   {
-    id:"06",
-    name:"Refrence"
+    id: "06",
+    name: "Refrence"
   },
   {
-    id:"07",
-    name:"Project"
-  },
-  {
-    id:"08",
-    name:"Custom"
+    id: "07",
+    name: "Project"
   }
 ]
 
 const item = [{
-  id:"01",
-  it:[{}]
+  id: "01",
+  it: [{}]
 },
 {
-  id:"02",
-  it:[{}]
+  id: "02",
+  it: [{}]
 }
-,{
-  id:"03",
-  it:[{}]
+  , {
+  id: "03",
+  it: [{}]
 },
 {
-  id:"04",
-  it:[{}]
+  id: "04",
+  it: [{}]
 },
 {
-  id:"05",
-  it:[{}]
+  id: "05",
+  it: [{}]
 },
 {
-  id:"06",
-  it:[{}]
-},
-{
-  id:"07",
-  it:[{}]
-},
-{
-  id:"08",
-  head:"Custom",
-  it:[{}]
+  id: "06",
+  it: [{}]
 }
 ]
 //console.log(item[1]);
 //console.log(Data[0]);
-function Hobbies (){
+function Hobbies() {
+  const contentDivRef = useRef(null);
+
 
   const [job, setjob] = useState('')
   const [name, setname] = useState('')
@@ -118,51 +107,184 @@ function Hobbies (){
   const [site, setsite] = useState(true)
   const [level, setlevel] = useState(true)
   const [hobbie, sethobbie] = useState(true)
-  const [language,setlanguage] = useState(true)
-  
+  const [language, setlanguage] = useState(true)
+
   const [stores, setStores] = useState(Data)
-  const [ite,setite] = useState(item)
+  const [ite, setite] = useState(item)
+
+
+  const [skillsProgressBars, setSkillsProgressBars] = useState({});
+  const [studentSkills, setStudentSkills] = useState([]);
+  const [selectedSkill, setSelectedSkill] = useState('');
+  const [selectedStage, setSelectedStage] = useState('Fresher');
+  const [stages, setStages] = useState(['Fresher', 'Experience', 'Export', 'Pro']);
+  const createSecondProgressBar = (skill) => {
+    const initialProgress = {
+      Fresher: 25,
+      Experience: 0,
+      Export: 0,
+      Pro: 0,
+    };
+
+    setSkillsProgressBars((prevState) => ({
+      ...prevState,
+      [skill]: {
+        progress: initialProgress,
+      },
+    }));
+  };
+
+
+  const handleSkillSelectChange = (event) => {
+    const selectedSkill = event.target.value;
+    setSelectedSkill(selectedSkill);
+
+    if (selectedSkill === 'add_skill') {
+      const newSkillInput = prompt('Enter a new skill:');
+      if (newSkillInput && newSkillInput.trim() !== '' && !studentSkills.includes(newSkillInput)) {
+        setStudentSkills([...studentSkills, newSkillInput]);
+        createSecondProgressBar(newSkillInput);
+      }
+    }
+  };
+  const deleteSkill = (index, skill) => {
+    // Remove the deleted skill from state
+    const updatedSkills = [...studentSkills];
+    updatedSkills.splice(index, 1);
+    setStudentSkills(updatedSkills);
+
+    // Remove corresponding progress bar
+    setSkillsProgressBars((prevState) => {
+      const newSkillsProgressBars = { ...prevState };
+      delete newSkillsProgressBars[skill];
+      return newSkillsProgressBars;
+    });
+  };
+
+  useEffect(() => {
+    // ... rest of the code ...
+
+    return () => {
+      // Cleanup if needed
+    }
+  }, [studentSkills]);
+
+  const renderSecondProgressBar = (skill) => {
+    const progress = skillsProgressBars[skill]?.progress || {};
+    return (
+      <div className="progress-bar">
+        <div
+          className="inner-progress stage-fresher"
+          style={{ width: `${progress.Fresher}%`, backgroundColor: getRandomColor() }}
+        ></div>
+        <div
+          className="inner-progress stage-experience"
+          style={{ width: `${progress.Experience}%`, backgroundColor: getRandomColor() }}
+        ></div>
+        <div
+          className="inner-progress stage-export"
+          style={{ width: `${progress.Export}%`, backgroundColor: getRandomColor() }}
+        ></div>
+        <div
+          className="inner-progress stage-pro"
+          style={{ width: `${progress.Pro}%`, backgroundColor: getRandomColor() }}
+        ></div>
+      </div>
+    );
+  };
+
+  const handleStageClick = (index) => {
+    const selectedStage = stages[index];
+    setSelectedStage(selectedStage);
+
+    if (selectedSkill && selectedSkill !== 'add_skill') {
+      updateSecondProgressBar(selectedSkill, selectedStage);
+    }
+  };
+
+  const updateSecondProgressBar = (skill, stage) => {
+    setSkillsProgressBars((prevState) => {
+      const updatedSkillsProgressBars = { ...prevState };
+
+      // Calculate the progress percentage for the selected stage
+      let progressPercentage = 0;
+      if (stage === 'Fresher') {
+        progressPercentage = 25;
+      } else if (stage === 'Experience') {
+        progressPercentage = 50;
+      } else if (stage === 'Export') {
+        progressPercentage = 75;
+      } else if (stage === 'Pro') {
+        progressPercentage = 100;
+      }
+
+      // Update the progress level for all stages in the second progress bar
+      updatedSkillsProgressBars[skill].progress = {
+        Fresher: stage === 'Fresher' ? progressPercentage : 0,
+        Experience: stage === 'Experience' ? progressPercentage : 0,
+        Export: stage === 'Export' ? progressPercentage : 0,
+        Pro: stage === 'Pro' ? progressPercentage : 0,
+      };
+
+      return updatedSkillsProgressBars;
+    });
+  };
+
+
+  const getRandomColor = () => {
+    const colors = ['white'];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  };
+
+
+
   let sourceindex = 0
   let destinationindex = 0
 
-  const handleDragDrop = (results)=>{
-    const {source, destination, type} = results
+  const handlePrint = useReactToPrint({
+    content: () => contentDivRef.current, // Reference to the content div
+  });
 
-    if(!destination) return
-    if(source.droppableId === destination.droppableId && source.index === destination.index) return
 
-    if(type === "group"){
+  const handleDragDrop = (results) => {
+    const { source, destination, type } = results
+
+    if (!destination) return
+    if (source.droppableId === destination.droppableId && source.index === destination.index) return
+
+    if (type === "group") {
       const reorderedStores = [...stores];
       const reoder = [...ite]
 
       sourceindex = source.index
-       destinationindex = destination.index
+      destinationindex = destination.index
 
       const [removedStore] = reorderedStores.splice(sourceindex, 1)
       const [remove] = reoder.splice(sourceindex, 1)
-      reorderedStores.splice(destinationindex, 0 , removedStore)
-      reoder.splice(destinationindex,0,remove)
+      reorderedStores.splice(destinationindex, 0, removedStore)
+      reoder.splice(destinationindex, 0, remove)
       setite(reoder)
-       setStores(reorderedStores)
+      setStores(reorderedStores)
       console.log(destination.index)
       console.log(destinationindex);
       //  console.log(source.index)
       //  if (source.index === item[0]) {
       //   console.log("hii");
-        
+
       //  }
 
-       return;
-      
+      return;
+
     }
   }
 
-  
+
 
   const handlechange = (e) => {
     setjob(e.target.value)
     if (job === "") {
-      setbar(bar+10)
+      setbar(bar + 10)
       return
     }
   }
@@ -171,18 +293,18 @@ function Hobbies (){
 
     setname(e.target.value)
     if (name === "") {
-      setbar(bar+10)
+      setbar(bar + 10)
       return
     }
 
   }
-  
+
 
   const handlechange2 = (e) => {
 
     setlastname(e.target.value)
     if (lastname === "") {
-      setbar(bar+10)
+      setbar(bar + 10)
       return
     }
   }
@@ -191,7 +313,7 @@ function Hobbies (){
 
     setemail(e.target.value)
     if (email === "") {
-      setbar(bar+10)
+      setbar(bar + 10)
       return
     }
   }
@@ -200,7 +322,7 @@ function Hobbies (){
 
     setphone(e.target.value)
     if (phone === "") {
-      setbar(bar+10)
+      setbar(bar + 10)
       return
     }
   }
@@ -208,7 +330,7 @@ function Hobbies (){
 
     setcountry(e.target.value)
     if (country === "") {
-      setbar(bar-10)
+      setbar(bar - 10)
       return
     }
   }
@@ -216,7 +338,7 @@ function Hobbies (){
 
     setcity(e.target.value)
     if (city === "") {
-      setbar(bar+10)
+      setbar(bar + 10)
       return
     }
   }
@@ -229,7 +351,7 @@ function Hobbies (){
 
     setpost(e.target.value)
     if (post === "") {
-      setbar(bar+10)
+      setbar(bar + 10)
       return
     }
   }
@@ -256,7 +378,7 @@ function Hobbies (){
   const handleChange = (html) => {
     setEditorHtml(html);
     if (editorHtml === "") {
-      setbar(bar+10)
+      setbar(bar + 10)
       return
     }
   };
@@ -268,7 +390,7 @@ function Hobbies (){
     setSelectedFile(acceptedFiles[0]);
     setShowFullView(false);
     if (selectedFile === null) {
-      setbar(bar+10)
+      setbar(bar + 10)
       return
     }
   };
@@ -278,49 +400,23 @@ function Hobbies (){
   };
 
   const handleView = () => {
-    if(!showFullView)
-    {
-        setShowFullView(true)
+    if (!showFullView) {
+      setShowFullView(true)
     }
-    else
-    {
-        setShowFullView(true)
+    else {
+      setShowFullView(true)
     }
-    
+
   };
-  // PDF
-  const generatePDF = () => {
-    const doc = new jsPDF();
-
-    // doc.text('', 5, 5);
-    // doc.text('Page 1 Content', 10, 10);
-
-    // // Now let's add enough content to overflow to a new page
-    // const longText = "This is a long piece of text that will span multiple pages. ";
-    // for (let i = 0; i < 50; i++) {
-    //   doc.text(longText, 10, doc.autoTable.previous.finalY + 10); // Adding content until it overflows
-    // }
 
 
 
-    //  doc.addPage();
-     doc.text('', 10, 10);
-
-    const content = document.getElementById('pdf-content');
-
-    html2canvas(content)
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        doc.addImage(imgData, 'PNG', 10, 20);
-        doc.save('sample.pdf');
-      });
-  };
   const [objects, setObjects] = useState([]);
 
 
 
   const createObject = () => {
-    const newObject = { id: objects.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
+    const newObject = { id: objects.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '', input6: "" };
     setObjects([...objects, newObject]);
   };
 
@@ -332,28 +428,28 @@ function Hobbies (){
       return object;
     });
     setObjects(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "01") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
 
   };
 
   const deleteObject = (objectId) => {
     const updatedObjects = objects.filter((object) => object.id !== objectId);
     setObjects(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "01") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
 
   };
 
@@ -361,9 +457,9 @@ function Hobbies (){
   const [education, seteducation] = useState([]);
 
   const createeducation = () => {
-    const newObject = { id: education.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
+    const newObject = { id: education.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '', input6: "" };
     seteducation([...education, newObject]);
-   
+
   };
 
   const handleInputedu = (e, objectId, inputName) => {
@@ -374,28 +470,28 @@ function Hobbies (){
       return object;
     });
     seteducation(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "02") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
-     
+    })
+
   };
 
   const deleteedu = (objectId) => {
     const updatedObjects = education.filter((object) => object.id !== objectId);
     seteducation(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "02") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   //code for extra-curricular
@@ -403,7 +499,7 @@ function Hobbies (){
   const [four, setfour] = useState([]);
 
   const createfour = () => {
-    const newObject = { id: four.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
+    const newObject = { id: four.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '', input6: "" };
     setfour([...four, newObject]);
   };
 
@@ -415,36 +511,36 @@ function Hobbies (){
       return object;
     });
     setfour(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "03") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   const deletefour = (objectId) => {
     const updatedObjects = four.filter((object) => object.id !== objectId);
     setfour(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "03") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
-   
+
   //code for Project
 
   const [project, setproject] = useState([]);
 
   const createproject = () => {
-    const newObject = { id: project.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
-    setproject([...project, newObject]);
+    const newObject = { id: four.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '', input6: "" };
+    setfour([...four, newObject]);
   };
 
   const handleInputproject = (e, objectId, inputName) => {
@@ -454,61 +550,61 @@ function Hobbies (){
       }
       return object;
     });
-    setproject(updatedObjects);
-    ite.map((value)=>{
-      
+    setfour(updatedObjects);
+    ite.map((value) => {
+
       if (value.id === "07") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   const deleteproject = (objectId) => {
-    const updatedObjects = project.filter((object) => object.id !== objectId);
-    setproject(updatedObjects);
-    ite.map((value)=>{
-      
+    const updatedObjects = four.filter((object) => object.id !== objectId);
+    setfour(updatedObjects);
+    ite.map((value) => {
+
       if (value.id === "07") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   //code for custom
 
   const [cust, setcust] = useState([]);
-  const [custom , setcustom] = useState("")
-  
-  const [deefault , setdefault] = useState("Custom")
-  const [def,setdef] = useState(true)
+  const [custom, setcustom] = useState("")
 
-  const handlecustumch = () =>{
-   
+  const [deefault, setdefault] = useState("Custom")
+  const [def, setdef] = useState(true)
+
+  const handlecustumch = () => {
+
     if (def === true) {
-      
+
       setdef(false)
     }
-    if (def === false){
-     
+    if (def === false) {
+
       setdef(true)
     }
   }
- 
-  const handlecustom = (e) =>{
+
+  const handlecustom = (e) => {
     setdefault(e.target.value)
     const value1 = e.target.value
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "08") {
         value.head = value1
-        
-        
+
+
       }
-     })
+    })
   }
 
   const createcust = () => {
@@ -525,40 +621,40 @@ function Hobbies (){
       return object;
     });
     setcust(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "08") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   const deletecust = (objectId) => {
     const updatedObjects = cust.filter((object) => object.id !== objectId);
     setcust(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "08") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
-     if (createcust === "") {
+    })
+    if (createcust === "") {
       setcustom("")
-     }
+    }
   };
 
-  
+
 
   //code for course
 
   const [course, setcourse] = useState([]);
 
   const createcourse = () => {
-    const newObject = { id: course.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:'' };
+    const newObject = { id: course.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '', input6: '' };
     setcourse([...course, newObject]);
   };
 
@@ -570,27 +666,27 @@ function Hobbies (){
       return object;
     });
     setcourse(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "04") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   const deletecourse = (objectId) => {
     const updatedObjects = course.filter((object) => object.id !== objectId);
     setcourse(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "04") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   // code for internship
@@ -598,7 +694,7 @@ function Hobbies (){
   const [five, setfive] = useState([]);
 
   const createfive = () => {
-    const newObject = { id: five.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
+    const newObject = { id: five.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '', input6: "" };
     setfive([...five, newObject]);
   };
 
@@ -610,27 +706,27 @@ function Hobbies (){
       return object;
     });
     setfive(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "05") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   const deletefive = (objectId) => {
     const updatedObjects = five.filter((object) => object.id !== objectId);
     setfive(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "05") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   // code for reference
@@ -638,7 +734,7 @@ function Hobbies (){
   const [three, setthree] = useState([]);
 
   const createthree = () => {
-    const newObject = { id: three.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '',input6:"" };
+    const newObject = { id: three.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '', input6: "" };
     setthree([...three, newObject]);
   };
 
@@ -650,32 +746,32 @@ function Hobbies (){
       return object;
     });
     setthree(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "06") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
 
   const deletethree = (objectId) => {
     const updatedObjects = three.filter((object) => object.id !== objectId);
     setthree(updatedObjects);
-    ite.map((value)=>{
-      
+    ite.map((value) => {
+
       if (value.id === "06") {
         value.it = updatedObjects
         console.log(value.mob);
-        
+
       }
-     })
+    })
   };
   //code for website
 
   const [website, setwebsite] = useState([]);
-  const [web,setweb] = useState("")
+  const [web, setweb] = useState("")
 
   const createweb = () => {
     const newObject = { id: website.length + 1, input1: '', input2: '' };
@@ -698,63 +794,63 @@ function Hobbies (){
     setwebsite(updatedObjects);
     setweb("")
   };
- //code for skill
+  //code for skill
 
- const [skill, setskill] = useState([]);
- const [ill,setill] = useState("")
+  const [skill, setskill] = useState([]);
+  const [ill, setill] = useState("")
 
- const createskill = () => {
-   const newObject = { id: skill.length + 1, input1: '', input2: '' };
-   setskill([...skill, newObject]);
-   setill("hi")
- };
+  const createskill = () => {
+    const newObject = { id: skill.length + 1, input1: '', input2: '' };
+    setskill([...skill, newObject]);
+    setill("hi")
+  };
 
- const handleInputskill = (e, objectId, inputName) => {
-   const updatedObjects = skill.map((object) => {
-     if (object.id === objectId) {
-       return { ...object, [inputName]: e.target.value };
-     }
-     return object;
-   });
-   setskill(updatedObjects);
- };
+  const handleInputskill = (e, objectId, inputName) => {
+    const updatedObjects = skill.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: e.target.value };
+      }
+      return object;
+    });
+    setskill(updatedObjects);
+  };
 
- const deleteskill = (objectId) => {
-   const updatedObjects = skill.filter((object) => object.id !== objectId);
-   setskill(updatedObjects);
-   setill("")
- };
+  const deleteskill = (objectId) => {
+    const updatedObjects = skill.filter((object) => object.id !== objectId);
+    setskill(updatedObjects);
+    setill("")
+  };
 
- //code for Hobbies
+  //code for Hobbies
 
- const [six, setsix] = useState([]);
- const [hob,sethob] = useState("")
+  const [six, setsix] = useState([]);
+  const [hob, sethob] = useState("")
 
- const createsix = () => {
-   const newObject = { id: six.length + 1, input1: '', input2: '' };
-   setsix([...six, newObject]);
-   sethob("hi")
- };
+  const createsix = () => {
+    const newObject = { id: six.length + 1, input1: '', input2: '' };
+    setsix([...six, newObject]);
+    sethob("hi")
+  };
 
- const handleInputsix = (e, objectId, inputName) => {
-   const updatedObjects = six.map((object) => {
-     if (object.id === objectId) {
-       return { ...object, [inputName]: e.target.value };
-     }
-     return object;
-   });
-   setsix(updatedObjects);
- };
+  const handleInputsix = (e, objectId, inputName) => {
+    const updatedObjects = six.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: e.target.value };
+      }
+      return object;
+    });
+    setsix(updatedObjects);
+  };
 
- const deletesix = (objectId) => {
-   const updatedObjects = six.filter((object) => object.id !== objectId);
-   setsix(updatedObjects);
-   sethob("")
- };
+  const deletesix = (objectId) => {
+    const updatedObjects = six.filter((object) => object.id !== objectId);
+    setsix(updatedObjects);
+    sethob("")
+  };
   // code for language
 
   const [seven, setseven] = useState([]);
-  const [lan,setlan] = useState("")
+  const [lan, setlan] = useState("")
 
   const createseven = () => {
     const newObject = { id: seven.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '' };
@@ -777,21 +873,21 @@ function Hobbies (){
     setseven(updatedObjects);
     setlan("")
   };
-  
 
-  const [bar ,setbar] = useState(0)
 
-  const handleprogress = () =>{
+  const [bar, setbar] = useState(0)
+
+  const handleprogress = () => {
 
   }
-  return(
-    <div style={{display:"flex"}}>
+  return (
+    <div style={{ display: "flex" }}>
       <div className="rk">
         {/* <div>
           <h4>{bar}% is Completed</h4>
         <ProgressBar completed={bar} onChange={handleprogress}/>
         </div> */}
-      <div>
+        <div>
           <h2>Personal Details</h2>
           <div className="job-title">
             <div className="wanted">
@@ -803,60 +899,60 @@ function Hobbies (){
             <div className="photo">
               {/* <PhotoUpload></PhotoUpload> */}
 
-              <div style={{display:"flex"}}>
-      
-      <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
-        {({ getRootProps, getInputProps }) => (
-          <div className="dropzone" {...getRootProps()}>
-            <input {...getInputProps()} />
-            {selectedFile?
-                (
-                    <div className='image'>
-                  <div className="image-container">
-                    <img
-                      src={URL.createObjectURL(selectedFile)}
-                      alt="Uploaded"
-                      className="rounded-image"
-                      onClick={handleView}
-                    />
-                    
-                  </div>
-                  
-                  </div>
-                 
-                
-              
-            ) : (
-              <div style={{display:'flex'}}>
-                
-                <GoPerson className='icon'></GoPerson>
-            
-                
-              </div>
-            )}
-          </div>
-        )}
-      </Dropzone>
-      <div className='text'>
-        {
-          selectedFile?
-          (
-            <div style={{display:"block"}}>
-                <div>
-                <button onClick={handleDelete} className="ed"><MdOutlineDelete/></button>
+              <div style={{ display: "flex" }}>
+
+                <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
+                  {({ getRootProps, getInputProps }) => (
+                    <div className="dropzone" {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      {selectedFile ?
+                        (
+                          <div className='image'>
+                            <div className="image-container">
+                              <img
+                                src={URL.createObjectURL(selectedFile)}
+                                alt="Uploaded"
+                                className="rounded-image"
+                                onClick={handleView}
+                              />
+
+                            </div>
+
+                          </div>
+
+
+
+                        ) : (
+                          <div style={{ display: 'flex' }}>
+
+                            <GoPerson className='icon'></GoPerson>
+
+
+                          </div>
+                        )}
+                    </div>
+                  )}
+                </Dropzone>
+                <div className='text'>
+                  {
+                    selectedFile ?
+                      (
+                        <div style={{ display: "block" }}>
+                          <div>
+                            <button onClick={handleDelete} className="ed"><MdOutlineDelete /></button>
+                          </div>
+                          <div>
+                            <button onClick={handleView} className="ed"><AiOutlineEdit /></button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <h4>Upload photo</h4>
+                        </div>
+                      )
+                  }
                 </div>
-                  <div>
-                  <button onClick={handleView} className="ed"><AiOutlineEdit/></button>
-                  </div>
-            </div>
-          ) :(
-            <div>
-              <h4>Upload photo</h4>
-            </div>
-          )
-        }
-      </div>
-    </div>
+              </div>
 
             </div>
           </div>
@@ -918,13 +1014,13 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
-                      <label htmlFor="">Driving </label> <br />
-                                    <input type="text" className="work" value={licence} onChange={handlechange9}/>
+                    <label htmlFor="">Driving </label> <br />
+                    <input type="text" className="work" value={licence} onChange={handlechange9} />
                   </div>
                 </div>
                 <div className="photo">
-                   <label>Nation</label><br />
-                  <input type="text" className="work" value={nation} onChange={handlechange10}/>
+                  <label>Nation</label><br />
+                  <input type="text" className="work" value={nation} onChange={handlechange10} />
                 </div>
 
               </div>
@@ -933,13 +1029,13 @@ function Hobbies (){
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
-                        <label htmlFor="">Place of Birth</label> <br />
-                    <input type="text" className="work" value={place} onChange={handlechange11}/>
+                    <label htmlFor="">Place of Birth</label> <br />
+                    <input type="text" className="work" value={place} onChange={handlechange11} />
                   </div>
                 </div>
                 <div className="photo">
                   <label htmlFor="">Date of Birth</label> <br />
-                  <input type="text" className="work" value={birth} onChange={handlechange12}/>
+                  <input type="text" className="work" value={birth} onChange={handlechange12} />
                 </div>
 
               </div>
@@ -988,627 +1084,193 @@ function Hobbies (){
           </div>
         </div>
         <div>
-        <DragDropContext onDragEnd={handleDragDrop}>
-      <div className="first">
-        <Droppable droppableId="Root" type="group">
-        {(provided)=>(
-          <div {...provided.droppableProps} ref={provided.innerRef}>
-            {stores.map((store,index)=>(
-          <Draggable draggableId={store.id} key={store.id} index={index}>
-            {(provided)=>(
-              <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-                {
-                  store.name === "Custom" ? <div style={{display:"flex"}} id="main-cust">
-                    {
-                      def ?  <h3>{deefault}</h3> : <h3><input type="text" value={deefault} onChange={handlecustom} id="custom"/></h3>
-                    }
-                    <button onClick={handlecustumch} id="cust">{
-                      def ? <AiOutlineEdit/> : <GiSaveArrow></GiSaveArrow>
-                    }</button>
-                  </div> :  <h3>{store.name}</h3>
-                }
-             
-              <p className="des">{store.description}</p>
-              {/* <Storelist {...store}/> */}
-              {
+          <DragDropContext onDragEnd={handleDragDrop}>
+            <div className="first">
+              <Droppable droppableId="Root" type="group">
+                {(provided) => (
+                  <div {...provided.droppableProps} ref={provided.innerRef}>
+                    {stores.map((store, index) => (
+                      <Draggable draggableId={store.id} key={store.id} index={index}>
+                        {(provided) => (
+                          <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+                            <h3>{store.name}</h3>
+                            <p className="des">{store.description}</p>
+                            {/* <Storelist {...store}/> */}
+                            {
                               store.name === "Employment" ? <div>
                                 {objects.map((object) => (
-                <div key={object.id}>
-                  <div style={{display:"flex"}} className="flex">
-                   
-                    {object.input1}
-                    <h5 onClick={() => setemp(!emp)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
-                  </div>
-                  <div className={emp ? "visible" : "hidden"}>
-                    <div  style={{ display: "flex" }} >
-                  <div className='emp-main'>
+                                  <div key={object.id}>
+                                    <div style={{ display: "flex" }} className="flex">
+
+                                      {object.input1}
+                                      <h5 onClick={() => setemp(!emp)} style={{ cursor: "pointer" }} className="arrow"><IoIosArrowUp /></h5>
+                                    </div>
+                                    <div className={emp ? "visible" : "hidden"}>
+                                      <div style={{ display: "flex" }} >
+                                        <div className='emp-main'>
 
 
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">Job title</label> <br />
-                          <input
-                            type="text"
-                            value={object.input1}
-                            className='work'
-                            onChange={(e) => handleInputChange(e, object.id, 'input1')}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">Employer</label> <br />
-                        <input
-                          type="text"
-                          value={object.input2}
-                          className='work'
-                          onChange={(e) => handleInputChange(e, object.id, 'input2')}
-                        />
-                      </div>
-                    </div>
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">Start & End Date</label> <br />
-                          <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputChange(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputChange(e, object.id, 'input5')}
-                              />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">City</label> <br />
-                        <input
-                          type="text"
-                          value={object.input3}
-                          className='work'
-                          onChange={(e) => handleInputChange(e, object.id, 'input3')}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div>
-                        <label htmlFor="">Description</label> <br />
-                        <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputChange(e, object.id, 'input6')}
-                          placeholder='e.g. Graduated with High Honors.' />
-                      </div>
-                    </div>
+                                          <div style={{ display: "flex" }}>
+                                            <div className='wanted'>
+                                              <div>
+                                                <label htmlFor="">Job title</label> <br />
+                                                <input
+                                                  type="text"
+                                                  value={object.input1}
+                                                  className='work'
+                                                  onChange={(e) => handleInputChange(e, object.id, 'input1')}
+                                                />
+                                              </div>
+                                            </div>
+                                            <div>
+                                              <label htmlFor="">Employer</label> <br />
+                                              <input
+                                                type="text"
+                                                value={object.input2}
+                                                className='work'
+                                                onChange={(e) => handleInputChange(e, object.id, 'input2')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div style={{ display: "flex" }}>
+                                            <div className='wanted'>
+                                              <div>
+                                                <label htmlFor="">Start & End Date</label> <br />
+                                                <input type='date'
+                                                  value={object.input4}
+                                                  className='workk'
+                                                  onChange={(e) => handleInputChange(e, object.id, 'input4')}
+                                                />
+                                                <input type='date'
+                                                  value={object.input5}
+                                                  className='workk'
+                                                  onChange={(e) => handleInputChange(e, object.id, 'input5')}
+                                                />
+                                              </div>
+                                            </div>
+                                            <div>
+                                              <label htmlFor="">City</label> <br />
+                                              <input
+                                                type="text"
+                                                value={object.input3}
+                                                className='work'
+                                                onChange={(e) => handleInputChange(e, object.id, 'input3')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <div>
+                                              <label htmlFor="">Description</label> <br />
+                                              <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputChange(e, object.id, 'input6')}
+                                                placeholder='e.g. Graduated with High Honors.' />
+                                            </div>
+                                          </div>
 
 
-                  </div>
-                  <div>
-                    <button onClick={() => deleteObject(object.id)} className="delete"><MdOutlineDelete/></button>
-                  </div>
-                  </div>
-                  </div>
-                  
+                                        </div>
+                                        <div>
+                                          <button onClick={() => deleteObject(object.id)} className="delete"><MdOutlineDelete /></button>
+                                        </div>
+                                      </div>
+                                    </div>
 
-                </div>
-              ))}
-              <button onClick={createObject} className="add"> + Add Employment</button>
+
+                                  </div>
+                                ))}
+                                <button onClick={createObject} className="add"> + Add Employment</button>
                               </div> : <span></span>
                             }
                             {
-                            store.name === "Education" ? <div>
-                              {education.map((object) => (
-                <div key={object.id}>
-                  <div style={{display:"flex"}} className="flex">
-                   
-                   {object.input1}
-                   <h5 onClick={() => setoction(!oction)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
-                 </div>
-                 <div className={oction ? "visible" : "hidden"}>
-                  <div  style={{ display: "flex" }}>
-                  <div className='emp-main'>
+                              store.name === "Education" ? <div>
+                                {education.map((object) => (
+                                  <div key={object.id}>
+                                    <div style={{ display: "flex" }} className="flex">
 
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">School</label> <br />
-                          <input
-                            type="text"
-                            value={object.input1}
-                            className='work'
-                            onChange={(e) => handleInputedu(e, object.id, 'input1')}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">Degree</label> <br />
-                        <input
-                          type="text"
-                          value={object.input2}
-                          className='work'
-                          onChange={(e) => handleInputedu(e, object.id, 'input2')}
-                        />
-                      </div>
-                    </div>
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">Start & End Date</label> <br />
-                          <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputedu(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputedu(e, object.id, 'input5')}
-                              />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">City</label> <br />
-                        <input
-                          type="text"
-                          value={object.input3}
-                          className='work'
-                          onChange={(e) => handleInputedu(e, object.id, 'input3')}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div>
-                        <label htmlFor="">Description</label> <br />
-                        <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputedu(e, object.id, 'input6')}
-                          placeholder='e.g. Graduated with High Honors.' />
-                      </div>
-                    </div>
+                                      {object.input1}
+                                      <h5 onClick={() => setoction(!oction)} style={{ cursor: "pointer" }} className="arrow"><IoIosArrowUp /></h5>
+                                    </div>
+                                    <div className={oction ? "visible" : "hidden"}>
+                                      <div style={{ display: "flex" }}>
+                                        <div className='emp-main'>
 
-
-                  </div>
-                  <div>
-                    <button onClick={() => deleteedu(object.id)} className="delete"><MdOutlineDelete/></button>
-                  </div>
-                  </div>
-                  </div>
-                  
-                </div>
-              ))}
-              <button onClick={createeducation} className="add"> + Add education</button>
-                  
-                            </div> : <span></span>
-                          }
-                          {
-                                store.name === "Extra-curricular activites" ? <div>
-                                  <div className='emp-div'>
-
-{four.map((object) => (
-  <div key={object.id}>
-    <div style={{display:"flex"}} className="flexx">
-       {object.input1}
-       <h5 onClick={() => setext(!ext)} style={{cursor:"pointer"}} className="arrow">{ext ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
-    </div>
-    <div className={ext ? "visible" : "hidden"}>
-    <div style={{display:"flex"}}>
-    <div className='emp-main'>
-
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Job title</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputfour(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Employer</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputfour(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Start & End Date</label> <br />
-            <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputfour(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputfour(e, object.id, 'input5')}
-                              />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">City</label> <br />
-          <input
-            type="text"
-            value={object.input3}
-            className='work'
-            onChange={(e) => handleInputfour(e, object.id, 'input3')}
-          />
-        </div>
-      </div>
-      <div>
-        <div>
-          <label htmlFor="">Description</label> <br />
-          <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputfour(e, object.id, 'input6')}
-            placeholder='e.g. Created and implemented lesson plans based on child-led
-interests and curiosities'/>
-        </div>
-      </div>
+                                          <div style={{ display: "flex" }}>
+                                            <div className='wanted'>
+                                              <div>
+                                                <label htmlFor="">School</label> <br />
+                                                <input
+                                                  type="text"
+                                                  value={object.input1}
+                                                  className='work'
+                                                  onChange={(e) => handleInputedu(e, object.id, 'input1')}
+                                                />
+                                              </div>
+                                            </div>
+                                            <div>
+                                              <label htmlFor="">Degree</label> <br />
+                                              <input
+                                                type="text"
+                                                value={object.input2}
+                                                className='work'
+                                                onChange={(e) => handleInputedu(e, object.id, 'input2')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div style={{ display: "flex" }}>
+                                            <div className='wanted'>
+                                              <div>
+                                                <label htmlFor="">Start & End Date</label> <br />
+                                                <input type='date'
+                                                  value={object.input4}
+                                                  className='workk'
+                                                  onChange={(e) => handleInputedu(e, object.id, 'input4')}
+                                                />
+                                                <input type='date'
+                                                  value={object.input5}
+                                                  className='workk'
+                                                  onChange={(e) => handleInputedu(e, object.id, 'input5')}
+                                                />
+                                              </div>
+                                            </div>
+                                            <div>
+                                              <label htmlFor="">City</label> <br />
+                                              <input
+                                                type="text"
+                                                value={object.input3}
+                                                className='work'
+                                                onChange={(e) => handleInputedu(e, object.id, 'input3')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <div>
+                                              <label htmlFor="">Description</label> <br />
+                                              <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputedu(e, object.id, 'input6')}
+                                                placeholder='e.g. Graduated with High Honors.' />
+                                            </div>
+                                          </div>
 
 
-    </div>
-    <div>
-      <button onClick={() => deletefour(object.id)} className="delete">Delete</button>
-    </div>
-    </div>
-    </div>
-    
-  </div>
-))}
-<button onClick={createfour} className="add"> + Add Employment</button>
-
-</div>
-{/* <button onClick={delete7}>delete</button> */}
-                                </div> : <span></span>
-                              }
-                          {
-                                store.name === "Course" ? <div>
-                                  <div className='emp-div'>
-
-{course.map((object) => (
-  <div key={object.id}>
-    <div style={{display:"flex"}} className="flexx">
-     {object.input1}
-     <h5 onClick={() => setcou(!cou)} style={{cursor:"pointer"}} className="arrow">{cou ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-    </div>
-    <div className={cou ? "visible" : "hidden"}>
-      <div style={{display:"flex"}}>
-
-      
-    <div className='emp-main'>
-
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Job title</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputcourse(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Employer</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputcourse(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Start & End Date</label> <br />
-            <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputcourse(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputcourse(e, object.id, 'input5')}
-                              />
-          </div>
-        </div>
-
-      </div>
-
-
-
-    </div>
-    <div>
-      <button onClick={() => deletecourse(object.id)} className="delete"><MdOutlineDelete/></button>
-    </div>
-    </div>
-    </div>
-   
-  </div>
-))}
-<button onClick={createcourse} className="add"> + Add one more course</button>
-
-</div>
-{/* <button onClick={delete2}>delete</button> */}
-                                </div> : <span></span>
-                              }
-                          {
-                                store.name === "Internships" ? <div>
-                                  <div className='emp-div'>
-
-{five.map((object) => (
-  <div key={object.id}>
-    <div className="flexx" style={{display:"flex"}}>
-      {object.input1}
-      <h5 onClick={()=> setinter(!inter)} style={{cursor:"pointer"}} className="arrow">{inter ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-    </div>
-    <div className={inter ? "visible" : "hidden"}>
-      <div style={{display:"flex"}}>
-
-      
-    <div className='emp-main'>
-
-      <div style={{ display: "flexx" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Job title</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputfive(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Emp</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputfive(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Start & End Date</label> <br />
-            <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputfive(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputfive(e, object.id, 'input5')}
-                              />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">City</label> <br />
-          <input
-            type="text"
-            value={object.input3}
-            className='work'
-            onChange={(e) => handleInputfive(e, object.id, 'input3')}
-          />
-        </div>
-      </div>
-      <div>
-        <div>
-          <label htmlFor="">Description</label> <br />
-          
-        </div>
-      </div>
-
-
-    </div>
-    <div>
-      <button onClick={() => deletefive(object.id)} className="delete"><MdOutlineDelete/></button>
-    </div>
-    </div>
-    </div>
-   
-  </div>
-))}
-<button onClick={createfive} className="add"> + Add one more internship</button>
-
-</div>
-{/* <button onClick={delete4}>delete</button> */}
-                                </div> : <span></span>
-                              }
-                              {
-                                store.name === "Project" ? <div>
-                                  <div className='emp-div'>
-
-{project.map((object) => (
-  <div key={object.id}>
-    <div style={{display:"flex"}} className="flexx">
-      {object.input1}
-      <h5 onClick={()=> setpro(!pro)} style={{cursor:"pointer"}} className="arrow">{pro ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-    </div>
-    <div className={pro ? "visible" : "hidden"}>
-      <div style={{display:"flex"}}>
-
-      
-    <div className='emp-main'>
-
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Project title</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputproject(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Employer</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputproject(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Start & End Date</label> <br />
-            <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputproject(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputproject(e, object.id, 'input5')}
-                              />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">City</label> <br />
-          <input
-            type="text"
-            value={object.input3}
-            className='work'
-            onChange={(e) => handleInputproject(e, object.id, 'input3')}
-          />
-        </div>
-      </div>
-      <div>
-        <div>
-          <label htmlFor="">Project Summary</label> <br />
-          <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputproject(e, object.id, 'input6')}
-            placeholder='e.g. Created and implemented lesson plans based on child-led
-interests and curiosities'/>
-        </div>
-      </div>
-
-
-    </div>
-    <div>
-      <button onClick={() => deleteproject(object.id)} className="delete"><MdOutlineDelete/></button>
-    </div>
-    </div>
-    </div>
-    
-  </div>
-))}
-<button onClick={createproject} className="add"> + Add Project</button>
-
-</div>
-{/* <button onClick={delete7}>delete</button> */}
-                                </div> : <span></span>
-                              }
-                              {
-                                store.name === "Refrence" ? <div>
-                                  <div className='emp-div'>
-
-{three.map((object) => (
-  <div key={object.id}>
-    <div style={{display:"flex"}} className="flexx">
-      {object.input1}
-      <h5 onClick={()=> setref(!ref)} style={{cursor:"pointer"}} className="arrow">{ref ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-    </div>
-    <div className={ref ? "visible" : "hidden"}>
-      <div style={{display:"flex"}}>
-
-     
-    <div className='emp-main'>
-
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Name</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputthree(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Employer</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputthree(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Phone</label> <br />
-            <input type='text'
-              value={object.input4}
-              className='work'
-              onChange={(e) => handleInputthree(e, object.id, 'input4')}
-            />
-          </div>
-        </div>
-        <div className="wanted">
-              <div>
-              <label htmlFor="">Email</label> <br />
-            <input type='text'
-              value={object.input5}
-              className='work'
-              onChange={(e) => handleInputthree(e, object.id, 'input5')}
-            />
-              </div>
-            </div>
-
-      </div>
-
-
-
-    </div>
-    <div>
-      <button onClick={() => deletethree(object.id)}  className="delete"><MdOutlineDelete/></button>
-    </div>
-    </div>
-    </div>
-    
-  </div>
-))}
-<button onClick={createthree} className="add"> + Add one more reference</button>
-
-</div>
-{/* <button onClick={delete3}>delete</button> */}
-                                </div> : <span></span>
-                              }
-                              {
-                                store.name === "Custom" ? <div>
-                                <div className='emp-div'>
-                
-                                  {cust.map((object) => (
-                                    <div key={object.id}>
-                                      <div style={{display:"flex"}} className="flexx">
-                                        {object.input1}
-                                        <h5 onClick={()=> setcus(!cus)} style={{cursor:"pointer"}} className="arrow">{cus ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+                                        </div>
+                                        <div>
+                                          <button onClick={() => deleteedu(object.id)} className="delete"><MdOutlineDelete /></button>
+                                        </div>
                                       </div>
-                                      <div className={cus ? "visible" : "hidden"}>
-                                        <div style={{display:"flex"}}>
+                                    </div>
 
-                                        
+                                  </div>
+                                ))}
+                                <button onClick={createeducation} className="add"> + Add education</button>
+
+                              </div> : <span></span>
+                            }
+                            {
+                              store.name === "Extra-curricular activites" ? <div>
+                                <div className='emp-div'>
+
+                                  {four.map((object) => (
+                                    <div key={object.id} style={{ display: "flex" }}>
                                       <div className='emp-main'>
-                
+
                                         <div style={{ display: "flex" }}>
                                           <div className='wanted'>
                                             <div>
@@ -1617,7 +1279,7 @@ interests and curiosities'/>
                                                 type="text"
                                                 value={object.input1}
                                                 className='work'
-                                                onChange={(e) => handleInputcust(e, object.id, 'input1')}
+                                                onChange={(e) => handleInputfour(e, object.id, 'input1')}
                                               />
                                             </div>
                                           </div>
@@ -1627,7 +1289,7 @@ interests and curiosities'/>
                                               type="text"
                                               value={object.input2}
                                               className='work'
-                                              onChange={(e) => handleInputcust(e, object.id, 'input2')}
+                                              onChange={(e) => handleInputfour(e, object.id, 'input2')}
                                             />
                                           </div>
                                         </div>
@@ -1637,701 +1299,918 @@ interests and curiosities'/>
                                               <label htmlFor="">Start & End Date</label> <br />
                                               <input type='date'
                                                 value={object.input4}
-                                                className='work'
-                                                onChange={(e) => handleInputcust(e, object.id, 'input4')}
+                                                className='workk'
+                                                onChange={(e) => handleInputfour(e, object.id, 'input4')}
+                                              />
+                                              <input type='date'
+                                                value={object.input5}
+                                                className='workk'
+                                                onChange={(e) => handleInputfour(e, object.id, 'input5')}
                                               />
                                             </div>
+                                          </div>
+                                          <div>
+                                            <label htmlFor="">City</label> <br />
+                                            <input
+                                              type="text"
+                                              value={object.input3}
+                                              className='work'
+                                              onChange={(e) => handleInputfour(e, object.id, 'input3')}
+                                            />
                                           </div>
                                         </div>
                                         <div>
                                           <div>
                                             <label htmlFor="">Description</label> <br />
-                                            <textarea name="" id="" cols="90" rows="15" value={object.input5} onChange={(e) => handleInputcust(e, object.id, 'input5')}
+                                            <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputfour(e, object.id, 'input6')}
                                               placeholder='e.g. Created and implemented lesson plans based on child-led
-                               interests and curiosities'/>
+interests and curiosities'/>
                                           </div>
                                         </div>
-                
-                
+
+
                                       </div>
                                       <div>
-                                        <button onClick={() => deletecust(object.id)} className="delete"><MdOutlineDelete/></button>
+                                        <button onClick={() => deletefour(object.id)} className="delete">Delete</button>
                                       </div>
-                                      </div>
-                                      </div>
-                                     
                                     </div>
                                   ))}
-                                  <button onClick={createcust} className="add"> + Add one more item</button>
-                
+                                  <button onClick={createfour} className="add"> + Add Employment</button>
+
                                 </div>
-                                {/* <button onClick={delete1}>delete</button> */}
-                                </div> : <span></span>
-                              }
-                              
+                                {/* <button onClick={delete7}>delete</button> */}
+                              </div> : <span></span>
+                            }
+                            {
+                              store.name === "Course" ? <div>
+                                <div className='emp-div'>
 
-            </div>
-            )}
-            
-          </Draggable>
-        ))}
-          </div>
-        )}
-        </Droppable>
-      </div>
-      </DragDropContext>
-      <div className="main-div">
-          <div>
-            <h2> Websites & Social Links</h2>
-          </div>
-          <div>
-            <p>You can add links to websites you want hiring managers to see! Perhaps it will be
-              a link to your portfolio,LinkedIn profile or personal website</p>
-          </div>
-          <div className="div1">
-            {/* <Websites></Websites> */}
-            <div className='emp-div'>
+                                  {course.map((object) => (
+                                    <div key={object.id} style={{ display: "flex" }}>
+                                      <div className='emp-main'>
 
-              {website.map((object) => (
-                <div key={object.id} className="div-in">
-                  <div style={{display:"flex"}} className="flexxx">
-                    {object.input1}
-                    <h5 onClick={()=> setsite(!site)} style={{cursor:"pointer"}} className="arrow">{site ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+                                        <div style={{ display: "flex" }}>
+                                          <div className='wanted'>
+                                            <div>
+                                              <label htmlFor="">Job title</label> <br />
+                                              <input
+                                                type="text"
+                                                value={object.input1}
+                                                className='work'
+                                                onChange={(e) => handleInputcourse(e, object.id, 'input1')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <label htmlFor="">Employer</label> <br />
+                                            <input
+                                              type="text"
+                                              value={object.input2}
+                                              className='work'
+                                              onChange={(e) => handleInputcourse(e, object.id, 'input2')}
+                                            />
+                                          </div>
+                                        </div>
+                                        <div style={{ display: "flex" }}>
+                                          <div className='wanted'>
+                                            <div>
+                                              <label htmlFor="">Start & End Date</label> <br />
+                                              <input type='date'
+                                                value={object.input4}
+                                                className='workk'
+                                                onChange={(e) => handleInputcourse(e, object.id, 'input4')}
+                                              />
+                                              <input type='date'
+                                                value={object.input5}
+                                                className='workk'
+                                                onChange={(e) => handleInputcourse(e, object.id, 'input5')}
+                                              />
+                                            </div>
+                                          </div>
+
+                                        </div>
+
+
+
+                                      </div>
+                                      <div>
+                                        <button onClick={() => deletecourse(object.id)} className="delete"><MdOutlineDelete /></button>
+                                      </div>
+                                    </div>
+                                  ))}
+                                  <button onClick={createcourse} className="add"> + Add one more course</button>
+
+                                </div>
+                                {/* <button onClick={delete2}>delete</button> */}
+                              </div> : <span></span>
+                            }
+                            {
+                              store.name === "Internships" ? <div>
+                                <div className='emp-div'>
+
+                                  {five.map((object) => (
+                                    <div key={object.id} style={{ display: "flex" }}>
+                                      <div className='emp-main'>
+
+                                        <div style={{ display: "flex" }}>
+                                          <div className='wanted'>
+                                            <div>
+                                              <label htmlFor="">Job title</label> <br />
+                                              <input
+                                                type="text"
+                                                value={object.input1}
+                                                className='work'
+                                                onChange={(e) => handleInputfive(e, object.id, 'input1')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <label htmlFor="">Emp</label> <br />
+                                            <input
+                                              type="text"
+                                              value={object.input2}
+                                              className='work'
+                                              onChange={(e) => handleInputfive(e, object.id, 'input2')}
+                                            />
+                                          </div>
+                                        </div>
+                                        <div style={{ display: "flex" }}>
+                                          <div className='wanted'>
+                                            <div>
+                                              <label htmlFor="">Start & End Date</label> <br />
+                                              <input type='date'
+                                                value={object.input4}
+                                                className='workk'
+                                                onChange={(e) => handleInputfive(e, object.id, 'input4')}
+                                              />
+                                              <input type='date'
+                                                value={object.input5}
+                                                className='workk'
+                                                onChange={(e) => handleInputfive(e, object.id, 'input5')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <label htmlFor="">City</label> <br />
+                                            <input
+                                              type="text"
+                                              value={object.input3}
+                                              className='work'
+                                              onChange={(e) => handleInputfive(e, object.id, 'input3')}
+                                            />
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <div>
+                                            <label htmlFor="">Description</label> <br />
+
+                                          </div>
+                                        </div>
+
+
+                                      </div>
+                                      <div>
+                                        <button onClick={() => deletefive(object.id)} className="delete"><MdOutlineDelete /></button>
+                                      </div>
+                                    </div>
+                                  ))}
+                                  <button onClick={createfive} className="add"> + Add one more internship</button>
+
+                                </div>
+                                {/* <button onClick={delete4}>delete</button> */}
+                              </div> : <span></span>
+                            }
+                            {
+                              store.name === "Refrence" ? <div>
+                                <div className='emp-div'>
+
+                                  {three.map((object) => (
+                                    <div key={object.id} style={{ display: "flex" }}>
+                                      <div className='emp-main'>
+
+                                        <div style={{ display: "flex" }}>
+                                          <div className='wanted'>
+                                            <div>
+                                              <label htmlFor="">Name</label> <br />
+                                              <input
+                                                type="text"
+                                                value={object.input1}
+                                                className='work'
+                                                onChange={(e) => handleInputthree(e, object.id, 'input1')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <label htmlFor="">Employer</label> <br />
+                                            <input
+                                              type="text"
+                                              value={object.input2}
+                                              className='work'
+                                              onChange={(e) => handleInputthree(e, object.id, 'input2')}
+                                            />
+                                          </div>
+                                        </div>
+                                        <div style={{ display: "flex" }}>
+                                          <div className='wanted'>
+                                            <div>
+                                              <label htmlFor="">Phone</label> <br />
+                                              <input type='text'
+                                                value={object.input4}
+                                                className='work'
+                                                onChange={(e) => handleInputthree(e, object.id, 'input4')}
+                                              />
+                                            </div>
+                                          </div>
+                                          <div className="wanted">
+                                            <div>
+                                              <label htmlFor="">Email</label> <br />
+                                              <input type='text'
+                                                value={object.input5}
+                                                className='work'
+                                                onChange={(e) => handleInputthree(e, object.id, 'input5')}
+                                              />
+                                            </div>
+                                          </div>
+
+                                        </div>
+
+
+
+                                      </div>
+                                      <div>
+                                        <button onClick={() => deletethree(object.id)} className="delete"><MdOutlineDelete /></button>
+                                      </div>
+                                    </div>
+                                  ))}
+                                  <button onClick={createthree} className="add"> + Add one more reference</button>
+
+                                </div>
+                                {/* <button onClick={delete3}>delete</button> */}
+                              </div> : <span></span>
+                            }
+
+
+                          </div>
+                        )}
+
+                      </Draggable>
+                    ))}
                   </div>
-                  <div className={site ? "visible" : "hidden"}>
-                    <div style={{display:"flex"}}>
+                )}
+              </Droppable>
+            </div>
+          </DragDropContext>
+          <div>
+            <div>
+              <h2> Websites & Social Links</h2>
+            </div>
+            <div>
+              <p>You can add links to websites you want hiring managers to see! Perhaps it will be
+                a link to your portfolio,LinkedIn profile or personal website</p>
+            </div>
+            <div>
+              {/* <Websites></Websites> */}
+              <div className='emp-div'>
 
-                    
-                  <div className='emp-main'>
+                {website.map((object) => (
+                  <div key={object.id} style={{ display: "flex" }}>
+                    <div className='emp-main'>
 
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
+                      <div style={{ display: "flex" }}>
+                        <div className='wanted'>
+                          <div>
+                            <label htmlFor="">Instagram</label> <br />
+                            <input
+                              type="text"
+                              value={object.input1}
+                              className='work'
+                              onChange={(e) => handleInputweb(e, object.id, 'input1')}
+                            />
+                          </div>
+                        </div>
                         <div>
-                          <label htmlFor="">Instagram</label> <br />
+                          <label htmlFor="">Link</label> <br />
                           <input
                             type="text"
-                            value={object.input1}
+                            value={object.input2}
                             className='work'
-                            onChange={(e) => handleInputweb(e, object.id, 'input1')}
+                            onChange={(e) => handleInputweb(e, object.id, 'input2')}
                           />
                         </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">Link</label> <br />
-                        <input
-                          type="text"
-                          value={object.input2}
-                          className='work'
-                          onChange={(e) => handleInputweb(e, object.id, 'input2')}
-                        />
                       </div>
                     </div>
+                    <div>
+                      <button onClick={() => deleteweb(object.id)} className="delete"><MdOutlineDelete /></button>
+                    </div>
                   </div>
-                  <div>
-                    <button onClick={() => deleteweb(object.id)} className="delete"><MdOutlineDelete/></button>
-                  </div>
-                  </div>
-                  </div>
-                  
-                </div>
-              ))}
-              <button onClick={createweb} className="add"> + Add Link</button>
+                ))}
+                <button onClick={createweb} className="add"> + Add Link</button>
+
+              </div>
 
             </div>
-
-          </div>
-        </div>
-        <div>
-          <div>
-            <h2> Skills</h2>
           </div>
           <div>
-            <p>
-              Choose 5 important skills that show you fit the position. Make sure they match
-              the key skills mentioned in the job listing(especially when applying via an online system)
-            </p>
-          </div>
-          <div>
-            {/* <Skills></Skills> */}
-            <div className='emp-div'>
+            <div>
+              <h2> Skills</h2>
+            </div>
+            <div>
+              <p>
+                Choose 5 important skills that show you fit the position. Make sure they match
+                the key skills mentioned in the job listing(especially when applying via an online system)
+              </p>
+            </div>
+            <div>
+              {/* <Skills></Skills> */}
+              <div className='emp-div'>
 
-              {skill.map((object) => (
-                <div key={object.id}>
-                  <div className="flexxx" style={{display:"flex"}}>
-                    {object.input1}
-                    <h5 onClick={()=>setlevel(level)} style={{cursor:"pointer"}} className="arrow">{level ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-                  </div>
-                  <div className={level ? "visible" : "hidden"}>
-                    <div style={{display:"flex"}}>
+                {skill.map((object) => (
+                  <div key={object.id} style={{ display: "flex" }}>
+                    <div className='emp-main'>
 
-                    
-                  <div className='emp-main'>
-
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">Label</label> <br />
-                          <input
-                            type="text"
-                            value={object.input1}
-                            className='work'
-                            onChange={(e) => handleInputskill(e, object.id, 'input1')}
-                          />
+                      <div style={{ display: "flex" }}>
+                        <div className='wanted'>
+                          {/* <div>
+                            <label htmlFor="">Label</label> <br />
+                            <input
+                              type="text"
+                              value={object.input1}
+                              className='work'
+                              onChange={(e) => handleInputskill(e, object.id, 'input1')}
+                            />
+                          </div> */}
+                          <form>
+                            <div className="row mt-2">
+                              <div className="col-12 col-md-6">
+                                <label htmlFor="fname">Skills</label>
+                                <select
+                                  id="skills-select-box"
+                                  className="form-select"
+                                  value={selectedSkill}
+                                  onChange={handleSkillSelectChange}
+                                >
+                                  <option>Select Skills</option>
+                                  <option value="add_skill">Add Skill</option>
+                                  {studentSkills.map((skill, index) => (
+                                    <option key={index} value={skill}>
+                                      {skill}
+                                    </option>
+                                  ))}
+                                </select>
+                                <p id="skillsError" className="text-danger"></p>
+                                <div id="skillsContainer">
+                                  {studentSkills.map((skill, index) => (
+                                    <button
+                                      key={index}
+                                      className="btn btn-sm btn-primary px-3 rounded rounded-pill"
+                                      type="button"
+                                    >
+                                      <span>{skill}</span>
+                                      <i
+                                        className="fas fa-times-circle ms-2"
+                                        onClick={() => deleteSkill(index, skill)}
+                                      ></i>
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="col-12 col-md-6">
+                                <h3>Selected Skills</h3>
+                                <div id="skillsFormatted"></div>
+                              </div>
+                            </div>
+                          </form>
                         </div>
-                        
-                      </div>
-                      <div>
+                        <div>
                           <label htmlFor="">Level</label> <br />
-                          <select name="" id="" value={object.input2} onChange={(e) => handleInputskill(e, object.id, 'input2')} className="work">
+                          {/* <select name="" id="" value={object.input2} onChange={(e) => handleInputskill(e, object.id, 'input2')} className="work">
                             <option value="1">Level 1</option>
                             <option value="2">Level 2</option>
                             <option value="3">Level 3</option>
                             <option value="4">Level 4</option>
                             <option value="5">Level 5</option>
-                          </select>
+                          </select> */}
+                           <div className="progress-bar-container">
+        <div className="progress" id="myProgressBar">
+          {stages.map((stage, index) => (
+            <button
+              key={index}
+              className={`progress-stage ${stage.toLowerCase()}`}
+              data-stage={stage}
+              onClick={() => handleStageClick(index)}
+            >
+              {stage}
+            </button>
+          ))}
+          <div className="progress-text">{selectedStage}</div>
+        </div>
+      </div>
+     
+    
                         </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button onClick={() => deleteskill(object.id)} className="delete"><MdOutlineDelete /></button>
                     </div>
                   </div>
-                  <div>
-                    <button onClick={() => deleteskill(object.id)} className="delete"><MdOutlineDelete/></button>
-                  </div>
-                  </div>
-                  </div>
-                 
-                </div>
-              ))}
-              <button onClick={createskill} className="add"> + Add more skill</button>
+                ))}
+                <button onClick={createskill} className="add"> + Add more skill</button>
 
+              </div>
             </div>
-          </div>
-          {
+            {
               <div>
                 <div>
-                <h2>Hobbies</h2>
+                  <h2>Hobbies</h2>
                 </div>
                 <div className='emp-div'>
 
                   {six.map((object) => (
                     <div key={object.id}>
-                      <div style={{display:"flex"}} id="flexx">
+                      <div style={{ display: "flex" }} id="flexx">
                         {object.input1}
-                        <h5 onClick={()=>sethobbie(hobbie)} className="arrow" style={{cursor:"pointer"}}>{hobbie? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+                        <h5 onClick={() => sethobbie(hobbie)} className="arrow" style={{ cursor: "pointer" }}>{hobbie ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
                       </div>
                       <div className={hobbie ? "visible" : "hidden"}>
-                        <div style={{display:"flex"}}>
-                        
-                        
-                      <div className='emp-main'>
-
                         <div style={{ display: "flex" }}>
-                          <div className='wanted'>
-                            <div>
-                              <label htmlFor="">Label</label> <br />
-                              <input
-                                type="text"
-                                value={object.input1}
-                                className='work'
-                                onChange={(e) => handleInputsix(e, object.id, 'input1')}
-                              />
+
+
+                          <div className='emp-main'>
+
+                            <div style={{ display: "flex" }}>
+                              <div className='wanted'>
+                                <div>
+                                  <label htmlFor="">Label</label> <br />
+                                  <input
+                                    type="text"
+                                    value={object.input1}
+                                    className='work'
+                                    onChange={(e) => handleInputsix(e, object.id, 'input1')}
+                                  />
+                                </div>
+                              </div>
                             </div>
+                          </div>
+                          <div>
+                            <button onClick={() => deletesix(object.id)} className="delete"><MdOutlineDelete /></button>
                           </div>
                         </div>
                       </div>
-                      <div>
-                        <button onClick={() => deletesix(object.id)} className="delete"><MdOutlineDelete/></button>
-                      </div>
-                      </div>
-                      </div>
-                     
-                      
+
+
                     </div>
                   ))}
                   <button onClick={createsix} className="add"> + Add more Hobbie</button>
 
                 </div>
                 {/* <button onClick={delete6}>delete</button> */}
-                </div>
+              </div>
             }
-          <div>
-            {
-               <div>
+            <div>
+              {
                 <div>
-                <h2>Langugages</h2>
-                </div>
-                <div className='emp-div'>
+                  <div>
+                    <h2>Langugages</h2>
+                  </div>
+                  <div className='emp-div'>
 
-                  {seven.map((object) => (
-                    <div key={object.id}>
-                      <div className="flexxx" style={{display:"flex"}}>
-                        {object.input1}
-                        <h5 onClick={()=>setlanguage(language)} className="arrow" style={{cursor:"pointer"}}>{language ? <IoIosArrowUp/> : <IoIosArrowDown></IoIosArrowDown>}</h5>
-                      </div>
-                      <div className={language ? "visible" : "hidden"}>
-                        <div style={{display:"flex"}}>
-                      <div className='emp-main'>
+                    {seven.map((object) => (
+                      <div key={object.id} style={{ display: "flex" }}>
+                        <div className='emp-main'>
 
-                        <div style={{ display: "flex" }}>
-                          <div className='wanted'>
-                            <div>
-                              <label htmlFor="">Language</label> <br />
-                              <input
-                                type="text"
-                                value={object.input1}
-                                className='work'
-                                onChange={(e) => handleInputseven(e, object.id, 'input1')}
-                              />
+                          <div style={{ display: "flex" }}>
+                            <div className='wanted'>
+                              <div>
+                                <label htmlFor="">Language</label> <br />
+                                <input
+                                  type="text"
+                                  value={object.input1}
+                                  className='work'
+                                  onChange={(e) => handleInputseven(e, object.id, 'input1')}
+                                />
+                              </div>
                             </div>
-                          </div>
-                          <div>
-                            <label htmlFor="">Level</label> <br />
-                            {/* <input
+                            <div>
+                              <label htmlFor="">Level</label> <br />
+                              {/* <input
                               type="text"
                               value={object.input2}
                               className='work'
                               onChange={(e) => handleInputseven(e, object.id, 'input2')}
                             /> */}
-                            <select name="" id="" value={object.input2} onChange={(e) => handleInputseven(e, object.id, 'input2')} className="work">
-                              <option value="">--Select--</option>
-                            <option value="1">Level 1</option>
-                            <option value="2">Level 2</option>
-                            <option value="3">Level 3</option>
-                            <option value="4">Level 4</option>
-                            <option value="5">Level 5</option>
-                          </select>
+                              <select name="" id="" value={object.input2} onChange={(e) => handleInputseven(e, object.id, 'input2')} className="work">
+                                <option value="">--Select--</option>
+                                <option value="1">Level 1</option>
+                                <option value="2">Level 2</option>
+                                <option value="3">Level 3</option>
+                                <option value="4">Level 4</option>
+                                <option value="5">Level 5</option>
+                              </select>
+                            </div>
                           </div>
+
+
                         </div>
+                        <div>
+                          <button onClick={() => deleteseven(object.id)} className="delete"><MdOutlineDelete /></button>
+                        </div>
+                      </div>
+                    ))}
+                    <button onClick={createseven} className="add"> + Add one more languages</button>
+
+                  </div>
+                  {/* <button onClick={delete5}>delete</button> */}
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div className="full">
+        <button onClick={handlePrint}>Generate PDF</button>
+        <Scrollbars>
+          <div className="main-full" id="pdf-content" ref={contentDivRef}
+            contentEditable={true}
+            style={{
+              // border: '1px solid #ccc',
+              // minHeight: '200px',
+              // padding: '10px',
+              // marginBottom: '20px',
+
+            }}>
+
+            <div className="main-right">
+              <div>
+                <div style={{ display: "flex" }} className="cont-1">
+                  <div className="profile-pic">
+                    <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
+                      {({ getRootProps, getInputProps }) => (
+                        <div className="dropzone" id="drop" {...getRootProps()}>
+                          <input {...getInputProps()} />
+                          {selectedFile ?
+                            (
+                              <div className='image'>
+                                <div className="image-container">
+                                  <img
+                                    src={URL.createObjectURL(selectedFile)}
+                                    alt="Uploaded"
+                                    className="rounded-image"
+                                    onClick={handleView}
+                                  />
+
+                                </div>
+
+                              </div>
+
+
+
+                            ) : (
+                              <div style={{ display: 'flex' }}>
+
+
+
+                              </div>
+                            )}
+                        </div>
+                      )}
+                    </Dropzone>
+                  </div>
+                  <div>
+                    <div style={{ display: "flex" }}>
+                      <h3 className="name1">{name}</h3>
+                      <h3 className="name2">{lastname}</h3>
+                    </div>
+                    <div>
+                      <h6 className="name">{job}</h6>
+                    </div>
+                  </div>
+                </div>
+                <div className="summry">
+                  {
+                    editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
+                  }
+                  <div className="mess" dangerouslySetInnerHTML={{ __html: editorHtml }} />
+                </div>
+              </div>
+
+
+              <div>
+
+                <DragDropContext onDragEnd={handleDragDrop}>
+                  <div className="movement">
+                    <Droppable droppableId="Root" type="group">
+                      {(provided) => (
+                        <div {...provided.droppableProps} ref={provided.innerRef}>
+                          {ite.map((store, index) => (
+                            <Draggable draggableId={store.id} key={store.id} index={index}>
+                              {(provided) => (
+                                <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+                                  {/* <h3>{store.name}</h3> */}
+                                  <Storelist {...store} />
+
+
+                                </div>
+                              )}
+
+                            </Draggable>
+                          ))}
+                        </div>
+                      )}
+                    </Droppable>
+                  </div>
+                </DragDropContext>
+              </div>
+            </div>
+            <div className="main-left">
+              <div className="pincode">
+                <div className="details">
+                  {
+                    address === "" ? <span></span> : <h4 className="heading">Details</h4>
+                  }
+
+                  <div>
+                    <p className="cont">{address}</p>
+                  </div>
+                  <div>
+                    <p className="cit">{`${city} , ${post}`}</p>
+                  </div>
+                  <div>
+                    <p className="cit">{country}</p>
+                  </div>
+
+
+                </div>
+                <div>
+                  {
+                    email === "" ? <span></span> : <h4 className="heading">Contact</h4>
+                  }
+                  <div>
+                    <p className="cit">{phone}</p>
+                  </div>
+                  <div>
+                    <p className="conte">{email}</p>
+                  </div>
+                </div>
+                <div>
+                  {
+                    licence === "" ? <span></span> : <h4 className="heading1">Driving License</h4>
+                  }
+                  <div>
+                    <p className="cit">{licence}</p>
+                  </div>
+                </div>
+                <div>
+                  {
+                    nation === "" ? <span></span> : <h4 className="heading1">Nationality</h4>
+                  }
+                  <div>
+                    <p className="cit">{nation}</p>
+                  </div>
+                </div>
+                <div>
+                  {
+                    place && birth !== "" ? <h4 className="heading1">Place/Date of Birth</h4> : place !== "" ? <h4 className="heading1">Place of Birth</h4> : birth !== "" ? <h4 className="heading1">Date of Birth</h4> : <span></span>
+                  }
+                  <div>
+                    <p className="cit">{birth}</p>
+                    <p className="cit">{place}</p>
+                  </div>
+                </div>
+                <div className="top">
+                  {
+                    ill === "" ? <span></span> : <h4 className="heading">Skills</h4>
+                  }
+                  {skill.map((object) => (
+                    
+                    <div key={object.id} className="ill">
+<div className="progress-bar-container" id="secondProgressBarContainer">
+        {studentSkills.map((skill, index) => (
+          
+          <div key={index} className="progress-bar-container">
+              <div className="skill-name">{skill}</div>
+            {renderSecondProgressBar(skill)}
+          
+          </div>
+        ))}
+      </div>
+
+                      <p className="cit" id="cit">{`${object.input1}`}</p>
+                      <div className="ski1">
+                        {
+                          object.input2 === "" ? <span></span> : <p className="ski">{`${object.input2}/5`}</p>
+                        }
+
+
 
 
                       </div>
-                      <div>
-                        <button onClick={() => deleteseven(object.id)} className="delete"><MdOutlineDelete/></button>
-                      </div>
-                      </div>
-                      </div>
+
+
+
                     </div>
                   ))}
-                  <button onClick={createseven} className="add"> + Add one more languages</button>
-
                 </div>
-                {/* <button onClick={delete5}>delete</button> */}
-                </div>
-            }
-          </div>
-        </div>
-        </div>
+                <div className="top">
+                  {
+                    web === "" ? <span></span> : <h4 className="heading">Links</h4>
+                  }
+                  {website.map((object) => (
+                    <div key={object.id}>
 
-      </div>
-    <div className="full">
-      <button onClick={generatePDF}>Generate PDF</button>
-      <Scrollbars>
-      <div className="main-full" id="pdf-content">
-        
-        <div className="main-right">
-          <div>
-          <div style={{display:"flex"}} className="cont-1">
-                      <div className="profile-pic">
-                  <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
-        {({ getRootProps, getInputProps }) => (
-          <div className="dropzone" id="drop" {...getRootProps()}>
-            <input {...getInputProps()} />
-            {selectedFile?
-                (
-                    <div className='image'>
-                  <div className="image-container">
-                    <img
-                      src={URL.createObjectURL(selectedFile)}
-                      alt="Uploaded"
-                      className="rounded-image"
-                      onClick={handleView}
-                    />
-                    
+                      {/* <p className="cit">{`${object.input1}`}</p> */}
+                      <Link to={object.input2} className="cit" id="link">{object.input1}</Link>
+
+
+
+                    </div>
+                  ))}
+                </div>
+                <div className="top">
+                  {
+                    hob === "" ? <span></span> : <h4 className="heading">Hobbies</h4>
+                  }
+                  <div>
+                    {six.map((object) => (
+                      <div key={object.id} className="ill">
+
+
+                        <p className="cit">{`${object.input1}`}</p>
+                      </div>
+                    ))}
+
                   </div>
-                  
+                </div>
+                <div className="top">
+                  {
+                    lan === "" ? <span></span> : <h4 className="heading">Languages</h4>
+                  }
+                  <div>
+                    {seven.map((object) => (
+                      <div key={object.id} className="ill">
+
+
+                        <p className="cit" id="cit">{`${object.input1}`}</p>
+                        <div className="ski1">
+                          <p className="ski">{`${object.input2}/5`}</p>
+                        </div>
+                      </div>
+                    ))}
+
                   </div>
-                 
-                
-              
-            ) : (
-              <div style={{display:'flex'}}>
-                
-               
-                
+                </div>
               </div>
-            )}
-          </div>
-        )}
-      </Dropzone>
-      </div>
-      <div>
-        <div style={{display:"flex"}}>
-          <h3 className="name1">{name}</h3>
-          <h3 className="name2">{lastname}</h3>
-        </div>
-        <div>
-          <h6 className="name">{job}</h6>
-        </div>
-      </div>
-      </div>
-      <div className="summry">
-{
-editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
-}
-<div className="mess" dangerouslySetInnerHTML={{ __html: editorHtml }} />
-</div>
-          </div>
-
-       
-      <div>
-      
-      <DragDropContext onDragEnd={handleDragDrop}>
-      <div className="movement">
-        <Droppable droppableId="Root" type="group">
-        {(provided)=>(
-          <div {...provided.droppableProps} ref={provided.innerRef}>
-            {ite.map((store,index)=>(
-          <Draggable draggableId={store.id} key={store.id} index={index}>
-            {(provided)=>(
-              <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-              {/* <h3>{store.name}</h3> */}
-              <Storelist {...store}/>
-              
-              
-            </div>
-            )}
-            
-          </Draggable>
-        ))}
-          </div>
-        )}
-        </Droppable>
-      </div>
-      </DragDropContext>
-      </div>
-      </div>
-      <div className="main-left">
-        <div className="pincode">
-        <div className="details">
-                      {
-                        address === "" ? <span></span> : <h4 className="heading">Details</h4>
-                      }
-
-                      <div>
-                        <p className="cont">{address}</p>
-                      </div>
-                      <div>
-                        <p className="cit">{`${city} , ${post}`}</p>
-                      </div>
-                      <div>
-                        <p className="cit">{country}</p>
-                      </div>
-
-
-                    </div>
-                    <div>
-                      {
-                        email  === "" ? <span></span> : <h4 className="heading">Contact</h4>
-                      }
-                      <div>
-                        <p className="cit">{phone}</p>
-                      </div>
-                      <div>
-                        <p className="conte">{email}</p>
-                      </div>
-                    </div>
-                    <div>
-                      {
-                         licence === "" ? <span></span> : <h4 className="heading1">Driving License</h4>
-                      }
-                      <div>
-                        <p className="cit">{licence}</p>
-                      </div>
-                    </div>
-                    <div>
-                      {
-                        nation === "" ? <span></span> : <h4 className="heading1">Nationality</h4>
-                      }
-                      <div>
-                        <p className="cit">{nation}</p>
-                      </div>
-                    </div>
-                    <div>
-                      {
-                        place && birth !== "" ? <h4 className="heading1">Place/Date of Birth</h4> : place !== "" ? <h4 className="heading1">Place of Birth</h4> : birth !== "" ? <h4 className="heading1">Date of Birth</h4> : <span></span>
-                      }
-                      <div>
-                        <p className="cit">{birth}</p>
-                        <p className="cit">{place}</p>
-                      </div>
-                    </div>
-                    <div className="top">
-                    {
-                        ill === "" ? <span></span> : <h4 className="heading">Skills</h4>
-                    }
-                    {skill.map((object) => (
-          <div key={object.id} className="ill">
-            
-            
-            <p className="cit" id="cit">{`${object.input1}`}</p>
-            <div className="ski1">
-              {
-                object.input2 === "" ? <span></span> : <p className="ski">{`${object.input2}/5`}</p>
-              }
-              
-            
-           
-            
-            </div>
-            
-
-
-          </div>
-        ))}
-                    </div>
-                    <div className="top">
-                    {
-                        web === "" ? <span></span> : <h4 className="heading">Links</h4>
-                    }
-                    {website.map((object) => (
-          <div key={object.id}>
-            
-            {/* <p className="cit">{`${object.input1}`}</p> */}
-            <Link to={object.input2} className="cit" id="link">{object.input1}</Link>
-            
-
-
-          </div>
-        ))}
-                    </div>
-                    <div className="top">
-                      {
-                        hob === "" ? <span></span> : <h4 className="heading">Hobbies</h4>
-                      }
-                      <div>
-                      {six.map((object) => (
-          <div key={object.id} className="ill">
-            
-            
-            <p className="cit">{`${object.input1}`}</p>
-          </div>
-        ))}
-
-                      </div>
-                    </div>
-                    <div className="top">
-                      {
-                        lan === "" ? <span></span> : <h4 className="heading">Languages</h4>
-                      }
-                      <div>
-                      {seven.map((object) => (
-          <div key={object.id} className="ill">
-            
-            
-            <p className="cit"  id="cit">{`${object.input1}`}</p>
-            <div className="ski1">
-            <p className="ski">{`${object.input2}/5`}</p>
             </div>
           </div>
-        ))}
 
-                      </div>
-                    </div>
 
-        </div>
-
+        </Scrollbars>
       </div>
-      </div>
-      </Scrollbars>
-    </div>
     </div>
   )
 }
 
-function Storelist({name, it, id,head}){
-  return(
+function Storelist({ name, it, id }) {
+  return (
     <div>
       <div>
-      {/* <h3>{name}</h3> */}
+        {/* <h3>{name}</h3> */}
       </div>
       <div>
         {
           id === "06" ? <div>
-            {it.map((item,index) => (
-          <div className="store">
-            {
-              item.input1 === undefined ? <span></span> : <div>
+            {it.map((item, index) => (
+              <div className="store">
+                {
+                  item.input1 === undefined ? <span></span> : <div>
                     {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
             <p className="fonttt">{item.input6}</p> */}
-            <h2 className="head">References</h2>
-            <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
-            <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                    <h2 className="head">References</h2>
+                    <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
+                    <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                  </div>
+                }
+
               </div>
-            }
-            
-          </div>
-        ))}
+            ))}
           </div> : <span></span>
         }
         {
           id === "01" ? <div>
-             <h2 className="head">Employment</h2>
-            {it.map((item,index) => (
-          <div className="store">
-           
-            {
-              item.input1 === undefined ? <span></span> : <div className="store">
-                
-              {
-                item.input1 === undefined ? <span></span> : <div>
-                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-              <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-              <p className="fonttt">{item.input6}</p>
-                </div>
-              }
-              
-            </div>
-            }
-            
-          </div>
-        ))}
+            <h2 className="head">Employment</h2>
+            {it.map((item, index) => (
+              <div className="store">
+
+                {
+                  item.input1 === undefined ? <span></span> : <div className="store">
+
+                    {
+                      item.input1 === undefined ? <span></span> : <div>
+                        <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                        <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                        <p className="fonttt">{item.input6}</p>
+                      </div>
+                    }
+
+                  </div>
+                }
+
+              </div>
+            ))}
           </div> : <span></span>
         }
 
-{
+        {
           id === "02" ? <div>
-            {it.map((item,index) => (
-          <div className="store">
-            {
-              item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Education</h2>
-              {
-                item.input1 === undefined ? <span></span> : <div>
-                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-              <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-              <p className="fonttt">{item.input6}</p>
-                </div>
-              }
-              
-            </div>
-            }
-            
-          </div>
-        ))}
+            {it.map((item, index) => (
+              <div className="store">
+                {
+                  item.input1 === undefined ? <span></span> : <div className="store">
+                    <h2 className="head">Education</h2>
+                    {
+                      item.input1 === undefined ? <span></span> : <div>
+                        <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                        <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                        <p className="fonttt">{item.input6}</p>
+                      </div>
+                    }
+
+                  </div>
+                }
+
+              </div>
+            ))}
           </div> : <span></span>
         }
-         {
+        {
           id === "03" ? <div>
-            {it.map((item,index) => (
-          <div className="store">
-            {
-              item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Extra-curricular activites</h2>
-              {
-                item.input1 === undefined ? <span></span> : <div>
-                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-              <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-              <p className="fonttt">{item.input6}</p>
-                </div>
-              }
-              
-            </div>
-            }
-            
-          </div>
-        ))}
+            {it.map((item, index) => (
+              <div className="store">
+                {
+                  item.input1 === undefined ? <span></span> : <div className="store">
+                    <h2 className="head">Extra-curricular activites</h2>
+                    {
+                      item.input1 === undefined ? <span></span> : <div>
+                        <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                        <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                        <p className="fonttt">{item.input6}</p>
+                      </div>
+                    }
+
+                  </div>
+                }
+
+              </div>
+            ))}
           </div> : <span></span>
         }
         {
           id === "04" ? <div>
-            {it.map((item,index) => (
-          <div className="store">
-            {
-              item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Course</h2>
-              {
-                item.input1 === undefined ? <span></span> : <div>
-                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-              <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-              <p className="fonttt">{item.input6}</p>
-                </div>
-              }
-              
-            </div>
-            }
-            
-          </div>
-        ))}
+            {it.map((item, index) => (
+              <div className="store">
+                {
+                  item.input1 === undefined ? <span></span> : <div className="store">
+                    <h2 className="head">Course</h2>
+                    {
+                      item.input1 === undefined ? <span></span> : <div>
+                        <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                        <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                        <p className="fonttt">{item.input6}</p>
+                      </div>
+                    }
+
+                  </div>
+                }
+
+              </div>
+            ))}
           </div> : <span></span>
         }
         {
           id === "05" ? <div>
-            {it.map((item,index) => (
-          <div className="store">
-            {
-              item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Internships</h2>
-              {
-                item.input1 === undefined ? <span></span> : <div>
-                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-              <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-              <p className="fonttt">{item.input6}</p>
-                </div>
-              }
-              
-            </div>
-            }
-            
-          </div>
-        ))}
-          </div> : <span></span>
-        }
-        {
-          id === "07" ? <div>
-            {it.map((item,index) => (
-          <div className="store">
-            {
-              item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Project</h2>
-              {
-                item.input1 === undefined ? <span></span> : <div>
-                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-              <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-              <p className="fonttt">{item.input6}</p>
-                </div>
-              }
-              
-            </div>
-            }
-            
-          </div>
-        ))}
-          </div> : <span></span>
-        }
-        {
-          id === "08" ? <div>
+            {it.map((item, index) => (
+              <div className="store">
+                {
+                  item.input1 === undefined ? <span></span> : <div className="store">
+                    <h2 className="head">Internships</h2>
+                    {
+                      item.input1 === undefined ? <span></span> : <div>
+                        <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                        <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                        <p className="fonttt">{item.input6}</p>
+                      </div>
+                    }
 
-          <h2 className="head">{head}</h2> 
-            {it.map((item,index) => (
-          <div className="store">
-            {
-              item.input1 === undefined ? <span></span> : <div className="store">
-                
-              {
-                item.input1 === undefined ? <span></span> : <div>
-                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-              <p className="fontt">{`${item.input4}`}</p>
-              <p className="fonttt">{item.input5}</p>
-                </div>
-              }
-              
-            </div>
-            }
-            
-          </div>
-        ))}
+                  </div>
+                }
+
+              </div>
+            ))}
           </div> : <span></span>
         }
-        
+
 
         {/* {it.map((item,index) => (
           <div className="store">
@@ -2350,4 +2229,4 @@ function Storelist({name, it, id,head}){
   )
 }
 
-export default Hobbies
+export default Hobbies
