@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DragDropContext , Droppable , Draggable } from "react-beautiful-dnd"
-import { IoIosArrowUp } from 'react-icons/io'
+import { IoIosArrowUp , IoIosArrowDown } from 'react-icons/io'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Dropzone from 'react-dropzone';
@@ -12,6 +12,7 @@ import html2canvas from 'html2canvas';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom"
 import { AiOutlineEdit } from "react-icons/ai"
+import { GiSaveArrow } from "react-icons/gi"
 import "./Second.css"
 import "./Project/React.css"
 
@@ -83,6 +84,7 @@ const item = [{
 },
 {
   id:"08",
+  head:"Custom",
   it:[{}]
 }
 ]
@@ -107,8 +109,17 @@ function Hobbies (){
   const [display, setdisplay] = useState(true)
   const [emp, setemp] = useState(true)
   const [oction, setoction] = useState(true)
-
-
+  const [ext, setext] = useState(true)
+  const [cou, setcou] = useState(true)
+  const [inter, setinter] = useState(true)
+  const [pro, setpro] = useState(true)
+  const [ref, setref] = useState(true)
+  const [cus, setcus] = useState(true)
+  const [site, setsite] = useState(true)
+  const [level, setlevel] = useState(true)
+  const [hobbie, sethobbie] = useState(true)
+  const [language,setlanguage] = useState(true)
+  
   const [stores, setStores] = useState(Data)
   const [ite,setite] = useState(item)
   let sourceindex = 0
@@ -471,6 +482,34 @@ function Hobbies (){
 
   const [cust, setcust] = useState([]);
   const [custom , setcustom] = useState("")
+  
+  const [deefault , setdefault] = useState("Custom")
+  const [def,setdef] = useState(true)
+
+  const handlecustumch = () =>{
+   
+    if (def === true) {
+      
+      setdef(false)
+    }
+    if (def === false){
+     
+      setdef(true)
+    }
+  }
+ 
+  const handlecustom = (e) =>{
+    setdefault(e.target.value)
+    const value1 = e.target.value
+    ite.map((value)=>{
+      
+      if (value.id === "08") {
+        value.head = value1
+        
+        
+      }
+     })
+  }
 
   const createcust = () => {
     const newObject = { id: cust.length + 1, input1: '', input2: '', input3: '', input4: '', input5: '' };
@@ -512,6 +551,7 @@ function Hobbies (){
      }
   };
 
+  
 
   //code for course
 
@@ -957,7 +997,17 @@ function Hobbies (){
           <Draggable draggableId={store.id} key={store.id} index={index}>
             {(provided)=>(
               <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-              <h3>{store.name}</h3>
+                {
+                  store.name === "Custom" ? <div style={{display:"flex"}} id="main-cust">
+                    {
+                      def ?  <h3>{deefault}</h3> : <h3><input type="text" value={deefault} onChange={handlecustom} id="custom"/></h3>
+                    }
+                    <button onClick={handlecustumch} id="cust">{
+                      def ? <AiOutlineEdit/> : <GiSaveArrow></GiSaveArrow>
+                    }</button>
+                  </div> :  <h3>{store.name}</h3>
+                }
+             
               <p className="des">{store.description}</p>
               {/* <Storelist {...store}/> */}
               {
@@ -1132,7 +1182,13 @@ function Hobbies (){
                                   <div className='emp-div'>
 
 {four.map((object) => (
-  <div key={object.id} style={{ display: "flex" }}>
+  <div key={object.id}>
+    <div style={{display:"flex"}} className="flexx">
+       {object.input1}
+       <h5 onClick={() => setext(!ext)} style={{cursor:"pointer"}} className="arrow">{ext ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+    </div>
+    <div className={ext ? "visible" : "hidden"}>
+    <div style={{display:"flex"}}>
     <div className='emp-main'>
 
       <div style={{ display: "flex" }}>
@@ -1197,6 +1253,9 @@ interests and curiosities'/>
     <div>
       <button onClick={() => deletefour(object.id)} className="delete">Delete</button>
     </div>
+    </div>
+    </div>
+    
   </div>
 ))}
 <button onClick={createfour} className="add"> + Add Employment</button>
@@ -1210,7 +1269,15 @@ interests and curiosities'/>
                                   <div className='emp-div'>
 
 {course.map((object) => (
-  <div key={object.id} style={{ display: "flex" }}>
+  <div key={object.id}>
+    <div style={{display:"flex"}} className="flexx">
+     {object.input1}
+     <h5 onClick={() => setcou(!cou)} style={{cursor:"pointer"}} className="arrow">{cou ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+    </div>
+    <div className={cou ? "visible" : "hidden"}>
+      <div style={{display:"flex"}}>
+
+      
     <div className='emp-main'>
 
       <div style={{ display: "flex" }}>
@@ -1260,6 +1327,9 @@ interests and curiosities'/>
     <div>
       <button onClick={() => deletecourse(object.id)} className="delete"><MdOutlineDelete/></button>
     </div>
+    </div>
+    </div>
+   
   </div>
 ))}
 <button onClick={createcourse} className="add"> + Add one more course</button>
@@ -1273,10 +1343,18 @@ interests and curiosities'/>
                                   <div className='emp-div'>
 
 {five.map((object) => (
-  <div key={object.id} style={{ display: "flex" }}>
+  <div key={object.id}>
+    <div className="flexx" style={{display:"flex"}}>
+      {object.input1}
+      <h5 onClick={()=> setinter(!inter)} style={{cursor:"pointer"}} className="arrow">{inter ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+    </div>
+    <div className={inter ? "visible" : "hidden"}>
+      <div style={{display:"flex"}}>
+
+      
     <div className='emp-main'>
 
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flexx" }}>
         <div className='wanted'>
           <div>
             <label htmlFor="">Job title</label> <br />
@@ -1336,6 +1414,9 @@ interests and curiosities'/>
     <div>
       <button onClick={() => deletefive(object.id)} className="delete"><MdOutlineDelete/></button>
     </div>
+    </div>
+    </div>
+   
   </div>
 ))}
 <button onClick={createfive} className="add"> + Add one more internship</button>
@@ -1349,7 +1430,15 @@ interests and curiosities'/>
                                   <div className='emp-div'>
 
 {project.map((object) => (
-  <div key={object.id} style={{ display: "flex" }}>
+  <div key={object.id}>
+    <div style={{display:"flex"}} className="flexx">
+      {object.input1}
+      <h5 onClick={()=> setpro(!pro)} style={{cursor:"pointer"}} className="arrow">{pro ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+    </div>
+    <div className={pro ? "visible" : "hidden"}>
+      <div style={{display:"flex"}}>
+
+      
     <div className='emp-main'>
 
       <div style={{ display: "flex" }}>
@@ -1414,6 +1503,9 @@ interests and curiosities'/>
     <div>
       <button onClick={() => deleteproject(object.id)} className="delete"><MdOutlineDelete/></button>
     </div>
+    </div>
+    </div>
+    
   </div>
 ))}
 <button onClick={createproject} className="add"> + Add Project</button>
@@ -1427,7 +1519,15 @@ interests and curiosities'/>
                                   <div className='emp-div'>
 
 {three.map((object) => (
-  <div key={object.id} style={{ display: "flex" }}>
+  <div key={object.id}>
+    <div style={{display:"flex"}} className="flexx">
+      {object.input1}
+      <h5 onClick={()=> setref(!ref)} style={{cursor:"pointer"}} className="arrow">{ref ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+    </div>
+    <div className={ref ? "visible" : "hidden"}>
+      <div style={{display:"flex"}}>
+
+     
     <div className='emp-main'>
 
       <div style={{ display: "flex" }}>
@@ -1482,6 +1582,9 @@ interests and curiosities'/>
     <div>
       <button onClick={() => deletethree(object.id)}  className="delete"><MdOutlineDelete/></button>
     </div>
+    </div>
+    </div>
+    
   </div>
 ))}
 <button onClick={createthree} className="add"> + Add one more reference</button>
@@ -1495,7 +1598,15 @@ interests and curiosities'/>
                                 <div className='emp-div'>
                 
                                   {cust.map((object) => (
-                                    <div key={object.id} style={{ display: "flex" }}>
+                                    <div key={object.id}>
+                                      <div style={{display:"flex"}} className="flexx">
+                                        {object.input1}
+                                        <h5 onClick={()=> setcus(!cus)} style={{cursor:"pointer"}} className="arrow">{cus ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+                                      </div>
+                                      <div className={cus ? "visible" : "hidden"}>
+                                        <div style={{display:"flex"}}>
+
+                                        
                                       <div className='emp-main'>
                 
                                         <div style={{ display: "flex" }}>
@@ -1546,6 +1657,9 @@ interests and curiosities'/>
                                       <div>
                                         <button onClick={() => deletecust(object.id)} className="delete"><MdOutlineDelete/></button>
                                       </div>
+                                      </div>
+                                      </div>
+                                     
                                     </div>
                                   ))}
                                   <button onClick={createcust} className="add"> + Add one more item</button>
@@ -1566,7 +1680,7 @@ interests and curiosities'/>
         </Droppable>
       </div>
       </DragDropContext>
-      <div>
+      <div className="main-div">
           <div>
             <h2> Websites & Social Links</h2>
           </div>
@@ -1574,12 +1688,20 @@ interests and curiosities'/>
             <p>You can add links to websites you want hiring managers to see! Perhaps it will be
               a link to your portfolio,LinkedIn profile or personal website</p>
           </div>
-          <div>
+          <div className="div1">
             {/* <Websites></Websites> */}
             <div className='emp-div'>
 
               {website.map((object) => (
-                <div key={object.id} style={{ display: "flex" }}>
+                <div key={object.id} className="div-in">
+                  <div style={{display:"flex"}} className="flexxx">
+                    {object.input1}
+                    <h5 onClick={()=> setsite(!site)} style={{cursor:"pointer"}} className="arrow">{site ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+                  </div>
+                  <div className={site ? "visible" : "hidden"}>
+                    <div style={{display:"flex"}}>
+
+                    
                   <div className='emp-main'>
 
                     <div style={{ display: "flex" }}>
@@ -1608,6 +1730,9 @@ interests and curiosities'/>
                   <div>
                     <button onClick={() => deleteweb(object.id)} className="delete"><MdOutlineDelete/></button>
                   </div>
+                  </div>
+                  </div>
+                  
                 </div>
               ))}
               <button onClick={createweb} className="add"> + Add Link</button>
@@ -1631,7 +1756,15 @@ interests and curiosities'/>
             <div className='emp-div'>
 
               {skill.map((object) => (
-                <div key={object.id} style={{ display: "flex" }}>
+                <div key={object.id}>
+                  <div className="flexxx" style={{display:"flex"}}>
+                    {object.input1}
+                    <h5 onClick={()=>setlevel(level)} style={{cursor:"pointer"}} className="arrow">{level ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+                  </div>
+                  <div className={level ? "visible" : "hidden"}>
+                    <div style={{display:"flex"}}>
+
+                    
                   <div className='emp-main'>
 
                     <div style={{ display: "flex" }}>
@@ -1662,6 +1795,9 @@ interests and curiosities'/>
                   <div>
                     <button onClick={() => deleteskill(object.id)} className="delete"><MdOutlineDelete/></button>
                   </div>
+                  </div>
+                  </div>
+                 
                 </div>
               ))}
               <button onClick={createskill} className="add"> + Add more skill</button>
@@ -1676,7 +1812,15 @@ interests and curiosities'/>
                 <div className='emp-div'>
 
                   {six.map((object) => (
-                    <div key={object.id} style={{ display: "flex" }}>
+                    <div key={object.id}>
+                      <div style={{display:"flex"}} id="flexx">
+                        {object.input1}
+                        <h5 onClick={()=>sethobbie(hobbie)} className="arrow" style={{cursor:"pointer"}}>{hobbie? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+                      </div>
+                      <div className={hobbie ? "visible" : "hidden"}>
+                        <div style={{display:"flex"}}>
+                        
+                        
                       <div className='emp-main'>
 
                         <div style={{ display: "flex" }}>
@@ -1696,6 +1840,10 @@ interests and curiosities'/>
                       <div>
                         <button onClick={() => deletesix(object.id)} className="delete"><MdOutlineDelete/></button>
                       </div>
+                      </div>
+                      </div>
+                     
+                      
                     </div>
                   ))}
                   <button onClick={createsix} className="add"> + Add more Hobbie</button>
@@ -1713,7 +1861,13 @@ interests and curiosities'/>
                 <div className='emp-div'>
 
                   {seven.map((object) => (
-                    <div key={object.id} style={{ display: "flex" }}>
+                    <div key={object.id}>
+                      <div className="flexxx" style={{display:"flex"}}>
+                        {object.input1}
+                        <h5 onClick={()=>setlanguage(language)} className="arrow" style={{cursor:"pointer"}}>{language ? <IoIosArrowUp/> : <IoIosArrowDown></IoIosArrowDown>}</h5>
+                      </div>
+                      <div className={language ? "visible" : "hidden"}>
+                        <div style={{display:"flex"}}>
                       <div className='emp-main'>
 
                         <div style={{ display: "flex" }}>
@@ -1751,6 +1905,8 @@ interests and curiosities'/>
                       </div>
                       <div>
                         <button onClick={() => deleteseven(object.id)} className="delete"><MdOutlineDelete/></button>
+                      </div>
+                      </div>
                       </div>
                     </div>
                   ))}
@@ -1990,7 +2146,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
   )
 }
 
-function Storelist({name, it, id}){
+function Storelist({name, it, id,head}){
   return(
     <div>
       <div>
@@ -2153,12 +2309,13 @@ function Storelist({name, it, id}){
         }
         {
           id === "08" ? <div>
-           
+
+          <h2 className="head">{head}</h2> 
             {it.map((item,index) => (
           <div className="store">
             {
               item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Custom</h2>
+                
               {
                 item.input1 === undefined ? <span></span> : <div>
                       <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>

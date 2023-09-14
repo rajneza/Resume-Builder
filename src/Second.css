@@ -132,7 +132,20 @@ Popup.css
     border: 1px solid gray;
   }
   .emp-div{
-    width: 50%;
+    width: 83.55%;
+    
+  }
+  .main-div{
+    width: 100%;
+    
+  }
+  .div-in{
+    
+    width: 100%;
+  }
+  .div1{
+    
+    width: 100%;
   }
   .icons{
     width: 40px;
@@ -478,6 +491,45 @@ Popup.css
     
       border-radius: 5px
      }
+     .flexx{
+      
+        border: 1px solid gray;
+        width: 92.5%;
+        border-radius: 5px;
+        
+     }
+     #flexx{
+      border: 1px solid gray;
+        width: 61%;
+        border-radius: 5px;
+        
+
+     }
+     .flexxx{
+      
+      border: 1px solid gray;
+      width: 110%;
+      border-radius: 5px;
+      
+   }
      .des{
       width: 90%;
      }
+     #custom{
+      border: none;
+      outline: none;
+      border-bottom: 1px solid blue;
+      font-size: 1rem;
+      font-weight: bold;
+      max-width: fit-content;
+     }
+     #cust{
+      height: 3vh;
+      margin-top: 1.2vw;
+      background-color: white;
+      border: none;
+      color: blue;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+     
