@@ -1248,7 +1248,8 @@ function Hobbies (){
               {/* <p className="des">{store.description}</p> */}
               {/* <Storelist {...store}/> */}
               {
-                              store.name === "Employment" ? <div>
+                              store.name === "Employment" ? 
+                              <div className="add-section-container">
                                 <h3>{store.name}</h3>
                                 <p className="des">{store.description}</p>
                                 {objects.map((object) => (
