@@ -1248,17 +1248,18 @@ function Hobbies (){
               {/* <p className="des">{store.description}</p> */}
               {/* <Storelist {...store}/> */}
               {
-                              store.name === "Employment" ? <div>
+                              store.name === "Employment" ? 
+                              <div>
                                 <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
                                 <p className="des">{store.description}</p>
                                 {objects.map((object) => (
                 <div key={object.id}>
                   <div style={{display:"flex"}} className="flex">
                    
-                    {object.input1}
+                  <h3 className="object">{object.input1}</h3>
                     <h5 onClick={() => setemp(!emp)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
                   </div>
-                  <div className={emp ? "visible" : "hidden"}>
+                  <div className={emp ? "visible" : "hidden"} >
                     <div  style={{ display: "flex" }} >
                   <div className='emp-main'>
 
@@ -1314,7 +1315,7 @@ function Hobbies (){
                     <div>
                       <div>
                         <label htmlFor="">Description</label> <br />
-                        <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputChange(e, object.id, 'input6')}
+                        <textarea name="" id="" cols="80" rows="15" value={object.input6} onChange={(e) => handleInputChange(e, object.id, 'input6')}
                           placeholder='e.g. Graduated with High Honors.' />
                       </div>
                     </div>
@@ -1341,7 +1342,7 @@ function Hobbies (){
                 <div key={object.id}>
                   <div style={{display:"flex"}} className="flex">
                    
-                   {object.input1}
+                  <h3 className="object">{object.input1}</h3>
                    <h5 onClick={() => setoction(!oction)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
                  </div>
                  <div className={oction ? "visible" : "hidden"}>
