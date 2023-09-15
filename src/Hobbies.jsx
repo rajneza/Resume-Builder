@@ -2193,6 +2193,9 @@ interests and curiosities'/>
         </div>
         <div>
           <div>
+            <h2>Add section</h2>
+          </div>
+          <div>
           <button onClick={handlecurricular} className="butn">Extra-Curricular</button>
           <button onClick={handlecourse} className="butn">Course</button>
           </div>
