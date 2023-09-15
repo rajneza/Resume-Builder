@@ -274,12 +274,12 @@ function Hobbies (){
   //     return
   //   }
 
-    setlastname(e.target.value)
-    if (lastname === "") {
-      setbar(bar+10)
-      return
-    }
-  }
+    // setlastname(e.target.value)
+    // if (lastname === "") {
+    //   setbar(bar+10)
+    //   return
+    // }
+  
 
   // const handlechange3 = (e) => {
 
@@ -947,16 +947,10 @@ function Hobbies (){
 
   const [bar ,setbar] = useState(0)
 
-  const handleprogress = () =>{
-
-  }
-  return(
+  
+  return (
     <div className="resume-body">
       <div className="resume-container">
-        {/* <div>
-          <h4>{bar}% is Completed</h4>
-        <ProgressBar completed={bar} onChange={handleprogress}/>
-        </div> */}
         <div className="resume-left">
           <div>
           <div className="resume-left-content">
@@ -2652,6 +2646,7 @@ function Storelist({name, it, id,head}){
       </div>
     </div>
   )
+}
 }
 
 export default Hobbies
