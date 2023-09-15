@@ -123,10 +123,10 @@ Popup.css .popup {
 
 .visible {
   display: block;
+  
 }
-
-.hidden {
-  display: none;
+.hidden{
+  border-bottom: 1px solid gray;
 }
 
 .work {
@@ -142,9 +142,7 @@ Popup.css .popup {
   border-bottom: 2px solid #c3e5fe;
 }
 
-.emp-main {
-  border: 1px solid gray;
-}
+
 
 .emp-div {
   width: 83.55%;
@@ -524,9 +522,7 @@ Popup.css .popup {
   display: block;
 }
 
-.hidden {
-  display: none;
-}
+
 
 .work {
   width: 20vw;
@@ -542,7 +538,18 @@ Popup.css .popup {
 }
 
 .emp-main {
-  border: 1px solid gray;
+  border-left: 1px solid gray;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  width: 100%;
+  border-bottom-left-radius: 2%;
+  border-bottom-right-radius: 2%;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.emp-main2{
+   width: 200%;
 }
 
 .emp-div {
@@ -553,7 +560,21 @@ Popup.css .popup {
   width: 40px;
   height: 40px;
 }
-
+.butn{
+  background-color: white;
+  border: none;
+  width: 30%;
+  margin-left: 15%;
+  font-size: 1rem;
+  margin-top: 2%;
+  height: 4vh;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.butn:hover{
+  border: none;
+  border-bottom: 3px solid skyblue;
+}
 .two {
   width: 50%;
   height: 100vh;
@@ -855,40 +876,73 @@ Popup.css .popup {
 
 .arrow {
   margin-bottom: 2%;
-  margin-top: 0.5%;
+  margin-top: 2.5%;
   margin-left: auto !important;
+  margin-right: 3%;
+  font-weight: bold;
+  color: skyblue;
 
 }
 
 .flex {
   border: 1px solid gray;
-  width: 77.3%;
-
-  border-radius: 5px
+  border-bottom: none;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 100.6%;
+ height: 6vh;
+  
 }
+
 
 .flexx {
 
   border: 1px solid gray;
-  width: 92.5%;
+  border-bottom: 1px solid white;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 201.1%;
+  
+  height: 6vh;
+}
+.box{
+  border-bottom: 1px solid gray;
+}
+.det{
+  margin-top: 2%;
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid black;
   border-radius: 5px;
-
+  font-size: 1rem;
 }
 
 #flexx {
   border: 1px solid gray;
-  width: 61%;
-  border-radius: 5px;
-
+  border-bottom: none;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 101.2%;
+  
+  height: 6vh;
 
 }
-
+.object{
+  margin-top: 1.8%;
+  margin-left: 3%;
+  color: skyblue;
+  font-weight: 300;
+}
 .flexxx {
 
   border: 1px solid gray;
-  width: 110%;
-  border-radius: 5px;
-
+  border-bottom: none;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 201.2%;
+  
+  height: 6vh;
 }
 
 .des {

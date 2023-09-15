@@ -1255,10 +1255,10 @@ function Hobbies (){
                 <div key={object.id}>
                   <div style={{display:"flex"}} className="flex">
                    
-                    {object.input1}
+                  <h3 className="object">{object.input1}</h3>
                     <h5 onClick={() => setemp(!emp)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
                   </div>
-                  <div className={emp ? "visible" : "hidden"}>
+                  <div className={emp ? "visible" : "hidden"} >
                     <div  style={{ display: "flex" }} >
                   <div className='emp-main'>
 
@@ -1314,7 +1314,7 @@ function Hobbies (){
                     <div>
                       <div>
                         <label htmlFor="">Description</label> <br />
-                        <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputChange(e, object.id, 'input6')}
+                        <textarea name="" id="" cols="80" rows="15" value={object.input6} onChange={(e) => handleInputChange(e, object.id, 'input6')}
                           placeholder='e.g. Graduated with High Honors.' />
                       </div>
                     </div>
@@ -1341,7 +1341,7 @@ function Hobbies (){
                 <div key={object.id}>
                   <div style={{display:"flex"}} className="flex">
                    
-                   {object.input1}
+                  <h3 className="object">{object.input1}</h3>
                    <h5 onClick={() => setoction(!oction)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
                  </div>
                  <div className={oction ? "visible" : "hidden"}>
@@ -1399,7 +1399,7 @@ function Hobbies (){
                     <div>
                       <div>
                         <label htmlFor="">Description</label> <br />
-                        <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputedu(e, object.id, 'input6')}
+                        <textarea name="" id="" cols="80" rows="15" value={object.input6} onChange={(e) => handleInputedu(e, object.id, 'input6')}
                           placeholder='e.g. Graduated with High Honors.' />
                       </div>
                     </div>
@@ -1427,12 +1427,12 @@ function Hobbies (){
 {four.map((object) => (
   <div key={object.id}>
     <div style={{display:"flex"}} className="flexx">
-       {object.input1}
+    <h3 className="object">{object.input1}</h3>
        <h5 onClick={() => setext(!ext)} style={{cursor:"pointer"}} className="arrow">{ext ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
     </div>
     <div className={ext ? "visible" : "hidden"}>
     <div style={{display:"flex"}}>
-    <div className='emp-main'>
+    <div className='emp-main emp-main2'>
 
       <div style={{ display: "flex" }}>
         <div className='wanted'>
@@ -1485,7 +1485,7 @@ function Hobbies (){
       <div>
         <div>
           <label htmlFor="">Description</label> <br />
-          <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputfour(e, object.id, 'input6')}
+          <textarea name="" id="" cols="80" rows="15" value={object.input6} onChange={(e) => handleInputfour(e, object.id, 'input6')}
             placeholder='e.g. Created and implemented lesson plans based on child-led
 interests and curiosities'/>
         </div>
@@ -1494,7 +1494,7 @@ interests and curiosities'/>
 
     </div>
     <div>
-      <button onClick={() => deletefour(object.id)} className="delete">Delete</button>
+      <button onClick={() => deletefour(object.id)} className="delete"><MdOutlineDelete/></button>
     </div>
     </div>
     </div>
@@ -1504,7 +1504,7 @@ interests and curiosities'/>
 <button onClick={createfour} className="add"> + Add Employment</button>
 
 </div>
-<button onClick={delete7}>delete</button>
+<button onClick={delete7} className="det">delete</button>
                                 </div> : <span></span>
                               }
                           {
@@ -1516,14 +1516,14 @@ interests and curiosities'/>
 {course.map((object) => (
   <div key={object.id}>
     <div style={{display:"flex"}} className="flexx">
-     {object.input1}
+    <h3 className="object">{object.input1}</h3>
      <h5 onClick={() => setcou(!cou)} style={{cursor:"pointer"}} className="arrow">{cou ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
     </div>
     <div className={cou ? "visible" : "hidden"}>
       <div style={{display:"flex"}}>
 
       
-    <div className='emp-main'>
+    <div className='emp-main emp-main2'>
 
       <div style={{ display: "flex" }}>
         <div className='wanted'>
@@ -1580,7 +1580,7 @@ interests and curiosities'/>
 <button onClick={createcourse} className="add"> + Add one more course</button>
 
 </div>
-<button onClick={delete2}>delete</button>
+<button onClick={delete2} className="det">delete</button>
                                 </div> : <span></span>
                               }
                           {
@@ -1591,16 +1591,16 @@ interests and curiosities'/>
 {five.map((object) => (
   <div key={object.id}>
     <div className="flexx" style={{display:"flex"}}>
-      {object.input1}
+    <h3 className="object">{object.input1}</h3>
       <h5 onClick={()=> setinter(!inter)} style={{cursor:"pointer"}} className="arrow">{inter ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
     </div>
     <div className={inter ? "visible" : "hidden"}>
       <div style={{display:"flex"}}>
 
       
-    <div className='emp-main'>
+    <div className='emp-main emp-main2'>
 
-      <div style={{ display: "flexx" }}>
+      <div style={{ display: "flex" }}>
         <div className='wanted'>
           <div>
             <label htmlFor="">Job title</label> <br />
@@ -1618,6 +1618,7 @@ interests and curiosities'/>
             type="text"
             value={object.input2}
             className='work'
+            id="inter"
             onChange={(e) => handleInputfive(e, object.id, 'input2')}
           />
         </div>
@@ -1651,7 +1652,9 @@ interests and curiosities'/>
       <div>
         <div>
           <label htmlFor="">Description</label> <br />
-          
+          <textarea name="" id="" cols="80" rows="15" value={object.input6} onChange={(e) => handleInputproject(e, object.id, 'input6')}
+            placeholder='e.g. Created and implemented lesson plans based on child-led
+interests and curiosities'/>
         </div>
       </div>
 
@@ -1668,7 +1671,7 @@ interests and curiosities'/>
 <button onClick={createfive} className="add"> + Add one more internship</button>
 
 </div>
-<button onClick={delete4}>delete</button>
+<button onClick={delete4} className="det">delete</button>
                                 </div> : <span></span>
                               }
                               {
@@ -1679,14 +1682,14 @@ interests and curiosities'/>
 {project.map((object) => (
   <div key={object.id}>
     <div style={{display:"flex"}} className="flexx">
-      {object.input1}
+    <h3 className="object">{object.input1}</h3>
       <h5 onClick={()=> setpro(!pro)} style={{cursor:"pointer"}} className="arrow">{pro ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
     </div>
     <div className={pro ? "visible" : "hidden"}>
       <div style={{display:"flex"}}>
 
       
-    <div className='emp-main'>
+    <div className='emp-main emp-main2'>
 
       <div style={{ display: "flex" }}>
         <div className='wanted'>
@@ -1739,7 +1742,7 @@ interests and curiosities'/>
       <div>
         <div>
           <label htmlFor="">Project Summary</label> <br />
-          <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputproject(e, object.id, 'input6')}
+          <textarea name="" id="" cols="80" rows="15" value={object.input6} onChange={(e) => handleInputproject(e, object.id, 'input6')}
             placeholder='e.g. Created and implemented lesson plans based on child-led
 interests and curiosities'/>
         </div>
@@ -1758,7 +1761,7 @@ interests and curiosities'/>
 <button onClick={createproject} className="add"> + Add Project</button>
 
 </div>
-<button onClick={delete8}>delete</button>
+<button onClick={delete8} className="det">delete</button>
                                 </div> : <span></span>
                               }
                               {
@@ -1769,14 +1772,14 @@ interests and curiosities'/>
 {three.map((object) => (
   <div key={object.id}>
     <div style={{display:"flex"}} className="flexx">
-      {object.input1}
+    <h3 className="object">{object.input1}</h3>
       <h5 onClick={()=> setref(!ref)} style={{cursor:"pointer"}} className="arrow">{ref ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
     </div>
     <div className={ref ? "visible" : "hidden"}>
       <div style={{display:"flex"}}>
 
      
-    <div className='emp-main'>
+    <div className='emp-main emp-main2'>
 
       <div style={{ display: "flex" }}>
         <div className='wanted'>
@@ -1838,7 +1841,7 @@ interests and curiosities'/>
 <button onClick={createthree} className="add"> + Add one more reference</button>
 
 </div>
-<button onClick={delete3}>delete</button>
+<button onClick={delete3} className="det">delete</button>
                                 </div> : <span></span>
                               }
                               {
@@ -1849,14 +1852,14 @@ interests and curiosities'/>
                                   {cust.map((object) => (
                                     <div key={object.id}>
                                       <div style={{display:"flex"}} className="flexx">
-                                        {object.input1}
+                                      <h3 className="object">{object.input1}</h3>
                                         <h5 onClick={()=> setcus(!cus)} style={{cursor:"pointer"}} className="arrow">{cus ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
                                       </div>
                                       <div className={cus ? "visible" : "hidden"}>
                                         <div style={{display:"flex"}}>
 
                                         
-                                      <div className='emp-main'>
+                                      <div className='emp-main emp-main2'>
                 
                                         <div style={{ display: "flex" }}>
                                           <div className='wanted'>
@@ -1895,7 +1898,7 @@ interests and curiosities'/>
                                         <div>
                                           <div>
                                             <label htmlFor="">Description</label> <br />
-                                            <textarea name="" id="" cols="90" rows="15" value={object.input5} onChange={(e) => handleInputcust(e, object.id, 'input5')}
+                                            <textarea name="" id="" cols="80" rows="15" value={object.input5} onChange={(e) => handleInputcust(e, object.id, 'input5')}
                                               placeholder='e.g. Created and implemented lesson plans based on child-led
                                interests and curiosities'/>
                                           </div>
@@ -1914,7 +1917,7 @@ interests and curiosities'/>
                                   <button onClick={createcust} className="add"> + Add one more item</button>
                 
                                 </div>
-                                <button onClick={delete1}>delete</button>
+                                <button onClick={delete1} className="det">delete</button>
                                 </div> : <span></span>
                               }
                               
@@ -1945,14 +1948,14 @@ interests and curiosities'/>
               {website.map((object) => (
                 <div key={object.id} className="div-in">
                   <div style={{display:"flex"}} className="flexxx">
-                    {object.input1}
+                  <h3 className="object">{object.input1}</h3>
                     <h5 onClick={()=> setsite(!site)} style={{cursor:"pointer"}} className="arrow">{site ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
                   </div>
                   <div className={site ? "visible" : "hidden"}>
                     <div style={{display:"flex"}}>
 
                     
-                  <div className='emp-main'>
+                  <div className='emp-main emp-main2'>
 
                     <div style={{ display: "flex" }}>
                       <div className='wanted'>
@@ -1990,7 +1993,7 @@ interests and curiosities'/>
             </div>
 
           </div>
-          <button onClick={delete9}>delete</button>
+          <button onClick={delete9} className="det">delete</button>
           </div>
         </div>
         <div>
@@ -2023,14 +2026,14 @@ interests and curiosities'/>
               {skill.map((object) => (
                 <div key={object.id}>
                   <div className="flexxx" style={{display:"flex"}}>
-                    {object.input1}
+                  <h3 className="object">{object.input1}</h3>
                     <h5 onClick={()=>setlevel(level)} style={{cursor:"pointer"}} className="arrow">{level ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
                   </div>
                   <div className={level ? "visible" : "hidden"}>
                     <div style={{display:"flex"}}>
 
                     
-                  <div className='emp-main'>
+                  <div className='emp-main emp-main2'>
 
                     <div style={{ display: "flex" }}>
                       <div className='wanted'>
@@ -2068,7 +2071,7 @@ interests and curiosities'/>
               <button onClick={createskill} className="add"> + Add more skill</button>
 
             </div>
-            <button onClick={delete10}>Delete</button>
+            <button onClick={delete10} className="det">Delete</button>
           </div>
           </div>
           </div>
@@ -2082,7 +2085,7 @@ interests and curiosities'/>
                   {six.map((object) => (
                     <div key={object.id}>
                       <div style={{display:"flex"}} id="flexx">
-                        {object.input1}
+                      <h3 className="object">{object.input1}</h3>
                         <h5 onClick={()=>sethobbie(!hobbie)} className="arrow" style={{cursor:"pointer"}}>{hobbie ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
                       </div>
                       <div className={hobbie ? "visible" : "hidden"}>
@@ -2117,7 +2120,7 @@ interests and curiosities'/>
                   <button onClick={createsix} className="add"> + Add more Hobbie</button>
 
                 </div>
-                <button onClick={delete6}>delete</button>
+                <button onClick={delete5} className="det">delete</button>
                 </div>
             }
           <div>
@@ -2131,12 +2134,12 @@ interests and curiosities'/>
                   {seven.map((object) => (
                     <div key={object.id}>
                       <div className="flexxx" style={{display:"flex"}}>
-                        {object.input1}
+                        <h3 className="object">{object.input1}</h3>
                         <h5 onClick={()=>setlanguage(language)} className="arrow" style={{cursor:"pointer"}}>{language ? <IoIosArrowUp/> : <IoIosArrowDown></IoIosArrowDown>}</h5>
                       </div>
                       <div className={language ? "visible" : "hidden"}>
                         <div style={{display:"flex"}}>
-                      <div className='emp-main'>
+                      <div className='emp-main emp-main2'>
 
                         <div style={{ display: "flex" }}>
                           <div className='wanted'>
@@ -2181,7 +2184,7 @@ interests and curiosities'/>
                   <button onClick={createseven} className="add"> + Add one more languages</button>
 
                 </div>
-                <button onClick={delete5}>delete</button>
+                <button onClick={delete6} className="det">delete</button>
                 </div>
             }
           </div>
@@ -2189,24 +2192,24 @@ interests and curiosities'/>
         </div>
         <div>
           <div>
-          <button onClick={handlecurricular}>Extra-Curricular</button>
-          <button onClick={handlecourse}>Course</button>
+          <button onClick={handlecurricular} className="butn">Extra-Curricular</button>
+          <button onClick={handlecourse} className="butn">Course</button>
           </div>
           <div>
-          <button onClick={handleinternship}>Internship</button>
-          <button onClick={handlereference}>Reference</button>
+          <button onClick={handleinternship} className="butn">Internship</button>
+          <button onClick={handlereference} className="butn">Reference</button>
           </div>
           <div>
-          <button onClick={handlesection}>Custom Secetion</button>
-          <button onClick={handleproject}>Project</button>
+          <button onClick={handlesection} className="butn">Custom Secetion</button>
+          <button onClick={handleproject} className="butn">Project</button>
           </div>
           <div>
-          <button onClick={handlelink}>Links</button>
-          <button onClick={handleskill}>Skill</button>
+          <button onClick={handlelink} className="butn">Links</button>
+          <button onClick={handleskill} className="butn">Skill</button>
           </div>
           <div>
-          <button onClick={handlehobbie}>Hobbies</button>
-          <button onClick={handlelanguage}>Langugages</button>
+          <button onClick={handlehobbie} className="butn">Hobbies</button>
+          <button onClick={handlelanguage} className="butn">Langugages</button>
           </div>
         </div>
         </div>
