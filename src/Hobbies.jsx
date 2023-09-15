@@ -17,6 +17,9 @@ import "./Second.css"
 import "./Project/React.css"
 import Switch from 'react-switch';
 
+import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-input-2";
+
 
 
 
@@ -131,7 +134,81 @@ function Hobbies (){
   const [label,setlabel] = useState(true)
   const [hobb,sethobb] = useState(true)
   const [lang,setlangu] = useState(true)
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);  const [completionPercentage, setCompletionPercentage] = useState(0);
+  const [selectedCountry, setSelectedCountry] = useState("");
+
+  function setField(value, type) {
+    switch (type) {
+      case "name":
+        setname(value);
+        break;
+
+      case "email":
+        setemail(value);
+        break;
+
+      case 'place':
+        setplace(value);
+        break;
+
+      case 'birth':
+        setbirth(value);
+        break;
+
+      case 'post':
+        setpost(value);
+        break;
+        
+      case 'country':
+        setcountry(value);
+        break;
+
+      case 'city':
+        setcity(value);
+        break;
+      
+      case 'address':
+        setaddress(value);
+        break;
+      
+      case 'nation':
+        setnation(value);
+        break;
+      
+      case 'job':
+        setjob(value);
+        break;
+
+      case 'editorHtml':
+        setEditorHtml(value);
+        break;
+        
+      default:
+        console.log("Inside switch default case");
+    }
+  }
+
+  function progress(value, typevalue, type, score) {
+    if (value.trim() !== "") {
+      setField(value, type);
+
+      if (typevalue == "") {
+        setCompletionPercentage(
+          (completionPercentage) => completionPercentage + score
+        );
+      }
+    } else {
+      setField(value, type);
+      setCompletionPercentage(
+        (completionPercentage) => completionPercentage - score
+      );
+    }
+  }
+
+  const phoneChange = (value, selectedCountryData) => {
+    setphone(value);
+    setSelectedCountry(selectedCountryData.name);
+  };
 
   const [stores, setStores] = useState(Data)
   const [ite,setite] = useState(item)
@@ -140,6 +217,8 @@ function Hobbies (){
 
   const handleDragDrop = (results)=>{
     const {source, destination, type} = results
+
+    
 
     if(!destination) return
     if(source.droppableId === destination.droppableId && source.index === destination.index) return
@@ -177,100 +256,108 @@ function Hobbies (){
 
   
 
-  const handlechange = (e) => {
-    setjob(e.target.value)
-    if (job === "") {
-      setbar(bar+10)
-      return
-    }
-  }
-
-  const handlechange1 = (e) => {
-
-    setname(e.target.value)
-    if (name === "") {
-      setbar(bar+10)
-      return
-    }
-
-  }
   
 
-  const handlechange2 = (e) => {
+  // const handlechange = (e) => {
+  //   setjob(e.target.value)
+  //   if (job === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
 
-    setlastname(e.target.value)
-    if (lastname === "") {
-      setbar(bar+10)
-      return
-    }
-  }
+  // const handlechange1 = (e) => {
 
-  const handlechange3 = (e) => {
+  //   setname(e.target.value)
+  //   if (name === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
 
-    setemail(e.target.value)
-    if (email === "") {
-      setbar(bar+10)
-      return
-    }
-  }
+    // setlastname(e.target.value)
+    // if (lastname === "") {
+    //   setbar(bar+10)
+    //   return
+    // }
+  
 
-  const handlechange4 = (e) => {
+  // const handlechange3 = (e) => {
 
-    setphone(e.target.value)
-    if (phone === "") {
-      setbar(bar+10)
-      return
-    }
-  }
-  const handlechange5 = (e) => {
+  // const handlechange2 = (e) => {
 
-    setcountry(e.target.value)
-    if (country === "") {
-      setbar(bar-10)
-      return
-    }
-  }
-  const handlechange6 = (e) => {
+  //   setlastname(e.target.value)
+  //   if (lastname === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
 
-    setcity(e.target.value)
-    if (city === "") {
-      setbar(bar+10)
-      return
-    }
-  }
-  const handlechange7 = (e) => {
+  // const handlechange3 = (e) => {
 
-    setaddress(e.target.value)
+  //   setemail(e.target.value)
+  //   if (email === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
 
-  }
-  const handlechange8 = (e) => {
+  // const handlechange4 = (e) => {
 
-    setpost(e.target.value)
-    if (post === "") {
-      setbar(bar+10)
-      return
-    }
-  }
-  const handlechange9 = (e) => {
+  //   setphone(e.target.value)
+  //   if (phone === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
+  // const handlechange5 = (e) => {
 
-    setlicense(e.target.value)
+  //   setcountry(e.target.value)
+  //   if (country === "") {
+  //     setbar(bar-10)
+  //     return
+  //   }
+  // }
+  // const handlechange6 = (e) => {
 
-  }
-  const handlechange10 = (e) => {
+  //   setcity(e.target.value)
+  //   if (city === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
+  // const handlechange7 = (e) => {
 
-    setnation(e.target.value)
+  //   setaddress(e.target.value)
 
-  }
-  const handlechange11 = (e) => {
+  // }
+  // const handlechange8 = (e) => {
 
-    setplace(e.target.value)
+  //   setpost(e.target.value)
+  //   if (post === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
+  // const handlechange9 = (e) => {
 
-  }
-  const handlechange12 = (e) => {
+  //   setlicense(e.target.value)
 
-    setbirth(e.target.value)
+  // }
+  // const handlechange10 = (e) => {
 
-  }
+  //   setnation(e.target.value)
+
+  // }
+  // const handlechange11 = (e) => {
+
+  //   setplace(e.target.value)
+
+  // }
+  // const handlechange12 = (e) => {
+
+  //   setbirth(e.target.value)
+
+  // }
   const handleChange = (html) => {
     setEditorHtml(html);
     if (editorHtml === "") {
@@ -860,31 +947,68 @@ function Hobbies (){
 
   const [bar ,setbar] = useState(0)
 
-  const handleprogress = () =>{
-
-  }
-  return(
-    <div style={{display:"flex"}}>
-      <div className="rk">
-        {/* <div>
-          <h4>{bar}% is Completed</h4>
-        <ProgressBar completed={bar} onChange={handleprogress}/>
-        </div> */}
-      <div>
+  
+  return (
+    <div className="resume-body">
+      <div className="resume-container">
+        <div className="resume-left">
+          <div>
+          <div className="resume-left-content">
+        <div className="resume-title">
+                  <div className="title-content">
+                    <div className="content-box">
+                      <input placeholder="Untitled" />
+                    </div>
+                  </div>
+                </div>
+                <div className="score-body">
+                  <div className="score-content">
+                    <div className="score-left-body">
+                      <div className="progress-bar">
+                        {completionPercentage}%
+                        
+                      </div>
+                      <p className="resume-para">Completion Score</p>
+                    </div>
+                    <div className="resume-profile-body">
+                      <div className="resume-profile-content">
+                        <div>
+                          <div className="profile-body">
+                            <p>Add profile summary</p>
+                            <div className="profile-sum-percent">
+                              <p>+15</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="resume-hr-body">
+                  { <ProgressBar completed={completionPercentage} 
+                  /> }
+                  </div>
+                </div>
+      <div className="left-pdetails-container">
           <h2>Personal Details</h2>
           <div className="job-title">
             <div className="wanted">
               <div className="job">
                 <label htmlFor="">Role</label> <br />
-                <input type="text" value={job} onChange={handlechange} className="work" />
+                <input type="text" value={job} onChange={(e) => {
+                            progress(
+                              e.target.value,
+                              job,
+                              "job",
+                              5
+                            );
+                          }} className="work" />
               </div>
             </div>
             <div className="photo">
               {/* <PhotoUpload></PhotoUpload> */}
 
-              <div style={{display:"flex"}}>
-      
-      <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
+              <div className="select-photo-container">
+            <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
         {({ getRootProps, getInputProps }) => (
           <div className="dropzone" {...getRootProps()}>
             <input {...getInputProps()} />
@@ -898,19 +1022,16 @@ function Hobbies (){
                       className="rounded-image"
                       onClick={handleView}
                     />
-                    
                   </div>
-                  
                   </div>
-                 
-                
-              
             ) : (
-              <div style={{display:'flex'}}>
-                
+              <div className="select-image">
+                <div className="person-icon">
                 <GoPerson className='icon'></GoPerson>
-            
-                
+                </div>
+                <div className="photo-heading">
+                <h4>Upload photo</h4>
+                </div>
               </div>
             )}
           </div>
@@ -920,17 +1041,17 @@ function Hobbies (){
         {
           selectedFile?
           (
-            <div style={{display:"block"}}>
-                <div>
+            <div className="photo-edit-container">
+                <div className="photo-delete">
                 <button onClick={handleDelete} className="ed"><MdOutlineDelete/></button>
                 </div>
-                  <div>
+                  <div className="photo-edit">
                   <button onClick={handleView} className="ed"><AiOutlineEdit/></button>
                   </div>
             </div>
           ) :(
             <div>
-              <h4>Upload photo</h4>
+              {/* <h4>Upload photo</h4> */}
             </div>
           )
         }
@@ -942,13 +1063,22 @@ function Hobbies (){
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">Ankitha</label> <br />
-                <input type="text" className="work" value={name} onChange={handlechange1} />
+                <label htmlFor="">First Name</label> <br />
+                <input type="text" className="work" value={name} onChange={(e) => {
+                            progress(
+                              e.target.value,
+                              name,
+                              "name",
+                              5
+                            );
+                          }} />
               </div>
             </div>
             <div className="photo">
               <label htmlFor="">Last Name</label> <br />
-              <input type="text" className="work" value={lastname} onChange={handlechange2} />
+              <input type="text" className="work" value={lastname} onChange={(e) => {
+                            setlastname(e.target.value);
+                          }} />
             </div>
 
           </div>
@@ -956,12 +1086,19 @@ function Hobbies (){
             <div className="wanted">
               <div className="job">
                 <label htmlFor="">Email</label> <br />
-                <input type="email" className="work" value={email} onChange={handlechange3} />
+                <input type="email" className="work" value={email} onChange={(e) => {
+                            progress(e.target.value, email, "email", 5);
+                          }} />
               </div>
             </div>
             <div className="photo">
-              <label htmlFor="">Contact</label> <br />
-              <input type="number" className="work" value={phone} onChange={handlechange4} />
+              <label htmlFor="">Phone</label> <br />
+              <PhoneInput
+                          country={"in"}
+                          className="work"
+                          value={phone}
+                          onChange={phoneChange}
+                        />
             </div>
 
 
@@ -969,13 +1106,17 @@ function Hobbies (){
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">Country Name sai</label> <br />
-                <input type="text" className="work" value={country} onChange={handlechange5} />
+                <label htmlFor="">Country</label> <br />
+                <input type="text" className="work" value={country} onChange={(e) => {
+                            progress(e.target.value, country, "country", 5);
+                          }} />
               </div>
             </div>
             <div className="photo">
               <label htmlFor="">City</label> <br />
-              <input type="text" className="work" value={city} onChange={handlechange6} />
+              <input type="text" className="work" value={city} onChange={(e) => {
+                            progress(e.target.value, city, "city", 5);
+                          }} />
             </div>
 
           </div>
@@ -984,12 +1125,16 @@ function Hobbies (){
               <div className="wanted">
                 <div className="job">
                   <label htmlFor="">Address</label> <br />
-                  <input type="text" className="work" value={address} onChange={handlechange7} />
+                  <input type="text" className="work" value={address} onChange={(e) => {
+                                progress(e.target.value, address, "address", 5);
+                              }} />
                 </div>
               </div>
               <div className="photo">
-                <label htmlFor="">Postal code </label> <br />
-                <input type="text" className="work" value={post} onChange={handlechange8} />
+                <label htmlFor="">Postal code</label> <br />
+                <input type="text" className="work" value={post} onChange={(e) => {
+                                progress(e.target.value, post, "post", 5);
+                              }} />
               </div>
 
             </div>
@@ -998,12 +1143,16 @@ function Hobbies (){
                 <div className="wanted">
                   <div className="job">
                       <label htmlFor="">Driving </label> <br />
-                                    <input type="text" className="work" value={licence} onChange={handlechange9}/>
+                                    <input type="text" className="work" value={licence} onChange={(e) => {
+                                setlicense(e.target.value);
+                              }}/>
                   </div>
                 </div>
                 <div className="photo">
                    <label>Nation</label><br />
-                  <input type="text" className="work" value={nation} onChange={handlechange10}/>
+                  <input type="text" className="work" value={nation} onChange={(e) => {
+                                progress(e.target.value, nation, "nation", 5);
+                              }}/>
                 </div>
 
               </div>
@@ -1013,12 +1162,16 @@ function Hobbies (){
                 <div className="wanted">
                   <div className="job">
                         <label htmlFor="">Place of Birth</label> <br />
-                    <input type="text" className="work" value={place} onChange={handlechange11}/>
+                    <input type="text" className="work" value={place} onChange={(e) => {
+                                progress(e.target.value, place, "place", 5);
+                              }}/>
                   </div>
                 </div>
                 <div className="photo">
                   <label htmlFor="">Date of Birth</label> <br />
-                  <input type="text" className="work" value={birth} onChange={handlechange12}/>
+                  <input type="text" className="work" value={birth} onChange={(e) => {
+                                progress(e.target.value, birth, "birth", 5);
+                              }}/>
                 </div>
 
               </div>
@@ -1043,7 +1196,12 @@ function Hobbies (){
                 <ReactQuill
                   theme="snow"
                   value={editorHtml}
-                  onChange={handleChange}
+                  onChange={(value)=> progress(
+                    value,
+                    editorHtml,
+                    "editorHtml",
+                    30
+                  )}
                   className='paragh'
                   modules={{
                     toolbar: [
@@ -2051,9 +2209,10 @@ interests and curiosities'/>
           <button onClick={handlelanguage}>Langugages</button>
           </div>
         </div>
-
-      </div>
-    <div className="full">
+        </div>
+        </div>
+        </div>
+    <div className="resume-right">
       <button onClick={generatePDF}>Generate PDF</button>
       <Scrollbars>
       <div className="main-full" id="pdf-content">
@@ -2279,8 +2438,9 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
       </Scrollbars>
     </div>
     </div>
+    </div>
   )
-}
+
 
 function Storelist({name, it, id,head}){
   return(
@@ -2486,6 +2646,7 @@ function Storelist({name, it, id,head}){
       </div>
     </div>
   )
+}
 }
 
 export default Hobbies
