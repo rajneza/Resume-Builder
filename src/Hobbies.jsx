@@ -15,6 +15,8 @@ import { AiOutlineEdit } from "react-icons/ai"
 import { GiSaveArrow } from "react-icons/gi"
 import "./Second.css"
 import "./Project/React.css"
+import Switch from 'react-switch';
+
 
 
 
@@ -129,7 +131,8 @@ function Hobbies (){
   const [label,setlabel] = useState(true)
   const [hobb,sethobb] = useState(true)
   const [lang,setlangu] = useState(true)
-  
+  const [isChecked, setIsChecked] = useState(false);
+
   const [stores, setStores] = useState(Data)
   const [ite,setite] = useState(item)
   let sourceindex = 0
@@ -166,6 +169,11 @@ function Hobbies (){
       
     }
   }
+
+  // Handle the switch's change event
+  const handleSwitchChange = (checked) => {
+    setIsChecked(checked);
+  };
 
   
 
@@ -1842,6 +1850,15 @@ interests and curiosities'/>
             </p>
           </div>
           <div>
+            <label htmlFor="">
+            <Switch
+          onChange={handleSwitchChange}
+          checked={isChecked}
+        /> Show level
+            </label>
+         
+          </div>
+          <div>
             {/* <Skills></Skills> */}
             <div className='emp-div'>
 
@@ -2188,8 +2205,12 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
             
             <p className="cit" id="cit">{`${object.input1}`}</p>
             <div className="ski1">
-              {
+            {
+                isChecked ? <div>
+                  {
                 object.input2 === "" ? <span></span> : <p className="ski">{`${object.input2}/5`}</p>
+              }
+                </div> : <span></span>
               }
               
             
