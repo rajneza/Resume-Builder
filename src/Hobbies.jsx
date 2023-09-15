@@ -5,7 +5,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Dropzone from 'react-dropzone';
 import { GoPerson } from 'react-icons/go'
-import { MdOutlineDelete } from 'react-icons/md'
+import { MdOutlineDelete,MdOutlineDragIndicator } from 'react-icons/md'
 import { Scrollbars } from "react-custom-scrollbars"
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -1027,10 +1027,10 @@ function Hobbies (){
             ) : (
               <div className="select-image">
                 <div className="person-icon">
-                <GoPerson className='icon'></GoPerson>
+                {<GoPerson className='icon'></GoPerson>}
                 </div>
-                <div className="photo-heading">
-                <h4>Upload photo</h4>
+                <div className="mainphoto-heading" >
+                <h4 className="photo-heading">Upload Photo</h4>
                 </div>
               </div>
             )}
@@ -1249,7 +1249,7 @@ function Hobbies (){
               {/* <Storelist {...store}/> */}
               {
                               store.name === "Employment" ? <div>
-                                <h3>{store.name}</h3>
+                                <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
                                 <p className="des">{store.description}</p>
                                 {objects.map((object) => (
                 <div key={object.id}>
@@ -1335,7 +1335,7 @@ function Hobbies (){
                             }
                             {
                             store.name === "Education" ? <div>
-                               <h3>{store.name}</h3>
+                               <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
                                 <p className="des">{store.description}</p>
                               {education.map((object) => (
                 <div key={object.id}>
@@ -1420,7 +1420,7 @@ function Hobbies (){
                           }
                           {
                                 store.name === "Extra-curricular activites" ? <div className={curricular ? "hidden" : "visible"}>
-                                  <h3>{store.name}</h3>
+                                  <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
                                   <p className="des">{store.description}</p>
                                   <div className='emp-div'>
 
@@ -1509,7 +1509,7 @@ interests and curiosities'/>
                               }
                           {
                                 store.name === "Course" ? <div className={cour ? "hidden" : "visible"}>
-                                   <h3>{store.name}</h3>
+                                   <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
                                   <p className="des">{store.description}</p>
                                   <div className='emp-div'>
 
@@ -1585,7 +1585,7 @@ interests and curiosities'/>
                               }
                           {
                                 store.name === "Internships" ? <div className={intern ? "hidden" : "visible"}>
-                                  <h3>{store.name}</h3>
+                                  <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
                                   <div className='emp-div'>
 
 {five.map((object) => (
@@ -1673,7 +1673,7 @@ interests and curiosities'/>
                               }
                               {
                                 store.name === "Project" ? <div className={proj ? "hidden" : "visible"}>
-                                  <h3>{store.name}</h3>
+                                  <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
                                   <div className='emp-div'>
 
 {project.map((object) => (
@@ -1763,7 +1763,7 @@ interests and curiosities'/>
                               }
                               {
                                 store.name === "Refrence" ? <div className={reference ? "hidden" : "visible"}>
-                                  <h3>{store.name}</h3>
+                                  <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
                                   <div className='emp-div'>
 
 {three.map((object) => (

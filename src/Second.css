@@ -465,8 +465,13 @@ Popup.css .popup {
 
 .text {
   margin-left: 5%;
-
+   display: flex;
   width: 10vw;
+}
+.photo-edit-container{
+  position: relative;
+  left: 55px;
+  bottom: 55px;
 }
 
 .pic {
@@ -912,4 +917,30 @@ Popup.css .popup {
   color: blue;
   font-size: 1.1rem;
   font-weight: bold;
+}
+.photo-heading{
+  color: blue;
+  position: relative;
+  left: 25px;
+  margin-left: 10%;
+  width: 0vw;
+  
+}
+.mainphoto-heading{
+  background-color: #ec930c;
+}
+.select-image{
+  display: flex;
+  position: relative;
+  right: 33px;
+}
+.person-icon{
+  height: 100%;
+  width: 100%;
+  
+  
+}
+.drag-icon{
+  position: relative;
+  top: 3px;
 }
