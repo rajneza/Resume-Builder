@@ -397,10 +397,12 @@ Popup.css .popup {
   margin: 0;
   caret-color: rgba(133, 133, 238, 0.678);
 }
+
 .progress-bar{
   margin-right: 5px;
   margin-top: 15px;
 }
+
 .react-tel-input .flag-dropdown {
   border: none !important;
   background-color: transparent !important;
@@ -464,7 +466,6 @@ Popup.css .popup {
   width: 100%;
   height: 100%;
   display: block;
-
 
 }
 
@@ -927,4 +928,74 @@ Popup.css .popup {
   color: blue;
   font-size: 1.1rem;
   font-weight: bold;
+}
+.photo-heading{
+  color: blue;
+  position: relative;
+  left: 25px;
+  margin-left: 10%;
+  width: 0vw;
+  
+}
+.mainphoto-heading{
+  background-color: #ec930c;
+}
+.select-image{
+  display: flex;
+  position: relative;
+  right: 33px;
+}
+.person-icon{
+  height: 100%;
+  width: 100%;
+  
+  
+}
+.drag-icon{
+  position: relative;
+  top: 3px;
+}
+
+.add-section-head {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.add-section-box {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.custom-section {
+  display: flex;
+  margin-right: 32px;
+  margin-bottom: 10px;
+  width: calc(50% - 32px);
+
+
+}
+
+.custom-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: calc(50% -32px);
+  flex: 0 0 calc(50% -32px);
+}
+
+.custom-btn:hover {
+  color: #1a91f0;
+  font-weight: 600;
+}
+
+.custom-btn img {
+  height: 40px;
+  width: 40px;
+  margin-right: 5px;
+}
+
+.custom-section p {
+  margin-top: 10px;
 }
