@@ -105,8 +105,7 @@ const item = [
     it: [{}],
   },
 ];
-//console.log(item[1]);
-//console.log(Data[0]);
+
 function Hobbies() {
   const [job, setjob] = useState("");
   const [name, setname] = useState("");
@@ -252,12 +251,6 @@ function Hobbies() {
       setStores(reorderedStores);
       console.log(destination.index);
       console.log(destinationindex);
-      //  console.log(source.index)
-      //  if (source.index === item[0]) {
-      //   console.log("hii");
-
-      //  }
-
       return;
     }
   };
@@ -267,105 +260,7 @@ function Hobbies() {
     setIsChecked(checked);
   };
 
-  // const handlechange = (e) => {
-  //   setjob(e.target.value)
-  //   if (job === "") {
-  //     setbar(bar+10)
-  //     return
-  //   }
-  // }
-
-  // const handlechange1 = (e) => {
-
-  //   setname(e.target.value)
-  //   if (name === "") {
-  //     setbar(bar+10)
-  //     return
-  //   }
-
-  // setlastname(e.target.value)
-  // if (lastname === "") {
-  //   setbar(bar+10)
-  //   return
-  // }
-
-  // const handlechange3 = (e) => {
-
-  // const handlechange2 = (e) => {
-
-  //   setlastname(e.target.value)
-  //   if (lastname === "") {
-  //     setbar(bar+10)
-  //     return
-  //   }
-  // }
-
-  // const handlechange3 = (e) => {
-
-  //   setemail(e.target.value)
-  //   if (email === "") {
-  //     setbar(bar+10)
-  //     return
-  //   }
-  // }
-
-  // const handlechange4 = (e) => {
-
-  //   setphone(e.target.value)
-  //   if (phone === "") {
-  //     setbar(bar+10)
-  //     return
-  //   }
-  // }
-  // const handlechange5 = (e) => {
-
-  //   setcountry(e.target.value)
-  //   if (country === "") {
-  //     setbar(bar-10)
-  //     return
-  //   }
-  // }
-  // const handlechange6 = (e) => {
-
-  //   setcity(e.target.value)
-  //   if (city === "") {
-  //     setbar(bar+10)
-  //     return
-  //   }
-  // }
-  // const handlechange7 = (e) => {
-
-  //   setaddress(e.target.value)
-
-  // }
-  // const handlechange8 = (e) => {
-
-  //   setpost(e.target.value)
-  //   if (post === "") {
-  //     setbar(bar+10)
-  //     return
-  //   }
-  // }
-  // const handlechange9 = (e) => {
-
-  //   setlicense(e.target.value)
-
-  // }
-  // const handlechange10 = (e) => {
-
-  //   setnation(e.target.value)
-
-  // }
-  // const handlechange11 = (e) => {
-
-  //   setplace(e.target.value)
-
-  // }
-  // const handlechange12 = (e) => {
-
-  //   setbirth(e.target.value)
-
-  // }
+  
   const handleChange = (html) => {
     setEditorHtml(html);
     if (editorHtml === "") {
@@ -462,16 +357,6 @@ function Hobbies() {
   const generatePDF = () => {
     const doc = new jsPDF();
 
-    // doc.text('', 5, 5);
-    // doc.text('Page 1 Content', 10, 10);
-
-    // // Now let's add enough content to overflow to a new page
-    // const longText = "This is a long piece of text that will span multiple pages. ";
-    // for (let i = 0; i < 50; i++) {
-    //   doc.text(longText, 10, doc.autoTable.previous.finalY + 10); // Adding content until it overflows
-    // }
-
-    //  doc.addPage();
     doc.text("", 10, 10);
 
     const content = document.getElementById("pdf-content");
