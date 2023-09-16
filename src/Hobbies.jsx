@@ -5,7 +5,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Dropzone from 'react-dropzone';
 import { GoPerson } from 'react-icons/go'
-import { MdOutlineDelete } from 'react-icons/md'
+import { MdOutlineDelete,MdOutlineDragIndicator } from 'react-icons/md'
 import { Scrollbars } from "react-custom-scrollbars"
 
 // import ProgressBar from "@ramonak/react-progress-bar";
@@ -14,8 +14,17 @@ import { AiOutlineEdit } from "react-icons/ai"
 import { GiSaveArrow } from "react-icons/gi"
 import "./Second.css"
 import "./Project/React.css"
+<<<<<<< HEAD
 import { render } from 'react-dom';
 import { useReactToPrint } from 'react-to-print';
+=======
+import Switch from 'react-switch';
+
+import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-input-2";
+
+
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
 
 const Data = [
@@ -107,7 +116,96 @@ function Hobbies() {
   const [site, setsite] = useState(true)
   const [level, setlevel] = useState(true)
   const [hobbie, sethobbie] = useState(true)
+<<<<<<< HEAD
   const [language, setlanguage] = useState(true)
+=======
+  const [language,setlanguage] = useState(true)
+  const [curricular,setcurricular] = useState(true)
+  const [cour,setcour] = useState(true)
+  const [intern,setintern] = useState(true)
+  const [reference,setreference] = useState(true)
+  const [secetion,setsecetion] = useState(true)
+  const [proj,setproj] = useState(true)
+  const [link,setlink] = useState(true)
+  const [label,setlabel] = useState(true)
+  const [hobb,sethobb] = useState(true)
+  const [lang,setlangu] = useState(true)
+  const [isChecked, setIsChecked] = useState(false);  const [completionPercentage, setCompletionPercentage] = useState(0);
+  const [selectedCountry, setSelectedCountry] = useState("");
+
+  function setField(value, type) {
+    switch (type) {
+      case "name":
+        setname(value);
+        break;
+
+      case "email":
+        setemail(value);
+        break;
+
+      case 'place':
+        setplace(value);
+        break;
+
+      case 'birth':
+        setbirth(value);
+        break;
+
+      case 'post':
+        setpost(value);
+        break;
+        
+      case 'country':
+        setcountry(value);
+        break;
+
+      case 'city':
+        setcity(value);
+        break;
+      
+      case 'address':
+        setaddress(value);
+        break;
+      
+      case 'nation':
+        setnation(value);
+        break;
+      
+      case 'job':
+        setjob(value);
+        break;
+
+      case 'editorHtml':
+        setEditorHtml(value);
+        break;
+        
+      default:
+        console.log("Inside switch default case");
+    }
+  }
+
+  function progress(value, typevalue, type, score) {
+    if (value.trim() !== "") {
+      setField(value, type);
+
+      if (typevalue == "") {
+        setCompletionPercentage(
+          (completionPercentage) => completionPercentage + score
+        );
+      }
+    } else {
+      setField(value, type);
+      setCompletionPercentage(
+        (completionPercentage) => completionPercentage - score
+      );
+    }
+  }
+
+  const phoneChange = (value, selectedCountryData) => {
+    setphone(value);
+    setSelectedCountry(selectedCountryData.name);
+  };
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
   const [stores, setStores] = useState(Data)
   const [ite, setite] = useState(item)
@@ -246,6 +344,13 @@ function Hobbies() {
     content: () => contentDivRef.current, // Reference to the content div
   });
 
+<<<<<<< HEAD
+=======
+    
+
+    if(!destination) return
+    if(source.droppableId === destination.droppableId && source.index === destination.index) return
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
   const handleDragDrop = (results) => {
     const { source, destination, type } = results
@@ -279,6 +384,7 @@ function Hobbies() {
     }
   }
 
+<<<<<<< HEAD
 
 
   const handlechange = (e) => {
@@ -299,27 +405,61 @@ function Hobbies() {
 
   }
 
+=======
+  // Handle the switch's change event
+  const handleSwitchChange = (checked) => {
+    setIsChecked(checked);
+  };
 
-  const handlechange2 = (e) => {
+  
 
+  
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
+
+  // const handlechange = (e) => {
+  //   setjob(e.target.value)
+  //   if (job === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
+
+<<<<<<< HEAD
     setlastname(e.target.value)
     if (lastname === "") {
       setbar(bar + 10)
       return
     }
   }
+=======
+  // const handlechange1 = (e) => {
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
-  const handlechange3 = (e) => {
+  //   setname(e.target.value)
+  //   if (name === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
 
+<<<<<<< HEAD
     setemail(e.target.value)
     if (email === "") {
       setbar(bar + 10)
       return
     }
   }
+=======
+    // setlastname(e.target.value)
+    // if (lastname === "") {
+    //   setbar(bar+10)
+    //   return
+    // }
+  
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
-  const handlechange4 = (e) => {
+  // const handlechange3 = (e) => {
 
+<<<<<<< HEAD
     setphone(e.target.value)
     if (phone === "") {
       setbar(bar + 10)
@@ -343,12 +483,29 @@ function Hobbies() {
     }
   }
   const handlechange7 = (e) => {
+=======
+  // const handlechange2 = (e) => {
 
-    setaddress(e.target.value)
+  //   setlastname(e.target.value)
+  //   if (lastname === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
 
-  }
-  const handlechange8 = (e) => {
+  // const handlechange3 = (e) => {
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
+  //   setemail(e.target.value)
+  //   if (email === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
+
+  // const handlechange4 = (e) => {
+
+<<<<<<< HEAD
     setpost(e.target.value)
     if (post === "") {
       setbar(bar + 10)
@@ -356,25 +513,63 @@ function Hobbies() {
     }
   }
   const handlechange9 = (e) => {
+=======
+  //   setphone(e.target.value)
+  //   if (phone === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
+  // const handlechange5 = (e) => {
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
-    setlicense(e.target.value)
+  //   setcountry(e.target.value)
+  //   if (country === "") {
+  //     setbar(bar-10)
+  //     return
+  //   }
+  // }
+  // const handlechange6 = (e) => {
 
-  }
-  const handlechange10 = (e) => {
+  //   setcity(e.target.value)
+  //   if (city === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
+  // const handlechange7 = (e) => {
 
-    setnation(e.target.value)
+  //   setaddress(e.target.value)
 
-  }
-  const handlechange11 = (e) => {
+  // }
+  // const handlechange8 = (e) => {
 
-    setplace(e.target.value)
+  //   setpost(e.target.value)
+  //   if (post === "") {
+  //     setbar(bar+10)
+  //     return
+  //   }
+  // }
+  // const handlechange9 = (e) => {
 
-  }
-  const handlechange12 = (e) => {
+  //   setlicense(e.target.value)
 
-    setbirth(e.target.value)
+  // }
+  // const handlechange10 = (e) => {
 
-  }
+  //   setnation(e.target.value)
+
+  // }
+  // const handlechange11 = (e) => {
+
+  //   setplace(e.target.value)
+
+  // }
+  // const handlechange12 = (e) => {
+
+  //   setbirth(e.target.value)
+
+  // }
   const handleChange = (html) => {
     setEditorHtml(html);
     if (editorHtml === "") {
@@ -382,6 +577,67 @@ function Hobbies() {
       return
     }
   };
+
+  const handlecurricular = () =>{
+    setcurricular(false)
+  }
+  const delete7 = () =>{
+    setcurricular(true)
+  }
+  const handlecourse = () =>{
+    setcour(false)
+  }
+  const delete2 = () =>{
+    setcour(true)
+  }
+  const handlereference = () =>{
+    setreference(false)
+  }
+  const delete3 = () =>{
+    setreference(true)
+  }
+  const handleinternship = () =>{
+    setintern(false)
+  }
+  const delete4 = () =>{
+    setintern(true)
+  }
+  const handlesection = () =>{
+    setsecetion(false)
+  }
+  const delete1 = () =>{
+    setsecetion(true)
+  }
+  const handleproject = () =>{
+    setproj(false)
+  }
+  const delete8 = () =>{
+    setproj(true)
+  }
+  const handlelink = () =>{
+    setlink(false)
+  }
+  const delete9 = () =>{
+    setlink(true)
+  }
+  const handleskill = () =>{
+    setlabel(false)
+  }
+  const delete10 = () =>{
+    setlabel(true)
+  }
+  const handlehobbie = () =>{
+    sethobb(false)
+  }
+  const delete5 = () =>{
+    sethobb(true)
+  }
+  const handlelanguage = () =>{
+    setlangu(false)
+  }
+  const delete6 = () =>{
+    setlangu(true)
+  }
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [showFullView, setShowFullView] = useState(false);
@@ -875,6 +1131,7 @@ function Hobbies() {
   };
 
 
+<<<<<<< HEAD
   const [bar, setbar] = useState(0)
 
   const handleprogress = () => {
@@ -888,17 +1145,69 @@ function Hobbies() {
         <ProgressBar completed={bar} onChange={handleprogress}/>
         </div> */}
         <div>
+=======
+  
+  return (
+    <div className="resume-body">
+      <div className="resume-container">
+        <div className="resume-left">
+          <div>
+          <div className="resume-left-content">
+        <div className="resume-title">
+                  <div className="title-content">
+                    <div className="content-box">
+                      <input placeholder="Untitled" />
+                    </div>
+                  </div>
+                </div>
+                <div className="score-body">
+                  <div className="score-content">
+                    <div className="score-left-body">
+                      <div className="progress-bar">
+                        {completionPercentage}%
+                        
+                      </div>
+                      <p className="resume-para">Completion Score</p>
+                    </div>
+                    <div className="resume-profile-body">
+                      <div className="resume-profile-content">
+                        <div>
+                          <div className="profile-body">
+                            <p>Add profile summary</p>
+                            <div className="profile-sum-percent">
+                              <p>+15</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="resume-hr-body">
+                  { <ProgressBar completed={completionPercentage} 
+                  /> }
+                  </div>
+                </div>
+      <div className="left-pdetails-container">
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
           <h2>Personal Details</h2>
           <div className="job-title">
             <div className="wanted">
               <div className="job">
                 <label htmlFor="">Role</label> <br />
-                <input type="text" value={job} onChange={handlechange} className="work" />
+                <input type="text" value={job} onChange={(e) => {
+                            progress(
+                              e.target.value,
+                              job,
+                              "job",
+                              5
+                            );
+                          }} className="work" />
               </div>
             </div>
             <div className="photo">
               {/* <PhotoUpload></PhotoUpload> */}
 
+<<<<<<< HEAD
               <div style={{ display: "flex" }}>
 
                 <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
@@ -953,19 +1262,80 @@ function Hobbies() {
                   }
                 </div>
               </div>
+=======
+              <div className="select-photo-container">
+            <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
+        {({ getRootProps, getInputProps }) => (
+          <div className="dropzone" {...getRootProps()}>
+            <input {...getInputProps()} />
+            {selectedFile?
+                (
+                    <div className='image'>
+                  <div className="image-container">
+                    <img
+                      src={URL.createObjectURL(selectedFile)}
+                      alt="Uploaded"
+                      className="rounded-image"
+                      onClick={handleView}
+                    />
+                  </div>
+                  </div>
+            ) : (
+              <div className="select-image">
+                <div className="person-icon">
+                {<GoPerson className='icon'></GoPerson>}
+                </div>
+                <div className="mainphoto-heading" >
+                <h4 className="photo-heading">Upload Photo</h4>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </Dropzone>
+      <div className='text'>
+        {
+          selectedFile?
+          (
+            <div className="photo-edit-container">
+                <div className="photo-delete">
+                <button onClick={handleDelete} className="ed"><MdOutlineDelete/></button>
+                </div>
+                  <div className="photo-edit">
+                  <button onClick={handleView} className="ed"><AiOutlineEdit/></button>
+                  </div>
+            </div>
+          ) :(
+            <div>
+              {/* <h4>Upload photo</h4> */}
+            </div>
+          )
+        }
+      </div>
+    </div>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
             </div>
           </div>
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">Ankitha</label> <br />
-                <input type="text" className="work" value={name} onChange={handlechange1} />
+                <label htmlFor="">First Name</label> <br />
+                <input type="text" className="work" value={name} onChange={(e) => {
+                            progress(
+                              e.target.value,
+                              name,
+                              "name",
+                              5
+                            );
+                          }} />
               </div>
             </div>
             <div className="photo">
               <label htmlFor="">Last Name</label> <br />
-              <input type="text" className="work" value={lastname} onChange={handlechange2} />
+              <input type="text" className="work" value={lastname} onChange={(e) => {
+                            setlastname(e.target.value);
+                          }} />
             </div>
 
           </div>
@@ -973,12 +1343,19 @@ function Hobbies() {
             <div className="wanted">
               <div className="job">
                 <label htmlFor="">Email</label> <br />
-                <input type="email" className="work" value={email} onChange={handlechange3} />
+                <input type="email" className="work" value={email} onChange={(e) => {
+                            progress(e.target.value, email, "email", 5);
+                          }} />
               </div>
             </div>
             <div className="photo">
-              <label htmlFor="">Contact</label> <br />
-              <input type="number" className="work" value={phone} onChange={handlechange4} />
+              <label htmlFor="">Phone</label> <br />
+              <PhoneInput
+                          country={"in"}
+                          className="work"
+                          value={phone}
+                          onChange={phoneChange}
+                        />
             </div>
 
 
@@ -986,13 +1363,17 @@ function Hobbies() {
           <div className="job-title">
             <div className="wanted">
               <div className="job">
-                <label htmlFor="">Country Name sai</label> <br />
-                <input type="text" className="work" value={country} onChange={handlechange5} />
+                <label htmlFor="">Country</label> <br />
+                <input type="text" className="work" value={country} onChange={(e) => {
+                            progress(e.target.value, country, "country", 5);
+                          }} />
               </div>
             </div>
             <div className="photo">
               <label htmlFor="">City</label> <br />
-              <input type="text" className="work" value={city} onChange={handlechange6} />
+              <input type="text" className="work" value={city} onChange={(e) => {
+                            progress(e.target.value, city, "city", 5);
+                          }} />
             </div>
 
           </div>
@@ -1001,12 +1382,16 @@ function Hobbies() {
               <div className="wanted">
                 <div className="job">
                   <label htmlFor="">Address</label> <br />
-                  <input type="text" className="work" value={address} onChange={handlechange7} />
+                  <input type="text" className="work" value={address} onChange={(e) => {
+                                progress(e.target.value, address, "address", 5);
+                              }} />
                 </div>
               </div>
               <div className="photo">
-                <label htmlFor="">Postal code </label> <br />
-                <input type="text" className="work" value={post} onChange={handlechange8} />
+                <label htmlFor="">Postal code</label> <br />
+                <input type="text" className="work" value={post} onChange={(e) => {
+                                progress(e.target.value, post, "post", 5);
+                              }} />
               </div>
 
             </div>
@@ -1014,6 +1399,7 @@ function Hobbies() {
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
+<<<<<<< HEAD
                     <label htmlFor="">Driving </label> <br />
                     <input type="text" className="work" value={licence} onChange={handlechange9} />
                   </div>
@@ -1021,6 +1407,19 @@ function Hobbies() {
                 <div className="photo">
                   <label>Nation</label><br />
                   <input type="text" className="work" value={nation} onChange={handlechange10} />
+=======
+                      <label htmlFor="">Driving </label> <br />
+                                    <input type="text" className="work" value={licence} onChange={(e) => {
+                                setlicense(e.target.value);
+                              }}/>
+                  </div>
+                </div>
+                <div className="photo">
+                   <label>Nation</label><br />
+                  <input type="text" className="work" value={nation} onChange={(e) => {
+                                progress(e.target.value, nation, "nation", 5);
+                              }}/>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
                 </div>
 
               </div>
@@ -1029,13 +1428,26 @@ function Hobbies() {
               <div className="job-title">
                 <div className="wanted">
                   <div className="job">
+<<<<<<< HEAD
                     <label htmlFor="">Place of Birth</label> <br />
                     <input type="text" className="work" value={place} onChange={handlechange11} />
+=======
+                        <label htmlFor="">Place of Birth</label> <br />
+                    <input type="text" className="work" value={place} onChange={(e) => {
+                                progress(e.target.value, place, "place", 5);
+                              }}/>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
                   </div>
                 </div>
                 <div className="photo">
                   <label htmlFor="">Date of Birth</label> <br />
+<<<<<<< HEAD
                   <input type="text" className="work" value={birth} onChange={handlechange12} />
+=======
+                  <input type="text" className="work" value={birth} onChange={(e) => {
+                                progress(e.target.value, birth, "birth", 5);
+                              }}/>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
                 </div>
 
               </div>
@@ -1060,7 +1472,12 @@ function Hobbies() {
                 <ReactQuill
                   theme="snow"
                   value={editorHtml}
-                  onChange={handleChange}
+                  onChange={(value)=> progress(
+                    value,
+                    editorHtml,
+                    "editorHtml",
+                    30
+                  )}
                   className='paragh'
                   modules={{
                     toolbar: [
@@ -1084,6 +1501,7 @@ function Hobbies() {
           </div>
         </div>
         <div>
+<<<<<<< HEAD
           <DragDropContext onDragEnd={handleDragDrop}>
             <div className="first">
               <Droppable droppableId="Root" type="group">
@@ -1165,6 +1583,102 @@ function Hobbies() {
                                                 placeholder='e.g. Graduated with High Honors.' />
                                             </div>
                                           </div>
+=======
+        <DragDropContext onDragEnd={handleDragDrop}>
+      <div className="first">
+        <Droppable droppableId="Root" type="group">
+        {(provided)=>(
+          <div {...provided.droppableProps} ref={provided.innerRef}>
+            {stores.map((store,index)=>(
+          <Draggable draggableId={store.id} key={store.id} index={index}>
+            {(provided)=>(
+              <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+                {
+                  store.name === "Custom" ? <div style={{display:"flex"}} id="main-cust">
+                    {
+                      def ?  <h3 className={secetion ? "hidden" : "visible"}>{deefault}</h3> : <h3 className={secetion ? "hidden" : "visible"}><input type="text" value={deefault} onChange={handlecustom} id="custom"/></h3>
+                    }
+                    <button onClick={handlecustumch} id="cust" className={secetion ? "hidden" : "visible"}>{
+                      def ? <AiOutlineEdit/> : <GiSaveArrow></GiSaveArrow>
+                    }</button>
+                  </div> :  <span></span>
+                }
+             
+              {/* <p className="des">{store.description}</p> */}
+              {/* <Storelist {...store}/> */}
+              {
+                              store.name === "Employment" ? 
+                              <div>
+                                <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
+                                <p className="des">{store.description}</p>
+                                {objects.map((object) => (
+                <div key={object.id}>
+                  <div style={{display:"flex"}} className="flex">
+                   
+                  <h3 className="object">{object.input1}</h3>
+                    <h5 onClick={() => setemp(!emp)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
+                  </div>
+                  <div className={emp ? "visible" : "hidden"} >
+                    <div  style={{ display: "flex" }} >
+                  <div className='emp-main'>
+
+
+                    <div style={{ display: "flex" }}>
+                      <div className='wanted'>
+                        <div>
+                          <label htmlFor="">Job title</label> <br />
+                          <input
+                            type="text"
+                            value={object.input1}
+                            className='work'
+                            onChange={(e) => handleInputChange(e, object.id, 'input1')}
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label htmlFor="">Employer</label> <br />
+                        <input
+                          type="text"
+                          value={object.input2}
+                          className='work'
+                          onChange={(e) => handleInputChange(e, object.id, 'input2')}
+                        />
+                      </div>
+                    </div>
+                    <div style={{ display: "flex" }}>
+                      <div className='wanted'>
+                        <div>
+                          <label htmlFor="">Start & End Date</label> <br />
+                          <input type='date'
+                                value={object.input4}
+                                className='workk'
+                                onChange={(e) => handleInputChange(e, object.id, 'input4')}
+                              />
+                              <input type='date'
+                                value={object.input5}
+                                className='workk'
+                                onChange={(e) => handleInputChange(e, object.id, 'input5')}
+                              />
+                        </div>
+                      </div>
+                      <div>
+                        <label htmlFor="">City</label> <br />
+                        <input
+                          type="text"
+                          value={object.input3}
+                          className='work'
+                          onChange={(e) => handleInputChange(e, object.id, 'input3')}
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <label htmlFor="">Description</label> <br />
+                        <textarea name="" id="" cols="80" rows="15" value={object.input6} onChange={(e) => handleInputChange(e, object.id, 'input6')}
+                          placeholder='e.g. Graduated with High Honors.' />
+                      </div>
+                    </div>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
 
                                         </div>
@@ -1181,10 +1695,26 @@ function Hobbies() {
                               </div> : <span></span>
                             }
                             {
+<<<<<<< HEAD
                               store.name === "Education" ? <div>
                                 {education.map((object) => (
                                   <div key={object.id}>
                                     <div style={{ display: "flex" }} className="flex">
+=======
+                            store.name === "Education" ? <div>
+                               <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
+                                <p className="des">{store.description}</p>
+                              {education.map((object) => (
+                <div key={object.id}>
+                  <div style={{display:"flex"}} className="flex">
+                   
+                  <h3 className="object">{object.input1}</h3>
+                   <h5 onClick={() => setoction(!oction)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
+                 </div>
+                 <div className={oction ? "visible" : "hidden"}>
+                  <div  style={{ display: "flex" }}>
+                  <div className='emp-main'>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
                                       {object.input1}
                                       <h5 onClick={() => setoction(!oction)} style={{ cursor: "pointer" }} className="arrow"><IoIosArrowUp /></h5>
@@ -1250,10 +1780,459 @@ function Hobbies() {
                                           </div>
 
 
+<<<<<<< HEAD
                                         </div>
                                         <div>
                                           <button onClick={() => deleteedu(object.id)} className="delete"><MdOutlineDelete /></button>
                                         </div>
+=======
+                  </div>
+                  <div>
+                    <button onClick={() => deleteedu(object.id)} className="delete"><MdOutlineDelete/></button>
+                  </div>
+                  </div>
+                  </div>
+                  
+                </div>
+              ))}
+              <button onClick={createeducation} className="add"> + Add education</button>
+                  
+                            </div> : <span></span>
+                          }
+                          {
+                                store.name === "Extra-curricular activites" ? <div className={curricular ? "hidden" : "visible"}>
+                                  <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
+                                  <p className="des">{store.description}</p>
+                                  <div className='emp-div'>
+
+{four.map((object) => (
+  <div key={object.id}>
+    <div style={{display:"flex"}} className="flexx">
+       {object.input1}
+       <h5 onClick={() => setext(!ext)} style={{cursor:"pointer"}} className="arrow">{ext ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+    </div>
+    <div className={ext ? "visible" : "hidden"}>
+    <div style={{display:"flex"}}>
+    <div className='emp-main'>
+
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Job title</label> <br />
+            <input
+              type="text"
+              value={object.input1}
+              className='work'
+              onChange={(e) => handleInputfour(e, object.id, 'input1')}
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">Employer</label> <br />
+          <input
+            type="text"
+            value={object.input2}
+            className='work'
+            onChange={(e) => handleInputfour(e, object.id, 'input2')}
+          />
+        </div>
+      </div>
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Start & End Date</label> <br />
+            <input type='date'
+                                value={object.input4}
+                                className='workk'
+                                onChange={(e) => handleInputfour(e, object.id, 'input4')}
+                              />
+                              <input type='date'
+                                value={object.input5}
+                                className='workk'
+                                onChange={(e) => handleInputfour(e, object.id, 'input5')}
+                              />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">City</label> <br />
+          <input
+            type="text"
+            value={object.input3}
+            className='work'
+            onChange={(e) => handleInputfour(e, object.id, 'input3')}
+          />
+        </div>
+      </div>
+      <div>
+        <div>
+          <label htmlFor="">Description</label> <br />
+          <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputfour(e, object.id, 'input6')}
+            placeholder='e.g. Created and implemented lesson plans based on child-led
+interests and curiosities'/>
+        </div>
+      </div>
+
+
+    </div>
+    <div>
+      <button onClick={() => deletefour(object.id)} className="delete">Delete</button>
+    </div>
+    </div>
+    </div>
+    
+  </div>
+))}
+<button onClick={createfour} className="add"> + Add Employment</button>
+
+</div>
+<button onClick={delete7}>delete</button>
+                                </div> : <span></span>
+                              }
+                          {
+                                store.name === "Course" ? <div className={cour ? "hidden" : "visible"}>
+                                   <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
+                                  <p className="des">{store.description}</p>
+                                  <div className='emp-div'>
+
+{course.map((object) => (
+  <div key={object.id}>
+    <div style={{display:"flex"}} className="flexx">
+     {object.input1}
+     <h5 onClick={() => setcou(!cou)} style={{cursor:"pointer"}} className="arrow">{cou ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+    </div>
+    <div className={cou ? "visible" : "hidden"}>
+      <div style={{display:"flex"}}>
+
+      
+    <div className='emp-main'>
+
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Job title</label> <br />
+            <input
+              type="text"
+              value={object.input1}
+              className='work'
+              onChange={(e) => handleInputcourse(e, object.id, 'input1')}
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">Employer</label> <br />
+          <input
+            type="text"
+            value={object.input2}
+            className='work'
+            onChange={(e) => handleInputcourse(e, object.id, 'input2')}
+          />
+        </div>
+      </div>
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Start & End Date</label> <br />
+            <input type='date'
+                                value={object.input4}
+                                className='workk'
+                                onChange={(e) => handleInputcourse(e, object.id, 'input4')}
+                              />
+                              <input type='date'
+                                value={object.input5}
+                                className='workk'
+                                onChange={(e) => handleInputcourse(e, object.id, 'input5')}
+                              />
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+    <div>
+      <button onClick={() => deletecourse(object.id)} className="delete"><MdOutlineDelete/></button>
+    </div>
+    </div>
+    </div>
+   
+  </div>
+))}
+<button onClick={createcourse} className="add"> + Add one more course</button>
+
+</div>
+<button onClick={delete2}>delete</button>
+                                </div> : <span></span>
+                              }
+                          {
+                                store.name === "Internships" ? <div className={intern ? "hidden" : "visible"}>
+                                  <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
+                                  <div className='emp-div'>
+
+{five.map((object) => (
+  <div key={object.id}>
+    <div className="flexx" style={{display:"flex"}}>
+      {object.input1}
+      <h5 onClick={()=> setinter(!inter)} style={{cursor:"pointer"}} className="arrow">{inter ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+    </div>
+    <div className={inter ? "visible" : "hidden"}>
+      <div style={{display:"flex"}}>
+
+      
+    <div className='emp-main'>
+
+      <div style={{ display: "flexx" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Job title</label> <br />
+            <input
+              type="text"
+              value={object.input1}
+              className='work'
+              onChange={(e) => handleInputfive(e, object.id, 'input1')}
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">Emp</label> <br />
+          <input
+            type="text"
+            value={object.input2}
+            className='work'
+            onChange={(e) => handleInputfive(e, object.id, 'input2')}
+          />
+        </div>
+      </div>
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Start & End Date</label> <br />
+            <input type='date'
+                                value={object.input4}
+                                className='workk'
+                                onChange={(e) => handleInputfive(e, object.id, 'input4')}
+                              />
+                              <input type='date'
+                                value={object.input5}
+                                className='workk'
+                                onChange={(e) => handleInputfive(e, object.id, 'input5')}
+                              />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">City</label> <br />
+          <input
+            type="text"
+            value={object.input3}
+            className='work'
+            onChange={(e) => handleInputfive(e, object.id, 'input3')}
+          />
+        </div>
+      </div>
+      <div>
+        <div>
+          <label htmlFor="">Description</label> <br />
+          
+        </div>
+      </div>
+
+
+    </div>
+    <div>
+      <button onClick={() => deletefive(object.id)} className="delete"><MdOutlineDelete/></button>
+    </div>
+    </div>
+    </div>
+   
+  </div>
+))}
+<button onClick={createfive} className="add"> + Add one more internship</button>
+
+</div>
+<button onClick={delete4}>delete</button>
+                                </div> : <span></span>
+                              }
+                              {
+                                store.name === "Project" ? <div className={proj ? "hidden" : "visible"}>
+                                  <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
+                                  <div className='emp-div'>
+
+{project.map((object) => (
+  <div key={object.id}>
+    <div style={{display:"flex"}} className="flexx">
+      {object.input1}
+      <h5 onClick={()=> setpro(!pro)} style={{cursor:"pointer"}} className="arrow">{pro ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+    </div>
+    <div className={pro ? "visible" : "hidden"}>
+      <div style={{display:"flex"}}>
+
+      
+    <div className='emp-main'>
+
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Project title</label> <br />
+            <input
+              type="text"
+              value={object.input1}
+              className='work'
+              onChange={(e) => handleInputproject(e, object.id, 'input1')}
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">Employer</label> <br />
+          <input
+            type="text"
+            value={object.input2}
+            className='work'
+            onChange={(e) => handleInputproject(e, object.id, 'input2')}
+          />
+        </div>
+      </div>
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Start & End Date</label> <br />
+            <input type='date'
+                                value={object.input4}
+                                className='workk'
+                                onChange={(e) => handleInputproject(e, object.id, 'input4')}
+                              />
+                              <input type='date'
+                                value={object.input5}
+                                className='workk'
+                                onChange={(e) => handleInputproject(e, object.id, 'input5')}
+                              />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">City</label> <br />
+          <input
+            type="text"
+            value={object.input3}
+            className='work'
+            onChange={(e) => handleInputproject(e, object.id, 'input3')}
+          />
+        </div>
+      </div>
+      <div>
+        <div>
+          <label htmlFor="">Project Summary</label> <br />
+          <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputproject(e, object.id, 'input6')}
+            placeholder='e.g. Created and implemented lesson plans based on child-led
+interests and curiosities'/>
+        </div>
+      </div>
+
+
+    </div>
+    <div>
+      <button onClick={() => deleteproject(object.id)} className="delete"><MdOutlineDelete/></button>
+    </div>
+    </div>
+    </div>
+    
+  </div>
+))}
+<button onClick={createproject} className="add"> + Add Project</button>
+
+</div>
+<button onClick={delete8}>delete</button>
+                                </div> : <span></span>
+                              }
+                              {
+                                store.name === "Refrence" ? <div className={reference ? "hidden" : "visible"}>
+                                  <h3><MdOutlineDragIndicator className="drag-icon"/>{store.name}</h3>
+                                  <div className='emp-div'>
+
+{three.map((object) => (
+  <div key={object.id}>
+    <div style={{display:"flex"}} className="flexx">
+      {object.input1}
+      <h5 onClick={()=> setref(!ref)} style={{cursor:"pointer"}} className="arrow">{ref ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+    </div>
+    <div className={ref ? "visible" : "hidden"}>
+      <div style={{display:"flex"}}>
+
+     
+    <div className='emp-main'>
+
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Name</label> <br />
+            <input
+              type="text"
+              value={object.input1}
+              className='work'
+              onChange={(e) => handleInputthree(e, object.id, 'input1')}
+            />
+          </div>
+        </div>
+        <div>
+          <label htmlFor="">Employer</label> <br />
+          <input
+            type="text"
+            value={object.input2}
+            className='work'
+            onChange={(e) => handleInputthree(e, object.id, 'input2')}
+          />
+        </div>
+      </div>
+      <div style={{ display: "flex" }}>
+        <div className='wanted'>
+          <div>
+            <label htmlFor="">Phone</label> <br />
+            <input type='text'
+              value={object.input4}
+              className='work'
+              onChange={(e) => handleInputthree(e, object.id, 'input4')}
+            />
+          </div>
+        </div>
+        <div className="wanted">
+              <div>
+              <label htmlFor="">Email</label> <br />
+            <input type='text'
+              value={object.input5}
+              className='work'
+              onChange={(e) => handleInputthree(e, object.id, 'input5')}
+            />
+              </div>
+            </div>
+
+      </div>
+
+
+
+    </div>
+    <div>
+      <button onClick={() => deletethree(object.id)}  className="delete"><MdOutlineDelete/></button>
+    </div>
+    </div>
+    </div>
+    
+  </div>
+))}
+<button onClick={createthree} className="add"> + Add one more reference</button>
+
+</div>
+<button onClick={delete3}>delete</button>
+                                </div> : <span></span>
+                              }
+                              {
+                                store.name === "Custom" ? <div className={secetion ? "hidden" : "visible"}>
+                                  
+                                <div className='emp-div'>
+                
+                                  {cust.map((object) => (
+                                    <div key={object.id}>
+                                      <div style={{display:"flex"}} className="flexx">
+                                        {object.input1}
+                                        <h5 onClick={()=> setcus(!cus)} style={{cursor:"pointer"}} className="arrow">{cus ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
                                       </div>
                                     </div>
 
@@ -1338,6 +2317,7 @@ interests and curiosities'/>
                                   <button onClick={createfour} className="add"> + Add Employment</button>
 
                                 </div>
+<<<<<<< HEAD
                                 {/* <button onClick={delete7}>delete</button> */}
                               </div> : <span></span>
                             }
@@ -1348,6 +2328,35 @@ interests and curiosities'/>
                                   {course.map((object) => (
                                     <div key={object.id} style={{ display: "flex" }}>
                                       <div className='emp-main'>
+=======
+                                <button onClick={delete1}>delete</button>
+                                </div> : <span></span>
+                              }
+                              
+
+            </div>
+            )}
+            
+          </Draggable>
+        ))}
+          </div>
+        )}
+        </Droppable>
+      </div>
+      </DragDropContext>
+      <div className="main-div">
+        <div className={link ? "hidden" : "visible"}>
+          <div>
+            <h2> Websites & Social Links</h2>
+          </div>
+          <div>
+            <p>You can add links to websites you want hiring managers to see! Perhaps it will be
+              a link to your portfolio,LinkedIn profile or personal website</p>
+          </div>
+          <div className="div1">
+            {/* <Websites></Websites> */}
+            <div className='emp-div'>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
                                         <div style={{ display: "flex" }}>
                                           <div className='wanted'>
@@ -1609,6 +2618,7 @@ interests and curiosities'/>
               </div>
 
             </div>
+<<<<<<< HEAD
           </div>
           <div>
             <div>
@@ -1623,6 +2633,39 @@ interests and curiosities'/>
             <div>
               {/* <Skills></Skills> */}
               <div className='emp-div'>
+=======
+
+          </div>
+          <button onClick={delete9}>delete</button>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div className={label ? "hidden" : "visible"}>
+
+            
+          <div>
+            <h2> Skills</h2>
+          </div>
+          <div>
+            <p>
+              Choose 5 important skills that show you fit the position. Make sure they match
+              the key skills mentioned in the job listing(especially when applying via an online system)
+            </p>
+          </div>
+          <div>
+            <label htmlFor="">
+            <Switch
+          onChange={handleSwitchChange}
+          checked={isChecked}
+        /> Show level
+            </label>
+         
+          </div>
+          <div>
+            {/* <Skills></Skills> */}
+            <div className='emp-div'>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
 
                 {skill.map((object) => (
                   <div key={object.id} style={{ display: "flex" }}>
@@ -1719,8 +2762,17 @@ interests and curiosities'/>
 
               </div>
             </div>
+<<<<<<< HEAD
             {
               <div>
+=======
+            <button onClick={delete10}>Delete</button>
+          </div>
+          </div>
+          </div>
+          {
+              <div className={hobb ? "hidden" : "visible"}>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
                 <div>
                   <h2>Hobbies</h2>
                 </div>
@@ -1730,7 +2782,11 @@ interests and curiosities'/>
                     <div key={object.id}>
                       <div style={{ display: "flex" }} id="flexx">
                         {object.input1}
+<<<<<<< HEAD
                         <h5 onClick={() => sethobbie(hobbie)} className="arrow" style={{ cursor: "pointer" }}>{hobbie ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+=======
+                        <h5 onClick={()=>sethobbie(!hobbie)} className="arrow" style={{cursor:"pointer"}}>{hobbie ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
                       </div>
                       <div className={hobbie ? "visible" : "hidden"}>
                         <div style={{ display: "flex" }}>
@@ -1764,11 +2820,20 @@ interests and curiosities'/>
                   <button onClick={createsix} className="add"> + Add more Hobbie</button>
 
                 </div>
+<<<<<<< HEAD
                 {/* <button onClick={delete6}>delete</button> */}
               </div>
             }
             <div>
               {
+=======
+                <button onClick={delete6}>delete</button>
+                </div>
+            }
+          <div>
+            {
+               <div className={lang ? "hidden" : "visible"}>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
                 <div>
                   <div>
                     <h2>Langugages</h2>
@@ -2012,6 +3077,7 @@ interests and curiosities'/>
                     </div>
                   ))}
                 </div>
+<<<<<<< HEAD
                 <div className="top">
                   {
                     web === "" ? <span></span> : <h4 className="heading">Links</h4>
@@ -2040,6 +3106,63 @@ interests and curiosities'/>
                       </div>
                     ))}
 
+=======
+                <button onClick={delete5}>delete</button>
+                </div>
+            }
+          </div>
+        </div>
+        </div>
+        <div>
+          <div>
+          <button onClick={handlecurricular}>Extra-Curricular</button>
+          <button onClick={handlecourse}>Course</button>
+          </div>
+          <div>
+          <button onClick={handleinternship}>Internship</button>
+          <button onClick={handlereference}>Reference</button>
+          </div>
+          <div>
+          <button onClick={handlesection}>Custom Secetion</button>
+          <button onClick={handleproject}>Project</button>
+          </div>
+          <div>
+          <button onClick={handlelink}>Links</button>
+          <button onClick={handleskill}>Skill</button>
+          </div>
+          <div>
+          <button onClick={handlehobbie}>Hobbies</button>
+          <button onClick={handlelanguage}>Langugages</button>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    <div className="resume-right">
+      <button onClick={generatePDF}>Generate PDF</button>
+      <Scrollbars>
+      <div className="main-full" id="pdf-content">
+        
+        <div className="main-right">
+          <div>
+          <div style={{display:"flex"}} className="cont-1">
+                      <div className="profile-pic">
+                  <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
+        {({ getRootProps, getInputProps }) => (
+          <div className="dropzone" id="drop" {...getRootProps()}>
+            <input {...getInputProps()} />
+            {selectedFile?
+                (
+                    <div className='image'>
+                  <div className="image-container">
+                    <img
+                      src={URL.createObjectURL(selectedFile)}
+                      alt="Uploaded"
+                      className="rounded-image"
+                      onClick={handleView}
+                    />
+                    
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
                   </div>
                 </div>
                 <div className="top">
@@ -2061,6 +3184,185 @@ interests and curiosities'/>
                   </div>
                 </div>
               </div>
+<<<<<<< HEAD
+=======
+            )}
+          </div>
+        )}
+      </Dropzone>
+      </div>
+      <div>
+        <div style={{display:"flex"}}>
+          <h3 className="name1">{name}</h3>
+          <h3 className="name2">{lastname}</h3>
+        </div>
+        <div>
+          <h6 className="name">{job}</h6>
+        </div>
+      </div>
+      </div>
+      <div className="summry">
+{
+editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
+}
+<div className="mess" dangerouslySetInnerHTML={{ __html: editorHtml }} />
+</div>
+          </div>
+
+       
+      <div>
+      
+      <DragDropContext onDragEnd={handleDragDrop}>
+      <div className="movement">
+        <Droppable droppableId="Root" type="group">
+        {(provided)=>(
+          <div {...provided.droppableProps} ref={provided.innerRef}>
+            {ite.map((store,index)=>(
+          <Draggable draggableId={store.id} key={store.id} index={index}>
+            {(provided)=>(
+              <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+              {/* <h3>{store.name}</h3> */}
+              <Storelist {...store}/>
+              
+              
+            </div>
+            )}
+            
+          </Draggable>
+        ))}
+          </div>
+        )}
+        </Droppable>
+      </div>
+      </DragDropContext>
+      </div>
+      </div>
+      <div className="main-left">
+        <div className="pincode">
+        <div className="details">
+                      {
+                        address === "" ? <span></span> : <h4 className="heading">Details</h4>
+                      }
+
+                      <div>
+                        <p className="cont">{address}</p>
+                      </div>
+                      <div>
+                        <p className="cit">{`${city} , ${post}`}</p>
+                      </div>
+                      <div>
+                        <p className="cit">{country}</p>
+                      </div>
+
+
+                    </div>
+                    <div>
+                      {
+                        email  === "" ? <span></span> : <h4 className="heading">Contact</h4>
+                      }
+                      <div>
+                        <p className="cit">{phone}</p>
+                      </div>
+                      <div>
+                        <p className="conte">{email}</p>
+                      </div>
+                    </div>
+                    <div>
+                      {
+                         licence === "" ? <span></span> : <h4 className="heading1">Driving License</h4>
+                      }
+                      <div>
+                        <p className="cit">{licence}</p>
+                      </div>
+                    </div>
+                    <div>
+                      {
+                        nation === "" ? <span></span> : <h4 className="heading1">Nationality</h4>
+                      }
+                      <div>
+                        <p className="cit">{nation}</p>
+                      </div>
+                    </div>
+                    <div>
+                      {
+                        place && birth !== "" ? <h4 className="heading1">Place/Date of Birth</h4> : place !== "" ? <h4 className="heading1">Place of Birth</h4> : birth !== "" ? <h4 className="heading1">Date of Birth</h4> : <span></span>
+                      }
+                      <div>
+                        <p className="cit">{birth}</p>
+                        <p className="cit">{place}</p>
+                      </div>
+                    </div>
+                    <div className="top">
+                    {
+                        ill === "" ? <span></span> : <h4 className="heading">Skills</h4>
+                    }
+                    {skill.map((object) => (
+          <div key={object.id} className="ill">
+            
+            
+            <p className="cit" id="cit">{`${object.input1}`}</p>
+            <div className="ski1">
+            {
+                isChecked ? <div>
+                  {
+                object.input2 === "" ? <span></span> : <p className="ski">{`${object.input2}/5`}</p>
+              }
+                </div> : <span></span>
+              }
+              
+            
+           
+            
+            </div>
+            
+
+
+          </div>
+        ))}
+                    </div>
+                    <div className="top">
+                    {
+                        web === "" ? <span></span> : <h4 className="heading">Links</h4>
+                    }
+                    {website.map((object) => (
+          <div key={object.id}>
+            
+            {/* <p className="cit">{`${object.input1}`}</p> */}
+            <Link to={object.input2} className="cit" id="link">{object.input1}</Link>
+            
+
+
+          </div>
+        ))}
+                    </div>
+                    <div className="top">
+                      {
+                        hob === "" ? <span></span> : <h4 className="heading">Hobbies</h4>
+                      }
+                      <div>
+                      {six.map((object) => (
+          <div key={object.id} className="ill">
+            
+            
+            <p className="cit">{`${object.input1}`}</p>
+          </div>
+        ))}
+
+                      </div>
+                    </div>
+                    <div className="top">
+                      {
+                        lan === "" ? <span></span> : <h4 className="heading">Languages</h4>
+                      }
+                      <div>
+                      {seven.map((object) => (
+          <div key={object.id} className="ill">
+            
+            
+            <p className="cit"  id="cit">{`${object.input1}`}</p>
+            <div className="ski1">
+            <p className="ski">{`${object.input2}/5`}</p>
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
             </div>
           </div>
 
@@ -2068,8 +3370,9 @@ interests and curiosities'/>
         </Scrollbars>
       </div>
     </div>
+    </div>
   )
-}
+
 
 function Storelist({ name, it, id }) {
   return (
@@ -2146,6 +3449,7 @@ function Storelist({ name, it, id }) {
         }
         {
           id === "03" ? <div>
+<<<<<<< HEAD
             {it.map((item, index) => (
               <div className="store">
                 {
@@ -2164,6 +3468,28 @@ function Storelist({ name, it, id }) {
 
               </div>
             ))}
+=======
+            {it.map((item,index) => (
+          <div className="store">
+            {
+              item.input1 === undefined ? <span></span> : <div>
+                 <div className="store">
+                <h2 className="head">Extra-curricular activites</h2>
+              {
+                item.input1 === undefined ? <span></span> : <div>
+                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+              <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+              <p className="fonttt">{item.input6}</p>
+                </div>
+              }
+              
+            </div>
+              </div>
+            }
+            
+          </div>
+        ))}
+>>>>>>> f389719dcc6b8d4d850be866e2cb495f210dad2b
           </div> : <span></span>
         }
         {
@@ -2227,6 +3553,7 @@ function Storelist({ name, it, id }) {
       </div>
     </div>
   )
+}
 }
 
 export default Hobbies
