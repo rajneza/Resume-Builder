@@ -1766,7 +1766,7 @@ interests and curiosities'/>
 
       </div>
     <div className="full">
-      <button onClick={generatePDF}>Generate PDF</button>
+      <button className="generate" onClick={generatePDF}>Generate PDF</button>
       <Scrollbars>
       <div className="main-full" id="pdf-content">
         
@@ -1811,16 +1811,16 @@ interests and curiosities'/>
           <h3 className="name1">{name}</h3>
           <h3 className="name2">{lastname}</h3>
         </div>
-        <div>
+        <div className="div-name">
           <h6 className="name">{job}</h6>
         </div>
       </div>
       </div>
       <div className="summry">
 {
-editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
+editorHtml === "" ? <span></span> : <h3 className="prof">Profile</h3>
 }
-<div className="mess" dangerouslySetInnerHTML={{ __html: editorHtml }} />
+<div className="mess fonttt" dangerouslySetInnerHTML={{ __html: editorHtml }} />
 </div>
           </div>
 
@@ -1856,7 +1856,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
         <div className="pincode">
         <div className="details">
                       {
-                        address === "" ? <span></span> : <h4 className="heading">Details</h4>
+                        address === "" ? <span></span> : <h3 className="heading">Address</h3>
                       }
 
                       <div>
@@ -1873,7 +1873,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                     </div>
                     <div>
                       {
-                        email  === "" ? <span></span> : <h4 className="heading">Contact</h4>
+                        email  === "" ? <span></span> : <h3 className="heading">Contact</h3>
                       }
                       <div>
                         <p className="cit">{phone}</p>
@@ -1884,7 +1884,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                     </div>
                     <div>
                       {
-                         licence === "" ? <span></span> : <h4 className="heading1">Driving License</h4>
+                         licence === "" ? <span></span> : <h3 className="heading1">Driving License</h3>
                       }
                       <div>
                         <p className="cit">{licence}</p>
@@ -1892,7 +1892,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                     </div>
                     <div>
                       {
-                        nation === "" ? <span></span> : <h4 className="heading1">Nationality</h4>
+                        nation === "" ? <span></span> : <h3 className="heading1">Nationality</h3>
                       }
                       <div>
                         <p className="cit">{nation}</p>
@@ -1900,7 +1900,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                     </div>
                     <div>
                       {
-                        place && birth !== "" ? <h4 className="heading1">Place/Date of Birth</h4> : place !== "" ? <h4 className="heading1">Place of Birth</h4> : birth !== "" ? <h4 className="heading1">Date of Birth</h4> : <span></span>
+                        place && birth !== "" ? <h3 className="heading1">Place/Date of Birth</h3> : place !== "" ? <h3 className="heading1">Place of Birth</h3> : birth !== "" ? <h4 className="heading1">Date of Birth</h4> : <span></span>
                       }
                       <div>
                         <p className="cit">{birth}</p>
@@ -1909,7 +1909,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                     </div>
                     <div className="top">
                     {
-                        ill === "" ? <span></span> : <h4 className="heading">Skills</h4>
+                        ill === "" ? <span></span> : <h3 className="heading">Skills</h3>
                     }
                     {skill.map((object) => (
           <div key={object.id} className="ill">
@@ -1933,7 +1933,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                     </div>
                     <div className="top">
                     {
-                        web === "" ? <span></span> : <h4 className="heading">Links</h4>
+                        web === "" ? <span></span> : <h3 className="heading">Links</h3>
                     }
                     {website.map((object) => (
           <div key={object.id}>
@@ -1948,7 +1948,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                     </div>
                     <div className="top">
                       {
-                        hob === "" ? <span></span> : <h4 className="heading">Hobbies</h4>
+                        hob === "" ? <span></span> : <h3 className="heading">Hobbies</h3>
                       }
                       <div>
                       {six.map((object) => (
@@ -1963,7 +1963,7 @@ editorHtml === "" ? <span></span> : <h2 className="prof">Profile</h2>
                     </div>
                     <div className="top">
                       {
-                        lan === "" ? <span></span> : <h4 className="heading">Languages</h4>
+                        lan === "" ? <span></span> : <h3 className="heading">Languages</h3>
                       }
                       <div>
                       {seven.map((object) => (
@@ -2006,7 +2006,7 @@ function Storelist({name, it, id}){
                     {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
             <p className="fonttt">{item.input6}</p> */}
-            <h2 className="head">References</h2>
+            <h3 className="head">References</h3>
             <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
             <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
               </div>
@@ -2018,7 +2018,7 @@ function Storelist({name, it, id}){
         }
         {
           id === "01" ? <div>
-             <h2 className="head">Employment</h2>
+             <h3 className="head">Employment</h3>
             {it.map((item,index) => (
           <div className="store">
            
@@ -2047,7 +2047,7 @@ function Storelist({name, it, id}){
           <div className="store">
             {
               item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Education</h2>
+                <h3 className="head">Education</h3>
               {
                 item.input1 === undefined ? <span></span> : <div>
                       <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
@@ -2069,7 +2069,7 @@ function Storelist({name, it, id}){
           <div className="store">
             {
               item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Extra-curricular activites</h2>
+                <h3 className="head">Extra-curricular activites</h3>
               {
                 item.input1 === undefined ? <span></span> : <div>
                       <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
@@ -2091,7 +2091,7 @@ function Storelist({name, it, id}){
           <div className="store">
             {
               item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Course</h2>
+                <h3 className="head">Course</h3>
               {
                 item.input1 === undefined ? <span></span> : <div>
                       <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
@@ -2113,7 +2113,7 @@ function Storelist({name, it, id}){
           <div className="store">
             {
               item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Internships</h2>
+                <h3 className="head">Internships</h3>
               {
                 item.input1 === undefined ? <span></span> : <div>
                       <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
@@ -2135,7 +2135,7 @@ function Storelist({name, it, id}){
           <div className="store">
             {
               item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Project</h2>
+                <h3 className="head">Project</h3>
               {
                 item.input1 === undefined ? <span></span> : <div>
                       <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
@@ -2158,7 +2158,7 @@ function Storelist({name, it, id}){
           <div className="store">
             {
               item.input1 === undefined ? <span></span> : <div className="store">
-                <h2 className="head">Custom</h2>
+                <h3 className="head">Custom</h3>
               {
                 item.input1 === undefined ? <span></span> : <div>
                       <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>

@@ -166,7 +166,14 @@ Popup.css
   }
   .name{
     margin-right: 2%;
+    font-size: 0.9rem;
+    width: 4vw;
     
+    
+  }
+  .div-name{
+    
+    margin-left: 25%;
   }
   .role{
     text-align: left;
@@ -207,11 +214,14 @@ Popup.css
 
   }
   .mess{
-    width: 100%;
+    /* width: 100%; */
     font-size: 0.8rem;
     margin-top: 0%;
     display: flex;
     flex-wrap: wrap;
+    margin-right: 3%;
+    margin-bottom: 0%;
+   
   }
   .input{
    text-align: left;
@@ -343,12 +353,13 @@ Popup.css
      .fon{
       font-size: 0.9rem;
       font-weight: bolder;
-      margin-top: 2%;
+      margin-top: .5%;
       margin-bottom: 1%;
      }
      .head{
       margin-bottom: 0%;
-      margin-top: 3%;
+      margin-top: 0%;
+      margin-bottom: 0%;
      }
      .subj{
       margin-left: 10%;
@@ -363,15 +374,17 @@ Popup.css
       outline: none;
      }
      .fontt{
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       font-weight: bold;
       margin-top: 0%;
       margin-bottom: 0%;
      }
      .fonttt{
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       margin-top: 2%;
       margin-bottom: 4%;
+      text-align: justify;
+      margin-right: 3%;
      }
      .sum{
       font-size: x-small;
@@ -393,11 +406,11 @@ Popup.css
       /* background-color: #c3e5fe; */
       display: flex;
       flex-wrap: wrap;
-      font-size: small;
+      font-size: 0.9rem;
      }
      .cit{
       margin-top: 0%;
-      font-size: small;
+      font-size:0.9rem;;
       margin-bottom: 0%;
      }
      .conte{
@@ -405,10 +418,10 @@ Popup.css
       font-size: x-small;
      }
      .heading1{
-      font-size: small;
+      
       margin-top: 10%;
       margin-bottom: 5%;
-      color: #c3e5fe;
+     
      }
      .top{
       margin-top: 15%;
@@ -480,4 +493,13 @@ Popup.css
      }
      .des{
       width: 90%;
+     }
+     .generate{
+      background-color: #0f3871;
+      border: none;
+      margin-left: 38%;
+      color: white;
+      height: 7vh;
+      width: 10vw;
+      border-radius: 5px;
      }
