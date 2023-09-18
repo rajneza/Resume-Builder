@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import ReactQuill from "react-quill";
@@ -20,7 +20,8 @@ import { render } from 'react-dom';
 import { useReactToPrint } from 'react-to-print';
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import image from "./Components/images/custom-extra.svg";
 import image1 from "./Components/images/custom-course.svg";
 import image2 from "./Components/images/custom-internship.svg";
@@ -149,6 +150,13 @@ function Hobbies() {
   const [completionPercentage, setCompletionPercentage] = useState(0);
   const [selectedCountry, setSelectedCountry] = useState("");
   const contentDivRef = useRef(null);
+  const [skillsProgressBars, setSkillsProgressBars] = useState({});
+  const [studentSkills, setStudentSkills] = useState([]);
+  const [selectedSkill, setSelectedSkill] = useState('');
+  const [selectedStage, setSelectedStage] = useState('Fresher');
+  const [stages, setStages] = useState(['Fresher', 'Experience', 'Export', 'Pro']);
+  const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
+
   function setField(value, type) {
     switch (type) {
       case "name":
@@ -258,13 +266,155 @@ function Hobbies() {
   const handlePrint = useReactToPrint({
     content: () => contentDivRef.current, // Reference to the content div
   });
+  const createSecondProgressBar = (skill) => {
+    const initialProgress = {
+      Fresher: 25,
+      Experience: 0,
+      Export: 0,
+      Pro: 0,
+    };
+
+    setSkillsProgressBars((prevState) => ({
+      ...prevState,
+      [skill]: {
+        progress: initialProgress,
+      },
+    }));
+  };
+
+  const handleSkillSelectChange = (event) => {
+    const selectedSkill = event.target.value;
+    setSelectedSkill(selectedSkill);
+
+    if (selectedSkill === 'add_skill') {
+      const newSkills = [];
+
+      while (true) {
+        const newSkillInput = prompt('Enter a new skill (or click "Cancel" to stop adding skills):');
+
+        if (newSkillInput === null) {
+          // User clicked "Cancel" or closed the prompt
+          break;
+        }
+
+        if (newSkillInput.trim() === '') {
+          // Handle empty input if needed
+          toast.error('Skill name cannot be empty.');
+        } else {
+          // Add the skill to the list
+          newSkills.push(newSkillInput);
+        }
+      }
+
+      if (newSkills.length > 0) {
+        // Add the new skills to the state
+        setStudentSkills([...studentSkills, ...newSkills]);
+
+        // Create progress bars for the new skills
+        newSkills.forEach((newSkill) => createSecondProgressBar(newSkill));
+
+        // Set the recently added skills
+        setRecentlyAddedSkill(newSkills);
+
+        // Display a confirmation message for the last added skill
+        toast.success(`Skill added successfully: ${newSkills[newSkills.length - 1]}`);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Display a single toast message for all recently added skills
+    if (recentlyAddedSkill.length > 0) {
+      toast.info(`Please select  the following skills: ${recentlyAddedSkill.join(', ')} from the droupdown`, {
+        position: toast.POSITION.TOP_CENTER, // Set the position to top center
+      });
+      setRecentlyAddedSkill([]); // Clear the recently added skills
+    }
+  }, [recentlyAddedSkill]);
+
+  const deleteSkill = (index, skill) => {
+    const updatedSkills = [...studentSkills];
+    updatedSkills.splice(index, 1);
+    setStudentSkills(updatedSkills);
+
+    setSkillsProgressBars((prevState) => {
+      const newSkillsProgressBars = { ...prevState };
+      delete newSkillsProgressBars[skill];
+      return newSkillsProgressBars;
+    });
+  };
+
+  const renderSecondProgressBar = (skill) => {
+    const progress = skillsProgressBars[skill]?.progress || {};
+    return (
+      <div className="progress-bar">
+        <div
+          className="inner-progress stage-fresher"
+          style={{ width: `${progress.Fresher}%`, backgroundColor: getRandomColor() }}
+        ></div>
+        <div
+          className="inner-progress stage-experience"
+          style={{ width: `${progress.Experience}%`, backgroundColor: getRandomColor() }}
+        ></div>
+        <div
+          className="inner-progress stage-export"
+          style={{ width: `${progress.Export}%`, backgroundColor: getRandomColor() }}
+        ></div>
+        <div
+          className="inner-progress stage-pro"
+          style={{ width: `${progress.Pro}%`, backgroundColor: getRandomColor() }}
+        ></div>
+      </div>
+    );
+  };
+
+  const handleStageClick = (index) => {
+    const selectedStage = stages[index];
+    setSelectedStage(selectedStage);
+
+    if (selectedSkill && selectedSkill !== 'add_skill') {
+      updateSecondProgressBar(selectedSkill, selectedStage);
+    }
+  };
+
+  const updateSecondProgressBar = (skill, stage) => {
+    setSkillsProgressBars((prevState) => {
+      const updatedSkillsProgressBars = { ...prevState };
+
+      let progressPercentage = 0;
+      if (stage === 'Fresher') {
+        progressPercentage = 25;
+      } else if (stage === 'Experience') {
+        progressPercentage = 50;
+      } else if (stage === 'Export') {
+        progressPercentage = 75;
+      } else if (stage === 'Pro') {
+        progressPercentage = 100;
+      }
+
+      updatedSkillsProgressBars[skill].progress = {
+        Fresher: stage === 'Fresher' ? progressPercentage : 0,
+        Experience: stage === 'Experience' ? progressPercentage : 0,
+        Export: stage === 'Export' ? progressPercentage : 0,
+        Pro: stage === 'Pro' ? progressPercentage : 0,
+      };
+
+      return updatedSkillsProgressBars;
+    });
+  };
+
+  const getRandomColor = () => {
+    const colors = ['red'];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  };
 
   // Handle the switch's change event
   const handleSwitchChange = (checked) => {
     setIsChecked(checked);
   };
 
-  
+
   const handleChange = (html) => {
     setEditorHtml(html);
     if (editorHtml === "") {
@@ -357,20 +507,7 @@ function Hobbies() {
       setShowFullView(true);
     }
   };
-  // PDF
-  // const generatePDF = () => {
-  //   const doc = new jsPDF();
 
-  //   doc.text("", 10, 10);
-
-  //   const content = document.getElementById("pdf-content");
-
-  //   html2canvas(content).then((canvas) => {
-  //     const imgData = canvas.toDataURL("image/png");
-  //     doc.addImage(imgData, "PNG", 10, 20);
-  //     doc.save("sample.pdf");
-  //   });
-  // };
   const [objects, setObjects] = useState([]);
 
   const createObject = () => {
@@ -915,206 +1052,206 @@ function Hobbies() {
                   <div className="photo">
                     {/* <PhotoUpload></PhotoUpload> */}
 
-              <div className="select-photo-container">
-            <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
-        {({ getRootProps, getInputProps }) => (
-          <div className="dropzone" {...getRootProps()}>
-            <input {...getInputProps()} />
-            {selectedFile?
-                (
-                    <div className='image'>
-                  <div className="image-container">
-                    <img
-                      src={URL.createObjectURL(selectedFile)}
-                      alt="Uploaded"
-                      className="rounded-image"
-                      onClick={handleView}
+                    <div className="select-photo-container">
+                      <Dropzone onDrop={handleDrop} accept="image/*" multiple={false}>
+                        {({ getRootProps, getInputProps }) => (
+                          <div className="dropzone" {...getRootProps()}>
+                            <input {...getInputProps()} />
+                            {selectedFile ?
+                              (
+                                <div className='image'>
+                                  <div className="image-container">
+                                    <img
+                                      src={URL.createObjectURL(selectedFile)}
+                                      alt="Uploaded"
+                                      className="rounded-image"
+                                      onClick={handleView}
+                                    />
+                                  </div>
+                                </div>
+                              ) : (
+                                <div className="select-image">
+                                  <div className="person-icon">
+                                    <GoPerson className='icon'></GoPerson>
+                                  </div>
+                                  <div className="photo-heading">
+                                    <h4>Upload photo</h4>
+                                  </div>
+                                </div>
+                              )}
+                          </div>
+                        )}
+                      </Dropzone>
+                      <div className='text'>
+                        {
+                          selectedFile ?
+                            (
+                              <div className="photo-edit-container">
+                                <div className="photo-delete">
+                                  <button onClick={handleDelete} className="ed"><MdOutlineDelete /></button>
+                                </div>
+                                <div className="photo-edit">
+                                  <button onClick={handleView} className="ed"><AiOutlineEdit /></button>
+                                </div>
+                              </div>
+                            ) : (
+                              <div>
+                                {/* <h4>Upload photo</h4> */}
+                              </div>
+                            )
+                        }
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div className="job-title">
+                  <div className="wanted">
+                    <div className="job">
+                      <label htmlFor="">First Name</label> <br />
+                      <input type="text" className="work" value={name} onChange={(e) => {
+                        progress(
+                          e.target.value,
+                          name,
+                          "name",
+                          5
+                        );
+                      }} />
+                    </div>
+                  </div>
+                  <div className="photo">
+                    <label htmlFor="">Last Name</label> <br />
+                    <input type="text" className="work" value={lastname} onChange={(e) => {
+                      setlastname(e.target.value);
+                    }} />
+                  </div>
+
+                </div>
+                <div className="job-title">
+                  <div className="wanted">
+                    <div className="job">
+                      <label htmlFor="">Email</label> <br />
+                      <input type="email" className="work" value={email} onChange={(e) => {
+                        progress(e.target.value, email, "email", 5);
+                      }} />
+                    </div>
+                  </div>
+                  <div className="photo">
+                    <label htmlFor="">Phone</label> <br />
+                    <PhoneInput
+                      country={"in"}
+                      className="work"
+                      value={phone}
+                      onChange={phoneChange}
                     />
                   </div>
+
+
+                </div>
+                <div className="job-title">
+                  <div className="wanted">
+                    <div className="job">
+                      <label htmlFor="">Country</label> <br />
+                      <input type="text" className="work" value={country} onChange={(e) => {
+                        progress(e.target.value, country, "country", 5);
+                      }} />
+                    </div>
                   </div>
-            ) : (
-              <div className="select-image">
-                <div className="person-icon">
-                <GoPerson className='icon'></GoPerson>
-                </div>
-                <div className="photo-heading">
-                <h4>Upload photo</h4>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </Dropzone>
-      <div className='text'>
-        {
-          selectedFile?
-          (
-            <div className="photo-edit-container">
-                <div className="photo-delete">
-                <button onClick={handleDelete} className="ed"><MdOutlineDelete/></button>
-                </div>
-                  <div className="photo-edit">
-                  <button onClick={handleView} className="ed"><AiOutlineEdit/></button>
+                  <div className="photo">
+                    <label htmlFor="">City</label> <br />
+                    <input type="text" className="work" value={city} onChange={(e) => {
+                      progress(e.target.value, city, "city", 5);
+                    }} />
                   </div>
-            </div>
-          ) :(
-            <div>
-              {/* <h4>Upload photo</h4> */}
-            </div>
-          )
-        }
-      </div>
-    </div>
 
-            </div>
-          </div>
-          <div className="job-title">
-            <div className="wanted">
-              <div className="job">
-                <label htmlFor="">First Name</label> <br />
-                <input type="text" className="work" value={name} onChange={(e) => {
-                            progress(
-                              e.target.value,
-                              name,
-                              "name",
-                              5
-                            );
-                          }} />
-              </div>
-            </div>
-            <div className="photo">
-              <label htmlFor="">Last Name</label> <br />
-              <input type="text" className="work" value={lastname} onChange={(e) => {
-                            setlastname(e.target.value);
-                          }} />
-            </div>
-
-          </div>
-          <div className="job-title">
-            <div className="wanted">
-              <div className="job">
-                <label htmlFor="">Email</label> <br />
-                <input type="email" className="work" value={email} onChange={(e) => {
-                            progress(e.target.value, email, "email", 5);
-                          }} />
-              </div>
-            </div>
-            <div className="photo">
-              <label htmlFor="">Phone</label> <br />
-              <PhoneInput
-                          country={"in"}
-                          className="work"
-                          value={phone}
-                          onChange={phoneChange}
-                        />
-            </div>
-
-
-          </div>
-          <div className="job-title">
-            <div className="wanted">
-              <div className="job">
-                <label htmlFor="">Country</label> <br />
-                <input type="text" className="work" value={country} onChange={(e) => {
-                            progress(e.target.value, country, "country", 5);
-                          }} />
-              </div>
-            </div>
-            <div className="photo">
-              <label htmlFor="">City</label> <br />
-              <input type="text" className="work" value={city} onChange={(e) => {
-                            progress(e.target.value, city, "city", 5);
-                          }} />
-            </div>
-
-          </div>
-          <div className={display ? "visble" : "hidden"}>
-            <div className="job-title">
-              <div className="wanted">
-                <div className="job">
-                  <label htmlFor="">Address</label> <br />
-                  <input type="text" className="work" value={address} onChange={(e) => {
-                                progress(e.target.value, address, "address", 5);
-                              }} />
                 </div>
-              </div>
-              <div className="photo">
-                <label htmlFor="">Postal code</label> <br />
-                <input type="text" className="work" value={post} onChange={(e) => {
-                                progress(e.target.value, post, "post", 5);
-                              }} />
-              </div>
+                <div className={display ? "visble" : "hidden"}>
+                  <div className="job-title">
+                    <div className="wanted">
+                      <div className="job">
+                        <label htmlFor="">Address</label> <br />
+                        <input type="text" className="work" value={address} onChange={(e) => {
+                          progress(e.target.value, address, "address", 5);
+                        }} />
+                      </div>
+                    </div>
+                    <div className="photo">
+                      <label htmlFor="">Postal code</label> <br />
+                      <input type="text" className="work" value={post} onChange={(e) => {
+                        progress(e.target.value, post, "post", 5);
+                      }} />
+                    </div>
 
-            </div>
-            <div className={display ? "visble" : "hidden"}>
-              <div className="job-title">
-                <div className="wanted">
-                  <div className="job">
-                      <label htmlFor="">Driving </label> <br />
-                                    <input type="text" className="work" value={licence} onChange={(e) => {
-                                setlicense(e.target.value);
-                              }}/>
                   </div>
-                </div>
-                <div className="photo">
-                   <label>Nation</label><br />
-                  <input type="text" className="work" value={nation} onChange={(e) => {
-                                progress(e.target.value, nation, "nation", 5);
-                              }}/>
-                </div>
+                  <div className={display ? "visble" : "hidden"}>
+                    <div className="job-title">
+                      <div className="wanted">
+                        <div className="job">
+                          <label htmlFor="">Driving </label> <br />
+                          <input type="text" className="work" value={licence} onChange={(e) => {
+                            setlicense(e.target.value);
+                          }} />
+                        </div>
+                      </div>
+                      <div className="photo">
+                        <label>Nation</label><br />
+                        <input type="text" className="work" value={nation} onChange={(e) => {
+                          progress(e.target.value, nation, "nation", 5);
+                        }} />
+                      </div>
 
-              </div>
-            </div>
-            <div className={display ? "visble" : "hidden"}>
-              <div className="job-title">
-                <div className="wanted">
-                  <div className="job">
-                        <label htmlFor="">Place of Birth</label> <br />
-                    <input type="text" className="work" value={place} onChange={(e) => {
-                                progress(e.target.value, place, "place", 5);
-                              }}/>
+                    </div>
                   </div>
+                  <div className={display ? "visble" : "hidden"}>
+                    <div className="job-title">
+                      <div className="wanted">
+                        <div className="job">
+                          <label htmlFor="">Place of Birth</label> <br />
+                          <input type="text" className="work" value={place} onChange={(e) => {
+                            progress(e.target.value, place, "place", 5);
+                          }} />
+                        </div>
+                      </div>
+                      <div className="photo">
+                        <label htmlFor="">Date of Birth</label> <br />
+                        <input type="text" className="work" value={birth} onChange={(e) => {
+                          progress(e.target.value, birth, "birth", 5);
+                        }} />
+                      </div>
+
+                    </div>
+                  </div>
+
                 </div>
-                <div className="photo">
-                  <label htmlFor="">Date of Birth</label> <br />
-                  <input type="text" className="work" value={birth} onChange={(e) => {
-                                progress(e.target.value, birth, "birth", 5);
-                              }}/>
+                <div className="edit">
+                  <h5 onClick={() => setdisplay(!display)}>Edit additional details  <IoIosArrowUp /></h5>
                 </div>
 
               </div>
-            </div>
-
-          </div>
-          <div className="edit">
-            <h5 onClick={() => setdisplay(!display)}>Edit additional details  <IoIosArrowUp /></h5>
-          </div>
-
-        </div>
-        <div className="summary">
-          <div>
-            <div>
-              <h2>Professional </h2>
-            </div>
-            <div>
-              <p>Write 2-4 short & energetic sentences to interest the reader! Mention your role, experience & most importantly - your biggest achievements, best qualities and skills.</p>
-            </div>
-            <div>
-              <div>
-                <ReactQuill
-                  theme="snow"
-                  value={editorHtml}
-                  onChange={(value)=> progress(
-                    value,
-                    editorHtml,
-                    "editorHtml",
-                    30
-                  )}
-                  className='paragh'
-                  modules={{
-                    toolbar: [
-                      ['bold', 'italic', 'underline', 'strike'],
-                      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+              <div className="summary">
+                <div>
+                  <div>
+                    <h2>Professional </h2>
+                  </div>
+                  <div>
+                    <p>Write 2-4 short & energetic sentences to interest the reader! Mention your role, experience & most importantly - your biggest achievements, best qualities and skills.</p>
+                  </div>
+                  <div>
+                    <div>
+                      <ReactQuill
+                        theme="snow"
+                        value={editorHtml}
+                        onChange={(value) => progress(
+                          value,
+                          editorHtml,
+                          "editorHtml",
+                          30
+                        )}
+                        className='paragh'
+                        modules={{
+                          toolbar: [
+                            ['bold', 'italic', 'underline', 'strike'],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
 
                             ["link"],
                           ],
@@ -1123,945 +1260,1025 @@ function Hobbies() {
                       <div>
                         {/* <h3>Editor Output:</h3>
         <div dangerouslySetInnerHTML={{ __html: editorHtml }} /> */}
+                      </div>
+                    </div>
+
+                  </div>
+                  <div>
+                    <p>Recruiter tip: write 50-200 characters to increase interview chances</p>
+                  </div>
                 </div>
               </div>
-
-            </div>
-            <div>
-              <p>Recruiter tip: write 50-200 characters to increase interview chances</p>
-            </div>
-          </div>
-        </div>
-        <div>
-        <DragDropContext onDragEnd={handleDragDrop}>
-      <div className="first">
-        <Droppable droppableId="Root" type="group">
-        {(provided)=>(
-          <div {...provided.droppableProps} ref={provided.innerRef}>
-            {stores.map((store,index)=>(
-          <Draggable draggableId={store.id} key={store.id} index={index}>
-            {(provided)=>(
-              <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
-                {
-                  store.name === "Custom" ? <div style={{display:"flex"}} id="main-cust">
-                    {
-                      def ?  <h3 className={secetion ? "hidden" : "visible"}>{deefault}</h3> : <h3 className={secetion ? "hidden" : "visible"}><input type="text" value={deefault} onChange={handlecustom} id="custom"/></h3>
-                    }
-                    <button onClick={handlecustumch} id="cust" className={secetion ? "hidden" : "visible"}>{
-                      def ? <AiOutlineEdit/> : <GiSaveArrow></GiSaveArrow>
-                    }</button>
-                  </div> :  <span></span>
-                }
-             
-              {/* <p className="des">{store.description}</p> */}
-              {/* <Storelist {...store}/> */}
-              {
-                              store.name === "Employment" ? 
-                              <div className="add-section-container">
-                                <h3>{store.name}</h3>
-                                <p className="des">{store.description}</p>
-                                {objects.map((object) => (
-                <div key={object.id}>
-                  <div style={{display:"flex"}} className="flex">
-                   
-                    {object.input1}
-                    <h5 onClick={() => setemp(!emp)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
-                  </div>
-                  <div className={emp ? "visible" : "hidden"}>
-                    <div  style={{ display: "flex" }} >
-                  <div className='emp-main'>
-
-
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">Job title</label> <br />
-                          <input
-                            type="text"
-                            value={object.input1}
-                            className='work'
-                            onChange={(e) => handleInputChange(e, object.id, 'input1')}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">Employer</label> <br />
-                        <input
-                          type="text"
-                          value={object.input2}
-                          className='work'
-                          onChange={(e) => handleInputChange(e, object.id, 'input2')}
-                        />
-                      </div>
-                    </div>
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">Start & End Date</label> <br />
-                          <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputChange(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputChange(e, object.id, 'input5')}
-                              />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">City</label> <br />
-                        <input
-                          type="text"
-                          value={object.input3}
-                          className='work'
-                          onChange={(e) => handleInputChange(e, object.id, 'input3')}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div>
-                        <label htmlFor="">Description</label> <br />
-                        <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputChange(e, object.id, 'input6')}
-                          placeholder='e.g. Graduated with High Honors.' />
-                      </div>
-                    </div>
-
-
-                  </div>
-                  <div>
-                    <button onClick={() => deleteObject(object.id)} className="delete"><MdOutlineDelete/></button>
-                  </div>
-                  </div>
-                  </div>
-                  
-
-                </div>
-              ))}
-              <button onClick={createObject} className="add"> + Add Employment</button>
-                              </div> : <span></span>
-                            }
-                            {
-                            store.name === "Education" ? <div>
-                               <h3>{store.name}</h3>
-                                <p className="des">{store.description}</p>
-                              {education.map((object) => (
-                <div key={object.id}>
-                  <div style={{display:"flex"}} className="flex">
-                   
-                   {object.input1}
-                   <h5 onClick={() => setoction(!oction)} style={{cursor:"pointer"}} className="arrow"><IoIosArrowUp /></h5>
-                 </div>
-                 <div className={oction ? "visible" : "hidden"}>
-                  <div  style={{ display: "flex" }}>
-                  <div className='emp-main'>
-
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">School</label> <br />
-                          <input
-                            type="text"
-                            value={object.input1}
-                            className='work'
-                            onChange={(e) => handleInputedu(e, object.id, 'input1')}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">Degree</label> <br />
-                        <input
-                          type="text"
-                          value={object.input2}
-                          className='work'
-                          onChange={(e) => handleInputedu(e, object.id, 'input2')}
-                        />
-                      </div>
-                    </div>
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">Start & End Date</label> <br />
-                          <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputedu(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputedu(e, object.id, 'input5')}
-                              />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">City</label> <br />
-                        <input
-                          type="text"
-                          value={object.input3}
-                          className='work'
-                          onChange={(e) => handleInputedu(e, object.id, 'input3')}
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <div>
-                        <label htmlFor="">Description</label> <br />
-                        <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputedu(e, object.id, 'input6')}
-                          placeholder='e.g. Graduated with High Honors.' />
-                      </div>
-                    </div>
-
-
-                  </div>
-                  <div>
-                    <button onClick={() => deleteedu(object.id)} className="delete"><MdOutlineDelete/></button>
-                  </div>
-                  </div>
-                  </div>
-                  
-                </div>
-              ))}
-              <button onClick={createeducation} className="add"> + Add education</button>
-                  
-                            </div> : <span></span>
-                          }
-                          {
-                                store.name === "Extra-curricular activites" ? <div className={curricular ? "hidden" : "visible"}>
-                                  <h3>{store.name}</h3>
-                                  <p className="des">{store.description}</p>
-                                  <div className='emp-div'>
-
-{four.map((object) => (
-  <div key={object.id}>
-    <div style={{display:"flex"}} className="flexx">
-       {object.input1}
-       <h5 onClick={() => setext(!ext)} style={{cursor:"pointer"}} className="arrow">{ext ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
-    </div>
-    <div className={ext ? "visible" : "hidden"}>
-    <div style={{display:"flex"}}>
-    <div className='emp-main'>
-
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Job title</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputfour(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Employer</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputfour(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Start & End Date</label> <br />
-            <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputfour(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputfour(e, object.id, 'input5')}
-                              />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">City</label> <br />
-          <input
-            type="text"
-            value={object.input3}
-            className='work'
-            onChange={(e) => handleInputfour(e, object.id, 'input3')}
-          />
-        </div>
-      </div>
-      <div>
-        <div>
-          <label htmlFor="">Description</label> <br />
-          <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputfour(e, object.id, 'input6')}
-            placeholder='e.g. Created and implemented lesson plans based on child-led
-interests and curiosities'/>
-        </div>
-      </div>
-
-
-    </div>
-    <div>
-      <button onClick={() => deletefour(object.id)} className="delete">Delete</button>
-    </div>
-    </div>
-    </div>
-    
-  </div>
-))}
-<button onClick={createfour} className="add"> + Add Employment</button>
-
-</div>
-<button onClick={delete7}>delete</button>
-                                </div> : <span></span>
-                              }
-                          {
-                                store.name === "Course" ? <div className={cour ? "hidden" : "visible"}>
-                                   <h3>{store.name}</h3>
-                                  <p className="des">{store.description}</p>
-                                  <div className='emp-div'>
-
-{course.map((object) => (
-  <div key={object.id}>
-    <div style={{display:"flex"}} className="flexx">
-     {object.input1}
-     <h5 onClick={() => setcou(!cou)} style={{cursor:"pointer"}} className="arrow">{cou ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-    </div>
-    <div className={cou ? "visible" : "hidden"}>
-      <div style={{display:"flex"}}>
-
-      
-    <div className='emp-main'>
-
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Job title</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputcourse(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Employer</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputcourse(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Start & End Date</label> <br />
-            <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputcourse(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputcourse(e, object.id, 'input5')}
-                              />
-          </div>
-        </div>
-
-      </div>
-
-
-
-    </div>
-    <div>
-      <button onClick={() => deletecourse(object.id)} className="delete"><MdOutlineDelete/></button>
-    </div>
-    </div>
-    </div>
-   
-  </div>
-))}
-<button onClick={createcourse} className="add"> + Add one more course</button>
-
-</div>
-<button onClick={delete2}>delete</button>
-                                </div> : <span></span>
-                              }
-                          {
-                                store.name === "Internships" ? <div className={intern ? "hidden" : "visible"}>
-                                  <h3>{store.name}</h3>
-                                  <div className='emp-div'>
-
-{five.map((object) => (
-  <div key={object.id}>
-    <div className="flexx" style={{display:"flex"}}>
-      {object.input1}
-      <h5 onClick={()=> setinter(!inter)} style={{cursor:"pointer"}} className="arrow">{inter ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-    </div>
-    <div className={inter ? "visible" : "hidden"}>
-      <div style={{display:"flex"}}>
-
-      
-    <div className='emp-main'>
-
-      <div style={{ display: "flexx" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Job title</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputfive(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Emp</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputfive(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Start & End Date</label> <br />
-            <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputfive(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputfive(e, object.id, 'input5')}
-                              />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">City</label> <br />
-          <input
-            type="text"
-            value={object.input3}
-            className='work'
-            onChange={(e) => handleInputfive(e, object.id, 'input3')}
-          />
-        </div>
-      </div>
-      <div>
-        <div>
-          <label htmlFor="">Description</label> <br />
-          
-        </div>
-      </div>
-
-
-    </div>
-    <div>
-      <button onClick={() => deletefive(object.id)} className="delete"><MdOutlineDelete/></button>
-    </div>
-    </div>
-    </div>
-   
-  </div>
-))}
-<button onClick={createfive} className="add"> + Add one more internship</button>
-
-</div>
-<button onClick={delete4}>delete</button>
-                                </div> : <span></span>
-                              }
-                              {
-                                store.name === "Project" ? <div className={proj ? "hidden" : "visible"}>
-                                  <h3>{store.name}</h3>
-                                  <div className='emp-div'>
-
-{project.map((object) => (
-  <div key={object.id}>
-    <div style={{display:"flex"}} className="flexx">
-      {object.input1}
-      <h5 onClick={()=> setpro(!pro)} style={{cursor:"pointer"}} className="arrow">{pro ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-    </div>
-    <div className={pro ? "visible" : "hidden"}>
-      <div style={{display:"flex"}}>
-
-      
-    <div className='emp-main'>
-
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Project title</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputproject(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Employer</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputproject(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Start & End Date</label> <br />
-            <input type='date'
-                                value={object.input4}
-                                className='workk'
-                                onChange={(e) => handleInputproject(e, object.id, 'input4')}
-                              />
-                              <input type='date'
-                                value={object.input5}
-                                className='workk'
-                                onChange={(e) => handleInputproject(e, object.id, 'input5')}
-                              />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">City</label> <br />
-          <input
-            type="text"
-            value={object.input3}
-            className='work'
-            onChange={(e) => handleInputproject(e, object.id, 'input3')}
-          />
-        </div>
-      </div>
-      <div>
-        <div>
-          <label htmlFor="">Project Summary</label> <br />
-          <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputproject(e, object.id, 'input6')}
-            placeholder='e.g. Created and implemented lesson plans based on child-led
-interests and curiosities'/>
-        </div>
-      </div>
-
-
-    </div>
-    <div>
-      <button onClick={() => deleteproject(object.id)} className="delete"><MdOutlineDelete/></button>
-    </div>
-    </div>
-    </div>
-    
-  </div>
-))}
-<button onClick={createproject} className="add"> + Add Project</button>
-
-</div>
-<button onClick={delete8}>delete</button>
-                                </div> : <span></span>
-                              }
-                              {
-                                store.name === "Refrence" ? <div className={reference ? "hidden" : "visible"}>
-                                  <h3>{store.name}</h3>
-                                  <div className='emp-div'>
-
-{three.map((object) => (
-  <div key={object.id}>
-    <div style={{display:"flex"}} className="flexx">
-      {object.input1}
-      <h5 onClick={()=> setref(!ref)} style={{cursor:"pointer"}} className="arrow">{ref ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-    </div>
-    <div className={ref ? "visible" : "hidden"}>
-      <div style={{display:"flex"}}>
-
-     
-    <div className='emp-main'>
-
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Name</label> <br />
-            <input
-              type="text"
-              value={object.input1}
-              className='work'
-              onChange={(e) => handleInputthree(e, object.id, 'input1')}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="">Employer</label> <br />
-          <input
-            type="text"
-            value={object.input2}
-            className='work'
-            onChange={(e) => handleInputthree(e, object.id, 'input2')}
-          />
-        </div>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div className='wanted'>
-          <div>
-            <label htmlFor="">Phone</label> <br />
-            <input type='text'
-              value={object.input4}
-              className='work'
-              onChange={(e) => handleInputthree(e, object.id, 'input4')}
-            />
-          </div>
-        </div>
-        <div className="wanted">
               <div>
-              <label htmlFor="">Email</label> <br />
-            <input type='text'
-              value={object.input5}
-              className='work'
-              onChange={(e) => handleInputthree(e, object.id, 'input5')}
-            />
-              </div>
-            </div>
+                <DragDropContext onDragEnd={handleDragDrop}>
+                  <div className="first">
+                    <Droppable droppableId="Root" type="group">
+                      {(provided) => (
+                        <div {...provided.droppableProps} ref={provided.innerRef}>
+                          {stores.map((store, index) => (
+                            <Draggable draggableId={store.id} key={store.id} index={index}>
+                              {(provided) => (
+                                <div {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+                                  {
+                                    store.name === "Custom" ? <div style={{ display: "flex" }} id="main-cust">
+                                      {
+                                        def ? <h3 className={secetion ? "hidden" : "visible"}>{deefault}</h3> : <h3 className={secetion ? "hidden" : "visible"}><input type="text" value={deefault} onChange={handlecustom} id="custom" /></h3>
+                                      }
+                                      <button onClick={handlecustumch} id="cust" className={secetion ? "hidden" : "visible"}>{
+                                        def ? <AiOutlineEdit /> : <GiSaveArrow></GiSaveArrow>
+                                      }</button>
+                                    </div> : <span></span>
+                                  }
 
-      </div>
+                                  {/* <p className="des">{store.description}</p> */}
+                                  {/* <Storelist {...store}/> */}
+                                  {
+                                    store.name === "Employment" ?
+                                      <div className="add-section-container">
+                                        <h3>{store.name}</h3>
+                                        <p className="des">{store.description}</p>
+                                        {objects.map((object) => (
+                                          <div key={object.id}>
+                                            <div style={{ display: "flex" }} className="flex">
+
+                                              {object.input1}
+                                              <h5 onClick={() => setemp(!emp)} style={{ cursor: "pointer" }} className="arrow"><IoIosArrowUp /></h5>
+                                            </div>
+                                            <div className={emp ? "visible" : "hidden"}>
+                                              <div style={{ display: "flex" }} >
+                                                <div className='emp-main'>
 
 
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Job title</label> <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className='work'
+                                                          onChange={(e) => handleInputChange(e, object.id, 'input1')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">Employer</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input2}
+                                                        className='work'
+                                                        onChange={(e) => handleInputChange(e, object.id, 'input2')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Start & End Date</label> <br />
+                                                        <input type='date'
+                                                          value={object.input4}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputChange(e, object.id, 'input4')}
+                                                        />
+                                                        <input type='date'
+                                                          value={object.input5}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputChange(e, object.id, 'input5')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">City</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input3}
+                                                        className='work'
+                                                        onChange={(e) => handleInputChange(e, object.id, 'input3')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div>
+                                                      <label htmlFor="">Description</label> <br />
+                                                      <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputChange(e, object.id, 'input6')}
+                                                        placeholder='e.g. Graduated with High Honors.' />
+                                                    </div>
+                                                  </div>
 
-    </div>
-    <div>
-      <button onClick={() => deletethree(object.id)}  className="delete"><MdOutlineDelete/></button>
-    </div>
-    </div>
-    </div>
-    
-  </div>
-))}
-<button onClick={createthree} className="add"> + Add one more reference</button>
 
-</div>
-<button onClick={delete3}>delete</button>
-                                </div> : <span></span>
-                              }
-                              {
-                                store.name === "Custom" ? <div className={secetion ? "hidden" : "visible"}>
-                                  
-                                <div className='emp-div'>
-                
-                                  {cust.map((object) => (
-                                    <div key={object.id}>
-                                      <div style={{display:"flex"}} className="flexx">
-                                        {object.input1}
-                                        <h5 onClick={()=> setcus(!cus)} style={{cursor:"pointer"}} className="arrow">{cus ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
+                                                </div>
+                                                <div>
+                                                  <button onClick={() => deleteObject(object.id)} className="delete"><MdOutlineDelete /></button>
+                                                </div>
+                                              </div>
+                                            </div>
+
+
+                                          </div>
+                                        ))}
+                                        <button onClick={createObject} className="add"> + Add Employment</button>
+                                      </div> : <span></span>
+                                  }
+                                  {
+                                    store.name === "Education" ? <div>
+                                      <h3>{store.name}</h3>
+                                      <p className="des">{store.description}</p>
+                                      {education.map((object) => (
+                                        <div key={object.id}>
+                                          <div style={{ display: "flex" }} className="flex">
+
+                                            {object.input1}
+                                            <h5 onClick={() => setoction(!oction)} style={{ cursor: "pointer" }} className="arrow"><IoIosArrowUp /></h5>
+                                          </div>
+                                          <div className={oction ? "visible" : "hidden"}>
+                                            <div style={{ display: "flex" }}>
+                                              <div className='emp-main'>
+
+                                                <div style={{ display: "flex" }}>
+                                                  <div className='wanted'>
+                                                    <div>
+                                                      <label htmlFor="">School</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input1}
+                                                        className='work'
+                                                        onChange={(e) => handleInputedu(e, object.id, 'input1')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <label htmlFor="">Degree</label> <br />
+                                                    <input
+                                                      type="text"
+                                                      value={object.input2}
+                                                      className='work'
+                                                      onChange={(e) => handleInputedu(e, object.id, 'input2')}
+                                                    />
+                                                  </div>
+                                                </div>
+                                                <div style={{ display: "flex" }}>
+                                                  <div className='wanted'>
+                                                    <div>
+                                                      <label htmlFor="">Start & End Date</label> <br />
+                                                      <input type='date'
+                                                        value={object.input4}
+                                                        className='workk'
+                                                        onChange={(e) => handleInputedu(e, object.id, 'input4')}
+                                                      />
+                                                      <input type='date'
+                                                        value={object.input5}
+                                                        className='workk'
+                                                        onChange={(e) => handleInputedu(e, object.id, 'input5')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <label htmlFor="">City</label> <br />
+                                                    <input
+                                                      type="text"
+                                                      value={object.input3}
+                                                      className='work'
+                                                      onChange={(e) => handleInputedu(e, object.id, 'input3')}
+                                                    />
+                                                  </div>
+                                                </div>
+                                                <div>
+                                                  <div>
+                                                    <label htmlFor="">Description</label> <br />
+                                                    <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputedu(e, object.id, 'input6')}
+                                                      placeholder='e.g. Graduated with High Honors.' />
+                                                  </div>
+                                                </div>
+
+
+                                              </div>
+                                              <div>
+                                                <button onClick={() => deleteedu(object.id)} className="delete"><MdOutlineDelete /></button>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                                        </div>
+                                      ))}
+                                      <button onClick={createeducation} className="add"> + Add education</button>
+
+                                    </div> : <span></span>
+                                  }
+                                  {
+                                    store.name === "Extra-curricular activites" ? <div className={curricular ? "hidden" : "visible"}>
+                                      <h3>{store.name}</h3>
+                                      <p className="des">{store.description}</p>
+                                      <div className='emp-div'>
+
+                                        {four.map((object) => (
+                                          <div key={object.id}>
+                                            <div style={{ display: "flex" }} className="flexx">
+                                              {object.input1}
+                                              <h5 onClick={() => setext(!ext)} style={{ cursor: "pointer" }} className="arrow">{ext ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+                                            </div>
+                                            <div className={ext ? "visible" : "hidden"}>
+                                              <div style={{ display: "flex" }}>
+                                                <div className='emp-main'>
+
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Job title</label> <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className='work'
+                                                          onChange={(e) => handleInputfour(e, object.id, 'input1')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">Employer</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input2}
+                                                        className='work'
+                                                        onChange={(e) => handleInputfour(e, object.id, 'input2')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Start & End Date</label> <br />
+                                                        <input type='date'
+                                                          value={object.input4}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputfour(e, object.id, 'input4')}
+                                                        />
+                                                        <input type='date'
+                                                          value={object.input5}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputfour(e, object.id, 'input5')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">City</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input3}
+                                                        className='work'
+                                                        onChange={(e) => handleInputfour(e, object.id, 'input3')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div>
+                                                      <label htmlFor="">Description</label> <br />
+                                                      <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputfour(e, object.id, 'input6')}
+                                                        placeholder='e.g. Created and implemented lesson plans based on child-led
+interests and curiosities'/>
+                                                    </div>
+                                                  </div>
+
+
+                                                </div>
+                                                <div>
+                                                  <button onClick={() => deletefour(object.id)} className="delete">Delete</button>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                        ))}
+                                        <button onClick={createfour} className="add"> + Add Employment</button>
+
                                       </div>
-                                      <div className={cus ? "visible" : "hidden"}>
-                                        <div style={{display:"flex"}}>
+                                      <button onClick={delete7}>delete</button>
+                                    </div> : <span></span>
+                                  }
+                                  {
+                                    store.name === "Course" ? <div className={cour ? "hidden" : "visible"}>
+                                      <h3>{store.name}</h3>
+                                      <p className="des">{store.description}</p>
+                                      <div className='emp-div'>
 
-                                        
-                                      <div className='emp-main'>
-                
-                                        <div style={{ display: "flex" }}>
-                                          <div className='wanted'>
-                                            <div>
-                                              <label htmlFor="">Job title</label> <br />
-                                              <input
-                                                type="text"
-                                                value={object.input1}
-                                                className='work'
-                                                onChange={(e) => handleInputcust(e, object.id, 'input1')}
-                                              />
+                                        {course.map((object) => (
+                                          <div key={object.id}>
+                                            <div style={{ display: "flex" }} className="flexx">
+                                              {object.input1}
+                                              <h5 onClick={() => setcou(!cou)} style={{ cursor: "pointer" }} className="arrow">{cou ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
                                             </div>
-                                          </div>
-                                          <div>
-                                            <label htmlFor="">Employer</label> <br />
-                                            <input
-                                              type="text"
-                                              value={object.input2}
-                                              className='work'
-                                              onChange={(e) => handleInputcust(e, object.id, 'input2')}
-                                            />
-                                          </div>
-                                        </div>
-                                        <div style={{ display: "flex" }}>
-                                          <div className='wanted'>
-                                            <div>
-                                              <label htmlFor="">Start & End Date</label> <br />
-                                              <input type='date'
-                                                value={object.input4}
-                                                className='work'
-                                                onChange={(e) => handleInputcust(e, object.id, 'input4')}
-                                              />
+                                            <div className={cou ? "visible" : "hidden"}>
+                                              <div style={{ display: "flex" }}>
+
+
+                                                <div className='emp-main'>
+
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Job title</label> <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className='work'
+                                                          onChange={(e) => handleInputcourse(e, object.id, 'input1')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">Employer</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input2}
+                                                        className='work'
+                                                        onChange={(e) => handleInputcourse(e, object.id, 'input2')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Start & End Date</label> <br />
+                                                        <input type='date'
+                                                          value={object.input4}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputcourse(e, object.id, 'input4')}
+                                                        />
+                                                        <input type='date'
+                                                          value={object.input5}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputcourse(e, object.id, 'input5')}
+                                                        />
+                                                      </div>
+                                                    </div>
+
+                                                  </div>
+
+
+
+                                                </div>
+                                                <div>
+                                                  <button onClick={() => deletecourse(object.id)} className="delete"><MdOutlineDelete /></button>
+                                                </div>
+                                              </div>
                                             </div>
+
                                           </div>
-                                        </div>
-                                        <div>
-                                          <div>
-                                            <label htmlFor="">Description</label> <br />
-                                            <textarea name="" id="" cols="90" rows="15" value={object.input5} onChange={(e) => handleInputcust(e, object.id, 'input5')}
-                                              placeholder='e.g. Created and implemented lesson plans based on child-led
+                                        ))}
+                                        <button onClick={createcourse} className="add"> + Add one more course</button>
+
+                                      </div>
+                                      <button onClick={delete2}>delete</button>
+                                    </div> : <span></span>
+                                  }
+                                  {
+                                    store.name === "Internships" ? <div className={intern ? "hidden" : "visible"}>
+                                      <h3>{store.name}</h3>
+                                      <div className='emp-div'>
+
+                                        {five.map((object) => (
+                                          <div key={object.id}>
+                                            <div className="flexx" style={{ display: "flex" }}>
+                                              {object.input1}
+                                              <h5 onClick={() => setinter(!inter)} style={{ cursor: "pointer" }} className="arrow">{inter ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+                                            </div>
+                                            <div className={inter ? "visible" : "hidden"}>
+                                              <div style={{ display: "flex" }}>
+
+
+                                                <div className='emp-main'>
+
+                                                  <div style={{ display: "flexx" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Job title</label> <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className='work'
+                                                          onChange={(e) => handleInputfive(e, object.id, 'input1')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">Emp</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input2}
+                                                        className='work'
+                                                        onChange={(e) => handleInputfive(e, object.id, 'input2')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Start & End Date</label> <br />
+                                                        <input type='date'
+                                                          value={object.input4}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputfive(e, object.id, 'input4')}
+                                                        />
+                                                        <input type='date'
+                                                          value={object.input5}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputfive(e, object.id, 'input5')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">City</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input3}
+                                                        className='work'
+                                                        onChange={(e) => handleInputfive(e, object.id, 'input3')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div>
+                                                      <label htmlFor="">Description</label> <br />
+
+                                                    </div>
+                                                  </div>
+
+
+                                                </div>
+                                                <div>
+                                                  <button onClick={() => deletefive(object.id)} className="delete"><MdOutlineDelete /></button>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                        ))}
+                                        <button onClick={createfive} className="add"> + Add one more internship</button>
+
+                                      </div>
+                                      <button onClick={delete4}>delete</button>
+                                    </div> : <span></span>
+                                  }
+                                  {
+                                    store.name === "Project" ? <div className={proj ? "hidden" : "visible"}>
+                                      <h3>{store.name}</h3>
+                                      <div className='emp-div'>
+
+                                        {project.map((object) => (
+                                          <div key={object.id}>
+                                            <div style={{ display: "flex" }} className="flexx">
+                                              {object.input1}
+                                              <h5 onClick={() => setpro(!pro)} style={{ cursor: "pointer" }} className="arrow">{pro ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+                                            </div>
+                                            <div className={pro ? "visible" : "hidden"}>
+                                              <div style={{ display: "flex" }}>
+
+
+                                                <div className='emp-main'>
+
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Project title</label> <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className='work'
+                                                          onChange={(e) => handleInputproject(e, object.id, 'input1')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">Employer</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input2}
+                                                        className='work'
+                                                        onChange={(e) => handleInputproject(e, object.id, 'input2')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Start & End Date</label> <br />
+                                                        <input type='date'
+                                                          value={object.input4}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputproject(e, object.id, 'input4')}
+                                                        />
+                                                        <input type='date'
+                                                          value={object.input5}
+                                                          className='workk'
+                                                          onChange={(e) => handleInputproject(e, object.id, 'input5')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">City</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input3}
+                                                        className='work'
+                                                        onChange={(e) => handleInputproject(e, object.id, 'input3')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div>
+                                                      <label htmlFor="">Project Summary</label> <br />
+                                                      <textarea name="" id="" cols="90" rows="15" value={object.input6} onChange={(e) => handleInputproject(e, object.id, 'input6')}
+                                                        placeholder='e.g. Created and implemented lesson plans based on child-led
+interests and curiosities'/>
+                                                    </div>
+                                                  </div>
+
+
+                                                </div>
+                                                <div>
+                                                  <button onClick={() => deleteproject(object.id)} className="delete"><MdOutlineDelete /></button>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                        ))}
+                                        <button onClick={createproject} className="add"> + Add Project</button>
+
+                                      </div>
+                                      <button onClick={delete8}>delete</button>
+                                    </div> : <span></span>
+                                  }
+                                  {
+                                    store.name === "Refrence" ? <div className={reference ? "hidden" : "visible"}>
+                                      <h3>{store.name}</h3>
+                                      <div className='emp-div'>
+
+                                        {three.map((object) => (
+                                          <div key={object.id}>
+                                            <div style={{ display: "flex" }} className="flexx">
+                                              {object.input1}
+                                              <h5 onClick={() => setref(!ref)} style={{ cursor: "pointer" }} className="arrow">{ref ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+                                            </div>
+                                            <div className={ref ? "visible" : "hidden"}>
+                                              <div style={{ display: "flex" }}>
+
+
+                                                <div className='emp-main'>
+
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Name</label> <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className='work'
+                                                          onChange={(e) => handleInputthree(e, object.id, 'input1')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">Employer</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input2}
+                                                        className='work'
+                                                        onChange={(e) => handleInputthree(e, object.id, 'input2')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Phone</label> <br />
+                                                        <input type='text'
+                                                          value={object.input4}
+                                                          className='work'
+                                                          onChange={(e) => handleInputthree(e, object.id, 'input4')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div className="wanted">
+                                                      <div>
+                                                        <label htmlFor="">Email</label> <br />
+                                                        <input type='text'
+                                                          value={object.input5}
+                                                          className='work'
+                                                          onChange={(e) => handleInputthree(e, object.id, 'input5')}
+                                                        />
+                                                      </div>
+                                                    </div>
+
+                                                  </div>
+
+
+
+                                                </div>
+                                                <div>
+                                                  <button onClick={() => deletethree(object.id)} className="delete"><MdOutlineDelete /></button>
+                                                </div>
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                        ))}
+                                        <button onClick={createthree} className="add"> + Add one more reference</button>
+
+                                      </div>
+                                      <button onClick={delete3}>delete</button>
+                                    </div> : <span></span>
+                                  }
+                                  {
+                                    store.name === "Custom" ? <div className={secetion ? "hidden" : "visible"}>
+
+                                      <div className='emp-div'>
+
+                                        {cust.map((object) => (
+                                          <div key={object.id}>
+                                            <div style={{ display: "flex" }} className="flexx">
+                                              {object.input1}
+                                              <h5 onClick={() => setcus(!cus)} style={{ cursor: "pointer" }} className="arrow">{cus ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+                                            </div>
+                                            <div className={cus ? "visible" : "hidden"}>
+                                              <div style={{ display: "flex" }}>
+
+
+                                                <div className='emp-main'>
+
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Job title</label> <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className='work'
+                                                          onChange={(e) => handleInputcust(e, object.id, 'input1')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">Employer</label> <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input2}
+                                                        className='work'
+                                                        onChange={(e) => handleInputcust(e, object.id, 'input2')}
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className='wanted'>
+                                                      <div>
+                                                        <label htmlFor="">Start & End Date</label> <br />
+                                                        <input type='date'
+                                                          value={object.input4}
+                                                          className='work'
+                                                          onChange={(e) => handleInputcust(e, object.id, 'input4')}
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div>
+                                                    <div>
+                                                      <label htmlFor="">Description</label> <br />
+                                                      <textarea name="" id="" cols="90" rows="15" value={object.input5} onChange={(e) => handleInputcust(e, object.id, 'input5')}
+                                                        placeholder='e.g. Created and implemented lesson plans based on child-led
                                interests and curiosities'/>
+                                                    </div>
+                                                  </div>
+
+
+                                                </div>
+                                                <div>
+                                                  <button onClick={() => deletecust(object.id)} className="delete"><MdOutlineDelete /></button>
+                                                </div>
+                                              </div>
+                                            </div>
+
                                           </div>
+                                        ))}
+                                        <button onClick={createcust} className="add"> + Add one more item</button>
+
+                                      </div>
+                                      <button onClick={delete1}>delete</button>
+                                    </div> : <span></span>
+                                  }
+
+
+                                </div>
+                              )}
+
+                            </Draggable>
+                          ))}
+                        </div>
+                      )}
+                    </Droppable>
+                  </div>
+                </DragDropContext>
+                <div className="main-div">
+                  <div className={link ? "hidden" : "visible"}>
+                    <div>
+                      <h2> Websites & Social Links</h2>
+                    </div>
+                    <div>
+                      <p>You can add links to websites you want hiring managers to see! Perhaps it will be
+                        a link to your portfolio,LinkedIn profile or personal website</p>
+                    </div>
+                    <div className="div1">
+                      {/* <Websites></Websites> */}
+                      <div className='emp-div'>
+
+                        {website.map((object) => (
+                          <div key={object.id} className="div-in">
+                            <div style={{ display: "flex" }} className="flexxx">
+                              {object.input1}
+                              <h5 onClick={() => setsite(!site)} style={{ cursor: "pointer" }} className="arrow">{site ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+                            </div>
+                            <div className={site ? "visible" : "hidden"}>
+                              <div style={{ display: "flex" }}>
+
+
+                                <div className='emp-main'>
+
+                                  <div style={{ display: "flex" }}>
+                                    <div className='wanted'>
+                                      <div>
+                                        <label htmlFor="">Instagram</label> <br />
+                                        <input
+                                          type="text"
+                                          value={object.input1}
+                                          className='work'
+                                          onChange={(e) => handleInputweb(e, object.id, 'input1')}
+                                        />
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <label htmlFor="">Link</label> <br />
+                                      <input
+                                        type="text"
+                                        value={object.input2}
+                                        className='work'
+                                        onChange={(e) => handleInputweb(e, object.id, 'input2')}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div>
+                                  <button onClick={() => deleteweb(object.id)} className="delete"><MdOutlineDelete /></button>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        ))}
+                        <button onClick={createweb} className="add"> + Add Link</button>
+
+                      </div>
+
+                    </div>
+                    <button onClick={delete9}>delete</button>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <div className={label ? "hidden" : "visible"}>
+
+
+                      <div>
+                        <h2> Skills</h2>
+                      </div>
+                      <div>
+                        <p>
+                          Choose 5 important skills that show you fit the position. Make sure they match
+                          the key skills mentioned in the job listing(especially when applying via an online system)
+                        </p>
+                      </div>
+                      <div>
+                        <label htmlFor="">
+                          <Switch
+                            onChange={handleSwitchChange}
+                            checked={isChecked}
+                          /> Show level
+                        </label>
+
+                      </div>
+                      <div>
+                        {/* <Skills></Skills> */}
+                        <div className='emp-div'>
+
+                          {skill.map((object) => (
+                            <div key={object.id}>
+                              <div className="flexxx" style={{ display: "flex" }}>
+                                {object.input1}
+                                <h5 onClick={() => setlevel(level)} style={{ cursor: "pointer" }} className="arrow">{level ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+                              </div>
+                              <div className={level ? "visible" : "hidden"}>
+                                <div style={{ display: "flex" }}>
+
+
+                                  <div className='emp-main'>
+
+                                    <div style={{ display: "flex" }}>
+                                      <div className='wanted'>
+                                        <div>
+                                          {/* <label htmlFor="">Label</label> <br />
+                                          <input
+                                            type="text"
+                                            value={object.input1}
+                                            className='work'
+                                            onChange={(e) => handleInputskill(e, object.id, 'input1')}
+                                          /> */}
+                                            <form>
+        <div className="row mt-2">
+          <div className="col-12 col-md-6">
+            <label htmlFor="fname">Skills</label>
+            <select
+              id="skills-select-box"
+              className="form-select"
+              value={selectedSkill}
+              onChange={handleSkillSelectChange}
+            >
+              <option>Select Skills</option>
+              <option value="add_skill">Add Skill</option>
+              {studentSkills.map((skill, index) => (
+                <option key={index} value={skill}>
+                  {skill}
+                </option>
+              ))}
+            </select>
+            <p id="skillsError" className="text-danger"></p>
+            <div id="skillsContainer">
+              {studentSkills.map((skill, index) => (
+                <button
+                  key={index}
+                  className="btn btn-sm btn-primary px-3 rounded rounded-pill"
+                  type="button"
+                >
+                  <span>{skill}</span>
+                  <i
+                    className="fas fa-times-circle ms-2"
+                    onClick={() => deleteSkill(index, skill)}
+                  ></i>
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="col-12 col-md-6">
+            <h3>Selected Skills</h3>
+            <div id="skillsFormatted"></div>
+          </div>
+        </div>
+      </form>
+      {/* <div className="progress-bar-container">
+        <div className="progress" id="myProgressBar">
+          {stages.map((stage, index) => (
+            <button
+              key={index}
+              className={`progress-stage ${stage.toLowerCase()}`}
+              data-stage={stage}
+              onClick={() => handleStageClick(index)}
+            >
+              {stage}
+            </button>
+          ))}
+          <div className="progress-text">{selectedStage}</div>
+        </div>
+      </div> */}
+      {/* <div className="progress-bar-container" id="secondProgressBarContainer">
+        {studentSkills.map((skill, index) => (
+          <div key={index} className="progress-bar-container">
+            <div className="skill-name">{skill}</div>
+            {renderSecondProgressBar(skill)}
+          </div>
+        ))}
+      </div> */}
+      {/* <ToastContainer className="custom-toast"/> */}
                                         </div>
-                
-                
+
                                       </div>
                                       <div>
-                                        <button onClick={() => deletecust(object.id)} className="delete"><MdOutlineDelete/></button>
-                                      </div>
-                                      </div>
-                                      </div>
-                                     
-                                    </div>
-                                  ))}
-                                  <button onClick={createcust} className="add"> + Add one more item</button>
-                
-                                </div>
-                                <button onClick={delete1}>delete</button>
-                                </div> : <span></span>
-                              }
-                              
-
-            </div>
-            )}
-            
-          </Draggable>
-        ))}
-          </div>
-        )}
-        </Droppable>
-      </div>
-      </DragDropContext>
-      <div className="main-div">
-        <div className={link ? "hidden" : "visible"}>
-          <div>
-            <h2> Websites & Social Links</h2>
-          </div>
-          <div>
-            <p>You can add links to websites you want hiring managers to see! Perhaps it will be
-              a link to your portfolio,LinkedIn profile or personal website</p>
-          </div>
-          <div className="div1">
-            {/* <Websites></Websites> */}
-            <div className='emp-div'>
-
-              {website.map((object) => (
-                <div key={object.id} className="div-in">
-                  <div style={{display:"flex"}} className="flexxx">
-                    {object.input1}
-                    <h5 onClick={()=> setsite(!site)} style={{cursor:"pointer"}} className="arrow">{site ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-                  </div>
-                  <div className={site ? "visible" : "hidden"}>
-                    <div style={{display:"flex"}}>
-
-                    
-                  <div className='emp-main'>
-
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">Instagram</label> <br />
-                          <input
-                            type="text"
-                            value={object.input1}
-                            className='work'
-                            onChange={(e) => handleInputweb(e, object.id, 'input1')}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <label htmlFor="">Link</label> <br />
-                        <input
-                          type="text"
-                          value={object.input2}
-                          className='work'
-                          onChange={(e) => handleInputweb(e, object.id, 'input2')}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <button onClick={() => deleteweb(object.id)} className="delete"><MdOutlineDelete/></button>
-                  </div>
-                  </div>
-                  </div>
-                  
-                </div>
-              ))}
-              <button onClick={createweb} className="add"> + Add Link</button>
-
-            </div>
-
-          </div>
-          <button onClick={delete9}>delete</button>
-          </div>
+                                        <label htmlFor="">Level</label> <br />
+                                        {/* <select name="" id="" value={object.input2} onChange={(e) => handleInputskill(e, object.id, 'input2')} className="work">
+                                          <option value="1">Level 1</option>
+                                          <option value="2">Level 2</option>
+                                          <option value="3">Level 3</option>
+                                          <option value="4">Level 4</option>
+                                          <option value="5">Level 5</option>
+                                        </select> */}
+                                         <div className="progress-bar-container">
+        <div className="progress" id="myProgressBar">
+          {stages.map((stage, index) => (
+            <button
+              key={index}
+              className={`progress-stage ${stage.toLowerCase()}`}
+              data-stage={stage}
+              onClick={() => handleStageClick(index)}
+            >
+              {stage}
+            </button>
+          ))}
+          <div className="progress-text">{selectedStage}</div>
         </div>
-        <div>
-          <div>
-            <div className={label ? "hidden" : "visible"}>
+      </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <button onClick={() => deleteskill(object.id)} className="delete"><MdOutlineDelete /></button>
+                                  </div>
+                                </div>
+                              </div>
 
-            
-          <div>
-            <h2> Skills</h2>
-          </div>
-          <div>
-            <p>
-              Choose 5 important skills that show you fit the position. Make sure they match
-              the key skills mentioned in the job listing(especially when applying via an online system)
-            </p>
-          </div>
-          <div>
-            <label htmlFor="">
-            <Switch
-          onChange={handleSwitchChange}
-          checked={isChecked}
-        /> Show level
-            </label>
-         
-          </div>
-          <div>
-            {/* <Skills></Skills> */}
-            <div className='emp-div'>
+                            </div>
+                          ))}
+                          <button onClick={createskill} className="add"> + Add more skill</button>
 
-              {skill.map((object) => (
-                <div key={object.id}>
-                  <div className="flexxx" style={{display:"flex"}}>
-                    {object.input1}
-                    <h5 onClick={()=>setlevel(level)} style={{cursor:"pointer"}} className="arrow">{level ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-                  </div>
-                  <div className={level ? "visible" : "hidden"}>
-                    <div style={{display:"flex"}}>
-
-                    
-                  <div className='emp-main'>
-
-                    <div style={{ display: "flex" }}>
-                      <div className='wanted'>
-                        <div>
-                          <label htmlFor="">Label</label> <br />
-                          <input
-                            type="text"
-                            value={object.input1}
-                            className='work'
-                            onChange={(e) => handleInputskill(e, object.id, 'input1')}
-                          />
                         </div>
-                        
+                        <button onClick={delete10}>Delete</button>
                       </div>
-                      <div>
-                          <label htmlFor="">Level</label> <br />
-                          <select name="" id="" value={object.input2} onChange={(e) => handleInputskill(e, object.id, 'input2')} className="work">
-                            <option value="1">Level 1</option>
-                            <option value="2">Level 2</option>
-                            <option value="3">Level 3</option>
-                            <option value="4">Level 4</option>
-                            <option value="5">Level 5</option>
-                          </select>
-                        </div>
                     </div>
                   </div>
+                  {
+                    <div className={hobb ? "hidden" : "visible"}>
+                      <div>
+                        <h2>Hobbies</h2>
+                      </div>
+                      <div className='emp-div'>
+
+                        {six.map((object) => (
+                          <div key={object.id}>
+                            <div style={{ display: "flex" }} id="flexx">
+                              {object.input1}
+                              <h5 onClick={() => sethobbie(!hobbie)} className="arrow" style={{ cursor: "pointer" }}>{hobbie ? <IoIosArrowUp /> : <IoIosArrowDown />}</h5>
+                            </div>
+                            <div className={hobbie ? "visible" : "hidden"}>
+                              <div style={{ display: "flex" }}>
+
+
+                                <div className='emp-main'>
+
+                                  <div style={{ display: "flex" }}>
+                                    <div className='wanted'>
+                                      <div>
+                                        <label htmlFor="">Label</label> <br />
+                                        <input
+                                          type="text"
+                                          value={object.input1}
+                                          className='work'
+                                          onChange={(e) => handleInputsix(e, object.id, 'input1')}
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div>
+                                  <button onClick={() => deletesix(object.id)} className="delete"><MdOutlineDelete /></button>
+                                </div>
+                              </div>
+                            </div>
+
+
+                          </div>
+                        ))}
+                        <button onClick={createsix} className="add"> + Add more Hobbie</button>
+
+                      </div>
+                      <button onClick={delete6}>delete</button>
+                    </div>
+                  }
                   <div>
-                    <button onClick={() => deleteskill(object.id)} className="delete"><MdOutlineDelete/></button>
-                  </div>
-                  </div>
-                  </div>
-                 
-                </div>
-              ))}
-              <button onClick={createskill} className="add"> + Add more skill</button>
-
-            </div>
-            <button onClick={delete10}>Delete</button>
-          </div>
-          </div>
-          </div>
-          {
-              <div className={hobb ? "hidden" : "visible"}>
-                <div>
-                <h2>Hobbies</h2>
-                </div>
-                <div className='emp-div'>
-
-                  {six.map((object) => (
-                    <div key={object.id}>
-                      <div style={{display:"flex"}} id="flexx">
-                        {object.input1}
-                        <h5 onClick={()=>sethobbie(!hobbie)} className="arrow" style={{cursor:"pointer"}}>{hobbie ? <IoIosArrowUp/> : <IoIosArrowDown/>}</h5>
-                      </div>
-                      <div className={hobbie ? "visible" : "hidden"}>
-                        <div style={{display:"flex"}}>
-                        
-                        
-                      <div className='emp-main'>
-
-                        <div style={{ display: "flex" }}>
-                          <div className='wanted'>
-                            <div>
-                              <label htmlFor="">Label</label> <br />
-                              <input
-                                type="text"
-                                value={object.input1}
-                                className='work'
-                                onChange={(e) => handleInputsix(e, object.id, 'input1')}
-                              />
-                            </div>
-                          </div>
+                    {
+                      <div className={lang ? "hidden" : "visible"}>
+                        <div>
+                          <h2>Langugages</h2>
                         </div>
-                      </div>
-                      <div>
-                        <button onClick={() => deletesix(object.id)} className="delete"><MdOutlineDelete/></button>
-                      </div>
-                      </div>
-                      </div>
-                     
-                      
-                    </div>
-                  ))}
-                  <button onClick={createsix} className="add"> + Add more Hobbie</button>
+                        <div className='emp-div'>
 
-                </div>
-                <button onClick={delete6}>delete</button>
-                </div>
-            }
-          <div>
-            {
-               <div className={lang ? "hidden" : "visible"}>
-                <div>
-                <h2>Langugages</h2>
-                </div>
-                <div className='emp-div'>
+                          {seven.map((object) => (
+                            <div key={object.id}>
+                              <div className="flexxx" style={{ display: "flex" }}>
+                                {object.input1}
+                                <h5 onClick={() => setlanguage(language)} className="arrow" style={{ cursor: "pointer" }}>{language ? <IoIosArrowUp /> : <IoIosArrowDown></IoIosArrowDown>}</h5>
+                              </div>
+                              <div className={language ? "visible" : "hidden"}>
+                                <div style={{ display: "flex" }}>
+                                  <div className='emp-main'>
 
-                  {seven.map((object) => (
-                    <div key={object.id}>
-                      <div className="flexxx" style={{display:"flex"}}>
-                        {object.input1}
-                        <h5 onClick={()=>setlanguage(language)} className="arrow" style={{cursor:"pointer"}}>{language ? <IoIosArrowUp/> : <IoIosArrowDown></IoIosArrowDown>}</h5>
-                      </div>
-                      <div className={language ? "visible" : "hidden"}>
-                        <div style={{display:"flex"}}>
-                      <div className='emp-main'>
-
-                        <div style={{ display: "flex" }}>
-                          <div className='wanted'>
-                            <div>
-                              <label htmlFor="">Language</label> <br />
-                              <input
-                                type="text"
-                                value={object.input1}
-                                className='work'
-                                onChange={(e) => handleInputseven(e, object.id, 'input1')}
-                              />
-                            </div>
-                          </div>
-                          <div>
-                            <label htmlFor="">Level</label> <br />
-                            {/* <input
+                                    <div style={{ display: "flex" }}>
+                                      <div className='wanted'>
+                                        <div>
+                                          <label htmlFor="">Language</label> <br />
+                                          <input
+                                            type="text"
+                                            value={object.input1}
+                                            className='work'
+                                            onChange={(e) => handleInputseven(e, object.id, 'input1')}
+                                          />
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <label htmlFor="">Level</label> <br />
+                                        {/* <input
                               type="text"
                               value={object.input2}
                               className='work'
@@ -2225,13 +2442,13 @@ interests and curiosities'/>
           <button onClick={handlePrint}>Generate PDF</button>
           <Scrollbars>
             <div className="main-full" id="pdf-content" ref={contentDivRef}
-        contentEditable={true}
-        style={{
-          // border: '1px solid #ccc',
-          // minHeight: '200px',
-          // padding: '10px',
-          // marginBottom: '20px',
-        }}>
+              contentEditable={true}
+              style={{
+                // border: '1px solid #ccc',
+                // minHeight: '200px',
+                // padding: '10px',
+                // marginBottom: '20px',
+              }}>
               <div className="main-right">
                 <div>
                   <div style={{ display: "flex" }} className="cont-1">
@@ -2397,9 +2614,19 @@ interests and curiosities'/>
                       <h4 className="heading">Skills</h4>
                     )}
                     {skill.map((object) => (
+                      
                       <div key={object.id} className="ill">
+                        
                         <p className="cit" id="cit">{`${object.input1}`}</p>
                         <div className="ski1">
+                        <div className="progress-bar-container" id="secondProgressBarContainer">
+        {studentSkills.map((skill, index) => (
+          <div key={index} className="progress-bar-container">
+            <div className="skill-name">{skill}</div>
+            {renderSecondProgressBar(skill)}
+          </div>
+        ))}
+      </div>
                           {isChecked ? (
                             <div>
                               {object.input2 === "" ? (
