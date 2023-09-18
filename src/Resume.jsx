@@ -12,7 +12,7 @@ import { useRef } from "react";
 import Dropzone from 'react-dropzone';
 import { GoPerson } from 'react-icons/go'
 import { MdOutlineDelete } from 'react-icons/md'
-
+import Switch from 'react-switch';
 
 
 
@@ -47,7 +47,7 @@ const Resume = () => {
   const [hobbie, sethobbie] = useState(true)
   const [selectedFile, setSelectedFile] = useState(null);
   const [showFullView, setShowFullView] = useState(false);
-  
+  const [isChecked, setIsChecked] = useState(false);
   
  
 
@@ -93,6 +93,10 @@ const Resume = () => {
         setShowFullView(true)
     }
     
+  };
+
+  const handleSwitchChange = (checked) => {
+    setIsChecked(checked);
   };
   
 
@@ -1566,6 +1570,11 @@ const Resume = () => {
 
         </div>
         <div>
+        <Switch
+          onChange={handleSwitchChange}
+          checked={isChecked}
+        />
+    <p>Switch is {isChecked ? 'on' : 'off'}</p>
           <div>
             <h2>Add Section</h2>
           </div>
@@ -1839,7 +1848,11 @@ editorHtml === "" ? <span></span> : <h3 className="prof">Profile</h3>
             <p className="cit" id="cit">{`${object.input1}`}</p>
             <div className="ski1">
               {
+                isChecked ? <div>
+                  {
                 object.input2 === "" ? <span></span> : <p className="ski">{`${object.input2}/5`}</p>
+              }
+                </div> : <span></span>
               }
               
             
