@@ -362,6 +362,20 @@ a {
     max-width: 740px;
     margin-right: auto;
     margin-left: auto;
+
+}
+.photo{
+    display: flex;
+    width: 100%;
+    height: 500px;
+    column-gap: 2px;
+    border: 10px solid var(--clr-blue);
+}
+.immages{
+    display: flex;
+    width: 100%;
+    column-gap: 2px;
+    
 }
 
 .header-content img {
