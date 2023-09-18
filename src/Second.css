@@ -695,7 +695,7 @@ Popup.css .popup {
 .main-right {
   width: 70%;
   background-color: white;
-
+overflow-y: auto;
   min-height: 800px;
   max-height: auto;
 }
@@ -705,7 +705,7 @@ Popup.css .popup {
   min-height: 800px;
   max-height: auto;
   background-color: #0f3871;
-
+  overflow-y: auto;
   color: white;
 }
 
