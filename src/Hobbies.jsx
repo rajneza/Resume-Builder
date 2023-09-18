@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import ReactQuill from "react-quill";
@@ -16,7 +16,8 @@ import { GiSaveArrow } from "react-icons/gi";
 import "./Second.css";
 import "./Project/React.css";
 import Switch from "react-switch";
-
+import { render } from 'react-dom';
+import { useReactToPrint } from 'react-to-print';
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 
@@ -147,7 +148,7 @@ function Hobbies() {
   const [isChecked, setIsChecked] = useState(false);
   const [completionPercentage, setCompletionPercentage] = useState(0);
   const [selectedCountry, setSelectedCountry] = useState("");
-
+  const contentDivRef = useRef(null);
   function setField(value, type) {
     switch (type) {
       case "name":
@@ -254,6 +255,9 @@ function Hobbies() {
       return;
     }
   };
+  const handlePrint = useReactToPrint({
+    content: () => contentDivRef.current, // Reference to the content div
+  });
 
   // Handle the switch's change event
   const handleSwitchChange = (checked) => {
@@ -354,19 +358,19 @@ function Hobbies() {
     }
   };
   // PDF
-  const generatePDF = () => {
-    const doc = new jsPDF();
+  // const generatePDF = () => {
+  //   const doc = new jsPDF();
 
-    doc.text("", 10, 10);
+  //   doc.text("", 10, 10);
 
-    const content = document.getElementById("pdf-content");
+  //   const content = document.getElementById("pdf-content");
 
-    html2canvas(content).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      doc.addImage(imgData, "PNG", 10, 20);
-      doc.save("sample.pdf");
-    });
-  };
+  //   html2canvas(content).then((canvas) => {
+  //     const imgData = canvas.toDataURL("image/png");
+  //     doc.addImage(imgData, "PNG", 10, 20);
+  //     doc.save("sample.pdf");
+  //   });
+  // };
   const [objects, setObjects] = useState([]);
 
   const createObject = () => {
@@ -2218,9 +2222,16 @@ interests and curiosities'/>
           </div>
         </div>
         <div className="resume-right">
-          <button onClick={generatePDF}>Generate PDF</button>
+          <button onClick={handlePrint}>Generate PDF</button>
           <Scrollbars>
-            <div className="main-full" id="pdf-content">
+            <div className="main-full" id="pdf-content" ref={contentDivRef}
+        contentEditable={true}
+        style={{
+          // border: '1px solid #ccc',
+          // minHeight: '200px',
+          // padding: '10px',
+          // marginBottom: '20px',
+        }}>
               <div className="main-right">
                 <div>
                   <div style={{ display: "flex" }} className="cont-1">
