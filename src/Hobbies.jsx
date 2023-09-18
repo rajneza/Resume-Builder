@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import ReactQuill from "react-quill";
@@ -20,7 +20,8 @@ import { render } from 'react-dom';
 import { useReactToPrint } from 'react-to-print';
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import image from "./Components/images/custom-extra.svg";
 import image1 from "./Components/images/custom-course.svg";
 import image2 from "./Components/images/custom-internship.svg";
@@ -169,6 +170,13 @@ function Hobbies() {
     setIsFocused(false);
   };
 
+  const [skillsProgressBars, setSkillsProgressBars] = useState({});
+  const [studentSkills, setStudentSkills] = useState([]);
+  const [selectedSkill, setSelectedSkill] = useState('');
+  const [selectedStage, setSelectedStage] = useState('Fresher');
+  const [stages, setStages] = useState(['Fresher', 'Experience', 'Export', 'Pro']);
+  const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
+
   function setField(value, type) {
     switch (type) {
       case "name":
@@ -279,13 +287,155 @@ function Hobbies() {
   const handlePrint = useReactToPrint({
     content: () => contentDivRef.current, // Reference to the content div
   });
+  const createSecondProgressBar = (skill) => {
+    const initialProgress = {
+      Fresher: 25,
+      Experience: 0,
+      Export: 0,
+      Pro: 0,
+    };
+
+    setSkillsProgressBars((prevState) => ({
+      ...prevState,
+      [skill]: {
+        progress: initialProgress,
+      },
+    }));
+  };
+
+  const handleSkillSelectChange = (event) => {
+    const selectedSkill = event.target.value;
+    setSelectedSkill(selectedSkill);
+
+    if (selectedSkill === 'add_skill') {
+      const newSkills = [];
+
+      while (true) {
+        const newSkillInput = prompt('Enter a new skill (or click "Cancel" to stop adding skills):');
+
+        if (newSkillInput === null) {
+          // User clicked "Cancel" or closed the prompt
+          break;
+        }
+
+        if (newSkillInput.trim() === '') {
+          // Handle empty input if needed
+          toast.error('Skill name cannot be empty.');
+        } else {
+          // Add the skill to the list
+          newSkills.push(newSkillInput);
+        }
+      }
+
+      if (newSkills.length > 0) {
+        // Add the new skills to the state
+        setStudentSkills([...studentSkills, ...newSkills]);
+
+        // Create progress bars for the new skills
+        newSkills.forEach((newSkill) => createSecondProgressBar(newSkill));
+
+        // Set the recently added skills
+        setRecentlyAddedSkill(newSkills);
+
+        // Display a confirmation message for the last added skill
+        toast.success(`Skill added successfully: ${newSkills[newSkills.length - 1]}`);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Display a single toast message for all recently added skills
+    if (recentlyAddedSkill.length > 0) {
+      toast.info(`Please select  the following skills: ${recentlyAddedSkill.join(', ')} from the droupdown`, {
+        position: toast.POSITION.TOP_CENTER, // Set the position to top center
+      });
+      setRecentlyAddedSkill([]); // Clear the recently added skills
+    }
+  }, [recentlyAddedSkill]);
+
+  const deleteSkill = (index, skill) => {
+    const updatedSkills = [...studentSkills];
+    updatedSkills.splice(index, 1);
+    setStudentSkills(updatedSkills);
+
+    setSkillsProgressBars((prevState) => {
+      const newSkillsProgressBars = { ...prevState };
+      delete newSkillsProgressBars[skill];
+      return newSkillsProgressBars;
+    });
+  };
+
+  const renderSecondProgressBar = (skill) => {
+    const progress = skillsProgressBars[skill]?.progress || {};
+    return (
+      <div className="progress-bar">
+        <div
+          className="inner-progress stage-fresher"
+          style={{ width: `${progress.Fresher}%`, backgroundColor: getRandomColor() }}
+        ></div>
+        <div
+          className="inner-progress stage-experience"
+          style={{ width: `${progress.Experience}%`, backgroundColor: getRandomColor() }}
+        ></div>
+        <div
+          className="inner-progress stage-export"
+          style={{ width: `${progress.Export}%`, backgroundColor: getRandomColor() }}
+        ></div>
+        <div
+          className="inner-progress stage-pro"
+          style={{ width: `${progress.Pro}%`, backgroundColor: getRandomColor() }}
+        ></div>
+      </div>
+    );
+  };
+
+  const handleStageClick = (index) => {
+    const selectedStage = stages[index];
+    setSelectedStage(selectedStage);
+
+    if (selectedSkill && selectedSkill !== 'add_skill') {
+      updateSecondProgressBar(selectedSkill, selectedStage);
+    }
+  };
+
+  const updateSecondProgressBar = (skill, stage) => {
+    setSkillsProgressBars((prevState) => {
+      const updatedSkillsProgressBars = { ...prevState };
+
+      let progressPercentage = 0;
+      if (stage === 'Fresher') {
+        progressPercentage = 25;
+      } else if (stage === 'Experience') {
+        progressPercentage = 50;
+      } else if (stage === 'Export') {
+        progressPercentage = 75;
+      } else if (stage === 'Pro') {
+        progressPercentage = 100;
+      }
+
+      updatedSkillsProgressBars[skill].progress = {
+        Fresher: stage === 'Fresher' ? progressPercentage : 0,
+        Experience: stage === 'Experience' ? progressPercentage : 0,
+        Export: stage === 'Export' ? progressPercentage : 0,
+        Pro: stage === 'Pro' ? progressPercentage : 0,
+      };
+
+      return updatedSkillsProgressBars;
+    });
+  };
+
+  const getRandomColor = () => {
+    const colors = ['red'];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  };
 
   // Handle the switch's change event
   const handleSwitchChange = (checked) => {
     setIsChecked(checked);
   };
 
-  
+
   const handleChange = (html) => {
     setEditorHtml(html);
     if (editorHtml === "") {
@@ -378,20 +528,7 @@ function Hobbies() {
       setShowFullView(true);
     }
   };
-  // PDF
-  // const generatePDF = () => {
-  //   const doc = new jsPDF();
 
-  //   doc.text("", 10, 10);
-
-  //   const content = document.getElementById("pdf-content");
-
-  //   html2canvas(content).then((canvas) => {
-  //     const imgData = canvas.toDataURL("image/png");
-  //     doc.addImage(imgData, "PNG", 10, 20);
-  //     doc.save("sample.pdf");
-  //   });
-  // };
   const [objects, setObjects] = useState([]);
 
   const createObject = () => {
@@ -952,7 +1089,7 @@ function Hobbies() {
                     <div className="select-photo-container">
                       <Dropzone
                         onDrop={handleDrop}
-                        accept="image/*"
+                        accept="image/*"f
                         multiple={false}
                       >
                         {({ getRootProps, getInputProps }) => (
@@ -3068,13 +3205,13 @@ interests and curiosities"
           <button onClick={handlePrint}>Generate PDF</button>
           <Scrollbars>
             <div className="main-full" id="pdf-content" ref={contentDivRef}
-        contentEditable={true}
-        style={{
-          // border: '1px solid #ccc',
-          // minHeight: '200px',
-          // padding: '10px',
-          // marginBottom: '20px',
-        }}>
+              contentEditable={true}
+              style={{
+                // border: '1px solid #ccc',
+                // minHeight: '200px',
+                // padding: '10px',
+                // marginBottom: '20px',
+              }}>
               <div className="main-right">
                 <div>
                   <div style={{ display: "flex" }} className="cont-1">
@@ -3240,9 +3377,19 @@ interests and curiosities"
                       <h4 className="heading">Skills</h4>
                     )}
                     {skill.map((object) => (
+                      
                       <div key={object.id} className="ill">
+                        
                         <p className="cit" id="cit">{`${object.input1}`}</p>
                         <div className="ski1">
+                        <div className="progress-bar-container" id="secondProgressBarContainer">
+        {studentSkills.map((skill, index) => (
+          <div key={index} className="progress-bar-container">
+            <div className="skill-name">{skill}</div>
+            {renderSecondProgressBar(skill)}
+          </div>
+        ))}
+      </div>
                           {isChecked ? (
                             <div>
                               {object.input2 === "" ? (
