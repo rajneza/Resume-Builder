@@ -2,7 +2,7 @@
 import React from "react";
 import "./Navbar.css";
 import sai from "./images/sai.avif";
-import build from "./images/build.png";
+import buld from "./images/buld.png";
 import Image from './images/visual-0c7080adf17f1f207276f613447c924f667dab34b7ac415cd7ef653172defd0b.svg';
 import feature from "./images/feature-1-edf4481d69166ac81917d1e40e6597c8d61aa970ad44367ce78049bf830fbda5.svg";
 import feature1 from "./images/feature-2-a7a471bd973c02a55d1b3f8aff578cd3c9a4c5ac4fc74423d94ecc04aef3492b.svg";
@@ -22,7 +22,7 @@ import rajesh from "./images/rajesh.avif";
       <div className="navbar-content">
         <div className="brand-and-toggler">
         <a href="index.html" className="navbar-brand">
-            <img src={build} alt="" className="navbar-brand-icon" />
+            <img src={buld} alt="" className="navbar-brand-icon" />
             <span className="navbar-brand-text">build <span>resume.</span></span>
           </a>
           <button type="button" className="navbar-toggler-btn">
