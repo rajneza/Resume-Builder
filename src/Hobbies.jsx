@@ -33,6 +33,7 @@ import image7 from "./Components/images/custom-skills.webp";
 import image8 from "./Components/images/custom-hobbies.svg";
 import image9 from "./Components/images/custom-languages.svg";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
+import EditIcon from "@mui/icons-material/Edit";
 
 const Data = [
   {
@@ -153,6 +154,9 @@ function Hobbies() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const contentDivRef = useRef(null);  const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const editingRef = useRef(editing);
+  const [heading, setHeading] = useState("Personal Details");
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -168,6 +172,23 @@ function Hobbies() {
 
   const handleBlur = () => {
     setIsFocused(false);
+  };
+
+  let handleEditClick = () => {
+    setEditing(true);
+  };
+
+  const handleHeadingChange = (event) => {
+    setHeading(event.target.value);
+  };
+
+  const handleHeadingBlur = () => {
+    editingRef.current = false;
+    setEditing(false);
+  };
+
+  let toggleDetails = () => {
+    setEditing(!editing);
   };
 
   const [skillsProgressBars, setSkillsProgressBars] = useState({});
@@ -1047,7 +1068,7 @@ function Hobbies() {
               <div className="score-body">
                 <div className="score-content">
                   <div className="score-left-body">
-                    <div className="progress-bar">{completionPercentage}%</div>
+                    <div className="progress-score">{completionPercentage}%</div>
                     <p className="resume-para">Completion Score</p>
                   </div>
                   <div className="resume-profile-body">
@@ -1068,7 +1089,29 @@ function Hobbies() {
                 </div>
               </div>
               <div className="left-pdetails-container">
-                <h2>Personal Details</h2>
+              <div className="details-heading-content">
+                    <div className="header-label">
+                      {editing ? (
+                        <div>
+                          <input
+                            type="text"
+                            id="personal-details"
+                            value={heading}
+                            onChange={handleHeadingChange}
+                            onBlur={handleHeadingBlur}
+                            className="handle-input"
+                          />
+                        </div>
+                      ) : (
+                        <div className="handle-heading">
+                          <h3>{heading}</h3>
+                          <button onClick={handleEditClick}>
+                            <EditIcon />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">

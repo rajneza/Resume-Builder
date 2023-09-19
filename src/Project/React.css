@@ -64,7 +64,7 @@
 
 }
 
-*/ .popup {
+ .popup {
   display: none;
   position: fixed;
   top: 50%;
