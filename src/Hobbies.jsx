@@ -1085,7 +1085,8 @@ function Hobbies() {
                   </div>
                 </div>
                 <div className="resume-hr-body">
-                  {<ProgressBar completed={completionPercentage} />}
+                  {<ProgressBar completed={completionPercentage} 
+                  />}
                 </div>
               </div>
               <div className="left-pdetails-container">
