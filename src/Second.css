@@ -941,7 +941,7 @@ overflow-y: auto;
 
 .flex {
   border: 1px solid gray;
-  width: 77.3%;
+  width: 103.5%;
 
   border-radius: 5px
 }
@@ -949,14 +949,17 @@ overflow-y: auto;
 .flexx {
 
   border: 1px solid gray;
-  width: 92.5%;
+  width: 207%;
   border-radius: 5px;
 
+}
+#ref{
+  width: 198%;
 }
 
 #flexx {
   border: 1px solid gray;
-  width: 61%;
+  width: 115%;
   border-radius: 5px;
 
 
@@ -965,7 +968,7 @@ overflow-y: auto;
 .flexxx {
 
   border: 1px solid gray;
-  width: 110%;
+  width: 207%;
   border-radius: 5px;
 
 }
@@ -1185,6 +1188,12 @@ overflow-y: auto;
 	top: 0;
 	left: 50%;
 	transform: translateX(-50%);
+  }
+  #reference{
+    width: 43vw;
+  }
+  .label{
+    margin-left: 6.7%;
   }
   
 
