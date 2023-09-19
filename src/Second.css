@@ -15,6 +15,7 @@ Popup.css .popup {
   transition: opacity 0.3s ease-in-out;
 }
 
+
 .popup.visible {
   display: block;
 }
@@ -289,6 +290,31 @@ Popup.css .popup {
   position: absolute;
   top: 0;
 
+}
+
+.edit-button {
+  outline: none;
+  border: none;
+  color: #1a91f0;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.edit-details {
+  display: flex;
+}
+
+.edit-details KeyboardArrowUpIcon{
+  height:20px;
+}
+
+.left-pdetails-container{
+  margin-bottom: 30px;
+}
+.css-i4bv87-MuiSvgIcon-root{
+  height:25px !important;
+  width:25px !important;
 }
 
 .score-content {
@@ -583,6 +609,8 @@ Popup.css .popup {
 .photo label{
   font-size: 16px;
   font-weight: 500;
+  color:#4e4e50;
+  margin-bottom: 3px;
 }
 
 .edit {

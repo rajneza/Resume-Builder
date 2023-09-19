@@ -35,6 +35,8 @@ import image8 from "./Components/images/custom-hobbies.svg";
 import image9 from "./Components/images/custom-languages.svg";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import EditIcon from "@mui/icons-material/Edit";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Data = [
   {
@@ -127,7 +129,7 @@ function Hobbies() {
   const [place, setplace] = useState("");
   const [birth, setbirth] = useState("");
   const [editorHtml, setEditorHtml] = useState("");
-  const [display, setdisplay] = useState(false);
+  const [display, setdisplay] = useState(true);
   const [emp, setemp] = useState(true);
   const [oction, setoction] = useState(true);
   const [ext, setext] = useState(true);
@@ -1261,7 +1263,8 @@ function Hobbies() {
                     />
                   </div>
                 </div>
-                <div className={display ? "visble" : "hidden"}>
+                {editing ? (
+                <div>
                   <div className="job-title">
                     <div className="wanted">
                       <div className="job">
@@ -1288,7 +1291,7 @@ function Hobbies() {
                       />
                     </div>
                   </div>
-                  <div className={display ? "visble" : "hidden"}>
+                  
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
@@ -1316,8 +1319,8 @@ function Hobbies() {
                         />
                       </div>
                     </div>
-                  </div>
-                  <div className={display ? "visble" : "hidden"}>
+                  
+                  
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
@@ -1344,13 +1347,23 @@ function Hobbies() {
                         />
                       </div>
                     </div>
+                    <div className="input-section">
+                        <button onClick={toggleDetails} className="edit-button">
+                          <div className="edit-details">
+                            <span>Hide additional details</span>
+                            <KeyboardArrowUpIcon />
+                          </div>
+                        </button>
+                      </div>
+                </div>
+                ) : (
+                  <button onClick={toggleDetails} className="edit-button">
+                  <div className="edit-details">
+                    <span>Edit additional details</span>
+                    <ExpandMoreIcon />
                   </div>
-                </div>
-                <div className="edit">
-                  <h5 onClick={() => setdisplay(!display)}>
-                    Edit additional details <IoIosArrowUp />
-                  </h5>
-                </div>
+                </button>
+              )}
               </div>
               <div className="summary">
                 <div>
