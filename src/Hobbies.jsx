@@ -9,6 +9,7 @@ import { MdOutlineDelete, MdOutlineDragIndicator } from "react-icons/md";
 import { Scrollbars } from "react-custom-scrollbars";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
