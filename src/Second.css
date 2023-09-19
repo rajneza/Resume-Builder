@@ -1,3 +1,6 @@
+*{
+  font-family: TT Commons,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+}
 Popup.css .popup {
   display: none;
   position: fixed;
@@ -134,7 +137,7 @@ Popup.css .popup {
   height: 6vh;
   border: none;
   outline: none;
-  background-color: #eaf6ff;
+  background-color: #eff2f9;
   margin-bottom: 5px;
 }
 
@@ -243,11 +246,11 @@ Popup.css .popup {
 
 .resume-title {
   position: relative;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 500;
   padding: 0 32px;
   text-align: center;
-  margin-bottom: .5rem;
+  margin-bottom: 8px;
 }
 
 .title-content {
@@ -265,8 +268,8 @@ Popup.css .popup {
 .score-body {
   position: sticky;
   background-color: white;
-  padding-bottom: 1rem;
-  padding-top: .8rem;
+  padding-bottom: 16px;
+  padding-top: 14px;
   user-select: none;
 }
 
@@ -300,8 +303,8 @@ Popup.css .popup {
 }
 
 .score-percent {
-  font-size: .875rem;
-  line-height: 1rem;
+  font-size: 14px;
+  line-height: 16px;
   letter-spacing: .3px;
   margin-right: 10px;
   background-color: #ec930c;
@@ -314,7 +317,7 @@ Popup.css .popup {
 }
 
 .resume-para {
-  font-size: 1rem;
+  font-size: 16px;
   color: #757272;
 }
 
@@ -338,22 +341,60 @@ Popup.css .popup {
 }
 
 .profile-body p {
-  line-height: 1.2rem;
-  font-size: 1rem;
+  line-height: 19.2px;
+  font-size: 16px;
   color: #757272;
   font-weight: 400;
 }
 
 .profile-sum-percent p {
-  font-size: .875rem;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1rem;
+  line-height: 16px;
   padding: 2px 4.5px;
   border-radius: 4px;
   color: #217d47;
   background-color: #e7f4ed;
-  height: 1.2rem;
+  height: 19.2px;
   margin-right: 7px;
+}
+
+.details-heading-content {
+  display: flex;
+  flex-flow: row;
+}
+
+.header-label {
+  display: flex;
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+}
+
+.handle-heading {
+  display: flex;
+}
+
+.handle-heading button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+}
+.handle-heading h3{
+  font-size: 23px;
+  margin-right: 4px;
+  font-weight: 600;
+}
+
+.handle-input {
+  border: none;
+  outline: none;
+  font-size: 23px;
+  margin-right: 4px;
+  font-weight: 600;
 }
 
 .profile-body p:hover {
@@ -365,11 +406,11 @@ Popup.css .popup {
 }
 
 .profile-sum-suggest {
-  height: 1.2rem;
-  width: 1.5rem;
-  margin-bottom: 1rem;
+  height: 19.2px;
+  width: 24px;
+  margin-bottom: 1px;
   color: #339d5d;
-  margin-left: 1rem;
+  margin-left: 16px;
   cursor: pointer;
   position: relative;
 }
@@ -398,7 +439,8 @@ Popup.css .popup {
   margin: 0;
   caret-color: rgba(133, 133, 238, 0.678);
   text-align: center;
-  
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .edit-icon{
@@ -408,9 +450,10 @@ Popup.css .popup {
   fill:blue !important;
 }
 
-.progress-bar{
+.progress-score{
   margin-right: 5px;
-  margin-top: 15px;
+  /* margin-top: 5px; */
+  font-size: 16px;
 }
 
 .react-tel-input .flag-dropdown {
@@ -427,7 +470,7 @@ Popup.css .popup {
   width: 20vw !important;
   height: 6vh;
   border: none !important;
-  background-color: #eaf6ff !important;
+  background-color: #eff2f9 !important;
 }
 
 .resume-right {
@@ -529,8 +572,17 @@ Popup.css .popup {
 }
 
 .job-title {
-
+  margin-bottom: 24px;
   display: flex;
+  /* flex-flow: wrap; */
+  grid-gap: 20px;
+  
+}
+
+.job label,
+.photo label{
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .edit {
@@ -559,12 +611,13 @@ Popup.css .popup {
   height: 6vh;
   border: none;
   outline: none;
-  background-color: #eaf6ff;
+  background-color: #eff2f9;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .work:hover {
-  border-bottom: 2px solid #c3e5fe;
+  border-bottom: 2px solid #1a91f0;
 }
 
 .emp-main {
@@ -662,7 +715,7 @@ Popup.css .popup {
 
 .mess {
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 12.8px;
   margin-top: 0%;
   display: flex;
   flex-wrap: wrap;
@@ -731,7 +784,7 @@ overflow-y: auto;
 }
 
 .fon {
-  font-size: 0.9rem;
+  font-size: 14.4px;
   font-weight: bolder;
   margin-top: 2%;
   margin-bottom: 1%;
@@ -757,14 +810,14 @@ overflow-y: auto;
 }
 
 .fontt {
-  font-size: 0.8rem;
+  font-size: 12.8px;
   font-weight: bold;
   margin-top: 0%;
   margin-bottom: 0%;
 }
 
 .fonttt {
-  font-size: 0.8rem;
+  font-size: 12.8px;
   margin-top: 2%;
   margin-bottom: 4%;
 }
@@ -888,7 +941,7 @@ overflow-y: auto;
 
 .flex {
   border: 1px solid gray;
-  width: 77.3%;
+  width: 103.5%;
 
   border-radius: 5px
 }
@@ -896,14 +949,17 @@ overflow-y: auto;
 .flexx {
 
   border: 1px solid gray;
-  width: 92.5%;
+  width: 207%;
   border-radius: 5px;
 
+}
+#ref{
+  width: 198%;
 }
 
 #flexx {
   border: 1px solid gray;
-  width: 61%;
+  width: 115%;
   border-radius: 5px;
 
 
@@ -912,7 +968,7 @@ overflow-y: auto;
 .flexxx {
 
   border: 1px solid gray;
-  width: 110%;
+  width: 207%;
   border-radius: 5px;
 
 }
@@ -925,7 +981,7 @@ overflow-y: auto;
   border: none;
   outline: none;
   border-bottom: 1px solid blue;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: bold;
   max-width: fit-content;
 }
@@ -936,7 +992,7 @@ overflow-y: auto;
   background-color: white;
   border: none;
   color: blue;
-  font-size: 1.1rem;
+  font-size: 17.6px;
   font-weight: bold;
 }
 .photo-heading{
@@ -1132,6 +1188,12 @@ overflow-y: auto;
 	top: 0;
 	left: 50%;
 	transform: translateX(-50%);
+  }
+  #reference{
+    width: 43vw;
+  }
+  .label{
+    margin-left: 6.7%;
   }
   
 
