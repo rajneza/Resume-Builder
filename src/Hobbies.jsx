@@ -126,7 +126,7 @@ function Hobbies() {
   const [place, setplace] = useState("");
   const [birth, setbirth] = useState("");
   const [editorHtml, setEditorHtml] = useState("");
-  const [display, setdisplay] = useState(true);
+  const [display, setdisplay] = useState(false);
   const [emp, setemp] = useState(true);
   const [oction, setoction] = useState(true);
   const [ext, setext] = useState(true);
