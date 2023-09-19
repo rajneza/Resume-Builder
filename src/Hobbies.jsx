@@ -1478,7 +1478,9 @@ function Hobbies() {
                                               style={{ cursor: "pointer" }}
                                               className="arrow"
                                             >
-                                              <IoIosArrowUp />
+                                             {
+                                              emp ? <IoIosArrowUp/> : <IoIosArrowDown/>
+                                             }
                                             </h5>
                                           </div>
                                           <div
@@ -1649,7 +1651,9 @@ function Hobbies() {
                                               style={{ cursor: "pointer" }}
                                               className="arrow"
                                             >
-                                              <IoIosArrowUp />
+                                              {
+                                                oction ? <IoIosArrowUp /> : <IoIosArrowDown />
+                                              }
                                             </h5>
                                           </div>
                                           <div
@@ -1968,7 +1972,7 @@ interests and curiosities"
                                                     }
                                                     className="delete"
                                                   >
-                                                    Delete
+                                                    <MdOutlineDelete />
                                                   </button>
                                                 </div>
                                               </div>
@@ -2483,7 +2487,7 @@ interests and curiosities"
                                           <div key={object.id}>
                                             <div
                                               style={{ display: "flex" }}
-                                              className="flexx"
+                                              className="flexx" id="ref"
                                             >
                                               {object.input1}
                                               <h5
@@ -2504,7 +2508,7 @@ interests and curiosities"
                                               }
                                             >
                                               <div style={{ display: "flex" }}>
-                                                <div className="emp-main">
+                                                <div className="emp-main"  id="reference">
                                                   <div
                                                     style={{ display: "flex" }}
                                                   >
@@ -2571,7 +2575,7 @@ interests and curiosities"
                                                       </div>
                                                     </div>
                                                     <div className="wanted">
-                                                      <div>
+                                                      <div className="label">
                                                         <label htmlFor="">
                                                           Email
                                                         </label>{" "}
@@ -3049,7 +3053,7 @@ interests and curiosities"
                               >
                                 {object.input1}
                                 <h5
-                                  onClick={() => setlanguage(language)}
+                                  onClick={() => setlanguage(!language)}
                                   className="arrow"
                                   style={{ cursor: "pointer" }}
                                 >
