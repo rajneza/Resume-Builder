@@ -5,7 +5,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Dropzone from "react-dropzone";
 import { GoPerson } from "react-icons/go";
-import { MdOutlineDelete, MdOutlineDragIndicator } from "react-icons/md";
+import { MdOutlineDelete, MdOutlineDragIndicator,MdDragIndicator } from "react-icons/md";
 import { Scrollbars } from "react-custom-scrollbars";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
@@ -35,6 +35,8 @@ import image8 from "./Components/images/custom-hobbies.svg";
 import image9 from "./Components/images/custom-languages.svg";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import EditIcon from "@mui/icons-material/Edit";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Data = [
   {
@@ -127,7 +129,7 @@ function Hobbies() {
   const [place, setplace] = useState("");
   const [birth, setbirth] = useState("");
   const [editorHtml, setEditorHtml] = useState("");
-  const [display, setdisplay] = useState(false);
+  const [display, setdisplay] = useState(true);
   const [emp, setemp] = useState(true);
   const [oction, setoction] = useState(true);
   const [ext, setext] = useState(true);
@@ -155,6 +157,7 @@ function Hobbies() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const contentDivRef = useRef(null);  const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [editingTitle, setEditingTitle] = useState(false);
   const [editing, setEditing] = useState(false);
   const editingRef = useRef(editing);
   const [heading, setHeading] = useState("Personal Details");
@@ -200,7 +203,7 @@ function Hobbies() {
   };
 
   let handleEditClick = () => {
-    setEditing(true);
+    setEditingTitle(true);
   };
 
   const handleHeadingChange = (event) => {
@@ -209,7 +212,7 @@ function Hobbies() {
 
   const handleHeadingBlur = () => {
     editingRef.current = false;
-    setEditing(false);
+    setEditingTitle(false);
   };
 
   let toggleDetails = () => {
@@ -1129,7 +1132,7 @@ function Hobbies() {
               <div className="left-pdetails-container">
               <div className="details-heading-content">
                     <div className="header-label">
-                      {editing ? (
+                      {editingTitle ? (
                         <div>
                           <input
                             type="text"
@@ -1305,7 +1308,8 @@ function Hobbies() {
                     />
                   </div>
                 </div>
-                <div className={display ? "visble" : "hidden"}>
+                {editing ? (
+                <div>
                   <div className="job-title">
                     <div className="wanted">
                       <div className="job">
@@ -1332,7 +1336,7 @@ function Hobbies() {
                       />
                     </div>
                   </div>
-                  <div className={display ? "visble" : "hidden"}>
+                  
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
@@ -1362,8 +1366,8 @@ function Hobbies() {
                         />
                       </div>
                     </div>
-                  </div>
-                  <div className={display ? "visble" : "hidden"}>
+                  
+                  
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
@@ -1385,6 +1389,7 @@ function Hobbies() {
                         <input
                           type="text"
                           className="work"
+                          placeholder="dd/mm/yyyy"
                           value={birth}
                           onChange={(e) => {
                             progress(e.target.value, birth, "birth", 5);
@@ -1392,13 +1397,23 @@ function Hobbies() {
                         />
                       </div>
                     </div>
+                    <div className="input-section">
+                        <button onClick={toggleDetails} className="edit-button">
+                          <div className="edit-details">
+                            <span>Hide additional details</span>
+                            <KeyboardArrowUpIcon />
+                          </div>
+                        </button>
+                      </div>
+                </div>
+                ) : (
+                  <button onClick={toggleDetails} className="edit-button">
+                  <div className="edit-details">
+                    <span>Edit additional details</span>
+                    <ExpandMoreIcon />
                   </div>
-                </div>
-                <div className="edit">
-                  <h5 onClick={() => setdisplay(!display)}>
-                    Edit additional details <IoIosArrowUp />
-                  </h5>
-                </div>
+                </button>
+              )}
               </div>
               <div className="summary">
                 <div>
@@ -1476,14 +1491,14 @@ function Hobbies() {
                                             secetion ? "hidden" : "visible"
                                           }
                                         >
-                                          {deefault}
+                                         <MdDragIndicator className="drag drop"/> {deefault}
                                         </h3>
                                       ) : (
                                         <h3
                                           className={
                                             secetion ? "hidden" : "visible"
                                           }
-                                        >
+                                        ><MdDragIndicator className="drag drop"/>
                                           <input
                                             type="text"
                                             value={deefault}
@@ -1514,7 +1529,7 @@ function Hobbies() {
                                   {/* <Storelist {...store}/> */}
                                   {store.name === "Employment" ? (
                                     <div className="add-section-container">
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       {objects.map((object) => (
                                         <div key={object.id}>
@@ -1686,8 +1701,8 @@ function Hobbies() {
                                     <span></span>
                                   )}
                                   {store.name === "Education" ? (
-                                    <div>
-                                      <h3>{store.name}</h3>
+                                    <div className="education-container">
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       {education.map((object) => (
                                         <div key={object.id}>
@@ -1860,12 +1875,13 @@ function Hobbies() {
                                   )}
                                   {store.name ===
                                   "Extra-curricular activites" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={
                                         curricular ? "hidden" : "visible"
                                       }
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       <div className="emp-div">
                                         {four.map((object) => (
@@ -2039,14 +2055,16 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete7}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Course" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={cour ? "hidden" : "visible"}
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       <div className="emp-div">
                                         {course.map((object) => (
@@ -2178,14 +2196,16 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete2}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Internships" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={intern ? "hidden" : "visible"}
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <div className="emp-div">
                                         {five.map((object) => (
                                           <div key={object.id}>
@@ -2342,14 +2362,16 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete4}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Project" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={proj ? "hidden" : "visible"}
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <div className="emp-div">
                                         {project.map((object) => (
                                           <div key={object.id}>
@@ -2522,16 +2544,18 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete8}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Refrence" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={
                                         reference ? "hidden" : "visible"
                                       }
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <div className="emp-div">
                                         {three.map((object) => (
                                           <div key={object.id}>
@@ -2670,10 +2694,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete3}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Custom" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={
                                         secetion ? "hidden" : "visible"
@@ -2821,6 +2847,7 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete1}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
@@ -2916,8 +2943,8 @@ interests and curiosities"
                     <button onClick={delete9}>delete</button>
                   </div>
                 </div>
-                <div>
-                  <div>
+                <div >
+                  <div className="add_section_box">
                     <div className={label ? "hidden" : "visible"}>
                       <div>
                         <h2> Skills</h2>
@@ -3028,6 +3055,7 @@ interests and curiosities"
                     </div>
                   </div>
                   {
+                    <div className="add_section_box">
                     <div className={hobb ? "hidden" : "visible"}>
                       <div>
                         <h2>Hobbies</h2>
@@ -3085,11 +3113,13 @@ interests and curiosities"
                           + Add more Hobbie
                         </button>
                       </div>
-                      <button onClick={delete6}>delete</button>
+                      <button onClick={delete5}>delete</button>
+                    </div>
                     </div>
                   }
                   <div>
                     {
+                      <div className="add_section_box">
                       <div className={lang ? "hidden" : "visible"}>
                         <div>
                           <h2>Langugages</h2>
@@ -3099,6 +3129,7 @@ interests and curiosities"
                             <div key={object.id}>
                               <div
                                 className="flexxx"
+                                
                                 style={{ display: "flex" }}
                               >
                                 {object.input1}
@@ -3184,7 +3215,8 @@ interests and curiosities"
                             + Add one more languages
                           </button>
                         </div>
-                        <button onClick={delete5}>delete</button>
+                        <button onClick={delete6}>delete</button>
+                      </div>
                       </div>
                     }
                   </div>
@@ -3599,6 +3631,7 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          
                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>

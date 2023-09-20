@@ -15,6 +15,7 @@ Popup.css .popup {
   transition: opacity 0.3s ease-in-out;
 }
 
+
 .popup.visible {
   display: block;
 }
@@ -147,6 +148,7 @@ Popup.css .popup {
 
 .emp-main {
   border: 1px solid gray;
+  cursor: default;
 }
 
 .emp-div {
@@ -289,6 +291,31 @@ Popup.css .popup {
   position: absolute;
   top: 0;
 
+}
+
+.edit-button {
+  outline: none;
+  border: none;
+  color: #1a91f0;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.edit-details {
+  display: flex;
+}
+
+.edit-details KeyboardArrowUpIcon{
+  height:20px;
+}
+
+.left-pdetails-container{
+  margin-bottom: 30px;
+}
+.css-i4bv87-MuiSvgIcon-root{
+  height:25px !important;
+  width:25px !important;
 }
 
 .score-content {
@@ -575,7 +602,7 @@ Popup.css .popup {
   margin-bottom: 24px;
   display: flex;
   /* flex-flow: wrap; */
-  grid-gap: 20px;
+  grid-gap: 15px;
   
 }
 
@@ -583,6 +610,13 @@ Popup.css .popup {
 .photo label{
   font-size: 16px;
   font-weight: 500;
+  color:#4e4e50;
+  margin-bottom: 3px;
+}
+
+.job input,
+.photo input{
+  padding: 12px 16px;;
 }
 
 .edit {
@@ -703,7 +737,7 @@ Popup.css .popup {
   width: 100%;
   flex-wrap: wrap;
   height: fit-content;
-  margin-bottom: 0%;
+  margin-bottom: 30px;
   margin-left: 0%;
 
 }
@@ -925,6 +959,16 @@ overflow-y: auto;
   /* background-color: #0f3871; */
   margin-right: 0%;
 }
+.add-section-container{
+  cursor: default;
+}
+.drag{
+  cursor: grab;
+ margin-left: -3%;
+}
+.drop{
+  margin-left: -20%;
+}
 
 .progress {
   /* width: 0%; */
@@ -942,7 +986,7 @@ overflow-y: auto;
 .flex {
   border: 1px solid gray;
   width: 103.5%;
-
+   cursor: default;
   border-radius: 5px
 }
 
@@ -951,7 +995,7 @@ overflow-y: auto;
   border: 1px solid gray;
   width: 207%;
   border-radius: 5px;
-
+  cursor: default;
 }
 #ref{
   width: 198%;
@@ -966,11 +1010,14 @@ overflow-y: auto;
 }
 
 .flexxx {
-
+  cursor: default;
   border: 1px solid gray;
   width: 207%;
   border-radius: 5px;
 
+}
+#border{
+  border: 5px solid blue;
 }
 
 .des {
@@ -988,7 +1035,7 @@ overflow-y: auto;
 
 #cust {
   height: 3vh;
-  margin-top: 1.2vw;
+  margin-top: 0.2vw;
   background-color: white;
   border: none;
   color: blue;
@@ -1043,6 +1090,14 @@ overflow-y: auto;
   flex-flow: wrap;
 }
 
+.add-section-container,
+.education-container,
+.add_section_box,
+.main-div{
+  margin-bottom: 30px;
+}
+
+
 .custom-section {
   display: flex;
   margin-right: 32px;
@@ -1051,6 +1106,7 @@ overflow-y: auto;
 
 
 }
+
 
 .custom-btn {
   display: flex;
