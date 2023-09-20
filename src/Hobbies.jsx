@@ -1341,6 +1341,7 @@ function Hobbies() {
                         <input
                           type="text"
                           className="work"
+                          placeholder="dd/mm/yyyy"
                           value={birth}
                           onChange={(e) => {
                             progress(e.target.value, birth, "birth", 5);
@@ -1652,7 +1653,7 @@ function Hobbies() {
                                     <span></span>
                                   )}
                                   {store.name === "Education" ? (
-                                    <div>
+                                    <div className="education-container">
                                       <h3>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       {education.map((object) => (
@@ -1826,6 +1827,7 @@ function Hobbies() {
                                   )}
                                   {store.name ===
                                   "Extra-curricular activites" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={
                                         curricular ? "hidden" : "visible"
@@ -2005,10 +2007,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete7}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Course" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={cour ? "hidden" : "visible"}
                                     >
@@ -2144,10 +2148,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete2}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Internships" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={intern ? "hidden" : "visible"}
                                     >
@@ -2308,10 +2314,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete4}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Project" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={proj ? "hidden" : "visible"}
                                     >
@@ -2488,10 +2496,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete8}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Refrence" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={
                                         reference ? "hidden" : "visible"
@@ -2636,10 +2646,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete3}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Custom" ? (
+                                    <div className="add_section_box">
                                     <div
                                       className={
                                         secetion ? "hidden" : "visible"
@@ -2787,6 +2799,7 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete1}>delete</button>
                                     </div>
+                                    </div>
                                   ) : (
                                     <span></span>
                                   )}
@@ -2882,8 +2895,8 @@ interests and curiosities"
                     <button onClick={delete9}>delete</button>
                   </div>
                 </div>
-                <div>
-                  <div>
+                <div >
+                  <div className="add_section_box">
                     <div className={label ? "hidden" : "visible"}>
                       <div>
                         <h2> Skills</h2>
@@ -2994,6 +3007,7 @@ interests and curiosities"
                     </div>
                   </div>
                   {
+                    <div className="add_section_box">
                     <div className={hobb ? "hidden" : "visible"}>
                       <div>
                         <h2>Hobbies</h2>
@@ -3053,9 +3067,11 @@ interests and curiosities"
                       </div>
                       <button onClick={delete5}>delete</button>
                     </div>
+                    </div>
                   }
                   <div>
                     {
+                      <div className="add_section_box">
                       <div className={lang ? "hidden" : "visible"}>
                         <div>
                           <h2>Langugages</h2>
@@ -3152,6 +3168,7 @@ interests and curiosities"
                           </button>
                         </div>
                         <button onClick={delete6}>delete</button>
+                      </div>
                       </div>
                     }
                   </div>
