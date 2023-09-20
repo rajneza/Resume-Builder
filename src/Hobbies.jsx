@@ -3035,7 +3035,7 @@ interests and curiosities"
                           + Add more Hobbie
                         </button>
                       </div>
-                      <button onClick={delete6}>delete</button>
+                      <button onClick={delete5}>delete</button>
                     </div>
                   }
                   <div>
@@ -3049,6 +3049,7 @@ interests and curiosities"
                             <div key={object.id}>
                               <div
                                 className="flexxx"
+                                
                                 style={{ display: "flex" }}
                               >
                                 {object.input1}
@@ -3134,7 +3135,7 @@ interests and curiosities"
                             + Add one more languages
                           </button>
                         </div>
-                        <button onClick={delete5}>delete</button>
+                        <button onClick={delete6}>delete</button>
                       </div>
                     }
                   </div>
