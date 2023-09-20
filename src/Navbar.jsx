@@ -49,13 +49,24 @@ const Navbar = () => {
           </div>
           <div className="immages">
             <div className="photooo">
-              <img src={mrssai} alt="sai" /></div>
+              <img src={mrssai} alt="sai" />
+              <a href="http://localhost:3000/hobbie" className="btn btn-primary text-uppercase link-overlay">
+          Create My Resume
+        </a></div>
             <div className="photooo">
-              <img src={ushamadam} alt="sai" /></div>
+              <img src={ushamadam} alt="sai" />
+              <a href="http://localhost:3000/hobbie" className="btn btn-primary text-uppercase link-overlay">
+          Create My Resume
+        </a></div>
             <div className="photooo">
-              <img src={acharjya} alt="sai" /></div>
+              <img src={acharjya} alt="sai" />
+              <a href="http://localhost:3000/hobbie" className="btn btn-primary text-uppercase link-overlay">
+          Create My Resume
+        </a></div>
             <div className="photooo">
-              <img src={rajeshsir} alt="sai" /></div>
+              <img src={rajeshsir} alt="sai" /> <a href="http://localhost:3000/hobbie" className="btn btn-primary text-uppercase link-overlay">
+          Create My Resume
+        </a></div>
           </div><br/>
         </header>
         <div className="section-one">

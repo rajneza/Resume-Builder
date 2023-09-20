@@ -373,3 +373,28 @@ a{
     }
 }
 
+.photooo {
+    position: relative;
+    display: inline-block; /* Make the container shrink to the size of the image */
+  }
+  
+  .link-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: none;
+  }
+  
+  .photooo:hover .link-overlay {
+    display: block;
+  }
+  #color-picker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
