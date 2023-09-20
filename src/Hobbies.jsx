@@ -161,7 +161,31 @@ function Hobbies() {
   const [editing, setEditing] = useState(false);
   const editingRef = useRef(editing);
   const [heading, setHeading] = useState("Personal Details");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [selectedColor, setSelectedColor] = useState('#0f3871'); // Initial color
 
+  const handleColorChange = (event) => {
+    const newColor = event.target.value;
+    setSelectedColor(newColor);
+  };
+
+  const generateName = (inputValue, addSpace) => {
+    const cleanedName = inputValue.replace(/\s+/g, " ").trim();
+    const fullName = cleanedName
+      .split(" ")
+      .map((word, index) => {
+        if (index === 0) {
+          return word.toLowerCase();
+        } else {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }
+      })
+      .join(" ");
+
+    const camelCaseName = fullName.charAt(0).toUpperCase() + fullName.slice(1);
+    return addSpace ? camelCaseName : camelCaseName.replace(/\s+/g, "");
+  };
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -1069,6 +1093,18 @@ function Hobbies() {
                   </div>
                 </div>
               </div>
+              <div className="ccccc">
+              <input
+        id="color-picker"
+        type="color"
+        value={selectedColor}
+        onChange={handleColorChange}
+        style={{ display: 'none' }} // Hide the default color input UI
+      />
+      <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()}>
+        Open Color Picker
+      </button>
+              </div>
               <div className="score-body">
                 <div className="score-content">
                   <div className="score-left-body">
@@ -1195,10 +1231,12 @@ function Hobbies() {
                       <input
                         type="text"
                         className="work"
-                        value={name}
-                        onChange={(e) => {
-                          progress(e.target.value, name, "name", 5);
-                        }}
+                        // value={name}
+                        // onChange={(e) => {
+                        //   progress(e.target.value, name, "name", 5);
+                        // }}
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -1207,10 +1245,12 @@ function Hobbies() {
                     <input
                       type="text"
                       className="work"
-                      value={lastname}
-                      onChange={(e) => {
-                        setlastname(e.target.value);
-                      }}
+                      // value={lastname}
+                      // onChange={(e) => {
+                      //   setlastname(e.target.value);
+                      // }}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -1249,6 +1289,8 @@ function Hobbies() {
                         onChange={(e) => {
                           progress(e.target.value, country, "country", 5);
                         }}
+                        // value={country}
+                        // onChange={(e) => setCountry(e.target.value)}
                       />
                     </div>
                   </div>
@@ -1261,6 +1303,8 @@ function Hobbies() {
                       onChange={(e) => {
                         progress(e.target.value, city, "city", 5);
                       }}
+                      // value={city}
+                      // onChange={(e) => setCity(e.target.value)}
                     />
                   </div>
                 </div>
@@ -1317,6 +1361,8 @@ function Hobbies() {
                           onChange={(e) => {
                             progress(e.target.value, nation, "nation", 5);
                           }}
+                          // value={nation}
+                          // onChange={(e) => setNation(e.target.value)}
                         />
                       </div>
                     </div>
@@ -1333,6 +1379,8 @@ function Hobbies() {
                             onChange={(e) => {
                               progress(e.target.value, place, "place", 5);
                             }}
+                            // value={placeOfBirth}
+                            // onChange={(e) => setPlaceOfBirth(e.target.value)}
                           />
                         </div>
                       </div>
@@ -3329,8 +3377,9 @@ interests and curiosities"
                     </div>
                     <div>
                       <div style={{ display: "flex" }}>
-                        <h3 className="name1">{name}</h3>
-                        <h3 className="name2">{lastname}</h3>
+                      <h3>{generateName(firstName, true) + " " + generateName(lastName, true)}</h3>
+                        {/* <h3 className="name1">{name}</h3>
+                        <h3 className="name2">{lastname}</h3> */}
                       </div>
                       <div>
                         <h6 className="name">{job}</h6>
@@ -3384,7 +3433,7 @@ interests and curiosities"
                   </DragDropContext>
                 </div>
               </div>
-              <div className="main-left">
+              <div className="main-left"style={{ backgroundColor: selectedColor }}>
                 <div className="pincode">
                   <div className="details">
                     {address === "" ? (
