@@ -148,6 +148,7 @@ Popup.css .popup {
 
 .emp-main {
   border: 1px solid gray;
+  cursor: default;
 }
 
 .emp-div {
@@ -953,6 +954,16 @@ overflow-y: auto;
   /* background-color: #0f3871; */
   margin-right: 0%;
 }
+.add-section-container{
+  cursor: default;
+}
+.drag{
+  cursor: grab;
+ margin-left: -3%;
+}
+.drop{
+  margin-left: -20%;
+}
 
 .progress {
   /* width: 0%; */
@@ -970,7 +981,7 @@ overflow-y: auto;
 .flex {
   border: 1px solid gray;
   width: 103.5%;
-
+   cursor: default;
   border-radius: 5px
 }
 
@@ -979,7 +990,7 @@ overflow-y: auto;
   border: 1px solid gray;
   width: 207%;
   border-radius: 5px;
-
+  cursor: default;
 }
 #ref{
   width: 198%;
@@ -994,7 +1005,7 @@ overflow-y: auto;
 }
 
 .flexxx {
-
+  cursor: default;
   border: 1px solid gray;
   width: 207%;
   border-radius: 5px;
@@ -1019,7 +1030,7 @@ overflow-y: auto;
 
 #cust {
   height: 3vh;
-  margin-top: 1.2vw;
+  margin-top: 0.2vw;
   background-color: white;
   border: none;
   color: blue;
