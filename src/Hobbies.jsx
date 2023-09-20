@@ -1093,7 +1093,7 @@ function Hobbies() {
                   </div>
                 </div>
               </div>
-              <div id="color-picker">
+              <div className="ccccc">
               <input
         id="color-picker"
         type="color"

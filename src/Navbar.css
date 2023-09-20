@@ -393,8 +393,9 @@ a{
   .photooo:hover .link-overlay {
     display: block;
   }
-  #color-picker{
+  .ccccc{
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  
