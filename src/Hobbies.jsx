@@ -5,7 +5,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Dropzone from "react-dropzone";
 import { GoPerson } from "react-icons/go";
-import { MdOutlineDelete, MdOutlineDragIndicator } from "react-icons/md";
+import { MdOutlineDelete, MdOutlineDragIndicator,MdDragIndicator } from "react-icons/md";
 import { Scrollbars } from "react-custom-scrollbars";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
@@ -1443,14 +1443,14 @@ function Hobbies() {
                                             secetion ? "hidden" : "visible"
                                           }
                                         >
-                                          {deefault}
+                                         <MdDragIndicator className="drag drop"/> {deefault}
                                         </h3>
                                       ) : (
                                         <h3
                                           className={
                                             secetion ? "hidden" : "visible"
                                           }
-                                        >
+                                        ><MdDragIndicator className="drag drop"/>
                                           <input
                                             type="text"
                                             value={deefault}
@@ -1481,7 +1481,7 @@ function Hobbies() {
                                   {/* <Storelist {...store}/> */}
                                   {store.name === "Employment" ? (
                                     <div className="add-section-container">
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       {objects.map((object) => (
                                         <div key={object.id}>
@@ -1654,7 +1654,7 @@ function Hobbies() {
                                   )}
                                   {store.name === "Education" ? (
                                     <div className="education-container">
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       {education.map((object) => (
                                         <div key={object.id}>
@@ -1833,7 +1833,7 @@ function Hobbies() {
                                         curricular ? "hidden" : "visible"
                                       }
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       <div className="emp-div">
                                         {four.map((object) => (
@@ -2016,7 +2016,7 @@ interests and curiosities"
                                     <div
                                       className={cour ? "hidden" : "visible"}
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       <div className="emp-div">
                                         {course.map((object) => (
@@ -2157,7 +2157,7 @@ interests and curiosities"
                                     <div
                                       className={intern ? "hidden" : "visible"}
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <div className="emp-div">
                                         {five.map((object) => (
                                           <div key={object.id}>
@@ -2323,7 +2323,7 @@ interests and curiosities"
                                     <div
                                       className={proj ? "hidden" : "visible"}
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <div className="emp-div">
                                         {project.map((object) => (
                                           <div key={object.id}>
@@ -2507,7 +2507,7 @@ interests and curiosities"
                                         reference ? "hidden" : "visible"
                                       }
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <div className="emp-div">
                                         {three.map((object) => (
                                           <div key={object.id}>
@@ -3582,6 +3582,7 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          
                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
