@@ -614,6 +614,11 @@ Popup.css .popup {
   margin-bottom: 3px;
 }
 
+.job input,
+.photo input{
+  padding: 12px 16px;;
+}
+
 .edit {
   cursor: pointer;
 }
@@ -732,7 +737,7 @@ Popup.css .popup {
   width: 100%;
   flex-wrap: wrap;
   height: fit-content;
-  margin-bottom: 0%;
+  margin-bottom: 30px;
   margin-left: 0%;
 
 }
@@ -1084,6 +1089,14 @@ overflow-y: auto;
   display: flex;
   flex-flow: wrap;
 }
+
+.add-section-container,
+.education-container,
+.add_section_box,
+.main-div{
+  margin-bottom: 30px;
+}
+
 
 .custom-section {
   display: flex;
