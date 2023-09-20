@@ -1000,6 +1000,9 @@ overflow-y: auto;
   border-radius: 5px;
 
 }
+#border{
+  border: 5px solid blue;
+}
 
 .des {
   width: 90%;
@@ -1079,6 +1082,7 @@ overflow-y: auto;
 
 
 }
+
 
 .custom-btn {
   display: flex;
