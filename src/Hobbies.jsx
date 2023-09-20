@@ -157,6 +157,7 @@ function Hobbies() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const contentDivRef = useRef(null);  const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [editingTitle, setEditingTitle] = useState(false);
   const [editing, setEditing] = useState(false);
   const editingRef = useRef(editing);
   const [heading, setHeading] = useState("Personal Details");
@@ -178,7 +179,7 @@ function Hobbies() {
   };
 
   let handleEditClick = () => {
-    setEditing(true);
+    setEditingTitle(true);
   };
 
   const handleHeadingChange = (event) => {
@@ -187,7 +188,7 @@ function Hobbies() {
 
   const handleHeadingBlur = () => {
     editingRef.current = false;
-    setEditing(false);
+    setEditingTitle(false);
   };
 
   let toggleDetails = () => {
@@ -1095,7 +1096,7 @@ function Hobbies() {
               <div className="left-pdetails-container">
               <div className="details-heading-content">
                     <div className="header-label">
-                      {editing ? (
+                      {editingTitle ? (
                         <div>
                           <input
                             type="text"
