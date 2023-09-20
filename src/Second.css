@@ -601,7 +601,7 @@ Popup.css .popup {
   margin-bottom: 24px;
   display: flex;
   /* flex-flow: wrap; */
-  grid-gap: 20px;
+  grid-gap: 15px;
   
 }
 
