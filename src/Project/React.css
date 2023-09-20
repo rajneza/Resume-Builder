@@ -165,10 +165,7 @@
   border-radius: 50%;
 }
 
-.job-title {
 
-  display: flex;
-}
 
 .edit {
   cursor: pointer;
@@ -191,19 +188,6 @@
 
 .hidden {
   display: none;
-}
-
-.work {
-  width: 20vw;
-  height: 6vh;
-  border: none;
-  outline: none;
-  background-color: #eaf6ff;
-  margin-bottom: 5px;
-}
-
-.work:hover {
-  border-bottom: 2px solid #c3e5fe;
 }
 
 .emp-main {

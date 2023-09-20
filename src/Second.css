@@ -1,3 +1,6 @@
+*{
+  font-family: TT Commons,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+}
 Popup.css .popup {
   display: none;
   position: fixed;
@@ -11,6 +14,7 @@ Popup.css .popup {
   z-index: 1000;
   transition: opacity 0.3s ease-in-out;
 }
+
 
 .popup.visible {
   display: block;
@@ -134,7 +138,7 @@ Popup.css .popup {
   height: 6vh;
   border: none;
   outline: none;
-  background-color: #eaf6ff;
+  background-color: #eff2f9;
   margin-bottom: 5px;
 }
 
@@ -286,6 +290,31 @@ Popup.css .popup {
   position: absolute;
   top: 0;
 
+}
+
+.edit-button {
+  outline: none;
+  border: none;
+  color: #1a91f0;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.edit-details {
+  display: flex;
+}
+
+.edit-details KeyboardArrowUpIcon{
+  height:20px;
+}
+
+.left-pdetails-container{
+  margin-bottom: 30px;
+}
+.css-i4bv87-MuiSvgIcon-root{
+  height:25px !important;
+  width:25px !important;
 }
 
 .score-content {
@@ -467,7 +496,7 @@ Popup.css .popup {
   width: 20vw !important;
   height: 6vh;
   border: none !important;
-  background-color: #eaf6ff !important;
+  background-color: #eff2f9 !important;
 }
 
 .resume-right {
@@ -569,8 +598,19 @@ Popup.css .popup {
 }
 
 .job-title {
-
+  margin-bottom: 24px;
   display: flex;
+  /* flex-flow: wrap; */
+  grid-gap: 20px;
+  
+}
+
+.job label,
+.photo label{
+  font-size: 16px;
+  font-weight: 500;
+  color:#4e4e50;
+  margin-bottom: 3px;
 }
 
 .edit {
@@ -599,12 +639,13 @@ Popup.css .popup {
   height: 6vh;
   border: none;
   outline: none;
-  background-color: #eaf6ff;
+  background-color: #eff2f9;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .work:hover {
-  border-bottom: 2px solid #c3e5fe;
+  border-bottom: 2px solid #1a91f0;
 }
 
 .emp-main {
@@ -986,12 +1027,23 @@ overflow-y: auto;
   font-weight: bold;
 }
 .photo-heading{
-  color: blue;
+  color: #1a91f0;
   position: relative;
   left: 25px;
   margin-left: 10%;
   width: 0vw;
   
+}
+
+.photo-heading h4{
+  width: 10vw;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
 }
 .mainphoto-heading{
   background-color: #ec930c;
