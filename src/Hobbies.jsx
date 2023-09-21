@@ -1389,7 +1389,7 @@ function Hobbies() {
                         <input
                           type="text"
                           className="work"
-                          placeholder="dd/mm/yyyy"
+placeholder="dd/mm/yyyy"
                           value={birth}
                           onChange={(e) => {
                             progress(e.target.value, birth, "birth", 5);
@@ -1875,7 +1875,7 @@ function Hobbies() {
                                   )}
                                   {store.name ===
                                   "Extra-curricular activites" ? (
-                                    <div className="add_section_box">
+<div className="add_section_box">
                                     <div
                                       className={
                                         curricular ? "hidden" : "visible"
@@ -2055,12 +2055,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete7}>delete</button>
                                     </div>
-                                    </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Course" ? (
-                                    <div className="add_section_box">
+<div className="add_section_box">
                                     <div
                                       className={cour ? "hidden" : "visible"}
                                     >
@@ -2196,12 +2196,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete2}>delete</button>
                                     </div>
-                                    </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Internships" ? (
-                                    <div className="add_section_box">
+<div className="add_section_box">
                                     <div
                                       className={intern ? "hidden" : "visible"}
                                     >
@@ -2362,12 +2362,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete4}>delete</button>
                                     </div>
-                                    </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Project" ? (
-                                    <div className="add_section_box">
+<div className="add_section_box">
                                     <div
                                       className={proj ? "hidden" : "visible"}
                                     >
@@ -2544,12 +2544,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete8}>delete</button>
                                     </div>
-                                    </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Refrence" ? (
-                                    <div className="add_section_box">
+<div className="add_section_box">
                                     <div
                                       className={
                                         reference ? "hidden" : "visible"
@@ -2694,12 +2694,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete3}>delete</button>
                                     </div>
-                                    </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Custom" ? (
-                                    <div className="add_section_box">
+<div className="add_section_box">
                                     <div
                                       className={
                                         secetion ? "hidden" : "visible"
@@ -2738,7 +2738,7 @@ interests and curiosities"
                                                     <div className="wanted">
                                                       <div>
                                                         <label htmlFor="">
-                                                          Job title
+                                                        Activity name,job title,book title etc.
                                                         </label>{" "}
                                                         <br />
                                                         <input
@@ -2757,7 +2757,7 @@ interests and curiosities"
                                                     </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        Employer
+                                                        City
                                                       </label>{" "}
                                                       <br />
                                                       <input
@@ -2786,12 +2786,24 @@ interests and curiosities"
                                                         <input
                                                           type="date"
                                                           value={object.input4}
-                                                          className="work"
+                                                          className="workk"
                                                           onChange={(e) =>
                                                             handleInputcust(
                                                               e,
                                                               object.id,
                                                               "input4"
+                                                            )
+                                                          }
+                                                        />
+                                                        <input
+                                                          type="date"
+                                                          value={object.input4}
+                                                          className="workk"
+                                                          onChange={(e) =>
+                                                            handleInputcust(
+                                                              e,
+                                                              object.id,
+                                                              "input6"
                                                             )
                                                           }
                                                         />
@@ -2847,7 +2859,7 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete1}>delete</button>
                                     </div>
-                                    </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
@@ -3055,7 +3067,7 @@ interests and curiosities"
                     </div>
                   </div>
                   {
-                    <div className="add_section_box">
+<div className="add_section_box">
                     <div className={hobb ? "hidden" : "visible"}>
                       <div>
                         <h2>Hobbies</h2>
@@ -3115,11 +3127,11 @@ interests and curiosities"
                       </div>
                       <button onClick={delete5}>delete</button>
                     </div>
-                    </div>
+</div>
                   }
                   <div>
                     {
-                      <div className="add_section_box">
+<div className="add_section_box">
                       <div className={lang ? "hidden" : "visible"}>
                         <div>
                           <h2>Langugages</h2>
@@ -3217,7 +3229,7 @@ interests and curiosities"
                         </div>
                         <button onClick={delete6}>delete</button>
                       </div>
-                      </div>
+</div>
                     }
                   </div>
                 </div>
@@ -3233,6 +3245,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Extra curricular activity</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3243,6 +3256,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Course</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3253,6 +3267,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Internship</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3263,6 +3278,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Referance</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3273,6 +3289,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Custom Section</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3293,6 +3310,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Social Links</p>
+                      <div className="color-button"></div>
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3303,6 +3321,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Skill</p>
+                      <div className="color-button"></div>
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3313,6 +3332,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Hobbies</p>
+                      <div className="color-button"></div>
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3323,6 +3343,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Languages</p>
+                      <div className="color-button"></div>
                     </button>
                   </div>
                 </div>
@@ -3377,7 +3398,7 @@ interests and curiosities"
                     </div>
                     <div>
                       <div style={{ display: "flex" }}>
-                      <h3>{generateName(firstName, true) + " " + generateName(lastName, true)}</h3>
+                      <h3 className="name1">{generateName(firstName, true) + " " + generateName(lastName, true)}</h3>
                         {/* <h3 className="name1">{name}</h3>
                         <h3 className="name2">{lastname}</h3> */}
                       </div>
@@ -3390,7 +3411,7 @@ interests and curiosities"
                     {editorHtml === "" ? (
                       <span></span>
                     ) : (
-                      <h2 className="prof">Profile</h2>
+                      <h2 className="prof">Professional Summary</h2>
                     )}
                     <div
                       className="mess"
@@ -3421,7 +3442,220 @@ interests and curiosities"
                                     ref={provided.innerRef}
                                   >
                                     {/* <h3>{store.name}</h3> */}
-                                    <Storelist {...store} />
+                                    {/* <Storelist {...store} /> */}
+                                    <div>
+        <div>{/* <h3>{name}</h3> */}</div>
+        <div>
+          {store.id === "06" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div>
+                      {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+            <p className="fonttt">{item.input6}</p> */}
+                      <h2 className="head">References</h2>
+                      <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
+                      <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "01" ? (
+            <div>
+              <h2 className="head">Employment</h2>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+
+          {store.id === "02" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Education</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "03" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div>
+                      <div className="store">
+                        <h2 className="head">Extra-curricular activites</h2>
+                        {item.input1 === undefined ? (
+                          <span></span>
+                        ) : (
+                          <div>
+                            <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                            <p className="fonttt">{item.input6}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "04" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Course</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "05" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Internships</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "07" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Project</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "08" ? (
+            <div>
+              <h2 className="head">{store.head}</h2>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}`}</p>
+                          <p className="fonttt">{item.input5}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+        </div>
+      </div>
                                   </div>
                                 )}
                               </Draggable>
@@ -3439,7 +3673,7 @@ interests and curiosities"
                     {address === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Details</h4>
+                      <h4 className="heading div-heading">Address</h4>
                     )}
 
                     <div>
@@ -3456,7 +3690,7 @@ interests and curiosities"
                     {email === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Contact</h4>
+                      <h4 className="heading div-heading">Contact</h4>
                     )}
                     <div>
                       <p className="cit">{phone}</p>
@@ -3504,7 +3738,7 @@ interests and curiosities"
                     {ill === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Skills</h4>
+                      <h4 className="heading div-heading">Skills</h4>
                     )}
                     {skill.map((object) => (
                       
@@ -3539,7 +3773,7 @@ interests and curiosities"
                     {web === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Links</h4>
+                      <h4 className="heading div-heading">Links</h4>
                     )}
                     {website.map((object) => (
                       <div key={object.id}>
@@ -3554,7 +3788,7 @@ interests and curiosities"
                     {hob === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Hobbies</h4>
+                      <h4 className="heading div-heading">Hobbies</h4>
                     )}
                     <div>
                       {six.map((object) => (
@@ -3568,7 +3802,7 @@ interests and curiosities"
                     {lan === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Languages</h4>
+                      <h4 className="heading div-heading">Languages</h4>
                     )}
                     <div>
                       {seven.map((object) => (
@@ -3631,7 +3865,7 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          
+
                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
