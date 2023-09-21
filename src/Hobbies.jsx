@@ -1486,7 +1486,6 @@ function Hobbies() {
                                       {objects.map((object) => (
                                         <div key={object.id}>
                                           <div
-                                            style={{ display: "flex" }}
                                             className="flex"
                                           >
                                             {object.input1}
@@ -1499,20 +1498,20 @@ function Hobbies() {
                                               emp ? <IoIosArrowUp/> : <IoIosArrowDown/>
                                              }
                                             </h5>
-                                          </div>
+                                          
                                           <div
                                             className={
                                               emp ? "visible" : "hidden"
                                             }
                                           >
-                                            <div style={{ display: "flex" }}>
+                                            <div className="emp-container">
                                               <div className="emp-main">
                                                 <div
                                                   style={{ display: "flex" }}
                                                 >
                                                   <div className="wanted">
                                                     <div>
-                                                      <label htmlFor="">
+                                                      <label htmlFor="" className="data-label">
                                                         Job title
                                                       </label>{" "}
                                                       <br />
@@ -1627,7 +1626,7 @@ function Hobbies() {
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div>
+                                              <div className="emp-delete-btn">
                                                 <button
                                                   onClick={() =>
                                                     deleteObject(object.id)
@@ -1639,6 +1638,7 @@ function Hobbies() {
                                               </div>
                                             </div>
                                           </div>
+                                        </div>
                                         </div>
                                       ))}
                                       <button
@@ -1659,7 +1659,6 @@ function Hobbies() {
                                       {education.map((object) => (
                                         <div key={object.id}>
                                           <div
-                                            style={{ display: "flex" }}
                                             className="flex"
                                           >
                                             {object.input1}
@@ -1672,7 +1671,7 @@ function Hobbies() {
                                                 oction ? <IoIosArrowUp /> : <IoIosArrowDown />
                                               }
                                             </h5>
-                                          </div>
+                                          
                                           <div
                                             className={
                                               oction ? "visible" : "hidden"
@@ -1785,8 +1784,8 @@ function Hobbies() {
                                                     <textarea
                                                       name=""
                                                       id=""
-                                                      cols="90"
-                                                      rows="15"
+                                                      cols="85"
+                                                      rows="8"
                                                       value={object.input6}
                                                       onChange={(e) =>
                                                         handleInputedu(
@@ -1800,7 +1799,7 @@ function Hobbies() {
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div>
+                                              <div className="">
                                                 <button
                                                   onClick={() =>
                                                     deleteedu(object.id)
@@ -1812,6 +1811,7 @@ function Hobbies() {
                                               </div>
                                             </div>
                                           </div>
+                                        </div>
                                         </div>
                                       ))}
                                       <button
@@ -1839,7 +1839,6 @@ function Hobbies() {
                                         {four.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
                                               className="flexx"
                                             >
                                               {object.input1}
@@ -1854,7 +1853,6 @@ function Hobbies() {
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 ext ? "visible" : "hidden"
@@ -1983,7 +1981,7 @@ interests and curiosities"
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletefour(object.id)
@@ -1996,6 +1994,7 @@ interests and curiosities"
                                               </div>
                                             </div>
                                           </div>
+                                          </div>
                                         ))}
                                         <button
                                           onClick={createfour}
@@ -2005,7 +2004,9 @@ interests and curiosities"
                                           + Add Employment
                                         </button>
                                       </div>
-                                      <button onClick={delete7}>delete</button>
+                                      
+                                      <button onClick={delete7} className="custom-delete btn btn-primary ">Delete</button>
+                                      
                                     </div>
                                     </div>
                                   ) : (
@@ -2163,7 +2164,6 @@ interests and curiosities"
                                           <div key={object.id}>
                                             <div
                                               className="flexx"
-                                              style={{ display: "flex" }}
                                             >
                                               {object.input1}
                                               <h5
@@ -2177,17 +2177,15 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
+                                            
                                             <div
                                               className={
                                                 inter ? "visible" : "hidden"
                                               }
                                             >
-                                              <div style={{ display: "flex" }}>
+                                              <div className="intern-job-emp">
                                                 <div className="emp-main">
-                                                  <div
-                                                    style={{ display: "flexx" }}
-                                                  >
+                                                  <div className="intern-job-emp" >
                                                     <div className="wanted">
                                                       <div>
                                                         <label htmlFor="">
@@ -2283,14 +2281,30 @@ interests and curiosities"
                                                   </div>
                                                   <div>
                                                     <div>
-                                                      <label htmlFor="">
+                                                        <label htmlFor="">
                                                         Description
                                                       </label>{" "}
                                                       <br />
+                                                      <textarea
+                                                        name=""
+                                                        id=""
+                                                        cols="90"
+                                                        rows="15"
+                                                        value={object.input6}
+                                                        onChange={(e) =>
+                                                          handleInputfour(
+                                                            e,
+                                                            object.id,
+                                                            "input6"
+                                                          )
+                                                        }
+                                                        placeholder="e.g. Created and implemented lesson plans based on child-led
+interests and curiosities"
+                                                      />
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletefive(object.id)
@@ -2302,6 +2316,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2312,7 +2327,7 @@ interests and curiosities"
                                           + Add one more internship
                                         </button>
                                       </div>
-                                      <button onClick={delete4}>delete</button>
+                                      <button onClick={delete4} className="custom-delete btn btn-primary">delete</button>
                                     </div>
                                     </div>
                                   ) : (
