@@ -3442,7 +3442,220 @@ interests and curiosities"
                                     ref={provided.innerRef}
                                   >
                                     {/* <h3>{store.name}</h3> */}
-                                    <Storelist {...store} />
+                                    {/* <Storelist {...store} /> */}
+                                    <div>
+        <div>{/* <h3>{name}</h3> */}</div>
+        <div>
+          {store.id === "06" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div>
+                      {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+            <p className="fonttt">{item.input6}</p> */}
+                      <h2 className="head">References</h2>
+                      <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
+                      <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "01" ? (
+            <div>
+              <h2 className="head">Employment</h2>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+
+          {store.id === "02" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Education</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "03" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div>
+                      <div className="store">
+                        <h2 className="head">Extra-curricular activites</h2>
+                        {item.input1 === undefined ? (
+                          <span></span>
+                        ) : (
+                          <div>
+                            <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                            <p className="fonttt">{item.input6}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "04" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Course</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "05" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Internships</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "07" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Project</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "08" ? (
+            <div>
+              <h2 className="head">{store.head}</h2>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}`}</p>
+                          <p className="fonttt">{item.input5}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+        </div>
+      </div>
                                   </div>
                                 )}
                               </Draggable>
