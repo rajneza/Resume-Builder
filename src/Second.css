@@ -108,7 +108,7 @@ Popup.css .popup {
 }
 
 .job-title {
-
+   margin-bottom: 15px;
   display: flex;
 }
 
@@ -1292,5 +1292,10 @@ overflow-y: auto;
   .label{
     margin-left: 6.7%;
   }
-  
+  .generate{
+    background-color: white;
+    position: relative;
+    left: 350px;
+    top: 20px;
+  }
 

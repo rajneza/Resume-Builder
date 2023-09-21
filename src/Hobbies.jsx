@@ -3398,7 +3398,7 @@ interests and curiosities"
                     </div>
                     <div>
                       <div style={{ display: "flex" }}>
-                      <h3>{generateName(firstName, true) + " " + generateName(lastName, true)}</h3>
+                      <h3 className="name1">{generateName(firstName, true) + " " + generateName(lastName, true)}</h3>
                         {/* <h3 className="name1">{name}</h3>
                         <h3 className="name2">{lastname}</h3> */}
                       </div>
@@ -3411,7 +3411,7 @@ interests and curiosities"
                     {editorHtml === "" ? (
                       <span></span>
                     ) : (
-                      <h2 className="prof">Profile</h2>
+                      <h2 className="prof">Professional Summary</h2>
                     )}
                     <div
                       className="mess"
