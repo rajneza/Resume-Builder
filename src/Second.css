@@ -108,6 +108,11 @@ Popup.css .popup {
   border-radius: 50%;
 }
 
+.job-title {
+   margin-bottom: 15px;
+  display: flex;
+}
+
 .edit {
   cursor: pointer;
 }
@@ -309,10 +314,9 @@ Popup.css .popup {
 .left-pdetails-container {
   margin-bottom: 30px;
 }
-
-.css-i4bv87-MuiSvgIcon-root {
-  height: 25px !important;
-  width: 25px !important;
+.css-i4bv87-MuiSvgIcon-root{
+  height:25px !important;
+  width:25px !important;
 }
 
 .score-content {
@@ -407,8 +411,7 @@ Popup.css .popup {
   background-color: transparent;
 
 }
-
-.handle-heading h3 {
+.handle-heading h3{
   font-size: 23px;
   margin-right: 4px;
   font-weight: 600;
@@ -468,12 +471,11 @@ Popup.css .popup {
   font-weight: 500;
 }
 
-.edit-icon {
+.edit-icon{
   margin-right: 200px;
 }
-
-.css-i4bv87-MuiSvgIcon-root {
-  fill: blue !important;
+.css-i4bv87-MuiSvgIcon-root{
+  fill:blue !important;
 }
 
 .progress-score {
@@ -505,10 +507,17 @@ Popup.css .popup {
   top: 0;
   right: 0;
   bottom: 0;
-  display: flex;
+  /* display: flex; */
   background-color: #656e83;
   justify-content: center;
   align-items: center;
+}
+.color-button{
+  width: 8px;
+  height: 8px;
+  background-color:#0f3871;
+  margin-top: 13%;
+  
 }
 
 .container {
@@ -602,6 +611,7 @@ Popup.css .popup {
   display: flex;
   /* flex-flow: wrap; */
   grid-gap: 15px;
+
 
 }
 
@@ -751,9 +761,14 @@ Popup.css .popup {
   margin-left: 0%;
 
 }
+.summry{
+  margin-right: 3%;
+  
+}
 
 .prof {
   margin-bottom: 0%;
+  font-size: 18px;
 
 }
 
@@ -763,6 +778,8 @@ Popup.css .popup {
   margin-top: 0%;
   display: flex;
   flex-wrap: wrap;
+  text-align: justify;
+  margin-right: 5%;
 }
 
 .input {
@@ -825,10 +842,11 @@ Popup.css .popup {
 .cont-1 {
   margin-left: 10%;
   margin-top: 5%;
+  margin-bottom: 10%;
 }
 
 .fon {
-  font-size: 14.4px;
+  font-size: 12.8px;
   font-weight: bolder;
   margin-top: 2%;
   margin-bottom: 1%;
@@ -837,6 +855,7 @@ Popup.css .popup {
 .head {
   margin-bottom: 0%;
   margin-top: 3%;
+  font-size: 18px;
 }
 
 .subj {
@@ -874,8 +893,10 @@ Popup.css .popup {
 
 .fonttt {
   font-size: 12.8px;
-  margin-top: 2%;
+  margin-top: 1%;
   margin-bottom: 4%;
+  text-align: justify;
+  margin-right: 3%;
 }
 
 .sum {
@@ -892,6 +913,7 @@ Popup.css .popup {
 .heading {
   margin-bottom: 5%;
   margin-top: 7%;
+  font-size: 16px;
 }
 
 .cont {
@@ -916,10 +938,14 @@ Popup.css .popup {
 }
 
 .heading1 {
-  font-size: small;
+  font-size: 16px;
   margin-top: 10%;
   margin-bottom: 5%;
-  color: #c3e5fe;
+  
+}
+.res
+.div-heading{
+  font-size: 17px;
 }
 
 .top {
@@ -931,8 +957,9 @@ Popup.css .popup {
 }
 
 .ski {
-  margin-top: 0%;
+  margin-top: -100%;
   margin-bottom: 0%;
+  margin-left: -20%;
 }
 
 .ski1 {
@@ -981,14 +1008,17 @@ Popup.css .popup {
   /* background-color: #0f3871; */
   margin-right: 0%;
 }
-
-.add-section-container {
+.add-section-container{
   cursor: default;
 }
-
-.drag {
+.drag{
   cursor: grab;
-  margin-left: -3%;
+
+
+ margin-left: -3%;
+ position: relative;
+ top: 3px;
+
 }
 
 .drop {
@@ -1097,6 +1127,7 @@ Popup.css .popup {
 }
 
 .photo-heading {
+
   color: #1a91f0;
   position: relative;
   left: 25px;
@@ -1107,26 +1138,23 @@ Popup.css .popup {
 
 .photo-heading h4 {
   width: 10vw;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 10px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
 }
-
-.mainphoto-heading {
+.mainphoto-heading{
   background-color: #ec930c;
 }
-
-.select-image {
+.select-image{
   display: flex;
   position: relative;
   right: 33px;
 }
-
-.person-icon {
+.person-icon{
   height: 100%;
   width: 100%;
 
@@ -1151,7 +1179,7 @@ Popup.css .popup {
 .add-section-container,
 .education-container,
 .add_section_box,
-.main-div {
+.main-div{
   margin-bottom: 30px;
 }
 
@@ -1189,61 +1217,64 @@ Popup.css .popup {
 
 .custom-section p {
   margin-top: 10px;
-  font-family: TT Commons, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-  font-size: 16px;
-
+  font-family: TT Commons,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+    font-size: 16px;
+    
 }
 
 
 
 .skill-info {
-  text-align: right;
-  font-size: 14px;
-  color: black;
-  flex-grow: 1;
+	text-align: right;
+	font-size: 14px;
+	color: black;
+	flex-grow: 1;
+}
+.skill-name{
+  background-color: #1a91f0;
 }
 
 .progress-container {
-  text-align: center;
-  position: relative;
+	text-align: center;
+	position: relative;
 }
 
 .stage-heading {
-  margin-top: 10px;
+	margin-top: 10px;
 }
 
 .progress {
-  width: 100%;
-  height: 30px;
-  background-color: rgb(39, 175, 175);
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 20px;
-  overflow: hidden;
+	width: 100%;
+	height: 30px;
+	background-color: rgb(39, 175, 175);
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 20px;
+	overflow: hidden;
 }
 
 .progress-stage {
-  height: 100%;
-  width: 25%;
-  float: left;
-  transition: background-color 0.3s ease-in-out;
+	height: 100%;
+	width: 25%;
+	float: left;
+	transition: background-color 0.3s ease-in-out;
 }
 
 .progress-text {
-  position: absolute;
-  top: -30px;
-  font-weight: bold;
-  width: 100%;
-  text-align: center;
+	position: absolute;
+	top: -30px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
 }
 
 .progress-bar {
-  width: 100%;
-  height: 20px;
-  background-color: #ccc;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-right: 10px;
+	width: 100%;
+	height: 20px;
+	background-color: #ccc;
+	border-radius: 4px;
+	overflow: hidden;
+	margin-right: 10px;
 }
 
 .fresher {
@@ -1251,7 +1282,7 @@ Popup.css .popup {
 }
 
 .experience {
-  background-color: orange;
+	background-color: orange;
 }
 
 .export {
@@ -1259,13 +1290,13 @@ Popup.css .popup {
 }
 
 .medium {
-  background-color: blue;
+	background-color: blue;
 }
 
 /* Your existing CSS styles */
 
 .progress-bar-container {
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 .progress-bar {
@@ -1277,9 +1308,9 @@ Popup.css .popup {
 }
 
 .inner-progress {
-  height: 10%;
-  width: 0;
-  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	height: 10%;
+	width: 0;
+	transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 /* Specific CSS for second progress bar background color based on stages */
@@ -1303,22 +1334,22 @@ Popup.css .popup {
 }
 
 .progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
-  background-color: blue;
-  height: 100%;
-  /* Set a fixed height for all inner progress bars */
+	background-color: blue;
+	height: 100%;
+	/* Set a fixed height for all inner progress bars */
 }
 
 /* In your App.css or a separate CSS file */
 .custom-toast {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+  }
+  #reference{
+    width: 43vw;
+  }
+  .label{
+    margin-left: 6.7%;
+  }
+  
 
-#reference {
-  width: 43vw;
-}
-
-.label {
-  margin-left: 6.7%;
-}
