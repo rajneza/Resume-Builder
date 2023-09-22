@@ -2724,7 +2724,6 @@ interests and curiosities"
                                         {cust.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
                                               className="flexx"
                                             >
                                               {object.input1}
@@ -2739,7 +2738,6 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 cus ? "visible" : "hidden"
@@ -2850,7 +2848,7 @@ interests and curiosities"
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletecust(object.id)
@@ -2862,6 +2860,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2872,7 +2871,7 @@ interests and curiosities"
                                           + Add one more item
                                         </button>
                                       </div>
-                                      <button onClick={delete1}>delete</button>
+                                      <button onClick={delete1} className="custom-delete btn btn-primary">delete</button>
                                     </div>
 </div>
                                   ) : (
