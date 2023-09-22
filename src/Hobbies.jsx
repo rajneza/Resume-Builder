@@ -5,10 +5,11 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Dropzone from "react-dropzone";
 import { GoPerson } from "react-icons/go";
-import { MdOutlineDelete, MdOutlineDragIndicator } from "react-icons/md";
+import { MdOutlineDelete, MdOutlineDragIndicator,MdDragIndicator } from "react-icons/md";
 import { Scrollbars } from "react-custom-scrollbars";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -33,6 +34,9 @@ import image7 from "./Components/images/custom-skills.webp";
 import image8 from "./Components/images/custom-hobbies.svg";
 import image9 from "./Components/images/custom-languages.svg";
 import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
+import EditIcon from "@mui/icons-material/Edit";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Data = [
   {
@@ -153,7 +157,35 @@ function Hobbies() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const contentDivRef = useRef(null);  const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [editingTitle, setEditingTitle] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const editingRef = useRef(editing);
+  const [heading, setHeading] = useState("Personal Details");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [selectedColor, setSelectedColor] = useState('#0f3871'); // Initial color
 
+  const handleColorChange = (event) => {
+    const newColor = event.target.value;
+    setSelectedColor(newColor);
+  };
+
+  const generateName = (inputValue, addSpace) => {
+    const cleanedName = inputValue.replace(/\s+/g, " ").trim();
+    const fullName = cleanedName
+      .split(" ")
+      .map((word, index) => {
+        if (index === 0) {
+          return word.toLowerCase();
+        } else {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }
+      })
+      .join(" ");
+
+    const camelCaseName = fullName.charAt(0).toUpperCase() + fullName.slice(1);
+    return addSpace ? camelCaseName : camelCaseName.replace(/\s+/g, "");
+  };
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -168,6 +200,23 @@ function Hobbies() {
 
   const handleBlur = () => {
     setIsFocused(false);
+  };
+
+  let handleEditClick = () => {
+    setEditingTitle(true);
+  };
+
+  const handleHeadingChange = (event) => {
+    setHeading(event.target.value);
+  };
+
+  const handleHeadingBlur = () => {
+    editingRef.current = false;
+    setEditingTitle(false);
+  };
+
+  let toggleDetails = () => {
+    setEditing(!editing);
   };
 
   const [skillsProgressBars, setSkillsProgressBars] = useState({});
@@ -1044,10 +1093,22 @@ function Hobbies() {
                   </div>
                 </div>
               </div>
+              <div className="ccccc">
+              <input
+        id="color-picker"
+        type="color"
+        value={selectedColor}
+        onChange={handleColorChange}
+        style={{ display: 'none' }} // Hide the default color input UI
+      />
+      <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()}>
+        Open Color Picker
+      </button>
+              </div>
               <div className="score-body">
                 <div className="score-content">
                   <div className="score-left-body">
-                    <div className="progress-bar">{completionPercentage}%</div>
+                    <div className="progress-score">{completionPercentage}%</div>
                     <p className="resume-para">Completion Score</p>
                   </div>
                   <div className="resume-profile-body">
@@ -1064,11 +1125,34 @@ function Hobbies() {
                   </div>
                 </div>
                 <div className="resume-hr-body">
-                  {<ProgressBar completed={completionPercentage} />}
+                  {<ProgressBar completed={completionPercentage} 
+                  />}
                 </div>
               </div>
               <div className="left-pdetails-container">
-                <h2>Personal Details</h2>
+              <div className="details-heading-content">
+                    <div className="header-label">
+                      {editingTitle ? (
+                        <div>
+                          <input
+                            type="text"
+                            id="personal-details"
+                            value={heading}
+                            onChange={handleHeadingChange}
+                            onBlur={handleHeadingBlur}
+                            className="handle-input"
+                          />
+                        </div>
+                      ) : (
+                        <div className="handle-heading">
+                          <h3>{heading}</h3>
+                          <button onClick={handleEditClick}>
+                            <EditIcon />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">
@@ -1147,10 +1231,12 @@ function Hobbies() {
                       <input
                         type="text"
                         className="work"
-                        value={name}
-                        onChange={(e) => {
-                          progress(e.target.value, name, "name", 5);
-                        }}
+                        // value={name}
+                        // onChange={(e) => {
+                        //   progress(e.target.value, name, "name", 5);
+                        // }}
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -1159,10 +1245,12 @@ function Hobbies() {
                     <input
                       type="text"
                       className="work"
-                      value={lastname}
-                      onChange={(e) => {
-                        setlastname(e.target.value);
-                      }}
+                      // value={lastname}
+                      // onChange={(e) => {
+                      //   setlastname(e.target.value);
+                      // }}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -1201,6 +1289,8 @@ function Hobbies() {
                         onChange={(e) => {
                           progress(e.target.value, country, "country", 5);
                         }}
+                        // value={country}
+                        // onChange={(e) => setCountry(e.target.value)}
                       />
                     </div>
                   </div>
@@ -1213,10 +1303,13 @@ function Hobbies() {
                       onChange={(e) => {
                         progress(e.target.value, city, "city", 5);
                       }}
+                      // value={city}
+                      // onChange={(e) => setCity(e.target.value)}
                     />
                   </div>
                 </div>
-                <div className={display ? "visble" : "hidden"}>
+                {editing ? (
+                <div>
                   <div className="job-title">
                     <div className="wanted">
                       <div className="job">
@@ -1243,7 +1336,7 @@ function Hobbies() {
                       />
                     </div>
                   </div>
-                  <div className={display ? "visble" : "hidden"}>
+                  
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
@@ -1268,11 +1361,13 @@ function Hobbies() {
                           onChange={(e) => {
                             progress(e.target.value, nation, "nation", 5);
                           }}
+                          // value={nation}
+                          // onChange={(e) => setNation(e.target.value)}
                         />
                       </div>
                     </div>
-                  </div>
-                  <div className={display ? "visble" : "hidden"}>
+                  
+                  
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
@@ -1284,6 +1379,8 @@ function Hobbies() {
                             onChange={(e) => {
                               progress(e.target.value, place, "place", 5);
                             }}
+                            // value={placeOfBirth}
+                            // onChange={(e) => setPlaceOfBirth(e.target.value)}
                           />
                         </div>
                       </div>
@@ -1292,6 +1389,7 @@ function Hobbies() {
                         <input
                           type="text"
                           className="work"
+placeholder="dd/mm/yyyy"
                           value={birth}
                           onChange={(e) => {
                             progress(e.target.value, birth, "birth", 5);
@@ -1299,13 +1397,23 @@ function Hobbies() {
                         />
                       </div>
                     </div>
+                    <div className="input-section">
+                        <button onClick={toggleDetails} className="edit-button">
+                          <div className="edit-details">
+                            <span>Hide additional details</span>
+                            <KeyboardArrowUpIcon />
+                          </div>
+                        </button>
+                      </div>
+                </div>
+                ) : (
+                  <button onClick={toggleDetails} className="edit-button">
+                  <div className="edit-details">
+                    <span>Edit additional details</span>
+                    <ExpandMoreIcon />
                   </div>
-                </div>
-                <div className="edit">
-                  <h5 onClick={() => setdisplay(!display)}>
-                    Edit additional details <IoIosArrowUp />
-                  </h5>
-                </div>
+                </button>
+              )}
               </div>
               <div className="summary">
                 <div>
@@ -1383,14 +1491,14 @@ function Hobbies() {
                                             secetion ? "hidden" : "visible"
                                           }
                                         >
-                                          {deefault}
+                                         <MdDragIndicator className="drag drop"/> {deefault}
                                         </h3>
                                       ) : (
                                         <h3
                                           className={
                                             secetion ? "hidden" : "visible"
                                           }
-                                        >
+                                        ><MdDragIndicator className="drag drop"/>
                                           <input
                                             type="text"
                                             value={deefault}
@@ -1421,12 +1529,11 @@ function Hobbies() {
                                   {/* <Storelist {...store}/> */}
                                   {store.name === "Employment" ? (
                                     <div className="add-section-container">
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       {objects.map((object) => (
                                         <div key={object.id}>
                                           <div
-                                            style={{ display: "flex" }}
                                             className="flex"
                                           >
                                             {object.input1}
@@ -1435,22 +1542,24 @@ function Hobbies() {
                                               style={{ cursor: "pointer" }}
                                               className="arrow"
                                             >
-                                              <IoIosArrowUp />
+                                             {
+                                              emp ? <IoIosArrowUp/> : <IoIosArrowDown/>
+                                             }
                                             </h5>
-                                          </div>
+                                          
                                           <div
                                             className={
                                               emp ? "visible" : "hidden"
                                             }
                                           >
-                                            <div style={{ display: "flex" }}>
+                                            <div className="emp-container">
                                               <div className="emp-main">
                                                 <div
                                                   style={{ display: "flex" }}
                                                 >
                                                   <div className="wanted">
                                                     <div>
-                                                      <label htmlFor="">
+                                                      <label htmlFor="" className="data-label">
                                                         Job title
                                                       </label>{" "}
                                                       <br />
@@ -1565,7 +1674,7 @@ function Hobbies() {
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div>
+                                              <div className="emp-delete-btn">
                                                 <button
                                                   onClick={() =>
                                                     deleteObject(object.id)
@@ -1577,6 +1686,7 @@ function Hobbies() {
                                               </div>
                                             </div>
                                           </div>
+                                        </div>
                                         </div>
                                       ))}
                                       <button
@@ -1591,13 +1701,12 @@ function Hobbies() {
                                     <span></span>
                                   )}
                                   {store.name === "Education" ? (
-                                    <div>
-                                      <h3>{store.name}</h3>
+                                    <div className="education-container">
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       {education.map((object) => (
                                         <div key={object.id}>
                                           <div
-                                            style={{ display: "flex" }}
                                             className="flex"
                                           >
                                             {object.input1}
@@ -1606,9 +1715,11 @@ function Hobbies() {
                                               style={{ cursor: "pointer" }}
                                               className="arrow"
                                             >
-                                              <IoIosArrowUp />
+                                              {
+                                                oction ? <IoIosArrowUp /> : <IoIosArrowDown />
+                                              }
                                             </h5>
-                                          </div>
+                                          
                                           <div
                                             className={
                                               oction ? "visible" : "hidden"
@@ -1721,8 +1832,8 @@ function Hobbies() {
                                                     <textarea
                                                       name=""
                                                       id=""
-                                                      cols="90"
-                                                      rows="15"
+                                                      cols="85"
+                                                      rows="8"
                                                       value={object.input6}
                                                       onChange={(e) =>
                                                         handleInputedu(
@@ -1736,7 +1847,7 @@ function Hobbies() {
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div>
+                                              <div className="">
                                                 <button
                                                   onClick={() =>
                                                     deleteedu(object.id)
@@ -1748,6 +1859,7 @@ function Hobbies() {
                                               </div>
                                             </div>
                                           </div>
+                                        </div>
                                         </div>
                                       ))}
                                       <button
@@ -1763,18 +1875,18 @@ function Hobbies() {
                                   )}
                                   {store.name ===
                                   "Extra-curricular activites" ? (
+<div className="add_section_box">
                                     <div
                                       className={
                                         curricular ? "hidden" : "visible"
                                       }
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       <div className="emp-div">
                                         {four.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
                                               className="flexx"
                                             >
                                               {object.input1}
@@ -1789,7 +1901,6 @@ function Hobbies() {
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 ext ? "visible" : "hidden"
@@ -1918,18 +2029,19 @@ interests and curiosities"
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletefour(object.id)
                                                     }
                                                     className="delete"
                                                   >
-                                                    Delete
+                                                    <MdOutlineDelete />
                                                   </button>
                                                 </div>
                                               </div>
                                             </div>
+                                          </div>
                                           </div>
                                         ))}
                                         <button
@@ -1940,16 +2052,20 @@ interests and curiosities"
                                           + Add Employment
                                         </button>
                                       </div>
-                                      <button onClick={delete7}>delete</button>
+                                      
+                                      <button onClick={delete7} className="custom-delete btn btn-primary ">Delete</button>
+                                      
                                     </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Course" ? (
+<div className="add_section_box">
                                     <div
                                       className={cour ? "hidden" : "visible"}
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       <div className="emp-div">
                                         {course.map((object) => (
@@ -2081,20 +2197,21 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete2}>delete</button>
                                     </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Internships" ? (
+<div className="add_section_box">
                                     <div
                                       className={intern ? "hidden" : "visible"}
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <div className="emp-div">
                                         {five.map((object) => (
                                           <div key={object.id}>
                                             <div
                                               className="flexx"
-                                              style={{ display: "flex" }}
                                             >
                                               {object.input1}
                                               <h5
@@ -2108,17 +2225,15 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
+                                            
                                             <div
                                               className={
                                                 inter ? "visible" : "hidden"
                                               }
                                             >
-                                              <div style={{ display: "flex" }}>
+                                              <div className="intern-job-emp">
                                                 <div className="emp-main">
-                                                  <div
-                                                    style={{ display: "flexx" }}
-                                                  >
+                                                  <div className="intern-job-emp" >
                                                     <div className="wanted">
                                                       <div>
                                                         <label htmlFor="">
@@ -2214,14 +2329,30 @@ interests and curiosities"
                                                   </div>
                                                   <div>
                                                     <div>
-                                                      <label htmlFor="">
+                                                        <label htmlFor="">
                                                         Description
                                                       </label>{" "}
                                                       <br />
+                                                      <textarea
+                                                        name=""
+                                                        id=""
+                                                        cols="90"
+                                                        rows="15"
+                                                        value={object.input6}
+                                                        onChange={(e) =>
+                                                          handleInputfour(
+                                                            e,
+                                                            object.id,
+                                                            "input6"
+                                                          )
+                                                        }
+                                                        placeholder="e.g. Created and implemented lesson plans based on child-led
+interests and curiosities"
+                                                      />
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletefive(object.id)
@@ -2233,6 +2364,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2243,16 +2375,18 @@ interests and curiosities"
                                           + Add one more internship
                                         </button>
                                       </div>
-                                      <button onClick={delete4}>delete</button>
+                                      <button onClick={delete4} className="custom-delete btn btn-primary">delete</button>
                                     </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Project" ? (
+<div className="add_section_box">
                                     <div
                                       className={proj ? "hidden" : "visible"}
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <div className="emp-div">
                                         {project.map((object) => (
                                           <div key={object.id}>
@@ -2425,22 +2559,24 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete8}>delete</button>
                                     </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Refrence" ? (
+<div className="add_section_box">
                                     <div
                                       className={
                                         reference ? "hidden" : "visible"
                                       }
                                     >
-                                      <h3>{store.name}</h3>
+                                      <h3><MdDragIndicator className="drag"/>{store.name}</h3>
                                       <div className="emp-div">
                                         {three.map((object) => (
                                           <div key={object.id}>
                                             <div
                                               style={{ display: "flex" }}
-                                              className="flexx"
+                                              className="flexx" id="ref"
                                             >
                                               {object.input1}
                                               <h5
@@ -2461,7 +2597,7 @@ interests and curiosities"
                                               }
                                             >
                                               <div style={{ display: "flex" }}>
-                                                <div className="emp-main">
+                                                <div className="emp-main"  id="reference">
                                                   <div
                                                     style={{ display: "flex" }}
                                                   >
@@ -2528,7 +2664,7 @@ interests and curiosities"
                                                       </div>
                                                     </div>
                                                     <div className="wanted">
-                                                      <div>
+                                                      <div className="label">
                                                         <label htmlFor="">
                                                           Email
                                                         </label>{" "}
@@ -2573,10 +2709,12 @@ interests and curiosities"
                                       </div>
                                       <button onClick={delete3}>delete</button>
                                     </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
                                   {store.name === "Custom" ? (
+<div className="add_section_box">
                                     <div
                                       className={
                                         secetion ? "hidden" : "visible"
@@ -2586,7 +2724,6 @@ interests and curiosities"
                                         {cust.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
                                               className="flexx"
                                             >
                                               {object.input1}
@@ -2601,7 +2738,6 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 cus ? "visible" : "hidden"
@@ -2615,7 +2751,7 @@ interests and curiosities"
                                                     <div className="wanted">
                                                       <div>
                                                         <label htmlFor="">
-                                                          Job title
+                                                        Activity name,job title,book title etc.
                                                         </label>{" "}
                                                         <br />
                                                         <input
@@ -2634,7 +2770,7 @@ interests and curiosities"
                                                     </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        Employer
+                                                        City
                                                       </label>{" "}
                                                       <br />
                                                       <input
@@ -2663,12 +2799,24 @@ interests and curiosities"
                                                         <input
                                                           type="date"
                                                           value={object.input4}
-                                                          className="work"
+                                                          className="workk"
                                                           onChange={(e) =>
                                                             handleInputcust(
                                                               e,
                                                               object.id,
                                                               "input4"
+                                                            )
+                                                          }
+                                                        />
+                                                        <input
+                                                          type="date"
+                                                          value={object.input4}
+                                                          className="workk"
+                                                          onChange={(e) =>
+                                                            handleInputcust(
+                                                              e,
+                                                              object.id,
+                                                              "input6"
                                                             )
                                                           }
                                                         />
@@ -2700,7 +2848,7 @@ interests and curiosities"
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletecust(object.id)
@@ -2712,6 +2860,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2722,8 +2871,9 @@ interests and curiosities"
                                           + Add one more item
                                         </button>
                                       </div>
-                                      <button onClick={delete1}>delete</button>
+                                      <button onClick={delete1} className="custom-delete btn btn-primary">delete</button>
                                     </div>
+</div>
                                   ) : (
                                     <span></span>
                                   )}
@@ -2753,7 +2903,7 @@ interests and curiosities"
                       <div className="emp-div">
                         {website.map((object) => (
                           <div key={object.id} className="div-in">
-                            <div style={{ display: "flex" }} className="flexxx">
+                            <div className="flexxx">
                               {object.input1}
                               <h5
                                 onClick={() => setsite(!site)}
@@ -2762,7 +2912,6 @@ interests and curiosities"
                               >
                                 {site ? <IoIosArrowUp /> : <IoIosArrowDown />}
                               </h5>
-                            </div>
                             <div className={site ? "visible" : "hidden"}>
                               <div style={{ display: "flex" }}>
                                 <div className="emp-main">
@@ -2798,7 +2947,7 @@ interests and curiosities"
                                     </div>
                                   </div>
                                 </div>
-                                <div>
+                                <div className="emp-delete-btn">
                                   <button
                                     onClick={() => deleteweb(object.id)}
                                     className="delete"
@@ -2808,6 +2957,7 @@ interests and curiosities"
                                 </div>
                               </div>
                             </div>
+                            </div>
                           </div>
                         ))}
                         <button onClick={createweb} className="add">
@@ -2816,11 +2966,11 @@ interests and curiosities"
                         </button>
                       </div>
                     </div>
-                    <button onClick={delete9}>delete</button>
+                    <button onClick={delete9} className="custom-delete btn btn-primary">delete</button>
                   </div>
                 </div>
-                <div>
-                  <div>
+                <div >
+                  <div className="add_section_box">
                     <div className={label ? "hidden" : "visible"}>
                       <div>
                         <h2> Skills</h2>
@@ -2931,6 +3081,7 @@ interests and curiosities"
                     </div>
                   </div>
                   {
+<div className="add_section_box">
                     <div className={hobb ? "hidden" : "visible"}>
                       <div>
                         <h2>Hobbies</h2>
@@ -2938,7 +3089,7 @@ interests and curiosities"
                       <div className="emp-div">
                         {six.map((object) => (
                           <div key={object.id}>
-                            <div style={{ display: "flex" }} id="flexx">
+                            <div  className="flexx">
                               {object.input1}
                               <h5
                                 onClick={() => sethobbie(!hobbie)}
@@ -2947,16 +3098,13 @@ interests and curiosities"
                               >
                                 {hobbie ? <IoIosArrowUp /> : <IoIosArrowDown />}
                               </h5>
-                            </div>
                             <div className={hobbie ? "visible" : "hidden"}>
                               <div style={{ display: "flex" }}>
                                 <div className="emp-main">
-                                  <div style={{ display: "flex" }}>
-                                    <div className="wanted">
-                                      <div>
-                                        <label htmlFor="">Label</label> <br />
-                                        <input
+                                        <label htmlFor="">What do you like?</label> <br />
+                                        <textarea
                                           type="text"
+                                          placeholder="e.g. Skipping, Skydiving, Painting"
                                           value={object.input1}
                                           className="work"
                                           onChange={(e) =>
@@ -2968,10 +3116,7 @@ interests and curiosities"
                                           }
                                         />
                                       </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div>
+                                      <div className="emp-delete-btn">
                                   <button
                                     onClick={() => deletesix(object.id)}
                                     className="delete"
@@ -2979,20 +3124,24 @@ interests and curiosities"
                                     <MdOutlineDelete />
                                   </button>
                                 </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                
                               </div>
-                            </div>
-                          </div>
                         ))}
                         <button onClick={createsix} className="add">
                           {" "}
                           + Add more Hobbie
                         </button>
                       </div>
-                      <button onClick={delete6}>delete</button>
+                      <button onClick={delete5} className="custom-delete btn btn-primary">delete</button>
                     </div>
+</div>
                   }
                   <div>
                     {
+<div className="add_section_box">
                       <div className={lang ? "hidden" : "visible"}>
                         <div>
                           <h2>Langugages</h2>
@@ -3002,11 +3151,12 @@ interests and curiosities"
                             <div key={object.id}>
                               <div
                                 className="flexxx"
+                                
                                 style={{ display: "flex" }}
                               >
                                 {object.input1}
                                 <h5
-                                  onClick={() => setlanguage(language)}
+                                  onClick={() => setlanguage(!language)}
                                   className="arrow"
                                   style={{ cursor: "pointer" }}
                                 >
@@ -3087,8 +3237,9 @@ interests and curiosities"
                             + Add one more languages
                           </button>
                         </div>
-                        <button onClick={delete5}>delete</button>
+                        <button onClick={delete6}>delete</button>
                       </div>
+</div>
                     }
                   </div>
                 </div>
@@ -3104,6 +3255,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Extra curricular activity</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3114,6 +3266,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Course</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3124,6 +3277,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Internship</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3134,6 +3288,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Referance</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3144,6 +3299,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Custom Section</p>
+                      
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3164,6 +3320,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Social Links</p>
+                      <div className="color-button"></div>
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3174,6 +3331,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Skill</p>
+                      <div className="color-button"></div>
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3184,6 +3342,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Hobbies</p>
+                      <div className="color-button"></div>
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3194,6 +3353,7 @@ interests and curiosities"
                         className="custom-pic"
                       />
                       <p>Languages</p>
+                      <div className="color-button"></div>
                     </button>
                   </div>
                 </div>
@@ -3248,8 +3408,9 @@ interests and curiosities"
                     </div>
                     <div>
                       <div style={{ display: "flex" }}>
-                        <h3 className="name1">{name}</h3>
-                        <h3 className="name2">{lastname}</h3>
+                      <h3 className="name1">{generateName(firstName, true) + " " + generateName(lastName, true)}</h3>
+                        {/* <h3 className="name1">{name}</h3>
+                        <h3 className="name2">{lastname}</h3> */}
                       </div>
                       <div>
                         <h6 className="name">{job}</h6>
@@ -3260,7 +3421,7 @@ interests and curiosities"
                     {editorHtml === "" ? (
                       <span></span>
                     ) : (
-                      <h2 className="prof">Profile</h2>
+                      <h2 className="prof">Professional Summary</h2>
                     )}
                     <div
                       className="mess"
@@ -3291,7 +3452,220 @@ interests and curiosities"
                                     ref={provided.innerRef}
                                   >
                                     {/* <h3>{store.name}</h3> */}
-                                    <Storelist {...store} />
+                                    {/* <Storelist {...store} /> */}
+                                    <div>
+        <div>{/* <h3>{name}</h3> */}</div>
+        <div>
+          {store.id === "06" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div>
+                      {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+            <p className="fonttt">{item.input6}</p> */}
+                      <h2 className="head">References</h2>
+                      <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
+                      <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "01" ? (
+            <div>
+              <h2 className="head">Employment</h2>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+
+          {store.id === "02" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Education</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "03" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div>
+                      <div className="store">
+                        <h2 className="head">Extra-curricular activites</h2>
+                        {item.input1 === undefined ? (
+                          <span></span>
+                        ) : (
+                          <div>
+                            <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                            <p className="fonttt">{item.input6}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "04" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Course</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "05" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Internships</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "07" ? (
+            <div>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      <h2 className="head">Project</h2>
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fonttt">{item.input6}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+          {store.id === "08" ? (
+            <div>
+              <h2 className="head">{store.head}</h2>
+              {store.it.map((item, index) => (
+                <div className="store">
+                  {item.input1 === undefined ? (
+                    <span></span>
+                  ) : (
+                    <div className="store">
+                      {item.input1 === undefined ? (
+                        <span></span>
+                      ) : (
+                        <div>
+                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4}`}</p>
+                          <p className="fonttt">{item.input5}</p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span></span>
+          )}
+        </div>
+      </div>
                                   </div>
                                 )}
                               </Draggable>
@@ -3303,13 +3677,13 @@ interests and curiosities"
                   </DragDropContext>
                 </div>
               </div>
-              <div className="main-left">
+              <div className="main-left"style={{ backgroundColor: selectedColor }}>
                 <div className="pincode">
                   <div className="details">
                     {address === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Details</h4>
+                      <h4 className="heading div-heading">Address</h4>
                     )}
 
                     <div>
@@ -3326,7 +3700,7 @@ interests and curiosities"
                     {email === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Contact</h4>
+                      <h4 className="heading div-heading">Contact</h4>
                     )}
                     <div>
                       <p className="cit">{phone}</p>
@@ -3374,7 +3748,7 @@ interests and curiosities"
                     {ill === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Skills</h4>
+                      <h4 className="heading div-heading">Skills</h4>
                     )}
                     {skill.map((object) => (
                       
@@ -3409,7 +3783,7 @@ interests and curiosities"
                     {web === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Links</h4>
+                      <h4 className="heading div-heading">Links</h4>
                     )}
                     {website.map((object) => (
                       <div key={object.id}>
@@ -3424,7 +3798,7 @@ interests and curiosities"
                     {hob === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Hobbies</h4>
+                      <h4 className="heading div-heading">Hobbies</h4>
                     )}
                     <div>
                       {six.map((object) => (
@@ -3438,7 +3812,7 @@ interests and curiosities"
                     {lan === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading">Languages</h4>
+                      <h4 className="heading div-heading">Languages</h4>
                     )}
                     <div>
                       {seven.map((object) => (
@@ -3501,6 +3875,7 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+
                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>

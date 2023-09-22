@@ -1,3 +1,7 @@
+* {
+  font-family: TT Commons, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+}
+
 Popup.css .popup {
   display: none;
   position: fixed;
@@ -11,6 +15,7 @@ Popup.css .popup {
   z-index: 1000;
   transition: opacity 0.3s ease-in-out;
 }
+
 
 .popup.visible {
   display: block;
@@ -104,7 +109,7 @@ Popup.css .popup {
 }
 
 .job-title {
-
+   margin-bottom: 15px;
   display: flex;
 }
 
@@ -134,7 +139,7 @@ Popup.css .popup {
   height: 6vh;
   border: none;
   outline: none;
-  background-color: #eaf6ff;
+  background-color: #eff2f9;
   margin-bottom: 5px;
 }
 
@@ -142,9 +147,10 @@ Popup.css .popup {
   border-bottom: 2px solid #c3e5fe;
 }
 
-.emp-main {
+/* .emp-main {
   border: 1px solid gray;
-}
+  cursor: default;
+} */
 
 .emp-div {
   width: 83.55%;
@@ -243,11 +249,11 @@ Popup.css .popup {
 
 .resume-title {
   position: relative;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 500;
   padding: 0 32px;
   text-align: center;
-  margin-bottom: .5rem;
+  margin-bottom: 8px;
 }
 
 .title-content {
@@ -265,8 +271,8 @@ Popup.css .popup {
 .score-body {
   position: sticky;
   background-color: white;
-  padding-bottom: 1rem;
-  padding-top: .8rem;
+  padding-bottom: 16px;
+  padding-top: 14px;
   user-select: none;
 }
 
@@ -288,6 +294,31 @@ Popup.css .popup {
 
 }
 
+.edit-button {
+  outline: none;
+  border: none;
+  color: #1a91f0;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.edit-details {
+  display: flex;
+}
+
+.edit-details KeyboardArrowUpIcon {
+  height: 20px;
+}
+
+.left-pdetails-container {
+  margin-bottom: 30px;
+}
+.css-i4bv87-MuiSvgIcon-root{
+  height:25px !important;
+  width:25px !important;
+}
+
 .score-content {
   display: flex;
   flex-direction: row;
@@ -300,8 +331,8 @@ Popup.css .popup {
 }
 
 .score-percent {
-  font-size: .875rem;
-  line-height: 1rem;
+  font-size: 14px;
+  line-height: 16px;
   letter-spacing: .3px;
   margin-right: 10px;
   background-color: #ec930c;
@@ -314,7 +345,7 @@ Popup.css .popup {
 }
 
 .resume-para {
-  font-size: 1rem;
+  font-size: 16px;
   color: #757272;
 }
 
@@ -338,22 +369,60 @@ Popup.css .popup {
 }
 
 .profile-body p {
-  line-height: 1.2rem;
-  font-size: 1rem;
+  line-height: 19.2px;
+  font-size: 16px;
   color: #757272;
   font-weight: 400;
 }
 
 .profile-sum-percent p {
-  font-size: .875rem;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1rem;
+  line-height: 16px;
   padding: 2px 4.5px;
   border-radius: 4px;
   color: #217d47;
   background-color: #e7f4ed;
-  height: 1.2rem;
+  height: 19.2px;
   margin-right: 7px;
+}
+
+.details-heading-content {
+  display: flex;
+  flex-flow: row;
+}
+
+.header-label {
+  display: flex;
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+}
+
+.handle-heading {
+  display: flex;
+}
+
+.handle-heading button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+
+}
+.handle-heading h3{
+  font-size: 23px;
+  margin-right: 4px;
+  font-weight: 600;
+}
+
+.handle-input {
+  border: none;
+  outline: none;
+  font-size: 23px;
+  margin-right: 4px;
+  font-weight: 600;
 }
 
 .profile-body p:hover {
@@ -365,11 +434,11 @@ Popup.css .popup {
 }
 
 .profile-sum-suggest {
-  height: 1.2rem;
-  width: 1.5rem;
-  margin-bottom: 1rem;
+  height: 19.2px;
+  width: 24px;
+  margin-bottom: 1px;
   color: #339d5d;
-  margin-left: 1rem;
+  margin-left: 16px;
   cursor: pointer;
   position: relative;
 }
@@ -398,7 +467,8 @@ Popup.css .popup {
   margin: 0;
   caret-color: rgba(133, 133, 238, 0.678);
   text-align: center;
-  
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .edit-icon{
@@ -408,9 +478,10 @@ Popup.css .popup {
   fill:blue !important;
 }
 
-.progress-bar{
+.progress-score {
   margin-right: 5px;
-  margin-top: 15px;
+  /* margin-top: 5px; */
+  font-size: 16px;
 }
 
 .react-tel-input .flag-dropdown {
@@ -427,7 +498,7 @@ Popup.css .popup {
   width: 20vw !important;
   height: 6vh;
   border: none !important;
-  background-color: #eaf6ff !important;
+  background-color: #eff2f9 !important;
 }
 
 .resume-right {
@@ -436,10 +507,18 @@ Popup.css .popup {
   top: 0;
   right: 0;
   bottom: 0;
-  display: flex;
+  /* display: flex; */
   background-color: #656e83;
   justify-content: center;
   align-items: center;
+}
+.color-button{
+  width: 8px;
+  height: 8px;
+  background-color:#0f3871;
+  margin-top: 13%;
+  margin-left:5px;
+  
 }
 
 .container {
@@ -529,8 +608,30 @@ Popup.css .popup {
 }
 
 .job-title {
-
+  margin-bottom: 15px;
   display: flex;
+  /* flex-flow: wrap; */
+  grid-gap: 15px;
+
+
+}
+
+.data-label {
+  margin-bottom: 5px;
+}
+
+.job label,
+.photo label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #4e4e50;
+  margin-bottom: 3px;
+}
+
+.job input,
+.photo input {
+  padding: 12px 16px;
+  ;
 }
 
 .edit {
@@ -559,20 +660,27 @@ Popup.css .popup {
   height: 6vh;
   border: none;
   outline: none;
-  background-color: #eaf6ff;
+  background-color: #eff2f9;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .work:hover {
-  border-bottom: 2px solid #c3e5fe;
+  border-bottom: 2px solid #1a91f0;
 }
 
 .emp-main {
-  border: 1px solid gray;
+  width: -webkit-fill-available;
 }
 
 .emp-div {
   width: 50%;
+}
+
+.emp-delete-btn {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 25px;
 }
 
 .icons {
@@ -650,22 +758,29 @@ Popup.css .popup {
   width: 100%;
   flex-wrap: wrap;
   height: fit-content;
-  margin-bottom: 0%;
+  margin-bottom: 30px;
   margin-left: 0%;
 
+}
+.summry{
+  margin-right: 3%;
+  
 }
 
 .prof {
   margin-bottom: 0%;
+  font-size: 18px;
 
 }
 
 .mess {
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 12.8px;
   margin-top: 0%;
   display: flex;
   flex-wrap: wrap;
+  text-align: justify;
+  margin-right: 5%;
 }
 
 .input {
@@ -695,7 +810,7 @@ Popup.css .popup {
 .main-right {
   width: 70%;
   background-color: white;
-overflow-y: auto;
+  overflow-y: auto;
   min-height: 800px;
   max-height: auto;
 }
@@ -728,10 +843,11 @@ overflow-y: auto;
 .cont-1 {
   margin-left: 10%;
   margin-top: 5%;
+  margin-bottom: 10%;
 }
 
 .fon {
-  font-size: 0.9rem;
+  font-size: 12.8px;
   font-weight: bolder;
   margin-top: 2%;
   margin-bottom: 1%;
@@ -740,6 +856,7 @@ overflow-y: auto;
 .head {
   margin-bottom: 0%;
   margin-top: 3%;
+  font-size: 18px;
 }
 
 .subj {
@@ -751,22 +868,36 @@ overflow-y: auto;
   width: 9vw;
   margin-right: 1.5vw;
   height: 6vh;
-  background-color: #eaf6ff;
+  background-color: #eff2f9;
   border: none;
   outline: none;
 }
 
 .fontt {
-  font-size: 0.8rem;
+  font-size: 12.8px;
   font-weight: bold;
   margin-top: 0%;
   margin-bottom: 0%;
 }
 
+.emp-main label {
+  margin-bottom: 5px;
+}
+
+.emp-main input {
+  padding: 12px;
+}
+
+.emp-container {
+  display: flex;
+}
+
 .fonttt {
-  font-size: 0.8rem;
-  margin-top: 2%;
+  font-size: 12.8px;
+  margin-top: 1%;
   margin-bottom: 4%;
+  text-align: justify;
+  margin-right: 3%;
 }
 
 .sum {
@@ -783,6 +914,7 @@ overflow-y: auto;
 .heading {
   margin-bottom: 5%;
   margin-top: 7%;
+  font-size: 16px;
 }
 
 .cont {
@@ -807,10 +939,14 @@ overflow-y: auto;
 }
 
 .heading1 {
-  font-size: small;
+  font-size: 16px;
   margin-top: 10%;
   margin-bottom: 5%;
-  color: #c3e5fe;
+  
+}
+.res
+.div-heading{
+  font-size: 17px;
 }
 
 .top {
@@ -822,8 +958,9 @@ overflow-y: auto;
 }
 
 .ski {
-  margin-top: 0%;
+  margin-top: -100%;
   margin-bottom: 0%;
+  margin-left: -20%;
 }
 
 .ski1 {
@@ -859,18 +996,34 @@ overflow-y: auto;
 }
 
 .add {
-  background-color: skyblue;
-  color: blue;
+  color: #1a91f0;
   border: none;
-  width: 150px;
+  width: 200px;
   height: 30px;
-  border-radius: 5px;
   margin-top: 5px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .first {
   /* background-color: #0f3871; */
   margin-right: 0%;
+}
+.add-section-container{
+  cursor: default;
+}
+.drag{
+  cursor: grab;
+
+
+ margin-left: -3%;
+ position: relative;
+ top: 3px;
+
+}
+
+.drop {
+  margin-left: -20%;
 }
 
 .progress {
@@ -883,38 +1036,77 @@ overflow-y: auto;
   margin-bottom: 2%;
   margin-top: 0.5%;
   margin-left: auto !important;
+  display: flex;
+  justify-content: end;
 
 }
 
-.flex {
-  border: 1px solid gray;
-  width: 77.3%;
+.emp-main textarea {
+  border: none;
+  outline: none;
+  background-color: #eff2f9;
+  height: 150px;
+  width: 559px;
+  padding: 12px;
+  margin-top: 8px;
+}
 
-  border-radius: 5px
+.flex {
+  border: 1px solid #e7eaf4;
+  width: 103.5%;
+  cursor: default;
+  border-radius: 5px;
+  padding: 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .flexx {
 
   border: 1px solid gray;
-  width: 92.5%;
+  width: 207%;
   border-radius: 5px;
+  cursor: default;
+  border: 1px solid #e7eaf4;
+  cursor: default;
+  padding: 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
+#ref {
+  width: 198%;
 }
 
 #flexx {
   border: 1px solid gray;
-  width: 61%;
+  width: 115%;
   border-radius: 5px;
-
 
 }
 
+.custom-delete {
+  margin-top: 20px;
+}
+
+.intern-job-emp{
+  display: flex;
+}
+
 .flexxx {
-
-  border: 1px solid gray;
-  width: 110%;
+  width: 207%;
   border-radius: 5px;
+  cursor: default;
+  border: 1px solid #e7eaf4;
+  cursor: default;
+  padding: 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
+}
+
+#border {
+  border: 5px solid blue;
 }
 
 .des {
@@ -925,27 +1117,40 @@ overflow-y: auto;
   border: none;
   outline: none;
   border-bottom: 1px solid blue;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: bold;
   max-width: fit-content;
 }
 
 #cust {
   height: 3vh;
-  margin-top: 1.2vw;
+  margin-top: 0.2vw;
   background-color: white;
   border: none;
   color: blue;
-  font-size: 1.1rem;
+  font-size: 17.6px;
   font-weight: bold;
 }
-.photo-heading{
-  color: blue;
+
+.photo-heading {
+
+  color: #1a91f0;
   position: relative;
   left: 25px;
   margin-left: 10%;
   width: 0vw;
-  
+
+}
+
+.photo-heading h4 {
+  width: 10vw;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
 }
 .mainphoto-heading{
   background-color: #ec930c;
@@ -958,10 +1163,11 @@ overflow-y: auto;
 .person-icon{
   height: 100%;
   width: 100%;
-  
-  
+
+
 }
-.drag-icon{
+
+.drag-icon {
   position: relative;
   top: 3px;
 }
@@ -976,6 +1182,14 @@ overflow-y: auto;
   flex-flow: wrap;
 }
 
+.add-section-container,
+.education-container,
+.add_section_box,
+.main-div{
+  margin-bottom: 30px;
+}
+
+
 .custom-section {
   display: flex;
   margin-right: 32px;
@@ -984,6 +1198,7 @@ overflow-y: auto;
 
 
 }
+
 
 .custom-btn {
   display: flex;
@@ -1020,6 +1235,9 @@ overflow-y: auto;
 	font-size: 14px;
 	color: black;
 	flex-grow: 1;
+}
+.skill-name{
+  background-color: #1a91f0;
 }
 
 .progress-container {
@@ -1066,7 +1284,7 @@ overflow-y: auto;
 }
 
 .fresher {
-	background-color: green;
+  background-color: green;
 }
 
 .experience {
@@ -1074,7 +1292,7 @@ overflow-y: auto;
 }
 
 .export {
-	background-color: skyblue;
+  background-color: skyblue;
 }
 
 .medium {
@@ -1088,11 +1306,11 @@ overflow-y: auto;
 }
 
 .progress-bar {
-	height: 5px;
-	width: 100%;
-	background-color: #eeecec;
-	position: relative;
-	margin-bottom: 10px;
+  height: 5px;
+  width: 100%;
+  background-color: #eeecec;
+  position: relative;
+  margin-bottom: 10px;
 }
 
 .inner-progress {
@@ -1104,21 +1322,21 @@ overflow-y: auto;
 /* Specific CSS for second progress bar background color based on stages */
 
 .progress-bar-container[data-stage="Fresher"] .progress-bar .inner-progress {
-	background-color: green;
-	height: 100%;
-	/* Set a fixed height for all inner progress bars */
+  background-color: green;
+  height: 100%;
+  /* Set a fixed height for all inner progress bars */
 }
 
 .progress-bar-container[data-stage="Experience"] .progress-bar .inner-progress {
-	background-color: orange;
-	height: 0%;
-	/* Set a fixed height for all inner progress bars */
+  background-color: orange;
+  height: 0%;
+  /* Set a fixed height for all inner progress bars */
 }
 
 .progress-bar-container[data-stage="Export"] .progress-bar .inner-progress {
-	background-color: skyblue;
-	height: 100%;
-	/* Set a fixed height for all inner progress bars */
+  background-color: skyblue;
+  height: 100%;
+  /* Set a fixed height for all inner progress bars */
 }
 
 .progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
@@ -1132,6 +1350,12 @@ overflow-y: auto;
 	top: 0;
 	left: 50%;
 	transform: translateX(-50%);
+  }
+  #reference{
+    width: 43vw;
+  }
+  .label{
+    margin-left: 6.7%;
   }
   
 
