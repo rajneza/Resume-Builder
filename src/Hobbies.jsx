@@ -2983,7 +2983,7 @@ interests and curiosities"
                       <div className="emp-div">
                         {website.map((object) => (
                           <div key={object.id} className="div-in">
-                            <div style={{ display: "flex" }} className="flexxx">
+                            <div className="flexxx">
                               {object.input1}
                               <h5
                                 onClick={() => setsite(!site)}
@@ -2992,7 +2992,6 @@ interests and curiosities"
                               >
                                 {site ? <IoIosArrowUp /> : <IoIosArrowDown />}
                               </h5>
-                            </div>
                             <div className={site ? "visible" : "hidden"}>
                               <div style={{ display: "flex" }}>
                                 <div className="emp-main">
@@ -3028,7 +3027,7 @@ interests and curiosities"
                                     </div>
                                   </div>
                                 </div>
-                                <div>
+                                <div className="emp-delete-btn">
                                   <button
                                     onClick={() => deleteweb(object.id)}
                                     className="delete"
@@ -3038,6 +3037,7 @@ interests and curiosities"
                                 </div>
                               </div>
                             </div>
+                            </div>
                           </div>
                         ))}
                         <button onClick={createweb} className="add">
@@ -3046,7 +3046,7 @@ interests and curiosities"
                         </button>
                       </div>
                     </div>
-                    <button onClick={delete9}>delete</button>
+                    <button onClick={delete9} className="custom-delete btn btn-primary">delete</button>
                   </div>
                 </div>
                 <div >
@@ -3169,7 +3169,7 @@ interests and curiosities"
                       <div className="emp-div">
                         {six.map((object) => (
                           <div key={object.id}>
-                            <div style={{ display: "flex" }} id="flexx">
+                            <div  className="flexx">
                               {object.input1}
                               <h5
                                 onClick={() => sethobbie(!hobbie)}
@@ -3178,16 +3178,13 @@ interests and curiosities"
                               >
                                 {hobbie ? <IoIosArrowUp /> : <IoIosArrowDown />}
                               </h5>
-                            </div>
                             <div className={hobbie ? "visible" : "hidden"}>
                               <div style={{ display: "flex" }}>
                                 <div className="emp-main">
-                                  <div style={{ display: "flex" }}>
-                                    <div className="wanted">
-                                      <div>
-                                        <label htmlFor="">Label</label> <br />
-                                        <input
+                                        <label htmlFor="">What do you like?</label> <br />
+                                        <textarea
                                           type="text"
+                                          placeholder="e.g. Skipping, Skydiving, Painting"
                                           value={object.input1}
                                           className="work"
                                           onChange={(e) =>
@@ -3199,10 +3196,7 @@ interests and curiosities"
                                           }
                                         />
                                       </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div>
+                                      <div className="emp-delete-btn">
                                   <button
                                     onClick={() => deletesix(object.id)}
                                     className="delete"
@@ -3210,16 +3204,18 @@ interests and curiosities"
                                     <MdOutlineDelete />
                                   </button>
                                 </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                
                               </div>
-                            </div>
-                          </div>
                         ))}
                         <button onClick={createsix} className="add">
                           {" "}
                           + Add more Hobbie
                         </button>
                       </div>
-                      <button onClick={delete5}>delete</button>
+                      <button onClick={delete5} className="custom-delete btn btn-primary">delete</button>
                     </div>
 </div>
                   }
