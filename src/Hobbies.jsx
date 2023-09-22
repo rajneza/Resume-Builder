@@ -611,6 +611,22 @@ function Hobbies() {
     });
   };
 
+  const replaceWithPresent = (objectId, inputName) => {
+    const updatedObjects = objects.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: 'Present' };
+      }
+      return object;
+    });
+    setObjects(updatedObjects);
+    ite.map((value) => {
+      if (value.id === "01") {
+        value.it = updatedObjects;
+        console.log(value.mob);
+      }
+    });
+  };
+
   const deleteObject = (objectId) => {
     const updatedObjects = objects.filter((object) => object.id !== objectId);
     setObjects(updatedObjects);
@@ -728,6 +744,9 @@ function Hobbies() {
       input4: "",
       input5: "",
       input6: "",
+      input7: "",
+      input8: "",
+
     };
     setproject([...project, newObject]);
     setfour4("not empty")
@@ -912,6 +931,7 @@ function Hobbies() {
       }
     });
   };
+  
 
   const deletefive = (objectId) => {
     const updatedObjects = five.filter((object) => object.id !== objectId);
@@ -1646,6 +1666,7 @@ placeholder="dd/mm/yyyy"
                                                           )
                                                         }
                                                       />
+                                                       <button onClick={() => replaceWithPresent(object.id, 'input5')}>Set Present</button>
                                                     </div>
                                                   </div>
                                                   <div>
@@ -2456,7 +2477,7 @@ interests and curiosities"
                                                     </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        Employer
+                                                        Client
                                                       </label>{" "}
                                                       <br />
                                                       <input
@@ -2468,6 +2489,48 @@ interests and curiosities"
                                                             e,
                                                             object.id,
                                                             "input2"
+                                                          )
+                                                        }
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div
+                                                    style={{ display: "flex" }}
+                                                  >
+                                                    <div className="wanted">
+                                                      <div>
+                                                        <label htmlFor="">
+                                                          Role
+                                                        </label>{" "}
+                                                        <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input7}
+                                                          className="work"
+                                                          onChange={(e) =>
+                                                            handleInputproject(
+                                                              e,
+                                                              object.id,
+                                                              "input7"
+                                                            )
+                                                          }
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">
+                                                        Skills
+                                                      </label>{" "}
+                                                      <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input8}
+                                                        className="work"
+                                                        onChange={(e) =>
+                                                          handleInputproject(
+                                                            e,
+                                                            object.id,
+                                                            "input8"
                                                           )
                                                         }
                                                       />
@@ -3330,7 +3393,7 @@ interests and curiosities"
                         alt="custom-project"
                         className="custom-pic"
                       />
-                      <p>Project</p>
+                      <p>Projects</p>
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3519,7 +3582,7 @@ interests and curiosities"
                         <div>
                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
 
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3549,7 +3612,7 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3579,7 +3642,7 @@ interests and curiosities"
                         ) : (
                           <div>
                             <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                            <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                             <p className="fonttt">{item.input6}</p>
                           </div>
                         )}
@@ -3609,7 +3672,7 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3638,7 +3701,7 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3667,7 +3730,14 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          {
+                            item.input7 === "" ? <span></span> : <p className="fontt">{`My Role In Project : ${item.input7}`}</p>
+                          }
+                          {
+                            item.input8 === "" ? <span></span> : <p className="fontt">{`Skills Used In This  Project : ${item.input8}`}</p>
+                          }
+                          
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3722,7 +3792,20 @@ interests and curiosities"
               </div>
               <div className="main-left"style={{ backgroundColor: selectedColor }}>
                 <div className="pincode">
-                  <div className="details">
+                <div className="details">
+                    {email === "" ? (
+                      <span></span>
+                    ) : (
+                      <h4 className="heading div-heading">Contact</h4>
+                    )}
+                    <div>
+                      <p className="cit">{phone}</p>
+                    </div>
+                    <div>
+                      <p className="conte">{email}</p>
+                    </div>
+                  </div>
+                  <div>
                     {address === "" ? (
                       <span></span>
                     ) : (
@@ -3739,19 +3822,7 @@ interests and curiosities"
                       <p className="cit">{country}</p>
                     </div>
                   </div>
-                  <div>
-                    {email === "" ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading div-heading">Contact</h4>
-                    )}
-                    <div>
-                      <p className="cit">{phone}</p>
-                    </div>
-                    <div>
-                      <p className="conte">{email}</p>
-                    </div>
-                  </div>
+                  
                   <div>
                     {licence === "" ? (
                       <span></span>
