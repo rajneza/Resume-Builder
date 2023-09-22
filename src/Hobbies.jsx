@@ -579,7 +579,7 @@ function Hobbies() {
   };
 
   const [objects, setObjects] = useState([])
-  const [one , setone] = useState("")
+  
 
   const createObject = () => {
     const newObject = {
@@ -592,7 +592,7 @@ function Hobbies() {
       input6: "",
     };
     setObjects([...objects, newObject]);
-    setone("not empty")
+    
   };
 
   const handleInputChange = (e, objectId, inputName) => {
@@ -630,6 +630,7 @@ function Hobbies() {
   const deleteObject = (objectId) => {
     const updatedObjects = objects.filter((object) => object.id !== objectId);
     setObjects(updatedObjects);
+    
     ite.map((value) => {
       if (value.id === "01") {
         value.it = updatedObjects;
@@ -640,7 +641,7 @@ function Hobbies() {
 
   // Code for Education
   const [education, seteducation] = useState([]);
-  const [two, settwo] = useState("")
+  
 
   const createeducation = () => {
     const newObject = {
@@ -653,7 +654,7 @@ function Hobbies() {
       input6: "",
     };
     seteducation([...education, newObject]);
-    settwo("not empty")
+    
   };
 
   const handleInputedu = (e, objectId, inputName) => {
@@ -686,7 +687,7 @@ function Hobbies() {
   //code for extra-curricular
 
   const [four, setfour] = useState([]);
-  const [three3 , setthree3] = useState("")
+  
 
   const createfour = () => {
     const newObject = {
@@ -699,7 +700,7 @@ function Hobbies() {
       input6: "",
     };
     setfour([...four, newObject]);
-    setthree3("not empty")
+    
   };
 
   const handleInputfour = (e, objectId, inputName) => {
@@ -732,7 +733,7 @@ function Hobbies() {
   //code for Project
 
   const [project, setproject] = useState([]);
-  const [four4 , setfour4] = useState("")
+  
 
 
   const createproject = () => {
@@ -749,7 +750,7 @@ function Hobbies() {
 
     };
     setproject([...project, newObject]);
-    setfour4("not empty")
+    
   };
 
   const handleInputproject = (e, objectId, inputName) => {
@@ -783,7 +784,7 @@ function Hobbies() {
 
   const [cust, setcust] = useState([]);
   const [custom, setcustom] = useState("");
-  const [five5,setfive5] = useState("")
+  
 
   const [deefault, setdefault] = useState("Custom");
   const [def, setdef] = useState(true);
@@ -818,7 +819,7 @@ function Hobbies() {
     };
     setcust([...cust, newObject]);
     setcustom("hi");
-    setfive5("not")
+    
   };
 
   const handleInputcust = (e, objectId, inputName) => {
@@ -854,7 +855,7 @@ function Hobbies() {
   //code for course
 
   const [course, setcourse] = useState([]);
-  const [six6,setsix6] = useState("")
+  
 
   const createcourse = () => {
     const newObject = {
@@ -867,13 +868,27 @@ function Hobbies() {
       input6: "",
     };
     setcourse([...course, newObject]);
-    setsix6("not")
   };
 
   const handleInputcourse = (e, objectId, inputName) => {
     const updatedObjects = course.map((object) => {
       if (object.id === objectId) {
         return { ...object, [inputName]: e.target.value };
+      }
+      return object;
+    });
+    setcourse(updatedObjects);
+    ite.map((value) => {
+      if (value.id === "04") {
+        value.it = updatedObjects;
+        console.log(value.mob);
+      }
+    });
+  };
+  const replacePresent = (objectId, inputName) => {
+    const updatedObjects = course.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: 'Present' };
       }
       return object;
     });
@@ -900,7 +915,7 @@ function Hobbies() {
   // code for internship
 
   const [five, setfive] = useState([]);
-  const [seven7,setseven7] = useState("")
+  
 
   const createfive = () => {
     const newObject = {
@@ -913,13 +928,29 @@ function Hobbies() {
       input6: "",
     };
     setfive([...five, newObject]);
-    setseven7("not")
+    
   };
 
   const handleInputfive = (e, objectId, inputName) => {
     const updatedObjects = five.map((object) => {
       if (object.id === objectId) {
         return { ...object, [inputName]: e.target.value };
+      }
+      return object;
+    });
+    setfive(updatedObjects);
+    ite.map((value) => {
+      if (value.id === "05") {
+        value.it = updatedObjects;
+        console.log(value.mob);
+      }
+    });
+  };
+
+  const replacedate = (objectId, inputName) => {
+    const updatedObjects = five.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: 'Present' };
       }
       return object;
     });
@@ -947,7 +978,7 @@ function Hobbies() {
   // code for reference
 
   const [three, setthree] = useState([]);
-  const [eight8,seteight8] = useState("")
+  
 
   const createthree = () => {
     const newObject = {
@@ -960,7 +991,7 @@ function Hobbies() {
       input6: "",
     };
     setthree([...three, newObject]);
-    seteight8("not")
+    
   };
 
   const handleInputthree = (e, objectId, inputName) => {
@@ -992,12 +1023,12 @@ function Hobbies() {
   //code for website
 
   const [website, setwebsite] = useState([]);
-  const [web, setweb] = useState("");
+  
 
   const createweb = () => {
     const newObject = { id: website.length + 1, input1: "", input2: "" };
     setwebsite([...website, newObject]);
-    setweb("hi");
+    
   };
 
   const handleInputweb = (e, objectId, inputName) => {
@@ -1013,17 +1044,17 @@ function Hobbies() {
   const deleteweb = (objectId) => {
     const updatedObjects = website.filter((object) => object.id !== objectId);
     setwebsite(updatedObjects);
-    setweb("");
+    
   };
   //code for skill
 
   const [skill, setskill] = useState([]);
-  const [ill, setill] = useState("");
+  
 
   const createskill = () => {
     const newObject = { id: skill.length + 1, input1: "", input2: "" };
     setskill([...skill, newObject]);
-    setill("hi");
+   
   };
 
   const handleInputskill = (e, objectId, inputName) => {
@@ -1039,18 +1070,18 @@ function Hobbies() {
   const deleteskill = (objectId) => {
     const updatedObjects = skill.filter((object) => object.id !== objectId);
     setskill(updatedObjects);
-    setill("");
+    
   };
 
   //code for Hobbies
 
   const [six, setsix] = useState([]);
-  const [hob, sethob] = useState("");
+  
 
   const createsix = () => {
     const newObject = { id: six.length + 1, input1: "", input2: "" };
     setsix([...six, newObject]);
-    sethob("hi");
+    
   };
 
   const handleInputsix = (e, objectId, inputName) => {
@@ -1066,12 +1097,12 @@ function Hobbies() {
   const deletesix = (objectId) => {
     const updatedObjects = six.filter((object) => object.id !== objectId);
     setsix(updatedObjects);
-    sethob("");
+    
   };
   // code for language
 
   const [seven, setseven] = useState([]);
-  const [lan, setlan] = useState("");
+  
 
   const createseven = () => {
     const newObject = {
@@ -1083,7 +1114,7 @@ function Hobbies() {
       input5: "",
     };
     setseven([...seven, newObject]);
-    setlan("hi");
+    
   };
 
   const handleInputseven = (e, objectId, inputName) => {
@@ -1099,7 +1130,7 @@ function Hobbies() {
   const deleteseven = (objectId) => {
     const updatedObjects = seven.filter((object) => object.id !== objectId);
     setseven(updatedObjects);
-    setlan("");
+    
   };
 
   const [bar, setbar] = useState(0);
@@ -1245,12 +1276,12 @@ function Hobbies() {
                           <div className="photo-edit-container">
                             <div className="photo-delete">
                               <button onClick={handleDelete} className="ed">
-                                <MdOutlineDelete />
+                                <MdOutlineDelete className="photo-icon"/>
                               </button>
                             </div>
                             <div className="photo-edit">
                               <button onClick={handleView} className="ed">
-                                <AiOutlineEdit />
+                                <AiOutlineEdit className="photo-icon"/>
                               </button>
                             </div>
                           </div>
@@ -2205,6 +2236,7 @@ interests and curiosities"
                                                             )
                                                           }
                                                         />
+                                                        <button onClick={() => replacePresent(object.id, 'input5')}>Set Present</button>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -2343,6 +2375,7 @@ interests and curiosities"
                                                             )
                                                           }
                                                         />
+                                                        <button onClick={() => replacedate(object.id, 'input5')}>Set Present</button>
                                                       </div>
                                                     </div>
                                                     <div>
@@ -3079,7 +3112,7 @@ interests and curiosities"
                               >
                                 {object.input1}
                                 <h5
-                                  onClick={() => setlevel(level)}
+                                  onClick={() => setlevel(!level)}
                                   style={{ cursor: "pointer" }}
                                   className="arrow"
                                 >
@@ -3533,7 +3566,7 @@ interests and curiosities"
           {store.id === "06" ? (
             <div>
               {
-                eight8 === "" ? <span></span> : <h2 className="head">References</h2>
+                three.length === 0 ? <span></span> : <h2 className="head">References</h2>
               }
               {store.it.map((item, index) => (
                 <div className="store">
@@ -3558,7 +3591,7 @@ interests and curiosities"
           {store.id === "01" ? (
             <div>
               {
-                one === "" ? <span></span> : <h2 className="head">Employment</h2>
+                objects.length === 0 ? <span></span> : <h2 className="head">Employment</h2>
               }
               {store.it.map((item, index) => (
                 <div className="store">
@@ -3570,7 +3603,7 @@ interests and curiosities"
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
 
                           <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
@@ -3588,7 +3621,7 @@ interests and curiosities"
           {store.id === "02" ? (
             <div>
               {
-                two === "" ? <span></span> : <h2 className="head">Education</h2>
+                education.length === 0 ? <span></span> : <h2 className="head">Education</h2>
               }
               {store.it.map((item, index) => (
                 <div className="store">
@@ -3601,8 +3634,10 @@ interests and curiosities"
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                          {
+                            item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          }
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3617,7 +3652,7 @@ interests and curiosities"
           {store.id === "03" ? (
             <div>
               {
-                three3 === "" ? <span></span> : <h2 className="head">Extra-curricular activites</h2>
+                four.length === 0 ? <span></span> : <h2 className="head">Extra-curricular activites</h2>
               }
               {store.it.map((item, index) => (
                 <div className="store">
@@ -3631,8 +3666,10 @@ interests and curiosities"
                           <span></span>
                         ) : (
                           <div>
-                            <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                            <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                            <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                            {
+                            item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          }
                             <p className="fonttt">{item.input6}</p>
                           </div>
                         )}
@@ -3648,7 +3685,7 @@ interests and curiosities"
           {store.id === "04" ? (
             <div>
               {
-                six6 === "" ? <span></span> :  <h2 className="head">Course</h2>
+                course.length === 0 ? <span></span> :  <h2 className="head">Course</h2>
               }
               {store.it.map((item, index) => (
                 <div className="store">
@@ -3661,7 +3698,7 @@ interests and curiosities"
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                           <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
@@ -3677,7 +3714,7 @@ interests and curiosities"
           {store.id === "05" ? (
             <div>
               {
-                seven7 === "" ? <span></span> : <h2 className="head">Internships</h2>
+                five.length === 0 ? <span></span> : <h2 className="head">Internships</h2>
               }
               {store.it.map((item, index) => (
                 <div className="store">
@@ -3690,7 +3727,7 @@ interests and curiosities"
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                           <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
@@ -3706,7 +3743,7 @@ interests and curiosities"
           {store.id === "07" ? (
             <div>
               {
-                four4 === "" ? <span></span> : <h2 className="head">Project</h2>
+                project.length === 0 ? <span></span> : <h2 className="head">Projects</h2>
               }
               {store.it.map((item, index) => (
                 <div className="store">
@@ -3719,10 +3756,13 @@ interests and curiosities"
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                           {
-                            item.input7 === "" ? <span></span> : <p className="fontt">{`My Role In Project : ${item.input7}`}</p>
+                            item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          }
+                          
+                          {
+                            item.input7 === "" ? <span></span> : <p className="fontt">{`My Role : ${item.input7}`}</p>
                           }
                           {
                             item.input8 === "" ? <span></span> : <p className="fontt">{`Skills Used In This  Project : ${item.input8}`}</p>
@@ -3742,7 +3782,7 @@ interests and curiosities"
           {store.id === "08" ? (
             <div>
               {
-                five5 === "" ? <span></span> : <h2 className="head">{store.head}</h2>
+                cust.length === 0 ? <span></span> : <h2 className="head">{store.head}</h2>
               }
               {store.it.map((item, index) => (
                 <div className="store">
@@ -3754,7 +3794,7 @@ interests and curiosities"
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                           <p className="fontt">{`${item.input4}`}</p>
                           <p className="fonttt">{item.input5}</p>
                         </div>
@@ -3789,7 +3829,10 @@ interests and curiosities"
                       <h4 className="heading div-heading">Contact</h4>
                     )}
                     <div>
-                      <p className="cit">{phone}</p>
+                      {
+                        phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
+                      }
+                      
                     </div>
                     <div>
                       <p className="conte">{email}</p>
@@ -3849,7 +3892,7 @@ interests and curiosities"
                     </div>
                   </div>
                   <div className="top">
-                    {ill === "" ? (
+                    {skill.length === 0 ? (
                       <span></span>
                     ) : (
                       <h4 className="heading div-heading">Skills</h4>
@@ -3884,7 +3927,7 @@ interests and curiosities"
                     ))}
                   </div>
                   <div className="top">
-                    {web === "" ? (
+                    {website.length === 0 ? (
                       <span></span>
                     ) : (
                       <h4 className="heading div-heading">Links</h4>
@@ -3899,7 +3942,7 @@ interests and curiosities"
                     ))}
                   </div>
                   <div className="top">
-                    {hob === "" ? (
+                    {six.length === 0 ? (
                       <span></span>
                     ) : (
                       <h4 className="heading div-heading">Hobbies</h4>
@@ -3913,7 +3956,7 @@ interests and curiosities"
                     </div>
                   </div>
                   <div className="top">
-                    {lan === "" ? (
+                    {seven.length === 0 ? (
                       <span></span>
                     ) : (
                       <h4 className="heading div-heading">Languages</h4>
