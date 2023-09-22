@@ -3112,7 +3112,7 @@ interests and curiosities"
                               >
                                 {object.input1}
                                 <h5
-                                  onClick={() => setlevel(level)}
+                                  onClick={() => setlevel(!level)}
                                   style={{ cursor: "pointer" }}
                                   className="arrow"
                                 >
