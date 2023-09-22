@@ -69,7 +69,7 @@ const Data = [
   },
   {
     id: "07",
-    name: "Project",
+    name: "Projects",
   },
   {
     id: "08",
@@ -578,7 +578,8 @@ function Hobbies() {
     }
   };
 
-  const [objects, setObjects] = useState([]);
+  const [objects, setObjects] = useState([])
+  const [one , setone] = useState("")
 
   const createObject = () => {
     const newObject = {
@@ -591,6 +592,7 @@ function Hobbies() {
       input6: "",
     };
     setObjects([...objects, newObject]);
+    setone("not empty")
   };
 
   const handleInputChange = (e, objectId, inputName) => {
@@ -622,6 +624,7 @@ function Hobbies() {
 
   // Code for Education
   const [education, seteducation] = useState([]);
+  const [two, settwo] = useState("")
 
   const createeducation = () => {
     const newObject = {
@@ -634,6 +637,7 @@ function Hobbies() {
       input6: "",
     };
     seteducation([...education, newObject]);
+    settwo("not empty")
   };
 
   const handleInputedu = (e, objectId, inputName) => {
@@ -666,6 +670,7 @@ function Hobbies() {
   //code for extra-curricular
 
   const [four, setfour] = useState([]);
+  const [three3 , setthree3] = useState("")
 
   const createfour = () => {
     const newObject = {
@@ -678,6 +683,7 @@ function Hobbies() {
       input6: "",
     };
     setfour([...four, newObject]);
+    setthree3("not empty")
   };
 
   const handleInputfour = (e, objectId, inputName) => {
@@ -710,6 +716,8 @@ function Hobbies() {
   //code for Project
 
   const [project, setproject] = useState([]);
+  const [four4 , setfour4] = useState("")
+
 
   const createproject = () => {
     const newObject = {
@@ -722,6 +730,7 @@ function Hobbies() {
       input6: "",
     };
     setproject([...project, newObject]);
+    setfour4("not empty")
   };
 
   const handleInputproject = (e, objectId, inputName) => {
@@ -755,6 +764,7 @@ function Hobbies() {
 
   const [cust, setcust] = useState([]);
   const [custom, setcustom] = useState("");
+  const [five5,setfive5] = useState("")
 
   const [deefault, setdefault] = useState("Custom");
   const [def, setdef] = useState(true);
@@ -789,6 +799,7 @@ function Hobbies() {
     };
     setcust([...cust, newObject]);
     setcustom("hi");
+    setfive5("not")
   };
 
   const handleInputcust = (e, objectId, inputName) => {
@@ -824,6 +835,7 @@ function Hobbies() {
   //code for course
 
   const [course, setcourse] = useState([]);
+  const [six6,setsix6] = useState("")
 
   const createcourse = () => {
     const newObject = {
@@ -836,6 +848,7 @@ function Hobbies() {
       input6: "",
     };
     setcourse([...course, newObject]);
+    setsix6("not")
   };
 
   const handleInputcourse = (e, objectId, inputName) => {
@@ -868,6 +881,7 @@ function Hobbies() {
   // code for internship
 
   const [five, setfive] = useState([]);
+  const [seven7,setseven7] = useState("")
 
   const createfive = () => {
     const newObject = {
@@ -880,6 +894,7 @@ function Hobbies() {
       input6: "",
     };
     setfive([...five, newObject]);
+    setseven7("not")
   };
 
   const handleInputfive = (e, objectId, inputName) => {
@@ -912,6 +927,7 @@ function Hobbies() {
   // code for reference
 
   const [three, setthree] = useState([]);
+  const [eight8,seteight8] = useState("")
 
   const createthree = () => {
     const newObject = {
@@ -924,6 +940,7 @@ function Hobbies() {
       input6: "",
     };
     setthree([...three, newObject]);
+    seteight8("not")
   };
 
   const handleInputthree = (e, objectId, inputName) => {
@@ -2381,7 +2398,7 @@ interests and curiosities"
                                   ) : (
                                     <span></span>
                                   )}
-                                  {store.name === "Project" ? (
+                                  {store.name === "Projects" ? (
 <div className="add_section_box">
                                     <div
                                       className={proj ? "hidden" : "visible"}
@@ -3463,6 +3480,9 @@ interests and curiosities"
         <div>
           {store.id === "06" ? (
             <div>
+              {
+                eight8 === "" ? <span></span> : <h2 className="head">References</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
@@ -3472,7 +3492,7 @@ interests and curiosities"
                       {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
             <p className="fonttt">{item.input6}</p> */}
-                      <h2 className="head">References</h2>
+                      
                       <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
                       <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
                     </div>
@@ -3485,7 +3505,9 @@ interests and curiosities"
           )}
           {store.id === "01" ? (
             <div>
-              <h2 className="head">Employment</h2>
+              {
+                one === "" ? <span></span> : <h2 className="head">Employment</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
@@ -3513,13 +3535,16 @@ interests and curiosities"
 
           {store.id === "02" ? (
             <div>
+              {
+                two === "" ? <span></span> : <h2 className="head">Education</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
                     <span></span>
                   ) : (
                     <div className="store">
-                      <h2 className="head">Education</h2>
+                      
                       {item.input1 === undefined ? (
                         <span></span>
                       ) : (
@@ -3539,6 +3564,9 @@ interests and curiosities"
           )}
           {store.id === "03" ? (
             <div>
+              {
+                three3 === "" ? <span></span> : <h2 className="head">Extra-curricular activites</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
@@ -3546,7 +3574,7 @@ interests and curiosities"
                   ) : (
                     <div>
                       <div className="store">
-                        <h2 className="head">Extra-curricular activites</h2>
+                        
                         {item.input1 === undefined ? (
                           <span></span>
                         ) : (
@@ -3567,13 +3595,16 @@ interests and curiosities"
           )}
           {store.id === "04" ? (
             <div>
+              {
+                six6 === "" ? <span></span> :  <h2 className="head">Course</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
                     <span></span>
                   ) : (
                     <div className="store">
-                      <h2 className="head">Course</h2>
+                     
                       {item.input1 === undefined ? (
                         <span></span>
                       ) : (
@@ -3593,13 +3624,16 @@ interests and curiosities"
           )}
           {store.id === "05" ? (
             <div>
+              {
+                seven7 === "" ? <span></span> : <h2 className="head">Internships</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
                     <span></span>
                   ) : (
                     <div className="store">
-                      <h2 className="head">Internships</h2>
+                      
                       {item.input1 === undefined ? (
                         <span></span>
                       ) : (
@@ -3619,13 +3653,16 @@ interests and curiosities"
           )}
           {store.id === "07" ? (
             <div>
+              {
+                four4 === "" ? <span></span> : <h2 className="head">Project</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
                     <span></span>
                   ) : (
                     <div className="store">
-                      <h2 className="head">Project</h2>
+                      
                       {item.input1 === undefined ? (
                         <span></span>
                       ) : (
@@ -3645,7 +3682,9 @@ interests and curiosities"
           )}
           {store.id === "08" ? (
             <div>
-              <h2 className="head">{store.head}</h2>
+              {
+                five5 === "" ? <span></span> : <h2 className="head">{store.head}</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
