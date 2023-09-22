@@ -1276,12 +1276,12 @@ function Hobbies() {
                           <div className="photo-edit-container">
                             <div className="photo-delete">
                               <button onClick={handleDelete} className="ed">
-                                <MdOutlineDelete />
+                                <MdOutlineDelete className="photo-icon"/>
                               </button>
                             </div>
                             <div className="photo-edit">
                               <button onClick={handleView} className="ed">
-                                <AiOutlineEdit />
+                                <AiOutlineEdit className="photo-icon"/>
                               </button>
                             </div>
                           </div>

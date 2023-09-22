@@ -107,6 +107,17 @@ Popup.css .popup {
   max-height: 80%;
   border-radius: 50%;
 }
+.select-photo-container{
+  display: flex;
+  
+}
+.photo-icon{
+  font-size: 2rem;
+}
+.photo-edit-container{
+  margin-top: -13.55%;
+  margin-bottom: 0%;
+}
 
 .job-title {
    margin-bottom: 15px;
