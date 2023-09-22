@@ -1470,7 +1470,7 @@ placeholder="dd/mm/yyyy"
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
-                          progress(value, editorHtml, "editorHtml", 30)
+                          progress(value, editorHtml, "editorHtml", 50)
                         }
                         className="paragh"
                         modules={{
