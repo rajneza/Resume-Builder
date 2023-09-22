@@ -884,8 +884,10 @@ Popup.css .popup {
   margin-bottom: 5px;
 }
 
-.emp-main input {
-  padding: 12px;
+.emp-main input,
+.emp-main select {
+  padding: 10px;
+  margin:8px 1vw 8px 0;
 }
 
 .emp-container {

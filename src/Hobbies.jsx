@@ -65,7 +65,7 @@ const Data = [
   },
   {
     id: "06",
-    name: "Refrence",
+    name: "Referance",
   },
   {
     id: "07",
@@ -1885,7 +1885,7 @@ placeholder="dd/mm/yyyy"
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div className="">
+                                              <div className="emp-delete-btn">
                                                 <button
                                                   onClick={() =>
                                                     deleteedu(object.id)
@@ -2109,7 +2109,6 @@ interests and curiosities"
                                         {course.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
                                               className="flexx"
                                             >
                                               {object.input1}
@@ -2124,7 +2123,6 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 cou ? "visible" : "hidden"
@@ -2138,7 +2136,7 @@ interests and curiosities"
                                                     <div className="wanted">
                                                       <div>
                                                         <label htmlFor="">
-                                                          Job title
+                                                          Course
                                                         </label>{" "}
                                                         <br />
                                                         <input
@@ -2157,7 +2155,7 @@ interests and curiosities"
                                                     </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        Employer
+                                                        Institution
                                                       </label>{" "}
                                                       <br />
                                                       <input
@@ -2211,7 +2209,7 @@ interests and curiosities"
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletecourse(object.id)
@@ -2223,6 +2221,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2233,7 +2232,7 @@ interests and curiosities"
                                           + Add one more course
                                         </button>
                                       </div>
-                                      <button onClick={delete2}>delete</button>
+                                      <button onClick={delete2} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
@@ -2413,7 +2412,7 @@ interests and curiosities"
                                           + Add one more internship
                                         </button>
                                       </div>
-                                      <button onClick={delete4} className="custom-delete btn btn-primary">delete</button>
+                                      <button onClick={delete4} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
@@ -2429,7 +2428,6 @@ interests and curiosities"
                                         {project.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
                                               className="flexx"
                                             >
                                               {object.input1}
@@ -2444,7 +2442,6 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 pro ? "visible" : "hidden"
@@ -2615,7 +2612,7 @@ interests and curiosities"
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deleteproject(object.id)
@@ -2627,6 +2624,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2637,13 +2635,13 @@ interests and curiosities"
                                           + Add Project
                                         </button>
                                       </div>
-                                      <button onClick={delete8}>delete</button>
+                                      <button onClick={delete8} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
                                     <span></span>
                                   )}
-                                  {store.name === "Refrence" ? (
+                                  {store.name === "Referance" ? (
 <div className="add_section_box">
                                     <div
                                       className={
@@ -2655,8 +2653,7 @@ interests and curiosities"
                                         {three.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
-                                              className="flexx" id="ref"
+                                              className="flexx"
                                             >
                                               {object.input1}
                                               <h5
@@ -2670,14 +2667,13 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 ref ? "visible" : "hidden"
                                               }
                                             >
                                               <div style={{ display: "flex" }}>
-                                                <div className="emp-main"  id="reference">
+                                                <div className="emp-main">
                                                   <div
                                                     style={{ display: "flex" }}
                                                   >
@@ -2744,7 +2740,7 @@ interests and curiosities"
                                                       </div>
                                                     </div>
                                                     <div className="wanted">
-                                                      <div className="label">
+                                                      <div>
                                                         <label htmlFor="">
                                                           Email
                                                         </label>{" "}
@@ -2765,7 +2761,7 @@ interests and curiosities"
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletethree(object.id)
@@ -2777,6 +2773,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2787,7 +2784,7 @@ interests and curiosities"
                                           + Add one more reference
                                         </button>
                                       </div>
-                                      <button onClick={delete3}>delete</button>
+                                      <button onClick={delete3} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
@@ -2951,7 +2948,7 @@ interests and curiosities"
                                           + Add one more item
                                         </button>
                                       </div>
-                                      <button onClick={delete1} className="custom-delete btn btn-primary">delete</button>
+                                      <button onClick={delete1} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
@@ -3046,7 +3043,7 @@ interests and curiosities"
                         </button>
                       </div>
                     </div>
-                    <button onClick={delete9} className="custom-delete btn btn-primary">delete</button>
+                    <button onClick={delete9} className="custom-delete btn btn-primary">Delete</button>
                   </div>
                 </div>
                 <div >
@@ -3079,7 +3076,6 @@ interests and curiosities"
                             <div key={object.id}>
                               <div
                                 className="flexxx"
-                                style={{ display: "flex" }}
                               >
                                 {object.input1}
                                 <h5
@@ -3093,14 +3089,13 @@ interests and curiosities"
                                     <IoIosArrowDown />
                                   )}
                                 </h5>
-                              </div>
                               <div className={level ? "visible" : "hidden"}>
                                 <div style={{ display: "flex" }}>
                                   <div className="emp-main">
                                     <div style={{ display: "flex" }}>
                                       <div className="wanted">
                                         <div>
-                                          <label htmlFor="">Label</label> <br />
+                                          <label htmlFor="">Skill</label> <br />
                                           <input
                                             type="text"
                                             value={object.input1}
@@ -3139,7 +3134,7 @@ interests and curiosities"
                                       </div>
                                     </div>
                                   </div>
-                                  <div>
+                                  <div className="emp-delete-btn">
                                     <button
                                       onClick={() => deleteskill(object.id)}
                                       className="delete"
@@ -3149,6 +3144,7 @@ interests and curiosities"
                                   </div>
                                 </div>
                               </div>
+                              </div>
                             </div>
                           ))}
                           <button onClick={createskill} className="add">
@@ -3156,7 +3152,7 @@ interests and curiosities"
                             + Add more skill
                           </button>
                         </div>
-                        <button onClick={delete10}>Delete</button>
+                        <button onClick={delete10} className="custom-delete btn btn-primary">Delete</button>
                       </div>
                     </div>
                   </div>
@@ -3215,7 +3211,7 @@ interests and curiosities"
                           + Add more Hobbie
                         </button>
                       </div>
-                      <button onClick={delete5} className="custom-delete btn btn-primary">delete</button>
+                      <button onClick={delete5} className="custom-delete btn btn-primary">Delete</button>
                     </div>
 </div>
                   }
@@ -3231,8 +3227,6 @@ interests and curiosities"
                             <div key={object.id}>
                               <div
                                 className="flexxx"
-                                
-                                style={{ display: "flex" }}
                               >
                                 {object.input1}
                                 <h5
@@ -3246,7 +3240,6 @@ interests and curiosities"
                                     <IoIosArrowDown></IoIosArrowDown>
                                   )}
                                 </h5>
-                              </div>
                               <div className={language ? "visible" : "hidden"}>
                                 <div style={{ display: "flex" }}>
                                   <div className="emp-main">
@@ -3300,7 +3293,7 @@ interests and curiosities"
                                       </div>
                                     </div>
                                   </div>
-                                  <div>
+                                  <div className="emp-delete-btn">
                                     <button
                                       onClick={() => deleteseven(object.id)}
                                       className="delete"
@@ -3310,6 +3303,7 @@ interests and curiosities"
                                   </div>
                                 </div>
                               </div>
+                              </div>
                             </div>
                           ))}
                           <button onClick={createseven} className="add">
@@ -3317,7 +3311,7 @@ interests and curiosities"
                             + Add one more languages
                           </button>
                         </div>
-                        <button onClick={delete6}>delete</button>
+                        <button onClick={delete6} className="custom-delete btn btn-primary">Delete</button>
                       </div>
 </div>
                     }
