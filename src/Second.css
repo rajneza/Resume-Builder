@@ -107,6 +107,17 @@ Popup.css .popup {
   max-height: 80%;
   border-radius: 50%;
 }
+.select-photo-container{
+  display: flex;
+  
+}
+.photo-icon{
+  font-size: 2rem;
+}
+.photo-edit-container{
+  margin-top: -13.55%;
+  margin-bottom: 0%;
+}
 
 .job-title {
    margin-bottom: 15px;
@@ -147,10 +158,10 @@ Popup.css .popup {
   border-bottom: 2px solid #c3e5fe;
 }
 
-.emp-main {
+/* .emp-main {
   border: 1px solid gray;
   cursor: default;
-}
+} */
 
 .emp-div {
   width: 83.55%;
@@ -314,10 +325,9 @@ Popup.css .popup {
 .left-pdetails-container {
   margin-bottom: 30px;
 }
-
-.css-i4bv87-MuiSvgIcon-root {
-  height: 25px !important;
-  width: 25px !important;
+.css-i4bv87-MuiSvgIcon-root{
+  height:25px !important;
+  width:25px !important;
 }
 
 .score-content {
@@ -412,8 +422,7 @@ Popup.css .popup {
   background-color: transparent;
 
 }
-
-.handle-heading h3 {
+.handle-heading h3{
   font-size: 23px;
   margin-right: 4px;
   font-weight: 600;
@@ -473,12 +482,11 @@ Popup.css .popup {
   font-weight: 500;
 }
 
-.edit-icon {
+.edit-icon{
   margin-right: 200px;
 }
-
-.css-i4bv87-MuiSvgIcon-root {
-  fill: blue !important;
+.css-i4bv87-MuiSvgIcon-root{
+  fill:blue !important;
 }
 
 .progress-score {
@@ -520,6 +528,7 @@ Popup.css .popup {
   height: 8px;
   background-color:#0f3871;
   margin-top: 13%;
+  margin-left:5px;
   
 }
 
@@ -610,11 +619,16 @@ Popup.css .popup {
 }
 
 .job-title {
-  margin-bottom: 24px;
+  margin-bottom: 15px;
   display: flex;
   /* flex-flow: wrap; */
   grid-gap: 15px;
 
+
+}
+
+.data-label {
+  margin-bottom: 5px;
 }
 
 .job label,
@@ -628,7 +642,7 @@ Popup.css .popup {
 .job input,
 .photo input {
   padding: 12px 16px;
-  
+  ;
 }
 
 .edit {
@@ -667,11 +681,17 @@ Popup.css .popup {
 }
 
 .emp-main {
-  border: 1px solid gray;
+  width: -webkit-fill-available;
 }
 
 .emp-div {
   width: 50%;
+}
+
+.emp-delete-btn {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 25px;
 }
 
 .icons {
@@ -859,7 +879,7 @@ Popup.css .popup {
   width: 9vw;
   margin-right: 1.5vw;
   height: 6vh;
-  background-color: #eaf6ff;
+  background-color: #eff2f9;
   border: none;
   outline: none;
 }
@@ -869,6 +889,20 @@ Popup.css .popup {
   font-weight: bold;
   margin-top: 0%;
   margin-bottom: 0%;
+}
+
+.emp-main label {
+  margin-bottom: 5px;
+}
+
+.emp-main input,
+.emp-main select {
+  padding: 10px;
+  margin:8px 1vw 8px 0;
+}
+
+.emp-container {
+  display: flex;
 }
 
 .fonttt {
@@ -975,25 +1009,23 @@ Popup.css .popup {
 }
 
 .add {
-  background-color: skyblue;
-  color: blue;
+  color: #1a91f0;
   border: none;
-  width: 150px;
+  width: 200px;
   height: 30px;
-  border-radius: 5px;
   margin-top: 5px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .first {
   /* background-color: #0f3871; */
   margin-right: 0%;
 }
-
-.add-section-container {
+.add-section-container{
   cursor: default;
 }
-
-.drag {
+.drag{
   cursor: grab;
 
 
@@ -1017,14 +1049,29 @@ Popup.css .popup {
   margin-bottom: 2%;
   margin-top: 0.5%;
   margin-left: auto !important;
+  display: flex;
+  justify-content: end;
 
 }
 
+.emp-main textarea {
+  border: none;
+  outline: none;
+  background-color: #eff2f9;
+  height: 150px;
+  width: 559px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
 .flex {
-  border: 1px solid gray;
+  border: 1px solid #e7eaf4;
   width: 103.5%;
   cursor: default;
-  border-radius: 5px
+  border-radius: 5px;
+  padding: 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .flexx {
@@ -1033,6 +1080,11 @@ Popup.css .popup {
   width: 207%;
   border-radius: 5px;
   cursor: default;
+  border: 1px solid #e7eaf4;
+  cursor: default;
+  padding: 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #ref {
@@ -1044,14 +1096,25 @@ Popup.css .popup {
   width: 115%;
   border-radius: 5px;
 
+}
 
+.custom-delete {
+  margin-top: 20px;
+}
+
+.intern-job-emp{
+  display: flex;
 }
 
 .flexxx {
-  cursor: default;
-  border: 1px solid gray;
   width: 207%;
   border-radius: 5px;
+  cursor: default;
+  border: 1px solid #e7eaf4;
+  cursor: default;
+  padding: 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
 }
 
@@ -1083,6 +1146,7 @@ Popup.css .popup {
 }
 
 .photo-heading {
+
   color: #1a91f0;
   position: relative;
   left: 25px;
@@ -1093,26 +1157,23 @@ Popup.css .popup {
 
 .photo-heading h4 {
   width: 10vw;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 10px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
 }
-
-.mainphoto-heading {
+.mainphoto-heading{
   background-color: #ec930c;
 }
-
-.select-image {
+.select-image{
   display: flex;
   position: relative;
   right: 33px;
 }
-
-.person-icon {
+.person-icon{
   height: 100%;
   width: 100%;
 
@@ -1137,7 +1198,7 @@ Popup.css .popup {
 .add-section-container,
 .education-container,
 .add_section_box,
-.main-div {
+.main-div{
   margin-bottom: 30px;
 }
 
@@ -1175,64 +1236,64 @@ Popup.css .popup {
 
 .custom-section p {
   margin-top: 10px;
-  font-family: TT Commons, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-  font-size: 16px;
-
+  font-family: TT Commons,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+    font-size: 16px;
+    
 }
 
 
 
 .skill-info {
-  text-align: right;
-  font-size: 14px;
-  color: black;
-  flex-grow: 1;
+	text-align: right;
+	font-size: 14px;
+	color: black;
+	flex-grow: 1;
 }
 .skill-name{
   background-color: #1a91f0;
 }
 
 .progress-container {
-  text-align: center;
-  position: relative;
+	text-align: center;
+	position: relative;
 }
 
 .stage-heading {
-  margin-top: 10px;
+	margin-top: 10px;
 }
 
 .progress {
-  width: 100%;
-  height: 30px;
-  background-color: rgb(39, 175, 175);
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 20px;
-  overflow: hidden;
+	width: 100%;
+	height: 30px;
+	background-color: rgb(39, 175, 175);
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 20px;
+	overflow: hidden;
 }
 
 .progress-stage {
-  height: 100%;
-  width: 25%;
-  float: left;
-  transition: background-color 0.3s ease-in-out;
+	height: 100%;
+	width: 25%;
+	float: left;
+	transition: background-color 0.3s ease-in-out;
 }
 
 .progress-text {
-  position: absolute;
-  top: -30px;
-  font-weight: bold;
-  width: 100%;
-  text-align: center;
+	position: absolute;
+	top: -30px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
 }
 
 .progress-bar {
-  width: 100%;
-  height: 20px;
-  background-color: #ccc;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-right: 10px;
+	width: 100%;
+	height: 20px;
+	background-color: #ccc;
+	border-radius: 4px;
+	overflow: hidden;
+	margin-right: 10px;
 }
 
 .fresher {
@@ -1240,7 +1301,7 @@ Popup.css .popup {
 }
 
 .experience {
-  background-color: orange;
+	background-color: orange;
 }
 
 .export {
@@ -1248,17 +1309,13 @@ Popup.css .popup {
 }
 
 .medium {
-  background-color: blue;
+	background-color: blue;
 }
 
 /* Your existing CSS styles */
 
 .progress-bar-container {
-
-  margin-top: 20px;
-
-
-
+	margin-top: 20px;
 }
 
 .progress-bar {
@@ -1270,9 +1327,9 @@ Popup.css .popup {
 }
 
 .inner-progress {
-  height: 10%;
-  width: 0;
-  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	height: 10%;
+	width: 0;
+	transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 /* Specific CSS for second progress bar background color based on stages */
@@ -1296,43 +1353,25 @@ Popup.css .popup {
 }
 
 .progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
-  background-color: blue;
-  height: 100%;
-  /* Set a fixed height for all inner progress bars */
+	background-color: blue;
+	height: 100%;
+	/* Set a fixed height for all inner progress bars */
 }
 
 /* In your App.css or a separate CSS file */
 .custom-toast {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-#reference {
-  width: 43vw;
-}
-
-.label {
-  margin-left: 6.7%;
-}
-
-
-@media print {
-  body {
-    margin: 10px; /* Remove page margins */
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
   }
-  @page {
-    margin: 0; /* Remove margins for the printed page */
+  #reference{
+    width: 43vw;
+  }
+  .label{
+    margin-left: 6.7%;
   }
 
-  #pdf-content {
-    width: 100%; /* Set the width to 100% for printing */
-    height: 100%; /* Set the height to 100% for printing */
-    padding: 0; /* Remove padding for printing */
-    margin: 0; /* Remove margin for printing */
-    page-break-before: always; /* Ensure each content section starts on a new page */
-  }
-}
+
 
 
   .generate{
@@ -1341,5 +1380,22 @@ Popup.css .popup {
     left: 350px;
     top: 20px;
   }
+  
+  @media print {
+    body {
+      margin: 10px; /* Remove page margins */
+    }
+    @page {
+      margin: 0; /* Remove margins for the printed page */
+    }
+  
+    #pdf-content {
+      width: 100%; /* Set the width to 100% for printing */
+      height: 100%; /* Set the height to 100% for printing */
+      padding: 0; /* Remove padding for printing */
+      margin: 0; /* Remove margin for printing */
+      page-break-before: always; /* Ensure each content section starts on a new page */
+    }
 
-
+  }
+  
