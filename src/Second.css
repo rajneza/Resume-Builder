@@ -642,7 +642,7 @@ Popup.css .popup {
 .job input,
 .photo input {
   padding: 12px 16px;
-  ;
+  
 }
 
 .edit {
@@ -1371,15 +1371,6 @@ Popup.css .popup {
     margin-left: 6.7%;
   }
 
-
-
-
-  .generate{
-    background-color: white;
-    position: relative;
-    left: 350px;
-    top: 20px;
-  }
   
   @media print {
     body {
@@ -1397,5 +1388,15 @@ Popup.css .popup {
       page-break-before: always; /* Ensure each content section starts on a new page */
     }
 
+}
+
+
+  .generate{
+    background-color: white;
+    position: relative;
+    left: 350px;
+    top: 20px;
+
   }
   
+
