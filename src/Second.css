@@ -1332,8 +1332,8 @@ Popup.css .popup {
     margin: 0; /* Remove margin for printing */
     page-break-before: always; /* Ensure each content section starts on a new page */
   }
-
 }
+
 
   .generate{
     background-color: white;
