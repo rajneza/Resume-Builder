@@ -107,6 +107,17 @@ Popup.css .popup {
   max-height: 80%;
   border-radius: 50%;
 }
+.select-photo-container{
+  display: flex;
+  
+}
+.photo-icon{
+  font-size: 2rem;
+}
+.photo-edit-container{
+  margin-top: -13.55%;
+  margin-bottom: 0%;
+}
 
 .job-title {
    margin-bottom: 15px;
@@ -884,8 +895,10 @@ Popup.css .popup {
   margin-bottom: 5px;
 }
 
-.emp-main input {
-  padding: 12px;
+.emp-main input,
+.emp-main select {
+  padding: 10px;
+  margin:8px 1vw 8px 0;
 }
 
 .emp-container {
@@ -1361,6 +1374,7 @@ Popup.css .popup {
 
 
 
+
   .generate{
     background-color: white;
     position: relative;
@@ -1368,4 +1382,24 @@ Popup.css .popup {
     top: 20px;
 
  
+
+}
+  
+  @media print {
+    body {
+      margin: 10px; /* Remove page margins */
+    }
+    @page {
+      margin: 0; /* Remove margins for the printed page */
+    }
+  
+    #pdf-content {
+      width: 100%; /* Set the width to 100% for printing */
+      height: 100%; /* Set the height to 100% for printing */
+      padding: 0; /* Remove padding for printing */
+      margin: 0; /* Remove margin for printing */
+      page-break-before: always; /* Ensure each content section starts on a new page */
+    }
+  }
+  
 
