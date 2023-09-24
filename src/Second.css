@@ -1370,6 +1370,20 @@ Popup.css .popup {
   .label{
     margin-left: 6.7%;
   }
+
+
+
+
+
+  .generate{
+    background-color: white;
+    position: relative;
+    left: 350px;
+    top: 20px;
+
+ 
+
+}
   
   @media print {
     body {
@@ -1388,3 +1402,4 @@ Popup.css .popup {
     }
   }
   
+
