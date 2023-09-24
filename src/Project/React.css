@@ -25,9 +25,9 @@
 
 }
 
-.flex {
+/* .flex {
   display: flex;
-}
+} */
 
 .background {
   width: 50%;
@@ -190,9 +190,9 @@
   display: none;
 }
 
-.emp-main {
+/* .emp-main {
   border: 1px solid gray;
-}
+} */
 
 .icons {
   width: 40px;
