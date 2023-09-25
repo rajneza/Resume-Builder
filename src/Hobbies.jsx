@@ -1501,7 +1501,7 @@ placeholder="dd/mm/yyyy"
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
-                          progress(value, editorHtml, "editorHtml", 30)
+                          progress(value, editorHtml, "editorHtml", 50)
                         }
                         className="paragh"
                         modules={{
@@ -2410,7 +2410,7 @@ interests and curiosities"
                                                         rows="15"
                                                         value={object.input6}
                                                         onChange={(e) =>
-                                                          handleInputfour(
+                                                          handleInputfive(
                                                             e,
                                                             object.id,
                                                             "input6"

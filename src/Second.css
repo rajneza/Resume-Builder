@@ -1370,5 +1370,36 @@ Popup.css .popup {
   .label{
     margin-left: 6.7%;
   }
+
+
+
+
+
+  .generate{
+    background-color: white;
+    position: relative;
+    left: 350px;
+    top: 20px;
+
+ 
+
+}
+  
+  @media print {
+    body {
+      margin: 10px; /* Remove page margins */
+    }
+    @page {
+      margin: 0; /* Remove margins for the printed page */
+    }
+  
+    #pdf-content {
+      width: 100%; /* Set the width to 100% for printing */
+      height: 100%; /* Set the height to 100% for printing */
+      padding: 0; /* Remove padding for printing */
+      margin: 0; /* Remove margin for printing */
+      page-break-before: always; /* Ensure each content section starts on a new page */
+    }
+  }
   
 
