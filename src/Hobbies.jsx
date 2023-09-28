@@ -1506,7 +1506,7 @@ function Hobbies() {
               <div className="summary">
                 <div>
                   <div>
-                    <h2>Professional </h2>
+                    <h2>Summary</h2>
                   </div>
                   <div>
                     <p>
@@ -3548,7 +3548,10 @@ interests and curiosities"
           </div>
         </div>
         <div className="resume-right">
+          <div className="generate">
           <button onClick={handlePrint}>Generate PDF</button>
+          </div>
+          
           <Scrollbars>
             <div className="main-full" id="pdf-content" ref={contentDivRef}
               contentEditable={true}
@@ -3607,7 +3610,7 @@ interests and curiosities"
                     {editorHtml === "" ? (
                       <span></span>
                     ) : (
-                      <h2 className="prof">Professional Summary</h2>
+                      <h2 className="prof">Summary</h2>
                     )}
                     <div
                       className="mess"
