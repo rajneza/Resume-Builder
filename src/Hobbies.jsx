@@ -3549,7 +3549,7 @@ interests and curiosities"
         </div>
         <div className="resume-right">
           <div className="generate">
-          <button onClick={handlePrint}>Generate PDF</button>
+          <button onClick={handlePrint}className="btn btn-primary ">Generate PDF</button>
           </div>
           
           <Scrollbars>

@@ -1271,13 +1271,12 @@ Popup.css .popup {
 }
 
 
-  .generate{
-    background-color: white;
-    position: relative;
-    left: 350px;
-    top: 20px;
-
-  }
+ .generate{
+    display: flex;
+  justify-content: right;
+align-items: right;
+  } 
+ 
   
 
   .skill-info {
