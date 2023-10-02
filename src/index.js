@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
+
 let root=ReactDom.createRoot(document.querySelector('#root'),()=>{
     console.log("application started");
 })

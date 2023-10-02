@@ -172,6 +172,12 @@ function Hobbies() {
   const [stages, setStages] = useState(['Fresher', 'Experience', 'Export', 'Pro']);
   // const [recentlyAddedSkill, setRecentlyAddedSkill] = useState(null);
   const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
+
+  const [totalInputCount, setTotalInputCount] = useState(0);
+  const [filledInputCount, setFilledInputCount] = useState(0);
+  const [percentage, setPercentage] = useState(0);
+ 
+
   const createSecondProgressBar = (skill) => {
     const initialProgress = {
       Fresher: 25,
@@ -190,10 +196,17 @@ function Hobbies() {
   const formatSkillName = (skillName) => {
     // Convert skillName to camelCase
     return skillName
+
+    .split(' ')
+      .map((word, index) => {
+        if (index === 0) {
+          return  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+
       .split(' ')
       .map((word, index) => {
         if (index === 0) {
           return word.toLowerCase();
+
         }
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
@@ -330,6 +343,31 @@ function Hobbies() {
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
   };
+
+
+  useEffect(() => {
+    updateProgressBar();
+  }, []);
+
+  const updateProgressBar = () => {
+    const allInputElements = document.querySelectorAll('input, select, textarea');
+
+    let filledInputCount = 0;
+    allInputElements.forEach((input) => {
+      if (input.value.trim() !== '' && input.value !== 'Select Skills') {
+        filledInputCount++;
+      }
+    });
+
+    const totalInputCount = allInputElements.length;
+    const percentage = (filledInputCount / totalInputCount) * 100;
+
+    setTotalInputCount(totalInputCount);
+    setFilledInputCount(filledInputCount);
+    setPercentage(percentage);
+  };
+
+
 
   const handleColorChange = (event) => {
     const newColor = event.target.value;
@@ -1154,7 +1192,6 @@ function Hobbies() {
   };
 
   const [bar, setbar] = useState(0);
-
   return (
     <div className="resume-body">
       <div className="resume-container">
@@ -1187,7 +1224,9 @@ function Hobbies() {
                   type="color"
                   value={selectedColor}
                   onChange={handleColorChange}
-                  style={{ display: 'none' }} // Hide the default color input UI
+
+                  style={{ display: 'none' ,textAlign:"center"}} // Hide the default color input UI
+
                 />
                 <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()}>
                   Open Color Picker
@@ -1213,6 +1252,7 @@ function Hobbies() {
                   </div>
                 </div>
                 <div className="resume-hr-body">
+
                   {<ProgressBar completed={completionPercentage}
                   />}
                 </div>
@@ -1323,6 +1363,7 @@ function Hobbies() {
                         // onChange={(e) => {
                         //   progress(e.target.value, name, "name", 5);
                         // }}
+                        onKeyUp={updateProgressBar}
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                       />
@@ -1337,6 +1378,7 @@ function Hobbies() {
                       // onChange={(e) => {
                       //   setlastname(e.target.value);
                       // }}
+                      onKeyUp={updateProgressBar}
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                     />
@@ -1517,7 +1559,7 @@ function Hobbies() {
                   </div>
                   <div>
                     <div>
-                      <ReactQuill
+                      <ReactQuill style={{width:"100%"}}
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
@@ -1729,6 +1771,7 @@ function Hobbies() {
                                                         type="text"
                                                         value={object.input3}
                                                         className="work"
+
                                                         onChange={(e) =>
                                                           handleInputChange(
                                                             e,
@@ -1739,6 +1782,34 @@ function Hobbies() {
                                                       />
                                                     </div>
                                                   </div>
+                                                  <div>
+                                                    <div>
+                                                      <label htmlFor="">
+                                                        Description
+                                                      </label>{" "}
+                                                      <br />
+                                                      <textarea
+                                                        name=""
+                                                        id=""
+                                                        cols="90"
+                                                        rows="15"
+                                                        value={object.input6}
+
+                                                        onChange={(e) =>
+                                                          handleInputChange(
+                                                            e,
+                                                            object.id,
+
+                                                            "input3"
+                                                            "input6"
+
+                                                          )
+                                                        }
+                                                        placeholder="e.g. Graduated with High Honors."
+                                                      />
+                                                    </div>
+                                                  </div>
+
                                                   <div>
                                                     <div>
                                                       <label htmlFor="">
@@ -1762,6 +1833,7 @@ function Hobbies() {
                                                       />
                                                     </div>
                                                   </div>
+
                                                 </div>
                                                 <div className="emp-delete-btn">
                                                   <button
@@ -2127,6 +2199,7 @@ interests and curiosities"
                                                       >
                                                         <MdOutlineDelete />
                                                       </button>
+
                                                     </div>
                                                   </div>
                                                 </div>
@@ -2270,6 +2343,7 @@ interests and curiosities"
                                                       >
                                                         <MdOutlineDelete />
                                                       </button>
+
                                                     </div>
                                                   </div>
                                                 </div>
@@ -2277,6 +2351,18 @@ interests and curiosities"
                                             </div>
                                           ))}
                                           <button
+
+                                            onClick={createfour}
+                                            className="add"
+                                          >
+                                            {" "}
+                                            + Add Employment
+                                          </button>
+                                        </div>
+
+                                        <button onClick={delete7} className="custom-delete btn btn-primary ">Delete</button>
+
+
                                             onClick={createcourse}
                                             className="add"
                                           >
@@ -2285,11 +2371,23 @@ interests and curiosities"
                                           </button>
                                         </div>
                                         <button onClick={delete2} className="custom-delete btn btn-primary">Delete</button>
+
                                       </div>
                                     </div>
                                   ) : (
                                     <span></span>
                                   )}
+
+                                  {store.name === "Course" ? (
+                                    <div className="add_section_box">
+                                      <div
+                                        className={cour ? "hidden" : "visible"}
+                                      >
+                                        <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                        <p className="des">{store.description}</p>
+                                        <div className="emp-div">
+                                          {course.map((object) => (
+
                                   {store.name === "Internships" ? (
                                     <div className="add_section_box">
                                       <div
@@ -2298,22 +2396,47 @@ interests and curiosities"
                                         <h3><MdDragIndicator className="drag" />{store.name}</h3>
                                         <div className="emp-div">
                                           {five.map((object) => (
+
                                             <div key={object.id}>
                                               <div
                                                 className="flexx"
                                               >
                                                 {object.input1}
                                                 <h5
+
+                                                  onClick={() => setcou(!cou)}
+                                                  style={{ cursor: "pointer" }}
+                                                  className="arrow"
+                                                >
+                                                  {cou ? (
+
                                                   onClick={() => setinter(!inter)}
                                                   style={{ cursor: "pointer" }}
                                                   className="arrow"
                                                 >
                                                   {inter ? (
+
                                                     <IoIosArrowUp />
                                                   ) : (
                                                     <IoIosArrowDown />
                                                   )}
                                                 </h5>
+
+                                                <div
+                                                  className={
+                                                    cou ? "visible" : "hidden"
+                                                  }
+                                                >
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className="emp-main">
+                                                      <div
+                                                        style={{ display: "flex" }}
+                                                      >
+                                                        <div className="wanted">
+                                                          <div>
+                                                            <label htmlFor="">
+                                                              Course
+
 
                                                 <div
                                                   className={
@@ -2327,6 +2450,7 @@ interests and curiosities"
                                                           <div>
                                                             <label htmlFor="">
                                                               Job title
+
                                                             </label>{" "}
                                                             <br />
                                                             <input
@@ -2334,7 +2458,11 @@ interests and curiosities"
                                                               value={object.input1}
                                                               className="work"
                                                               onChange={(e) =>
+
+                                                                handleInputcourse(
+
                                                                 handleInputfive(
+
                                                                   e,
                                                                   object.id,
                                                                   "input1"
@@ -2345,7 +2473,11 @@ interests and curiosities"
                                                         </div>
                                                         <div>
                                                           <label htmlFor="">
+
+                                                            Institution
+
                                                             Emp
+
                                                           </label>{" "}
                                                           <br />
                                                           <input
@@ -2353,7 +2485,11 @@ interests and curiosities"
                                                             value={object.input2}
                                                             className="work"
                                                             onChange={(e) =>
+
+                                                              handleInputcourse(
+
                                                               handleInputfive(
+
                                                                 e,
                                                                 object.id,
                                                                 "input2"
@@ -2361,6 +2497,44 @@ interests and curiosities"
                                                             }
                                                           />
                                                         </div>
+
+                                                      </div>
+                                                      <div
+                                                        style={{ display: "flex" }}
+                                                      >
+                                                        <div className="wanted">
+                                                          <div>
+                                                            <label htmlFor="">
+                                                              Start & End Date
+                                                            </label>{" "}
+                                                            <br />
+                                                            <input
+                                                              type="date"
+                                                              value={object.input4}
+                                                              className="workk"
+                                                              onChange={(e) =>
+                                                                handleInputcourse(
+                                                                  e,
+                                                                  object.id,
+                                                                  "input4"
+                                                                )
+                                                              }
+                                                            />
+                                                            <input
+                                                              type="date"
+                                                              value={object.input5}
+                                                              className="workk"
+                                                              onChange={(e) =>
+                                                                handleInputcourse(
+                                                                  e,
+                                                                  object.id,
+                                                                  "input5"
+                                                                )
+                                                              }
+                                                            />
+                                                            <button onClick={() => replacePresent(object.id, 'input5')}>Set Present</button>
+                                                          </div>
+
                                                       </div>
                                                       <div
                                                         style={{ display: "flex" }}
@@ -2417,6 +2591,283 @@ interests and curiosities"
                                                           />
                                                         </div>
                                                       </div>
+                                                      <div>
+                                                        <div>
+                                                          <label htmlFor="">
+                                                            Description
+                                                          </label>{" "}
+                                                          <br />
+                                                          <textarea
+                                                            name=""
+                                                            id=""
+                                                            cols="90"
+                                                            rows="15"
+                                                            value={object.input6}
+                                                            onChange={(e) =>
+                                                              handleInputfive(
+                                                                e,
+                                                                object.id,
+                                                                "input6"
+                                                              )
+                                                            }
+                                                            placeholder="e.g. Created and implemented lesson plans based on child-led
+interests and curiosities"
+                                                          />
+
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div className="emp-delete-btn">
+                                                      <button
+                                                        onClick={() =>
+
+                                                          deletecourse(object.id)
+
+                                                          deletefive(object.id)
+
+                                                        }
+                                                        className="delete"
+                                                      >
+                                                        <MdOutlineDelete />
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          ))}
+                                          <button
+
+                                            onClick={createcourse}
+                                            className="add"
+                                          >
+                                            {" "}
+                                            + Add one more course
+                                          </button>
+                                        </div>
+                                        <button onClick={delete2} className="custom-delete btn btn-primary">Delete</button>
+
+                                            onClick={createfive}
+                                            className="add"
+                                          >
+                                            {" "}
+                                            + Add one more internship
+                                          </button>
+                                        </div>
+                                        <button onClick={delete4} className="custom-delete btn btn-primary">Delete</button>
+
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <span></span>
+                                  )}
+
+                                  {store.name === "Internships" ? (
+                                    <div className="add_section_box">
+                                      <div
+                                        className={intern ? "hidden" : "visible"}
+                                      >
+                                        <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                        <div className="emp-div">
+                                          {five.map((object) => (
+
+                                  {store.name === "Projects" ? (
+                                    <div className="add_section_box">
+                                      <div
+                                        className={proj ? "hidden" : "visible"}
+                                      >
+                                        <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                        <div className="emp-div">
+                                          {project.map((object) => (
+
+                                            <div key={object.id}>
+                                              <div
+                                                className="flexx"
+                                              >
+                                                {object.input1}
+                                                <h5
+
+                                                  onClick={() => setinter(!inter)}
+                                                  style={{ cursor: "pointer" }}
+                                                  className="arrow"
+                                                >
+                                                  {inter ? (
+
+                                                  onClick={() => setpro(!pro)}
+                                                  style={{ cursor: "pointer" }}
+                                                  className="arrow"
+                                                >
+                                                  {pro ? (
+
+                                                    <IoIosArrowUp />
+                                                  ) : (
+                                                    <IoIosArrowDown />
+                                                  )}
+                                                </h5>
+
+
+                                                <div
+                                                  className={
+                                                    inter ? "visible" : "hidden"
+                                                  }
+                                                >
+                                                  <div className="intern-job-emp">
+                                                    <div className="emp-main">
+                                                      <div className="intern-job-emp" >
+                                                        <div className="wanted">
+                                                          <div>
+                                                            <label htmlFor="">
+                                                              Job title
+
+                                                <div
+                                                  className={
+                                                    pro ? "visible" : "hidden"
+                                                  }
+                                                >
+                                                  <div style={{ display: "flex" }}>
+                                                    <div className="emp-main">
+                                                      <div
+                                                        style={{ display: "flex" }}
+                                                      >
+                                                        <div className="wanted">
+                                                          <div>
+                                                            <label htmlFor="">
+                                                              Project title
+
+                                                            </label>{" "}
+                                                            <br />
+                                                            <input
+                                                              type="text"
+                                                              value={object.input1}
+                                                              className="work"
+                                                              onChange={(e) =>
+
+                                                                handleInputfive(
+
+                                                                handleInputproject(
+
+                                                                  e,
+                                                                  object.id,
+                                                                  "input1"
+                                                                )
+                                                              }
+                                                            />
+                                                          </div>
+                                                        </div>
+                                                        <div>
+                                                          <label htmlFor="">
+
+                                                            Emp
+
+                                                            Client
+
+                                                          </label>{" "}
+                                                          <br />
+                                                          <input
+                                                            type="text"
+                                                            value={object.input2}
+                                                            className="work"
+                                                            onChange={(e) =>
+
+                                                              handleInputfive(
+
+                                                              handleInputproject(
+
+                                                                e,
+                                                                object.id,
+                                                                "input2"
+                                                              )
+                                                            }
+                                                          />
+                                                        </div>
+                                                      </div>
+                                                      <div
+                                                        style={{ display: "flex" }}
+                                                      >
+                                                        <div className="wanted">
+                                                          <div>
+                                                            <label htmlFor="">
+
+                                                              Start & End Date
+                                                            </label>{" "}
+                                                            <br />
+                                                            <input
+                                                              type="date"
+                                                              value={object.input4}
+                                                              className="workk"
+                                                              onChange={(e) =>
+                                                                handleInputfive(
+                                                                  e,
+                                                                  object.id,
+                                                                  "input4"
+                                                                )
+                                                              }
+                                                            />
+                                                            <input
+                                                              type="date"
+                                                              value={object.input5}
+                                                              className="workk"
+                                                              onChange={(e) =>
+                                                                handleInputfive(
+                                                                  e,
+                                                                  object.id,
+                                                                  "input5"
+                                                                )
+                                                              }
+                                                            />
+                                                            <button onClick={() => replacedate(object.id, 'input5')}>Set Present</button>
+
+                                                              Role
+                                                            </label>{" "}
+                                                            <br />
+                                                            <input
+                                                              type="text"
+                                                              value={object.input7}
+                                                              className="work"
+                                                              onChange={(e) =>
+                                                                handleInputproject(
+                                                                  e,
+                                                                  object.id,
+                                                                  "input7"
+                                                                )
+                                                              }
+                                                            />
+
+                                                          </div>
+                                                        </div>
+                                                        <div>
+                                                          <label htmlFor="">
+
+                                                            City
+
+                                                            Skills
+
+                                                          </label>{" "}
+                                                          <br />
+                                                          <input
+                                                            type="text"
+
+                                                            value={object.input3}
+                                                            className="work"
+                                                            onChange={(e) =>
+                                                              handleInputfive(
+                                                                e,
+                                                                object.id,
+                                                                "input3"
+                                                            value={object.input8}
+                                                            className="work"
+                                                            onChange={(e) =>
+                                                              handleInputproject(
+                                                                e,
+                                                                object.id,
+                                                                "input8"
+
+                                                              )
+                                                            }
+                                                          />
+                                                        </div>
+                                                      </div>
+
                                                       <div>
                                                         <div>
                                                           <label htmlFor="">
@@ -2534,10 +2985,79 @@ interests and curiosities"
                                                             type="text"
                                                             value={object.input2}
                                                             className="work"
+
+                                                      <div
+                                                        style={{ display: "flex" }}
+                                                      >
+                                                        <div className="wanted">
+                                                          <div>
+                                                            <label htmlFor="">
+                                                              Start & End Date
+                                                            </label>{" "}
+                                                            <br />
+                                                            <input
+                                                              type="date"
+                                                              value={object.input4}
+                                                              className="workk"
+                                                              onChange={(e) =>
+                                                                handleInputproject(
+                                                                  e,
+                                                                  object.id,
+                                                                  "input4"
+                                                                )
+                                                              }
+                                                            />
+                                                            <input
+                                                              type="date"
+                                                              value={object.input5}
+                                                              className="workk"
+                                                              onChange={(e) =>
+                                                                handleInputproject(
+                                                                  e,
+                                                                  object.id,
+                                                                  "input5"
+                                                                )
+                                                              }
+                                                            />
+                                                          </div>
+                                                        </div>
+                                                        <div>
+                                                          <label htmlFor="">
+                                                            City
+                                                          </label>{" "}
+                                                          <br />
+                                                          <input
+                                                            type="text"
+                                                            value={object.input3}
+                                                            className="work"
                                                             onChange={(e) =>
                                                               handleInputproject(
                                                                 e,
                                                                 object.id,
+                                                                "input3"
+                                                              )
+                                                            }
+                                                          />
+                                                        </div>
+                                                      </div>
+                                                      <div>
+                                                        <div>
+                                                          <label htmlFor="">
+                                                            Project Summary
+                                                          </label>{" "}
+                                                          <br />
+                                                          <textarea
+                                                            name=""
+                                                            id=""
+                                                            cols="90"
+                                                            rows="15"
+                                                            value={object.input6}
+
+                                                            onChange={(e) =>
+                                                              handleInputproject(
+                                                                e,
+                                                                object.id,
+
                                                                 "input2"
                                                               )
                                                             }
@@ -2664,6 +3184,16 @@ interests and curiosities"
                                                           />
                                                         </div>
                                                       </div>
+
+                                                                "input6"
+                                                              )
+                                                            }
+                                                            placeholder="e.g. Created and implemented lesson plans based on child-led
+interests and curiosities"
+                                                          />
+                                                        </div>
+                                                      </div>
+
                                                     </div>
                                                     <div className="emp-delete-btn">
                                                       <button
@@ -3549,17 +4079,28 @@ interests and curiosities"
         </div>
         <div className="resume-right">
           <div className="generate">
+
+          <button onClick={handlePrint}className="btn btn-primary text-white">Generate PDF</button>
+
           <button onClick={handlePrint}className="btn btn-primary ">Generate PDF</button>
+
           </div>
           
           <Scrollbars>
             <div className="main-full" id="pdf-content" ref={contentDivRef}
-              contentEditable={true}
+
+              contentEditable={false}
+
+              
+
               style={{
                 // border: '1px solid #ccc',
                 // minHeight: '200px',
                 // padding: '10px',
                 // marginBottom: '20px',
+
+                width:"97%"
+
               }}>
               <div className="main-right">
                 <div>
