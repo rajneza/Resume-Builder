@@ -172,6 +172,10 @@ function Hobbies() {
   const [stages, setStages] = useState(['Fresher', 'Experience', 'Export', 'Pro']);
   // const [recentlyAddedSkill, setRecentlyAddedSkill] = useState(null);
   const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
+  const [totalInputCount, setTotalInputCount] = useState(0);
+  const [filledInputCount, setFilledInputCount] = useState(0);
+  const [percentage, setPercentage] = useState(0);
+ 
   const createSecondProgressBar = (skill) => {
     const initialProgress = {
       Fresher: 25,
@@ -190,10 +194,10 @@ function Hobbies() {
   const formatSkillName = (skillName) => {
     // Convert skillName to camelCase
     return skillName
-      .split(' ')
+    .split(' ')
       .map((word, index) => {
         if (index === 0) {
-          return word.toLowerCase();
+          return  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
         }
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
@@ -330,6 +334,30 @@ function Hobbies() {
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
   };
+
+  useEffect(() => {
+    updateProgressBar();
+  }, []);
+
+  const updateProgressBar = () => {
+    const allInputElements = document.querySelectorAll('input, select, textarea');
+
+    let filledInputCount = 0;
+    allInputElements.forEach((input) => {
+      if (input.value.trim() !== '' && input.value !== 'Select Skills') {
+        filledInputCount++;
+      }
+    });
+
+    const totalInputCount = allInputElements.length;
+    const percentage = (filledInputCount / totalInputCount) * 100;
+
+    setTotalInputCount(totalInputCount);
+    setFilledInputCount(filledInputCount);
+    setPercentage(percentage);
+  };
+
+
 
   const handleColorChange = (event) => {
     const newColor = event.target.value;
@@ -1154,7 +1182,6 @@ function Hobbies() {
   };
 
   const [bar, setbar] = useState(0);
-
   return (
     <div className="resume-body">
       <div className="resume-container">
@@ -1187,7 +1214,7 @@ function Hobbies() {
                   type="color"
                   value={selectedColor}
                   onChange={handleColorChange}
-                  style={{ display: 'none' }} // Hide the default color input UI
+                  style={{ display: 'none' ,textAlign:"center"}} // Hide the default color input UI
                 />
                 <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()}>
                   Open Color Picker
@@ -1213,6 +1240,7 @@ function Hobbies() {
                   </div>
                 </div>
                 <div className="resume-hr-body">
+              
                   {<ProgressBar completed={completionPercentage}
                   />}
                 </div>
@@ -1323,6 +1351,7 @@ function Hobbies() {
                         // onChange={(e) => {
                         //   progress(e.target.value, name, "name", 5);
                         // }}
+                        onKeyUp={updateProgressBar}
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                       />
@@ -1337,6 +1366,7 @@ function Hobbies() {
                       // onChange={(e) => {
                       //   setlastname(e.target.value);
                       // }}
+                      onKeyUp={updateProgressBar}
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                     />
@@ -1517,7 +1547,7 @@ function Hobbies() {
                   </div>
                   <div>
                     <div>
-                      <ReactQuill
+                      <ReactQuill style={{width:"100%"}}
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
@@ -3549,17 +3579,18 @@ interests and curiosities"
         </div>
         <div className="resume-right">
           <div className="generate">
-          <button onClick={handlePrint}>Generate PDF</button>
+          <button onClick={handlePrint}className="btn btn-primary text-white">Generate PDF</button>
           </div>
           
           <Scrollbars>
             <div className="main-full" id="pdf-content" ref={contentDivRef}
-              contentEditable={true}
+              contentEditable={false}
               style={{
                 // border: '1px solid #ccc',
                 // minHeight: '200px',
                 // padding: '10px',
                 // marginBottom: '20px',
+                width:"97%"
               }}>
               <div className="main-right">
                 <div>
