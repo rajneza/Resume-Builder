@@ -1279,6 +1279,7 @@ Popup.css .popup {
 }
 
 
+<<<<<<< HEAD
   .generate{
    
    display: flex;
@@ -1289,6 +1290,15 @@ Popup.css .popup {
 
   }
  
+=======
+ .generate{
+    display: flex;
+  justify-content: right;
+align-items: right;
+  } 
+ 
+  
+>>>>>>> staging
 
   .skill-info {
     text-align: right;
