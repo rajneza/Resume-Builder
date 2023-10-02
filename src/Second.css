@@ -1279,7 +1279,7 @@ Popup.css .popup {
 }
 
 
-<<<<<<< HEAD
+
   .generate{
    
    display: flex;
@@ -1290,15 +1290,6 @@ Popup.css .popup {
 
   }
  
-=======
- .generate{
-    display: flex;
-  justify-content: right;
-align-items: right;
-  } 
- 
-  
->>>>>>> staging
 
   .skill-info {
     text-align: right;
@@ -1329,6 +1320,7 @@ align-items: right;
     
   }
 
+
   #skillsContainer {
     padding: 10px;
     border: 1px solid rgb(207, 207, 207);
@@ -1337,6 +1329,7 @@ align-items: right;
     flex-wrap: wrap;
     gap : 5px;
 }
+
 
   .progress {
     width: 100%;
@@ -1353,6 +1346,7 @@ align-items: right;
     width: 100%;
     float: left;
     transition: background-color 0.3s ease-in-out;
+
   }
   
   .progress-text {
@@ -1392,6 +1386,7 @@ align-items: right;
   
   .progress-bar-container {
   display: flex;
+
   /* width: 165%; */
   flex-direction: column;
 row-gap: 5px;
@@ -1451,4 +1446,55 @@ row-gap: 5px;
     
     .ccccc input{
       margin-left: 100px;
+
+  width: 100%;
+  flex-direction: column;
+
+  }
+ 
+ 
+  .inner-progress {
+    height: 5%;
+    width: 0;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  /* Specific CSS for second progress bar background color based on stages */
+  
+  .progress-bar-container[data-stage="Fresher"] .progress-bar .inner-progress {
+    background-color: green;
+    height: 100%;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  .progress-bar-container[data-stage="Experience"] .progress-bar .inner-progress {
+    background-color: orange;
+    height: 0%;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  .progress-bar-container[data-stage="Export"] .progress-bar .inner-progress {
+    background-color: skyblue;
+    height: 100%;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  .progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
+    background-color: blue;
+    height: 100%;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  /* In your App.css or a separate CSS file */
+  .custom-toast {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    }
+    .ill{
+      display: flex;
+      width: 100%;
+    column-gap: 2px;
+    max-width: 150%;
+
     }
