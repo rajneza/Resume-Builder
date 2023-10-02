@@ -1279,6 +1279,7 @@ Popup.css .popup {
 }
 
 
+
   .generate{
    
    display: flex;
@@ -1289,6 +1290,15 @@ Popup.css .popup {
 
   }
  
+
+ .generate{
+    display: flex;
+  justify-content: right;
+align-items: right;
+  } 
+ 
+  
+
 
   .skill-info {
     text-align: right;
@@ -1319,6 +1329,7 @@ Popup.css .popup {
     
   }
 
+
   #skillsContainer {
     padding: 10px;
     border: 1px solid rgb(207, 207, 207);
@@ -1327,6 +1338,7 @@ Popup.css .popup {
     flex-wrap: wrap;
     gap : 5px;
 }
+
 
   .progress {
     width: 100%;
@@ -1343,6 +1355,7 @@ Popup.css .popup {
     width: 100%;
     float: left;
     transition: background-color 0.3s ease-in-out;
+
   }
   
   .progress-text {
@@ -1362,6 +1375,27 @@ Popup.css .popup {
     margin-right: 10px;
   }
   
+
+  }
+  
+  .progress-text {
+    position: absolute;
+ 
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 5px;
+    /* background-color: hsl(140, 93%, 49%); */
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 10px;
+  }
+  
+
   .fresher {
     background-color: green;
   }
@@ -1382,6 +1416,7 @@ Popup.css .popup {
   
   .progress-bar-container {
   display: flex;
+
   /* width: 165%; */
   flex-direction: column;
 row-gap: 5px;
@@ -1441,4 +1476,55 @@ row-gap: 5px;
     
     .ccccc input{
       margin-left: 100px;
+
+  width: 100%;
+  flex-direction: column;
+
+  }
+ 
+ 
+  .inner-progress {
+    height: 5%;
+    width: 0;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  /* Specific CSS for second progress bar background color based on stages */
+  
+  .progress-bar-container[data-stage="Fresher"] .progress-bar .inner-progress {
+    background-color: green;
+    height: 100%;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  .progress-bar-container[data-stage="Experience"] .progress-bar .inner-progress {
+    background-color: orange;
+    height: 0%;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  .progress-bar-container[data-stage="Export"] .progress-bar .inner-progress {
+    background-color: skyblue;
+    height: 100%;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  .progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
+    background-color: blue;
+    height: 100%;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  /* In your App.css or a separate CSS file */
+  .custom-toast {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    }
+    .ill{
+      display: flex;
+      width: 100%;
+    column-gap: 2px;
+    max-width: 150%;
+
     }
