@@ -11,7 +11,7 @@ import feat2 from "./images/feature-3-4e87a82f83e260488c36f8105e26f439fdc3ee5009
 import imagess from "./images/visual-0c7080adf17f1f207276f613447c924f667dab34b7ac415cd7ef653172defd0b.svg";
 const Navbar = () => {
   return (
-    <div>
+    <div className="truetalent-landing-page">
       <div className="landing-page">
 
         <nav className="navbar bg-white">
@@ -20,12 +20,6 @@ const Navbar = () => {
                   <img src={curriculum} alt="" className="navbar-brand-icon" />
                   <span className="navbar-brand-text">build <span>resume.</span></span>
                 </a>
-                </div>
-          <div className="container">
-
-            <div className="navbar-content">
-              <div className="brand-and-toggler">
-               
                 <button type="button" className="navbar-toggler-btn">
                   <div className="bars">
                     <div className="bar"></div>
@@ -33,6 +27,13 @@ const Navbar = () => {
                     <div className="bar"></div>
                   </div>
                 </button>
+                </div>
+          <div className="container">
+
+            <div className="navbar-content">
+              <div className="brand-and-toggler">
+               
+               
               </div>
             </div>
           </div>
