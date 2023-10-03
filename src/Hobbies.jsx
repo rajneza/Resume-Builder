@@ -65,11 +65,11 @@ const Data = [
   },
   {
     id: "06",
-    name: "Refrence",
+    name: "Referance",
   },
   {
     id: "07",
-    name: "Project",
+    name: "Projects",
   },
   {
     id: "08",
@@ -158,9 +158,11 @@ function Hobbies() {
   const contentDivRef = useRef(null);  const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [editingTitle, setEditingTitle] = useState(false);
+  const [editingFname, setEditingFname] = useState(false);
   const [editing, setEditing] = useState(false);
   const editingRef = useRef(editing);
   const [heading, setHeading] = useState("Personal Details");
+  const [fname, setFname] = useState("File Name");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [selectedColor, setSelectedColor] = useState('#0f3871'); // Initial color
@@ -206,13 +208,26 @@ function Hobbies() {
     setEditingTitle(true);
   };
 
+  let handleFnameClick = () => {
+    setEditingFname(true);
+  };
+
   const handleHeadingChange = (event) => {
     setHeading(event.target.value);
+  };
+
+  const handleFnameChange = (event) => {
+    setFname(event.target.value);
   };
 
   const handleHeadingBlur = () => {
     editingRef.current = false;
     setEditingTitle(false);
+  };
+
+  const handleFnameBlur = () => {
+    editingRef.current = false;
+    setEditingFname(false);
   };
 
   let toggleDetails = () => {
@@ -578,7 +593,8 @@ function Hobbies() {
     }
   };
 
-  const [objects, setObjects] = useState([]);
+  const [objects, setObjects] = useState([])
+  
 
   const createObject = () => {
     const newObject = {
@@ -591,6 +607,7 @@ function Hobbies() {
       input6: "",
     };
     setObjects([...objects, newObject]);
+    
   };
 
   const handleInputChange = (e, objectId, inputName) => {
@@ -609,9 +626,26 @@ function Hobbies() {
     });
   };
 
+  const replaceWithPresent = (objectId, inputName) => {
+    const updatedObjects = objects.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: 'Present' };
+      }
+      return object;
+    });
+    setObjects(updatedObjects);
+    ite.map((value) => {
+      if (value.id === "01") {
+        value.it = updatedObjects;
+        console.log(value.mob);
+      }
+    });
+  };
+
   const deleteObject = (objectId) => {
     const updatedObjects = objects.filter((object) => object.id !== objectId);
     setObjects(updatedObjects);
+    
     ite.map((value) => {
       if (value.id === "01") {
         value.it = updatedObjects;
@@ -622,6 +656,7 @@ function Hobbies() {
 
   // Code for Education
   const [education, seteducation] = useState([]);
+  
 
   const createeducation = () => {
     const newObject = {
@@ -634,6 +669,7 @@ function Hobbies() {
       input6: "",
     };
     seteducation([...education, newObject]);
+    
   };
 
   const handleInputedu = (e, objectId, inputName) => {
@@ -666,6 +702,7 @@ function Hobbies() {
   //code for extra-curricular
 
   const [four, setfour] = useState([]);
+  
 
   const createfour = () => {
     const newObject = {
@@ -678,6 +715,7 @@ function Hobbies() {
       input6: "",
     };
     setfour([...four, newObject]);
+    
   };
 
   const handleInputfour = (e, objectId, inputName) => {
@@ -710,6 +748,8 @@ function Hobbies() {
   //code for Project
 
   const [project, setproject] = useState([]);
+  
+
 
   const createproject = () => {
     const newObject = {
@@ -720,8 +760,12 @@ function Hobbies() {
       input4: "",
       input5: "",
       input6: "",
+      input7: "",
+      input8: "",
+
     };
     setproject([...project, newObject]);
+    
   };
 
   const handleInputproject = (e, objectId, inputName) => {
@@ -755,6 +799,7 @@ function Hobbies() {
 
   const [cust, setcust] = useState([]);
   const [custom, setcustom] = useState("");
+  
 
   const [deefault, setdefault] = useState("Custom");
   const [def, setdef] = useState(true);
@@ -789,6 +834,7 @@ function Hobbies() {
     };
     setcust([...cust, newObject]);
     setcustom("hi");
+    
   };
 
   const handleInputcust = (e, objectId, inputName) => {
@@ -824,6 +870,7 @@ function Hobbies() {
   //code for course
 
   const [course, setcourse] = useState([]);
+  
 
   const createcourse = () => {
     const newObject = {
@@ -853,6 +900,21 @@ function Hobbies() {
       }
     });
   };
+  const replacePresent = (objectId, inputName) => {
+    const updatedObjects = course.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: 'Present' };
+      }
+      return object;
+    });
+    setcourse(updatedObjects);
+    ite.map((value) => {
+      if (value.id === "04") {
+        value.it = updatedObjects;
+        console.log(value.mob);
+      }
+    });
+  };
 
   const deletecourse = (objectId) => {
     const updatedObjects = course.filter((object) => object.id !== objectId);
@@ -868,6 +930,7 @@ function Hobbies() {
   // code for internship
 
   const [five, setfive] = useState([]);
+  
 
   const createfive = () => {
     const newObject = {
@@ -880,6 +943,7 @@ function Hobbies() {
       input6: "",
     };
     setfive([...five, newObject]);
+    
   };
 
   const handleInputfive = (e, objectId, inputName) => {
@@ -898,6 +962,23 @@ function Hobbies() {
     });
   };
 
+  const replacedate = (objectId, inputName) => {
+    const updatedObjects = five.map((object) => {
+      if (object.id === objectId) {
+        return { ...object, [inputName]: 'Present' };
+      }
+      return object;
+    });
+    setfive(updatedObjects);
+    ite.map((value) => {
+      if (value.id === "05") {
+        value.it = updatedObjects;
+        console.log(value.mob);
+      }
+    });
+  };
+  
+
   const deletefive = (objectId) => {
     const updatedObjects = five.filter((object) => object.id !== objectId);
     setfive(updatedObjects);
@@ -912,6 +993,7 @@ function Hobbies() {
   // code for reference
 
   const [three, setthree] = useState([]);
+  
 
   const createthree = () => {
     const newObject = {
@@ -924,6 +1006,7 @@ function Hobbies() {
       input6: "",
     };
     setthree([...three, newObject]);
+    
   };
 
   const handleInputthree = (e, objectId, inputName) => {
@@ -955,12 +1038,12 @@ function Hobbies() {
   //code for website
 
   const [website, setwebsite] = useState([]);
-  const [web, setweb] = useState("");
+  
 
   const createweb = () => {
     const newObject = { id: website.length + 1, input1: "", input2: "" };
     setwebsite([...website, newObject]);
-    setweb("hi");
+    
   };
 
   const handleInputweb = (e, objectId, inputName) => {
@@ -976,17 +1059,17 @@ function Hobbies() {
   const deleteweb = (objectId) => {
     const updatedObjects = website.filter((object) => object.id !== objectId);
     setwebsite(updatedObjects);
-    setweb("");
+    
   };
   //code for skill
 
   const [skill, setskill] = useState([]);
-  const [ill, setill] = useState("");
+  
 
   const createskill = () => {
     const newObject = { id: skill.length + 1, input1: "", input2: "" };
     setskill([...skill, newObject]);
-    setill("hi");
+   
   };
 
   const handleInputskill = (e, objectId, inputName) => {
@@ -1002,18 +1085,18 @@ function Hobbies() {
   const deleteskill = (objectId) => {
     const updatedObjects = skill.filter((object) => object.id !== objectId);
     setskill(updatedObjects);
-    setill("");
+    
   };
 
   //code for Hobbies
 
   const [six, setsix] = useState([]);
-  const [hob, sethob] = useState("");
+  
 
   const createsix = () => {
     const newObject = { id: six.length + 1, input1: "", input2: "" };
     setsix([...six, newObject]);
-    sethob("hi");
+    
   };
 
   const handleInputsix = (e, objectId, inputName) => {
@@ -1029,12 +1112,12 @@ function Hobbies() {
   const deletesix = (objectId) => {
     const updatedObjects = six.filter((object) => object.id !== objectId);
     setsix(updatedObjects);
-    sethob("");
+    
   };
   // code for language
 
   const [seven, setseven] = useState([]);
-  const [lan, setlan] = useState("");
+  
 
   const createseven = () => {
     const newObject = {
@@ -1046,7 +1129,7 @@ function Hobbies() {
       input5: "",
     };
     setseven([...seven, newObject]);
-    setlan("hi");
+    
   };
 
   const handleInputseven = (e, objectId, inputName) => {
@@ -1062,7 +1145,7 @@ function Hobbies() {
   const deleteseven = (objectId) => {
     const updatedObjects = seven.filter((object) => object.id !== objectId);
     setseven(updatedObjects);
-    setlan("");
+    
   };
 
   const [bar, setbar] = useState(0);
@@ -1076,20 +1159,25 @@ function Hobbies() {
               <div className="resume-title">
                 <div className="title-content">
                   <div className="content-box">
-                        <input
-                          placeholder="Untitled"
-                          //  value={title}
-                          className="editable-input"
-                          onMouseEnter={handleMouseEnter}
-                          onMouseLeave={handleMouseLeave}
-                          onFocus={handleFocus}
-                          onBlur={handleBlur}
-                        />
-                      {(isHovered || isFocused) && (
-                        <div className="edit-icon">
-                        <EditTwoToneIcon />
+                  {editingFname ? (
+                        <div>
+                          <input
+                            type="text"
+                            id="file_name"
+                            value={fname}
+                            onChange={handleFnameChange}
+                            onBlur={handleFnameBlur}
+                            className="handle-input"
+                          />
                         </div>
-                    )}
+                      ) : (
+                        <div className="handle-heading">
+                          <h3>{fname}</h3>
+                          <button onClick={handleFnameClick}>
+                            <EditIcon />
+                          </button>
+                        </div>
+                      )}
                   </div>
                 </div>
               </div>
@@ -1208,12 +1296,12 @@ function Hobbies() {
                           <div className="photo-edit-container">
                             <div className="photo-delete">
                               <button onClick={handleDelete} className="ed">
-                                <MdOutlineDelete />
+                                <MdOutlineDelete className="photo-icon"/>
                               </button>
                             </div>
                             <div className="photo-edit">
                               <button onClick={handleView} className="ed">
-                                <AiOutlineEdit />
+                                <AiOutlineEdit className="photo-icon"/>
                               </button>
                             </div>
                           </div>
@@ -1340,7 +1428,7 @@ function Hobbies() {
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
-                          <label htmlFor="">Driving </label> <br />
+                          <label htmlFor="">Driving License</label> <br />
                           <input
                             type="text"
                             className="work"
@@ -1433,7 +1521,7 @@ placeholder="dd/mm/yyyy"
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
-                          progress(value, editorHtml, "editorHtml", 30)
+                          progress(value, editorHtml, "editorHtml", 50)
                         }
                         className="paragh"
                         modules={{
@@ -1629,6 +1717,7 @@ placeholder="dd/mm/yyyy"
                                                           )
                                                         }
                                                       />
+                                                       <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button>
                                                     </div>
                                                   </div>
                                                   <div>
@@ -1802,6 +1891,7 @@ placeholder="dd/mm/yyyy"
                                                           )
                                                         }
                                                       />
+                                                      <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button>
                                                     </div>
                                                   </div>
                                                   <div>
@@ -1847,7 +1937,7 @@ placeholder="dd/mm/yyyy"
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div className="">
+                                              <div className="emp-delete-btn">
                                                 <button
                                                   onClick={() =>
                                                     deleteedu(object.id)
@@ -2071,7 +2161,6 @@ interests and curiosities"
                                         {course.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
                                               className="flexx"
                                             >
                                               {object.input1}
@@ -2086,7 +2175,6 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 cou ? "visible" : "hidden"
@@ -2100,7 +2188,7 @@ interests and curiosities"
                                                     <div className="wanted">
                                                       <div>
                                                         <label htmlFor="">
-                                                          Job title
+                                                          Course
                                                         </label>{" "}
                                                         <br />
                                                         <input
@@ -2119,7 +2207,7 @@ interests and curiosities"
                                                     </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        Employer
+                                                        Institution
                                                       </label>{" "}
                                                       <br />
                                                       <input
@@ -2169,11 +2257,12 @@ interests and curiosities"
                                                             )
                                                           }
                                                         />
+                                                        <button onClick={() => replacePresent(object.id, 'input5')}>Set Present</button>
                                                       </div>
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletecourse(object.id)
@@ -2185,6 +2274,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2195,7 +2285,7 @@ interests and curiosities"
                                           + Add one more course
                                         </button>
                                       </div>
-                                      <button onClick={delete2}>delete</button>
+                                      <button onClick={delete2} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
@@ -2306,6 +2396,7 @@ interests and curiosities"
                                                             )
                                                           }
                                                         />
+                                                        <button onClick={() => replacedate(object.id, 'input5')}>Set Present</button>
                                                       </div>
                                                     </div>
                                                     <div>
@@ -2340,7 +2431,7 @@ interests and curiosities"
                                                         rows="15"
                                                         value={object.input6}
                                                         onChange={(e) =>
-                                                          handleInputfour(
+                                                          handleInputfive(
                                                             e,
                                                             object.id,
                                                             "input6"
@@ -2375,13 +2466,13 @@ interests and curiosities"
                                           + Add one more internship
                                         </button>
                                       </div>
-                                      <button onClick={delete4} className="custom-delete btn btn-primary">delete</button>
+                                      <button onClick={delete4} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
                                     <span></span>
                                   )}
-                                  {store.name === "Project" ? (
+                                  {store.name === "Projects" ? (
 <div className="add_section_box">
                                     <div
                                       className={proj ? "hidden" : "visible"}
@@ -2391,7 +2482,6 @@ interests and curiosities"
                                         {project.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
                                               className="flexx"
                                             >
                                               {object.input1}
@@ -2406,7 +2496,6 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 pro ? "visible" : "hidden"
@@ -2439,7 +2528,7 @@ interests and curiosities"
                                                     </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        Employer
+                                                        Client
                                                       </label>{" "}
                                                       <br />
                                                       <input
@@ -2451,6 +2540,48 @@ interests and curiosities"
                                                             e,
                                                             object.id,
                                                             "input2"
+                                                          )
+                                                        }
+                                                      />
+                                                    </div>
+                                                  </div>
+                                                  <div
+                                                    style={{ display: "flex" }}
+                                                  >
+                                                    <div className="wanted">
+                                                      <div>
+                                                        <label htmlFor="">
+                                                          Role
+                                                        </label>{" "}
+                                                        <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input7}
+                                                          className="work"
+                                                          onChange={(e) =>
+                                                            handleInputproject(
+                                                              e,
+                                                              object.id,
+                                                              "input7"
+                                                            )
+                                                          }
+                                                        />
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                      <label htmlFor="">
+                                                        Skills
+                                                      </label>{" "}
+                                                      <br />
+                                                      <input
+                                                        type="text"
+                                                        value={object.input8}
+                                                        className="work"
+                                                        onChange={(e) =>
+                                                          handleInputproject(
+                                                            e,
+                                                            object.id,
+                                                            "input8"
                                                           )
                                                         }
                                                       />
@@ -2535,7 +2666,7 @@ interests and curiosities"
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deleteproject(object.id)
@@ -2547,6 +2678,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2557,13 +2689,13 @@ interests and curiosities"
                                           + Add Project
                                         </button>
                                       </div>
-                                      <button onClick={delete8}>delete</button>
+                                      <button onClick={delete8} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
                                     <span></span>
                                   )}
-                                  {store.name === "Refrence" ? (
+                                  {store.name === "Referance" ? (
 <div className="add_section_box">
                                     <div
                                       className={
@@ -2575,8 +2707,7 @@ interests and curiosities"
                                         {three.map((object) => (
                                           <div key={object.id}>
                                             <div
-                                              style={{ display: "flex" }}
-                                              className="flexx" id="ref"
+                                              className="flexx"
                                             >
                                               {object.input1}
                                               <h5
@@ -2590,14 +2721,13 @@ interests and curiosities"
                                                   <IoIosArrowDown />
                                                 )}
                                               </h5>
-                                            </div>
                                             <div
                                               className={
                                                 ref ? "visible" : "hidden"
                                               }
                                             >
                                               <div style={{ display: "flex" }}>
-                                                <div className="emp-main"  id="reference">
+                                                <div className="emp-main">
                                                   <div
                                                     style={{ display: "flex" }}
                                                   >
@@ -2664,7 +2794,7 @@ interests and curiosities"
                                                       </div>
                                                     </div>
                                                     <div className="wanted">
-                                                      <div className="label">
+                                                      <div>
                                                         <label htmlFor="">
                                                           Email
                                                         </label>{" "}
@@ -2685,7 +2815,7 @@ interests and curiosities"
                                                     </div>
                                                   </div>
                                                 </div>
-                                                <div>
+                                                <div className="emp-delete-btn">
                                                   <button
                                                     onClick={() =>
                                                       deletethree(object.id)
@@ -2697,6 +2827,7 @@ interests and curiosities"
                                                 </div>
                                               </div>
                                             </div>
+                                            </div>
                                           </div>
                                         ))}
                                         <button
@@ -2707,7 +2838,7 @@ interests and curiosities"
                                           + Add one more reference
                                         </button>
                                       </div>
-                                      <button onClick={delete3}>delete</button>
+                                      <button onClick={delete3} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
@@ -2871,7 +3002,7 @@ interests and curiosities"
                                           + Add one more item
                                         </button>
                                       </div>
-                                      <button onClick={delete1} className="custom-delete btn btn-primary">delete</button>
+                                      <button onClick={delete1} className="custom-delete btn btn-primary">Delete</button>
                                     </div>
 </div>
                                   ) : (
@@ -2966,7 +3097,7 @@ interests and curiosities"
                         </button>
                       </div>
                     </div>
-                    <button onClick={delete9} className="custom-delete btn btn-primary">delete</button>
+                    <button onClick={delete9} className="custom-delete btn btn-primary">Delete</button>
                   </div>
                 </div>
                 <div >
@@ -2999,11 +3130,10 @@ interests and curiosities"
                             <div key={object.id}>
                               <div
                                 className="flexxx"
-                                style={{ display: "flex" }}
                               >
                                 {object.input1}
                                 <h5
-                                  onClick={() => setlevel(level)}
+                                  onClick={() => setlevel(!level)}
                                   style={{ cursor: "pointer" }}
                                   className="arrow"
                                 >
@@ -3013,14 +3143,13 @@ interests and curiosities"
                                     <IoIosArrowDown />
                                   )}
                                 </h5>
-                              </div>
                               <div className={level ? "visible" : "hidden"}>
                                 <div style={{ display: "flex" }}>
                                   <div className="emp-main">
                                     <div style={{ display: "flex" }}>
                                       <div className="wanted">
                                         <div>
-                                          <label htmlFor="">Label</label> <br />
+                                          <label htmlFor="">Skill</label> <br />
                                           <input
                                             type="text"
                                             value={object.input1}
@@ -3059,7 +3188,7 @@ interests and curiosities"
                                       </div>
                                     </div>
                                   </div>
-                                  <div>
+                                  <div className="emp-delete-btn">
                                     <button
                                       onClick={() => deleteskill(object.id)}
                                       className="delete"
@@ -3069,6 +3198,7 @@ interests and curiosities"
                                   </div>
                                 </div>
                               </div>
+                              </div>
                             </div>
                           ))}
                           <button onClick={createskill} className="add">
@@ -3076,7 +3206,7 @@ interests and curiosities"
                             + Add more skill
                           </button>
                         </div>
-                        <button onClick={delete10}>Delete</button>
+                        <button onClick={delete10} className="custom-delete btn btn-primary">Delete</button>
                       </div>
                     </div>
                   </div>
@@ -3135,7 +3265,7 @@ interests and curiosities"
                           + Add more Hobbie
                         </button>
                       </div>
-                      <button onClick={delete5} className="custom-delete btn btn-primary">delete</button>
+                      <button onClick={delete5} className="custom-delete btn btn-primary">Delete</button>
                     </div>
 </div>
                   }
@@ -3151,8 +3281,6 @@ interests and curiosities"
                             <div key={object.id}>
                               <div
                                 className="flexxx"
-                                
-                                style={{ display: "flex" }}
                               >
                                 {object.input1}
                                 <h5
@@ -3166,7 +3294,6 @@ interests and curiosities"
                                     <IoIosArrowDown></IoIosArrowDown>
                                   )}
                                 </h5>
-                              </div>
                               <div className={language ? "visible" : "hidden"}>
                                 <div style={{ display: "flex" }}>
                                   <div className="emp-main">
@@ -3220,7 +3347,7 @@ interests and curiosities"
                                       </div>
                                     </div>
                                   </div>
-                                  <div>
+                                  <div className="emp-delete-btn">
                                     <button
                                       onClick={() => deleteseven(object.id)}
                                       className="delete"
@@ -3230,6 +3357,7 @@ interests and curiosities"
                                   </div>
                                 </div>
                               </div>
+                              </div>
                             </div>
                           ))}
                           <button onClick={createseven} className="add">
@@ -3237,7 +3365,7 @@ interests and curiosities"
                             + Add one more languages
                           </button>
                         </div>
-                        <button onClick={delete6}>delete</button>
+                        <button onClick={delete6} className="custom-delete btn btn-primary">Delete</button>
                       </div>
 </div>
                     }
@@ -3309,7 +3437,7 @@ interests and curiosities"
                         alt="custom-project"
                         className="custom-pic"
                       />
-                      <p>Project</p>
+                      <p>Projects</p>
                     </button>
                   </div>
                   <div className="custom-section">
@@ -3458,6 +3586,9 @@ interests and curiosities"
         <div>
           {store.id === "06" ? (
             <div>
+              {
+                three.length === 0 ? <span></span> : <h2 className="head">References</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
@@ -3467,7 +3598,7 @@ interests and curiosities"
                       {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
             <p className="fonttt">{item.input6}</p> */}
-                      <h2 className="head">References</h2>
+                      
                       <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
                       <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
                     </div>
@@ -3480,7 +3611,9 @@ interests and curiosities"
           )}
           {store.id === "01" ? (
             <div>
-              <h2 className="head">Employment</h2>
+              {
+                objects.length === 0 ? <span></span> : <h2 className="head">Employment</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
@@ -3491,9 +3624,9 @@ interests and curiosities"
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
 
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3508,19 +3641,22 @@ interests and curiosities"
 
           {store.id === "02" ? (
             <div>
+              {
+                education.length === 0 ? <span></span> : <h2 className="head">Education</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
                     <span></span>
                   ) : (
                     <div className="store">
-                      <h2 className="head">Education</h2>
+                      
                       {item.input1 === undefined ? (
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3534,6 +3670,9 @@ interests and curiosities"
           )}
           {store.id === "03" ? (
             <div>
+              {
+                four.length === 0 ? <span></span> : <h2 className="head">Extra-curricular activites</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
@@ -3541,13 +3680,15 @@ interests and curiosities"
                   ) : (
                     <div>
                       <div className="store">
-                        <h2 className="head">Extra-curricular activites</h2>
+                        
                         {item.input1 === undefined ? (
                           <span></span>
                         ) : (
                           <div>
-                            <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                            <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                            {
+                            item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          }
                             <p className="fonttt">{item.input6}</p>
                           </div>
                         )}
@@ -3562,19 +3703,22 @@ interests and curiosities"
           )}
           {store.id === "04" ? (
             <div>
+              {
+                course.length === 0 ? <span></span> :  <h2 className="head">Course</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
                     <span></span>
                   ) : (
                     <div className="store">
-                      <h2 className="head">Course</h2>
+                     
                       {item.input1 === undefined ? (
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3588,19 +3732,22 @@ interests and curiosities"
           )}
           {store.id === "05" ? (
             <div>
+              {
+                five.length === 0 ? <span></span> : <h2 className="head">Internships</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
                     <span></span>
                   ) : (
                     <div className="store">
-                      <h2 className="head">Internships</h2>
+                      
                       {item.input1 === undefined ? (
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3614,19 +3761,32 @@ interests and curiosities"
           )}
           {store.id === "07" ? (
             <div>
+              {
+                project.length === 0 ? <span></span> : <h2 className="head">Projects</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
                     <span></span>
                   ) : (
                     <div className="store">
-                      <h2 className="head">Project</h2>
+                      
                       {item.input1 === undefined ? (
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                          {
+                            item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          }
+                          
+                          {
+                            item.input7 === "" ? <span></span> : <p className="fontt">{`My Role : ${item.input7}`}</p>
+                          }
+                          {
+                            item.input8 === "" ? <span></span> : <p className="fontt">{`Skills Used In This  Project : ${item.input8}`}</p>
+                          }
+                          
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
@@ -3640,7 +3800,9 @@ interests and curiosities"
           )}
           {store.id === "08" ? (
             <div>
-              <h2 className="head">{store.head}</h2>
+              {
+                cust.length === 0 ? <span></span> : <h2 className="head">{store.head}</h2>
+              }
               {store.it.map((item, index) => (
                 <div className="store">
                   {item.input1 === undefined ? (
@@ -3651,7 +3813,7 @@ interests and curiosities"
                         <span></span>
                       ) : (
                         <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                           <p className="fontt">{`${item.input4}`}</p>
                           <p className="fonttt">{item.input5}</p>
                         </div>
@@ -3679,7 +3841,23 @@ interests and curiosities"
               </div>
               <div className="main-left"style={{ backgroundColor: selectedColor }}>
                 <div className="pincode">
-                  <div className="details">
+                <div className="details">
+                    {email === "" ? (
+                      <span></span>
+                    ) : (
+                      <h4 className="heading div-heading">Contact</h4>
+                    )}
+                    <div>
+                      {
+                        phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
+                      }
+                      
+                    </div>
+                    <div>
+                      <p className="conte">{email}</p>
+                    </div>
+                  </div>
+                  <div>
                     {address === "" ? (
                       <span></span>
                     ) : (
@@ -3696,19 +3874,7 @@ interests and curiosities"
                       <p className="cit">{country}</p>
                     </div>
                   </div>
-                  <div>
-                    {email === "" ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading div-heading">Contact</h4>
-                    )}
-                    <div>
-                      <p className="cit">{phone}</p>
-                    </div>
-                    <div>
-                      <p className="conte">{email}</p>
-                    </div>
-                  </div>
+                  
                   <div>
                     {licence === "" ? (
                       <span></span>
@@ -3745,7 +3911,7 @@ interests and curiosities"
                     </div>
                   </div>
                   <div className="top">
-                    {ill === "" ? (
+                    {skill.length === 0 ? (
                       <span></span>
                     ) : (
                       <h4 className="heading div-heading">Skills</h4>
@@ -3780,7 +3946,7 @@ interests and curiosities"
                     ))}
                   </div>
                   <div className="top">
-                    {web === "" ? (
+                    {website.length === 0 ? (
                       <span></span>
                     ) : (
                       <h4 className="heading div-heading">Links</h4>
@@ -3795,7 +3961,7 @@ interests and curiosities"
                     ))}
                   </div>
                   <div className="top">
-                    {hob === "" ? (
+                    {six.length === 0 ? (
                       <span></span>
                     ) : (
                       <h4 className="heading div-heading">Hobbies</h4>
@@ -3809,7 +3975,7 @@ interests and curiosities"
                     </div>
                   </div>
                   <div className="top">
-                    {lan === "" ? (
+                    {seven.length === 0 ? (
                       <span></span>
                     ) : (
                       <h4 className="heading div-heading">Languages</h4>
