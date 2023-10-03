@@ -158,9 +158,11 @@ function Hobbies() {
   const contentDivRef = useRef(null);  const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [editingTitle, setEditingTitle] = useState(false);
+  const [editingFname, setEditingFname] = useState(false);
   const [editing, setEditing] = useState(false);
   const editingRef = useRef(editing);
   const [heading, setHeading] = useState("Personal Details");
+  const [fname, setFname] = useState("File Name");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [selectedColor, setSelectedColor] = useState('#0f3871'); // Initial color
@@ -206,13 +208,26 @@ function Hobbies() {
     setEditingTitle(true);
   };
 
+  let handleFnameClick = () => {
+    setEditingFname(true);
+  };
+
   const handleHeadingChange = (event) => {
     setHeading(event.target.value);
+  };
+
+  const handleFnameChange = (event) => {
+    setFname(event.target.value);
   };
 
   const handleHeadingBlur = () => {
     editingRef.current = false;
     setEditingTitle(false);
+  };
+
+  const handleFnameBlur = () => {
+    editingRef.current = false;
+    setEditingFname(false);
   };
 
   let toggleDetails = () => {
@@ -1144,20 +1159,25 @@ function Hobbies() {
               <div className="resume-title">
                 <div className="title-content">
                   <div className="content-box">
-                        <input
-                          placeholder="Untitled"
-                          //  value={title}
-                          className="editable-input"
-                          onMouseEnter={handleMouseEnter}
-                          onMouseLeave={handleMouseLeave}
-                          onFocus={handleFocus}
-                          onBlur={handleBlur}
-                        />
-                      {(isHovered || isFocused) && (
-                        <div className="edit-icon">
-                        <EditTwoToneIcon />
+                  {editingFname ? (
+                        <div>
+                          <input
+                            type="text"
+                            id="file_name"
+                            value={fname}
+                            onChange={handleFnameChange}
+                            onBlur={handleFnameBlur}
+                            className="handle-input"
+                          />
                         </div>
-                    )}
+                      ) : (
+                        <div className="handle-heading">
+                          <h3>{fname}</h3>
+                          <button onClick={handleFnameClick}>
+                            <EditIcon />
+                          </button>
+                        </div>
+                      )}
                   </div>
                 </div>
               </div>
@@ -1408,7 +1428,7 @@ function Hobbies() {
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
-                          <label htmlFor="">Driving </label> <br />
+                          <label htmlFor="">Driving License</label> <br />
                           <input
                             type="text"
                             className="work"
@@ -1697,7 +1717,7 @@ placeholder="dd/mm/yyyy"
                                                           )
                                                         }
                                                       />
-                                                       <button onClick={() => replaceWithPresent(object.id, 'input5')}>Set Present</button>
+                                                       <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button>
                                                     </div>
                                                   </div>
                                                   <div>
@@ -1871,6 +1891,7 @@ placeholder="dd/mm/yyyy"
                                                           )
                                                         }
                                                       />
+                                                      <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button>
                                                     </div>
                                                   </div>
                                                   <div>
@@ -3635,9 +3656,7 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                          {
-                            item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                          }
+                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
