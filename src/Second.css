@@ -1377,12 +1377,7 @@ Popup.css .popup {
 
   .generate{
     background-color: white;
-    position: relative;
-    left: 350px;
-    top: 20px;
-
- 
-
+    text-align: center;
 }
   
   @media print {
