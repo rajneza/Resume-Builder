@@ -341,13 +341,14 @@ function Hobbies() {
     const fullName = cleanedName
       .split(" ")
       .map((word, index) => {
+        // Convert the first word to lowercase and the rest to title case
         if (index === 0) {
-          return word.toLowerCase();
-        } else {
-          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-        }
+          return word.toUpperCase();
+        } 
+          return word.charAt(0).toUpperCase() + word.slice(1).toUpperCase();
+        
       })
-      .join(" ");
+      .join(' ');
 
     const camelCaseName = fullName.charAt(0).toUpperCase() + fullName.slice(1);
     return addSpace ? camelCaseName : camelCaseName.replace(/\s+/g, "");
@@ -3560,6 +3561,7 @@ interests and curiosities"
                 // minHeight: '200px',
                 // padding: '10px',
                 // marginBottom: '20px',
+                width:"97%"
               }}>
               <div className="main-right">
                 <div>
