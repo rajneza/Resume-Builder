@@ -1438,11 +1438,20 @@ row-gap: 5px;
     }
 
 
+.present-date{
+  margin-left: 52%;
+}
 
-  
-    
-    .ccccc input{
-      margin-left: 100px;
+.present-date:hover{
+  color:#1a91f0;
+  font-weight: 500;
+}
+
+  .generate{
+    background-color: white;
+    position: relative;
+    left: 350px;
+    top: 20px;
 
   width: 100%;
   flex-direction: column;
