@@ -1590,46 +1590,7 @@ function Hobbies() {
                                   ref={provided.innerRef}
                                 >
                                   {store.name === "Custom" ? (
-                                    <div
-                                      style={{ display: "flex" }}
-                                      id="main-cust"
-                                    >
-                                      {def ? (
-                                        <h3
-                                          className={
-                                            secetion ? "hidden" : "visible"
-                                          }
-                                        >
-                                          <MdDragIndicator className="drag drop" /> {deefault}
-                                        </h3>
-                                      ) : (
-                                        <h3
-                                          className={
-                                            secetion ? "hidden" : "visible"
-                                          }
-                                        ><MdDragIndicator className="drag drop" />
-                                          <input
-                                            type="text"
-                                            value={deefault}
-                                            onChange={handlecustom}
-                                            id="custom"
-                                          />
-                                        </h3>
-                                      )}
-                                      <button
-                                        onClick={handlecustumch}
-                                        id="cust"
-                                        className={
-                                          secetion ? "hidden" : "visible"
-                                        }
-                                      >
-                                        {def ? (
-                                          <AiOutlineEdit />
-                                        ) : (
-                                          <GiSaveArrow></GiSaveArrow>
-                                        )}
-                                      </button>
-                                    </div>
+                                    <span></span>
                                   ) : (
                                     <span></span>
                                   )}
@@ -2866,7 +2827,48 @@ interests and curiosities"
                                     <span></span>
                                   )}
                                   {store.name === "Custom" ? (
+                                    
                                     <div className="add_section_box">
+                                      <div
+                                      style={{ display: "flex" }}
+                                      id="main-cust"
+                                    >
+                                      {def ? (
+                                        <h3
+                                          className={
+                                            secetion ? "hidden" : "visible"
+                                          }
+                                        >
+                                          <MdDragIndicator className="drag drop" /> {deefault}
+                                        </h3>
+                                      ) : (
+                                        <h3
+                                          className={
+                                            secetion ? "hidden" : "visible"
+                                          }
+                                        ><MdDragIndicator className="drag drop" />
+                                          <input
+                                            type="text"
+                                            value={deefault}
+                                            onChange={handlecustom}
+                                            id="custom"
+                                          />
+                                        </h3>
+                                      )}
+                                      <button
+                                        onClick={handlecustumch}
+                                        id="cust"
+                                        className={
+                                          secetion ? "hidden" : "visible"
+                                        }
+                                      >
+                                        {def ? (
+                                          <AiOutlineEdit />
+                                        ) : (
+                                          <GiSaveArrow></GiSaveArrow>
+                                        )}
+                                      </button>
+                                    </div>
                                       <div
                                         className={
                                           secetion ? "hidden" : "visible"
