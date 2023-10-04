@@ -3581,6 +3581,7 @@ interests and curiosities"
                 // minHeight: '200px',
                 // padding: '10px',
                 // marginBottom: '20px',
+                width:'97%',
               }}>
               <div className="main-right">
                 <div>
