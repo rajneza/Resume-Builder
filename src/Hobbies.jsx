@@ -193,7 +193,7 @@ function Hobbies() {
       .split(' ')
       .map((word, index) => {
         if (index === 0) {
-          return word.toLowerCase();
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
         }
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
@@ -1518,7 +1518,7 @@ function Hobbies() {
                   </div>
                   <div>
                     <div>
-                      <ReactQuill
+                      <ReactQuill style={{width:"100%"}}
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
@@ -1718,7 +1718,7 @@ function Hobbies() {
                                                             )
                                                           }
                                                         />
-                                                        <button onClick={() => replaceWithPresent(object.id, 'input5')}>Set Present</button>
+                                                        <button onClick={() => replaceWithPresent(object.id, 'input5')}className="text-area">Set Present</button>
                                                       </div>
                                                     </div>
                                                     <div>
@@ -1746,7 +1746,7 @@ function Hobbies() {
                                                         Description
                                                       </label>{" "}
                                                       <br />
-                                                      <textarea
+                                                      <textarea className="text-area"
                                                         name=""
                                                         id=""
                                                         cols="90"
@@ -1919,7 +1919,7 @@ function Hobbies() {
                                                         Description
                                                       </label>{" "}
                                                       <br />
-                                                      <textarea
+                                                      <textarea  className="text-area"
                                                         name=""
                                                         id=""
                                                         cols="85"
@@ -2100,7 +2100,7 @@ function Hobbies() {
                                                             Description
                                                           </label>{" "}
                                                           <br />
-                                                          <textarea
+                                                          <textarea className="text-area"
                                                             name=""
                                                             id=""
                                                             cols="90"
@@ -2424,7 +2424,7 @@ interests and curiosities"
                                                             Description
                                                           </label>{" "}
                                                           <br />
-                                                          <textarea
+                                                          <textarea className="text-area"
                                                             name=""
                                                             id=""
                                                             cols="90"
@@ -2647,7 +2647,7 @@ interests and curiosities"
                                                             Project Summary
                                                           </label>{" "}
                                                           <br />
-                                                          <textarea
+                                                          <textarea className="text-area"
                                                             name=""
                                                             id=""
                                                             cols="90"
@@ -2960,7 +2960,7 @@ interests and curiosities"
                                                             Description
                                                           </label>{" "}
                                                           <br />
-                                                          <textarea
+                                                          <textarea className="text-area"
                                                             name=""
                                                             id=""
                                                             cols="90"
@@ -3196,11 +3196,12 @@ interests and curiosities"
                                                   </button>
                                                 ))}
                                               </div>
+                                             
                                             </div>
-                                         
-                                            {/* <label htmlFor="">Level</label>  */}
-                                            <div className="col-12 col-md-6">
-                                       
+{/*                                         
+                                            <label htmlFor="">Level</label>  */}
+                                            <div className="col-12 col-md-6"id="sec-progress">
+                                           <div className="progress-text">{selectedStage}</div>
                                             <div className="progress-bar-container">
                                             <div className="progress" id="myProgressBar">
                                               {stages.map((stage, index) => (
@@ -3213,8 +3214,9 @@ interests and curiosities"
                                                   {stage}
                                                 </button>
                                               ))}
-                                              <div className="progress-text">{selectedStage}</div>
+                                              {/* <div className="progress-text">{selectedStage}</div> */}
                                            </div>
+                                           
                                             </div>
                                             </div>
                                                
@@ -3555,13 +3557,13 @@ interests and curiosities"
           
           <Scrollbars>
             <div className="main-full" id="pdf-content" ref={contentDivRef}
-              contentEditable={true}
+              contentEditable={false}
               style={{
                 // border: '1px solid #ccc',
                 // minHeight: '200px',
                 // padding: '10px',
                 // marginBottom: '20px',
-                width:"97%"
+                // width:"95%"
               }}>
               <div className="main-right">
                 <div>
