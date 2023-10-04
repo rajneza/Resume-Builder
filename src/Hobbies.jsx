@@ -195,7 +195,7 @@ function Hobbies() {
       .split(' ')
       .map((word, index) => {
         if (index === 0) {
-          return word.toLowerCase();
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
         }
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       })
@@ -1538,7 +1538,7 @@ function Hobbies() {
                   </div>
                   <div>
                     <div>
-                      <ReactQuill
+                      <ReactQuill style={{width:"100%"}}
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
@@ -1616,148 +1616,148 @@ function Hobbies() {
                                                 emp ? <IoIosArrowUp /> : <IoIosArrowDown />
                                               }
                                             </h5>
-                                          
-                                          <div
-                                            className={
-                                              emp ? "visible" : "hidden"
-                                            }
-                                          >
-                                            <div className="emp-container">
-                                              <div className="emp-main">
-                                                <div
-                                                  style={{ display: "flex" }}
-                                                >
-                                                  <div className="wanted">
+
+                                            <div
+                                              className={
+                                                emp ? "visible" : "hidden"
+                                              }
+                                            >
+                                              <div className="emp-container">
+                                                <div className="emp-main">
+                                                  <div
+                                                    style={{ display: "flex" }}
+                                                  >
+                                                    <div className="wanted">
+                                                      <div>
+                                                        <label htmlFor="" className="data-label">
+                                                          Job title
+                                                        </label>{" "}
+                                                        <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className="work"
+                                                          onChange={(e) =>
+                                                            handleInputChange(
+                                                              e,
+                                                              object.id,
+                                                              "input1"
+                                                            )
+                                                          }
+                                                        />
+                                                      </div>
+                                                    </div>
                                                     <div>
-                                                      <label htmlFor="" className="data-label">
-                                                        Job title
+                                                      <label htmlFor="">
+                                                        Employer
                                                       </label>{" "}
                                                       <br />
                                                       <input
                                                         type="text"
-                                                        value={object.input1}
+                                                        value={object.input2}
                                                         className="work"
                                                         onChange={(e) =>
                                                           handleInputChange(
                                                             e,
                                                             object.id,
-                                                            "input1"
+                                                            "input2"
                                                           )
                                                         }
                                                       />
                                                     </div>
                                                   </div>
-                                                  <div>
-                                                    <label htmlFor="">
-                                                      Employer
-                                                    </label>{" "}
-                                                    <br />
-                                                    <input
-                                                      type="text"
-                                                      value={object.input2}
-                                                      className="work"
-                                                      onChange={(e) =>
-                                                        handleInputChange(
-                                                          e,
-                                                          object.id,
-                                                          "input2"
-                                                        )
-                                                      }
-                                                    />
-                                                  </div>
-                                                </div>
-                                                <div
-                                                  style={{ display: "flex" }}
-                                                >
-                                                  <div className="wanted">
+                                                  <div
+                                                    style={{ display: "flex" }}
+                                                  >
+                                                    <div className="wanted">
+                                                      <div>
+                                                        <label htmlFor="">
+                                                          Start & End Date
+                                                        </label>{" "}
+                                                        <br />
+                                                        <input
+                                                          type="date"
+                                                          value={object.input4}
+                                                          className="workk"
+                                                          onChange={(e) =>
+                                                            handleInputChange(
+                                                              e,
+                                                              object.id,
+                                                              "input4"
+                                                            )
+                                                          }
+                                                        />
+                                                        <input
+                                                          type="date"
+                                                          value={object.input5}
+                                                          className="workk"
+                                                          onChange={(e) =>
+                                                            handleInputChange(
+                                                              e,
+                                                              object.id,
+                                                              "input5"
+                                                            )
+                                                          }
+                                                        />
+                                                        <button onClick={() => replaceWithPresent(object.id, 'input5')}className="text-area">Set Present</button>
+                                                      </div>
+                                                    </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        Start & End Date
+                                                        City
                                                       </label>{" "}
                                                       <br />
                                                       <input
-                                                        type="date"
-                                                        value={object.input4}
-                                                        className="workk"
+                                                        type="text"
+                                                        value={object.input3}
+                                                        className="work"
                                                         onChange={(e) =>
                                                           handleInputChange(
                                                             e,
                                                             object.id,
-                                                            "input4"
+                                                            "input3"
                                                           )
                                                         }
                                                       />
-                                                      <input
-                                                        type="date"
-                                                        value={object.input5}
-                                                        className="workk"
-                                                        onChange={(e) =>
-                                                          handleInputChange(
-                                                            e,
-                                                            object.id,
-                                                            "input5"
-                                                          )
-                                                        }
-                                                      />
-                                                       <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button>
                                                     </div>
                                                   </div>
                                                   <div>
-                                                    <label htmlFor="">
-                                                      City
-                                                    </label>{" "}
-                                                    <br />
-                                                    <input
-                                                      type="text"
-                                                      value={object.input3}
-                                                      className="work"
-                                                      onChange={(e) =>
-                                                        handleInputChange(
-                                                          e,
-                                                          object.id,
-                                                          "input3"
-                                                        )
-                                                      }
-                                                    />
+                                                    <div>
+                                                      <label htmlFor="">
+                                                        Description
+                                                      </label>{" "}
+                                                      <br />
+                                                      <textarea className="text-area"
+                                                        name=""
+                                                        id=""
+                                                        cols="90"
+                                                        rows="15"
+                                                        value={object.input6}
+                                                        onChange={(e) =>
+                                                          handleInputChange(
+                                                            e,
+                                                            object.id,
+                                                            "input6"
+                                                          )
+                                                        }
+                                                        placeholder="e.g. Graduated with High Honors."
+                                                      />
+                                                    </div>
                                                   </div>
                                                 </div>
-                                                <div>
-                                                  <div>
-                                                    <label htmlFor="">
-                                                      Description
-                                                    </label>{" "}
-                                                    <br />
-                                                    <textarea
-                                                      name=""
-                                                      id=""
-                                                      cols="90"
-                                                      rows="15"
-                                                      value={object.input6}
-                                                      onChange={(e) =>
-                                                        handleInputChange(
-                                                          e,
-                                                          object.id,
-                                                          "input6"
-                                                        )
-                                                      }
-                                                      placeholder="e.g. Graduated with High Honors."
-                                                    />
-                                                  </div>
+                                                <div className="emp-delete-btn">
+                                                  <button
+                                                    onClick={() =>
+                                                      deleteObject(object.id)
+                                                    }
+                                                    className="delete"
+                                                  >
+                                                    <MdOutlineDelete />
+                                                  </button>
                                                 </div>
-                                              </div>
-                                              <div className="emp-delete-btn">
-                                                <button
-                                                  onClick={() =>
-                                                    deleteObject(object.id)
-                                                  }
-                                                  className="delete"
-                                                >
-                                                  <MdOutlineDelete />
-                                                </button>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
                                         </div>
                                       ))}
                                       <button
@@ -1901,7 +1901,7 @@ function Hobbies() {
                                                       Description
                                                     </label>{" "}
                                                     <br />
-                                                    <textarea
+                                                    <textarea  className="text-area"
                                                       name=""
                                                       id=""
                                                       cols="85"
@@ -2082,7 +2082,7 @@ function Hobbies() {
                                                             Description
                                                           </label>{" "}
                                                           <br />
-                                                          <textarea
+                                                          <textarea className="text-area"
                                                             name=""
                                                             id=""
                                                             cols="90"
@@ -2406,7 +2406,7 @@ interests and curiosities"
                                                             Description
                                                           </label>{" "}
                                                           <br />
-                                                          <textarea
+                                                          <textarea className="text-area"
                                                             name=""
                                                             id=""
                                                             cols="90"
@@ -2629,7 +2629,7 @@ interests and curiosities"
                                                             Project Summary
                                                           </label>{" "}
                                                           <br />
-                                                          <textarea
+                                                          <textarea className="text-area"
                                                             name=""
                                                             id=""
                                                             cols="90"
@@ -2983,7 +2983,7 @@ interests and curiosities"
                                                             Description
                                                           </label>{" "}
                                                           <br />
-                                                          <textarea
+                                                          <textarea className="text-area"
                                                             name=""
                                                             id=""
                                                             cols="90"
@@ -3219,11 +3219,12 @@ interests and curiosities"
                                                   </button>
                                                 ))}
                                               </div>
+                                             
                                             </div>
-                                         
-                                            {/* <label htmlFor="">Level</label>  */}
-                                            <div className="col-12 col-md-6">
-                                       
+{/*                                         
+                                            <label htmlFor="">Level</label>  */}
+                                            <div className="col-12 col-md-6"id="sec-progress">
+                                           <div className="progress-text">{selectedStage}</div>
                                             <div className="progress-bar-container">
                                             <div className="progress" id="myProgressBar">
                                               {stages.map((stage, index) => (
@@ -3236,8 +3237,9 @@ interests and curiosities"
                                                   {stage}
                                                 </button>
                                               ))}
-                                              <div className="progress-text">{selectedStage}</div>
+                                              {/* <div className="progress-text">{selectedStage}</div> */}
                                            </div>
+                                           
                                             </div>
                                             </div>
                                                
@@ -3578,13 +3580,13 @@ interests and curiosities"
           
           <Scrollbars>
             <div className="main-full" id="pdf-content" ref={contentDivRef}
-              contentEditable={true}
+              contentEditable={false}
               style={{
                 // border: '1px solid #ccc',
                 // minHeight: '200px',
                 // padding: '10px',
                 // marginBottom: '20px',
-                width:"97%"
+                // width:"95%"
               }}>
               <div className="main-right">
                 <div>
