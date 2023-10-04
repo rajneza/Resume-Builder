@@ -1537,7 +1537,7 @@ function Hobbies() {
                   </div>
                   <div>
                     <div>
-                      <ReactQuill
+                      <ReactQuill style={{width:"100%"}}
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
@@ -3220,7 +3220,7 @@ interests and curiosities"
                                          
                                             {/* <label htmlFor="">Level</label>  */}
                                             <div className="col-12 col-md-6">
-                                       
+                                            <div className="progress-text">{selectedStage}</div>
                                             <div className="progress-bar-container">
                                             <div className="progress" id="myProgressBar">
                                               {stages.map((stage, index) => (
@@ -3233,7 +3233,7 @@ interests and curiosities"
                                                   {stage}
                                                 </button>
                                               ))}
-                                              <div className="progress-text">{selectedStage}</div>
+                                              {/* <div className="progress-text">{selectedStage}</div> */}
                                            </div>
                                             </div>
                                             </div>
