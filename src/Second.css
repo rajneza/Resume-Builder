@@ -1329,11 +1329,11 @@ Popup.css .popup {
     border-radius: 3px;
     display: flex;
     flex-wrap: wrap;
-    gap : 5px;
-    font-size: 13px;
+    gap : 2px;
+    font-size: 10px;
 }
 #skillsContainer button{
- font-size: 13px;
+ font-size: 10px;
 }
 
 
@@ -1565,16 +1565,7 @@ row-gap: 5px;
   font-weight: 500;
 }
 
-  .generate{
-    background-color: white;
-    position: relative;
-    left: 350px;
-    top: 20px;
 
-  width: 100%;
-  flex-direction: column;
-
-  }
  
  
   .inner-progress {
