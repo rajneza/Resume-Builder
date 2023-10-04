@@ -1565,7 +1565,7 @@ row-gap: 5px;
   font-weight: 500;
 }
 
-  .generate{
+  /* .generate{
     background-color: white;
     position: relative;
     left: 350px;
@@ -1574,7 +1574,7 @@ row-gap: 5px;
   width: 100%;
   flex-direction: column;
 
-  }
+  } */
  
  
   .inner-progress {

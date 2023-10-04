@@ -7,10 +7,8 @@ import Dropzone from "react-dropzone";
 import { GoPerson } from "react-icons/go";
 import { MdOutlineDelete, MdOutlineDragIndicator, MdDragIndicator } from "react-icons/md";
 import { Scrollbars } from "react-custom-scrollbars";
-// import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -38,6 +36,7 @@ import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 
 const Data = [
   {
