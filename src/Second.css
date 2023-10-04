@@ -1366,6 +1366,7 @@ Popup.css .popup {
     display: flex;
     justify-content: center;
     margin-left: 65px;
+    margin-top: -20px;
   }
   #sec-progress{
     margin-top: -20px;
