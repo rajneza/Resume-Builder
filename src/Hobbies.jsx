@@ -7,10 +7,8 @@ import Dropzone from "react-dropzone";
 import { GoPerson } from "react-icons/go";
 import { MdOutlineDelete, MdOutlineDragIndicator, MdDragIndicator } from "react-icons/md";
 import { Scrollbars } from "react-custom-scrollbars";
-// import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -34,10 +32,10 @@ import image6 from "./Components/images/custom-links.jpg";
 import image7 from "./Components/images/custom-skills.webp";
 import image8 from "./Components/images/custom-hobbies.svg";
 import image9 from "./Components/images/custom-languages.svg";
-import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 
 const Data = [
   {
@@ -343,13 +341,14 @@ function Hobbies() {
     const fullName = cleanedName
       .split(" ")
       .map((word, index) => {
+        // Convert the first word to lowercase and the rest to title case
         if (index === 0) {
-          return word.toLowerCase();
-        } else {
-          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-        }
+          return word.toUpperCase();
+        } 
+          return word.charAt(0).toUpperCase() + word.slice(1).toUpperCase();
+        
       })
-      .join(" ");
+      .join(' ');
 
     const camelCaseName = fullName.charAt(0).toUpperCase() + fullName.slice(1);
     return addSpace ? camelCaseName : camelCaseName.replace(/\s+/g, "");
@@ -1092,15 +1091,7 @@ function Hobbies() {
 
   };
 
-  const handleInputskill = (e, objectId, inputName) => {
-    const updatedObjects = skill.map((object) => {
-      if (object.id === objectId) {
-        return { ...object, [inputName]: e.target.value };
-      }
-      return object;
-    });
-    setskill(updatedObjects);
-  };
+  
 
   const deleteskill = (objectId) => {
     const updatedObjects = skill.filter((object) => object.id !== objectId);
@@ -1537,7 +1528,7 @@ function Hobbies() {
                   </div>
                   <div>
                     <div>
-                      <ReactQuill
+                      <ReactQuill style={{width:"100%"}}
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
@@ -1644,7 +1635,33 @@ function Hobbies() {
                                           <div
                                             className="flex"
                                           >
-                                            {object.input1}
+                                            <div style={{display:"flex"}}>
+                                            <div>
+                                              {object.input1}
+                                              <div>
+                                              {
+                                                object.input4 === "" ? <span></span> : <p>{`(${object.input4} to ${object.input5})`}</p>
+                                              } 
+                                              </div>
+                                             
+                                            </div>
+                                            {
+                                                emp ? <div className="emp-delete-btn" id="emp-delete">
+                                                <button
+                                                  onClick={() =>
+                                                    deleteObject(object.id)
+                                                  }
+                                                  className="delete"
+                                                >
+                                                  <MdOutlineDelete />
+                                                </button>
+                                              </div> : <span></span>
+                                              }
+                                            
+ 
+                                            </div>
+                                            
+                                            
                                             <h5
                                               onClick={() => setemp(!emp)}
                                               style={{ cursor: "pointer" }}
@@ -1783,7 +1800,7 @@ function Hobbies() {
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div className="emp-delete-btn">
+                                              {/* <div className="emp-delete-btn">
                                                 <button
                                                   onClick={() =>
                                                     deleteObject(object.id)
@@ -1792,7 +1809,7 @@ function Hobbies() {
                                                 >
                                                   <MdOutlineDelete />
                                                 </button>
-                                              </div>
+                                              </div> */}
                                             </div>
                                           </div>
                                         </div>
@@ -1819,6 +1836,13 @@ function Hobbies() {
                                             className="flex"
                                           >
                                             {object.input1}
+                                            <div>
+                                              {
+                                                object.input4 === "" ? <span></span> : <p>{`(${object.input4} to ${object.input5})`}</p>
+                                              }
+                                              
+ 
+                                              </div>
                                             <h5
                                               onClick={() => setoction(!oction)}
                                               style={{ cursor: "pointer" }}
@@ -3220,7 +3244,7 @@ interests and curiosities"
                                          
                                             {/* <label htmlFor="">Level</label>  */}
                                             <div className="col-12 col-md-6">
-                                       
+                                            <div className="progress-text">{selectedStage}</div>
                                             <div className="progress-bar-container">
                                             <div className="progress" id="myProgressBar">
                                               {stages.map((stage, index) => (
@@ -3233,7 +3257,7 @@ interests and curiosities"
                                                   {stage}
                                                 </button>
                                               ))}
-                                              <div className="progress-text">{selectedStage}</div>
+                                              {/* <div className="progress-text">{selectedStage}</div> */}
                                            </div>
                                             </div>
                                             </div>
@@ -3581,7 +3605,7 @@ interests and curiosities"
                 // minHeight: '200px',
                 // padding: '10px',
                 // marginBottom: '20px',
-                width:'97%',
+                width:"97%"
               }}>
               <div className="main-right">
                 <div>
