@@ -35,6 +35,9 @@ import image9 from "./Components/images/custom-languages.svg";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css'
+
 
 
 const Data = [
@@ -1628,7 +1631,9 @@ function Hobbies() {
                                   {/* <Storelist {...store}/> */}
                                   {store.name === "Employment" ? (
                                     <div className="add-section-container">
-                                      <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                      <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <Tooltip id="my-tooltip" />
+                                        {store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       {objects.map((object) => (
                                         <div key={object.id}>
@@ -1828,7 +1833,9 @@ function Hobbies() {
                                   )}
                                   {store.name === "Education" ? (
                                     <div className="education-container">
-                                      <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                      <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <Tooltip id="my-tooltip" />
+                                        {store.name}</h3>
                                       <p className="des">{store.description}</p>
                                       {education.map((object) => (
                                         <div key={object.id}>
@@ -2015,7 +2022,12 @@ function Hobbies() {
                                           curricular ? "hidden" : "visible"
                                         }
                                       >
-                                        <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                        
+      
+                                        <h3>
+                                        <a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <Tooltip id="my-tooltip" />
+                                        {store.name}</h3>
                                         <p className="des">{store.description}</p>
                                         <div className="emp-div">
                                           {four.map((object) => (
@@ -2199,7 +2211,9 @@ interests and curiosities"
                                       <div
                                         className={cour ? "hidden" : "visible"}
                                       >
-                                        <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                        <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <Tooltip id="my-tooltip" />
+                                        {store.name}</h3>
                                         <p className="des">{store.description}</p>
                                         <div className="emp-div">
                                           {course.map((object) => (
@@ -2340,7 +2354,9 @@ interests and curiosities"
                                       <div
                                         className={intern ? "hidden" : "visible"}
                                       >
-                                        <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                        <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <Tooltip id="my-tooltip" />
+                                        {store.name}</h3>
                                         <div className="emp-div">
                                           {five.map((object) => (
                                             <div key={object.id}>
@@ -2521,7 +2537,9 @@ interests and curiosities"
                                       <div
                                         className={proj ? "hidden" : "visible"}
                                       >
-                                        <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                        <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <Tooltip id="my-tooltip" />
+                                        {store.name}</h3>
                                         <div className="emp-div">
                                           {project.map((object) => (
                                             <div key={object.id}>
@@ -2746,7 +2764,9 @@ interests and curiosities"
                                           reference ? "hidden" : "visible"
                                         }
                                       >
-                                        <h3><MdDragIndicator className="drag" />{store.name}</h3>
+                                        <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <Tooltip id="my-tooltip" />
+                                        {store.name}</h3>
                                         <div className="emp-div">
                                           {three.map((object) => (
                                             <div key={object.id}>
@@ -4110,236 +4130,236 @@ interests and curiosities"
     </div>
   );
 
-  function Storelist({ name, it, id, head }) {
-    return (
-      <div>
-        <div>{/* <h3>{name}</h3> */}</div>
-        <div>
-          {id === "06" ? (
-            <div>
-              {it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div>
-                      {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-            <p className="fonttt">{item.input6}</p> */}
-                      <h2 className="head">References</h2>
-                      <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
-                      <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {id === "01" ? (
-            <div>
-              <h2 className="head">Employment</h2>
-              {it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+//   function Storelist({ name, it, id, head }) {
+//     return (
+//       <div>
+//         <div>{/* <h3>{name}</h3> */}</div>
+//         <div>
+//           {id === "06" ? (
+//             <div>
+//               {it.map((item, index) => (
+//                 <div className="store">
+//                   {item.input1 === undefined ? (
+//                     <span></span>
+//                   ) : (
+//                     <div>
+//                       {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+//             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+//             <p className="fonttt">{item.input6}</p> */}
+//                       <h2 className="head">References</h2>
+//                       <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
+//                       <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+//                     </div>
+//                   )}
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <span></span>
+//           )}
+//           {id === "01" ? (
+//             <div>
+//               <h2 className="head">Employment</h2>
+//               {it.map((item, index) => (
+//                 <div className="store">
+//                   {item.input1 === undefined ? (
+//                     <span></span>
+//                   ) : (
+//                     <div className="store">
+//                       {item.input1 === undefined ? (
+//                         <span></span>
+//                       ) : (
+//                         <div>
+//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
 
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-                          <p className="fonttt">{item.input6}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
+//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+//                           <p className="fonttt">{item.input6}</p>
+//                         </div>
+//                       )}
+//                     </div>
+//                   )}
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <span></span>
+//           )}
 
-          {id === "02" ? (
-            <div>
-              {it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      <h2 className="head">Education</h2>
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-                          <p className="fonttt">{item.input6}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {id === "03" ? (
-            <div>
-              {it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div>
-                      <div className="store">
-                        <h2 className="head">Extra-curricular activites</h2>
-                        {item.input1 === undefined ? (
-                          <span></span>
-                        ) : (
-                          <div>
-                            <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-                            <p className="fonttt">{item.input6}</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {id === "04" ? (
-            <div>
-              {it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      <h2 className="head">Course</h2>
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-                          <p className="fonttt">{item.input6}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {id === "05" ? (
-            <div>
-              {it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      <h2 className="head">Internships</h2>
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-                          <p className="fonttt">{item.input6}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {id === "07" ? (
-            <div>
-              {it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      <h2 className="head">Project</h2>
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-                          <p className="fonttt">{item.input6}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {id === "08" ? (
-            <div>
-              <h2 className="head">{head}</h2>
-              {it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}`}</p>
-                          <p className="fonttt">{item.input5}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
+//           {id === "02" ? (
+//             <div>
+//               {it.map((item, index) => (
+//                 <div className="store">
+//                   {item.input1 === undefined ? (
+//                     <span></span>
+//                   ) : (
+//                     <div className="store">
+//                       <h2 className="head">Education</h2>
+//                       {item.input1 === undefined ? (
+//                         <span></span>
+//                       ) : (
+//                         <div>
+//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+//                           <p className="fonttt">{item.input6}</p>
+//                         </div>
+//                       )}
+//                     </div>
+//                   )}
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <span></span>
+//           )}
+//           {id === "03" ? (
+//             <div>
+//               {it.map((item, index) => (
+//                 <div className="store">
+//                   {item.input1 === undefined ? (
+//                     <span></span>
+//                   ) : (
+//                     <div>
+//                       <div className="store">
+//                         <h2 className="head">Extra-curricular activites</h2>
+//                         {item.input1 === undefined ? (
+//                           <span></span>
+//                         ) : (
+//                           <div>
+//                             <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+//                             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+//                             <p className="fonttt">{item.input6}</p>
+//                           </div>
+//                         )}
+//                       </div>
+//                     </div>
+//                   )}
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <span></span>
+//           )}
+//           {id === "04" ? (
+//             <div>
+//               {it.map((item, index) => (
+//                 <div className="store">
+//                   {item.input1 === undefined ? (
+//                     <span></span>
+//                   ) : (
+//                     <div className="store">
+//                       <h2 className="head">Course</h2>
+//                       {item.input1 === undefined ? (
+//                         <span></span>
+//                       ) : (
+//                         <div>
+//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+//                           <p className="fonttt">{item.input6}</p>
+//                         </div>
+//                       )}
+//                     </div>
+//                   )}
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <span></span>
+//           )}
+//           {id === "05" ? (
+//             <div>
+//               {it.map((item, index) => (
+//                 <div className="store">
+//                   {item.input1 === undefined ? (
+//                     <span></span>
+//                   ) : (
+//                     <div className="store">
+//                       <h2 className="head">Internships</h2>
+//                       {item.input1 === undefined ? (
+//                         <span></span>
+//                       ) : (
+//                         <div>
+//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+//                           <p className="fonttt">{item.input6}</p>
+//                         </div>
+//                       )}
+//                     </div>
+//                   )}
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <span></span>
+//           )}
+//           {id === "07" ? (
+//             <div>
+//               {it.map((item, index) => (
+//                 <div className="store">
+//                   {item.input1 === undefined ? (
+//                     <span></span>
+//                   ) : (
+//                     <div className="store">
+//                       <h2 className="head">Project</h2>
+//                       {item.input1 === undefined ? (
+//                         <span></span>
+//                       ) : (
+//                         <div>
+//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+//                           <p className="fonttt">{item.input6}</p>
+//                         </div>
+//                       )}
+//                     </div>
+//                   )}
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <span></span>
+//           )}
+//           {id === "08" ? (
+//             <div>
+//               <h2 className="head">{head}</h2>
+//               {it.map((item, index) => (
+//                 <div className="store">
+//                   {item.input1 === undefined ? (
+//                     <span></span>
+//                   ) : (
+//                     <div className="store">
+//                       {item.input1 === undefined ? (
+//                         <span></span>
+//                       ) : (
+//                         <div>
+//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+//                           <p className="fontt">{`${item.input4}`}</p>
+//                           <p className="fonttt">{item.input5}</p>
+//                         </div>
+//                       )}
+//                     </div>
+//                   )}
+//                 </div>
+//               ))}
+//             </div>
+//           ) : (
+//             <span></span>
+//           )}
 
-          {/* {it.map((item,index) => (
-          <div className="store">
-            {
-              item.input1 === undefined ? <span></span> : <div>
-                    <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-            <p className="fonttt">{item.input6}</p>
-              </div>
-            }
+//           {/* {it.map((item,index) => (
+//           <div className="store">
+//             {
+//               item.input1 === undefined ? <span></span> : <div>
+//                     <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+//             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+//             <p className="fonttt">{item.input6}</p>
+//               </div>
+//             }
             
-          </div>
-        ))} */}
-        </div>
-      </div>
-    );
-  }
+//           </div>
+//         ))} */}
+//         </div>
+//       </div>
+//     );
+//   }
 }
 
 export default Hobbies;
