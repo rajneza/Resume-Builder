@@ -26,7 +26,7 @@ import image from "./Components/images/custom-extra.svg";
 import image1 from "./Components/images/custom-course.svg";
 import image2 from "./Components/images/custom-internship.svg";
 import image3 from "./Components/images/custom-references.svg";
-import image4 from "./Components/images/custom-section.svg";
+ import image4 from "./Components/images/custom-section.svg";
 import image5 from "./Components/images/cutsom-projects.png";
 import image6 from "./Components/images/custom-links.jpg";
 import image7 from "./Components/images/custom-skills.webp";
@@ -37,6 +37,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css'
+import { AiFillQuestionCircle , AiFillCloseCircle } from "react-icons/ai"
 
 
 
@@ -175,6 +176,7 @@ function Hobbies() {
   const [stages, setStages] = useState(['Fresher', 'Experience', 'Export', 'Pro']);
   // const [recentlyAddedSkill, setRecentlyAddedSkill] = useState(null);
   const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
+  const [percentage , setpercentage] = useState(false)
   const createSecondProgressBar = (skill) => {
     const initialProgress = {
       Fresher: 25,
@@ -1217,10 +1219,13 @@ function Hobbies() {
                     <div className="resume-profile-content">
                       <div>
                         <div className="profile-body">
-                          <p>Add profile summary</p>
-                          <div className="profile-sum-percent">
-                            <p>+15</p>
-                          </div>
+                        <button onClick={()=>setpercentage(!percentage)}>
+                        
+                        {
+                          percentage ?   <AiFillCloseCircle  className="question-icon"/> : <AiFillQuestionCircle className="question-icon"/>
+                        }
+                        </button>
+                                        
                         </div>
                       </div>
                     </div>
@@ -1229,6 +1234,40 @@ function Hobbies() {
                 <div className="resume-hr-body">
                   {<ProgressBar completed={completionPercentage}
                   />}
+                  <div className={percentage ? "visible" : "hidden"}>
+                  <div className="competion">
+                    {
+                      job === "" ? <h5 className="percentage">5% Role</h5> : <span></span>
+                    }
+                    {
+                      firstName === "" ? <h5 className="percentage">5% Name</h5> : <span></span>
+                    }
+                    {
+                      email === "" ? <h5 className="percentage">5% Email</h5> : <span></span>
+                    }
+                    {
+                      phone === "" ? <h5 className="percentage">5% Phone</h5> : <span></span>
+                    }
+                    {
+                      country === "" ? <h5 className="percentage">5% Country</h5> : <span></span>
+                    }
+                    {
+                      place === "" ? <h5 className="percentage">5% Place of Birth</h5> : <span></span>
+                    }
+                    {
+                      birth === "" ? <h5 className="percentage">5% Date of Birth</h5> : <span></span>
+                    }
+                    {
+                      editorHtml === "" ? <h5 className="percentage">15% Summary</h5> : <span></span>
+                    }
+                    {
+                      skill.length === 0 ? <h5 className="percentage">25% Skills</h5> : <span></span>
+                    }
+                    {
+                      education.length === 0 ? <h5 className="percentage">25% Education</h5> : <span></span>
+                    }
+                  </div>
+                  </div>
                 </div>
               </div>
               <div className="left-pdetails-container">
