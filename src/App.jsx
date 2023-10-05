@@ -39,6 +39,7 @@ const App=()=>{
                 <Route path="/reference" element={<References></References>}></Route>
                 <Route path="/extra" element={<Extracurricular></Extracurricular>}></Route>
                 <Route path="/skills" element={<Skills></Skills>}></Route>
+                <Route path="/website" element={<Websites></Websites>}></Route>
               
                  
                 
