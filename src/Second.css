@@ -1016,6 +1016,10 @@ Popup.css .popup {
   color: blue;
   font-size: large;
 }
+#emp-delete{
+  margin-top: -1%;
+  
+}
 
 .add {
   color: #1a91f0;
@@ -1564,12 +1568,8 @@ row-gap: 5px;
 .present-date:hover{
   color:#1a91f0;
   font-weight: 500;
-}
-
-  
- 
- 
-  .inner-progress {
+} 
+.inner-progress {
     height: 5%;
     width: 0;
     transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;

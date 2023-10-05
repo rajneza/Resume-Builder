@@ -32,7 +32,6 @@ import image6 from "./Components/images/custom-links.jpg";
 import image7 from "./Components/images/custom-skills.webp";
 import image8 from "./Components/images/custom-hobbies.svg";
 import image9 from "./Components/images/custom-languages.svg";
-import EditTwoToneIcon from "@mui/icons-material/EditTwoTone";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -1092,15 +1091,7 @@ function Hobbies() {
 
   };
 
-  const handleInputskill = (e, objectId, inputName) => {
-    const updatedObjects = skill.map((object) => {
-      if (object.id === objectId) {
-        return { ...object, [inputName]: e.target.value };
-      }
-      return object;
-    });
-    setskill(updatedObjects);
-  };
+  
 
   const deleteskill = (objectId) => {
     const updatedObjects = skill.filter((object) => object.id !== objectId);
@@ -1644,7 +1635,33 @@ function Hobbies() {
                                           <div
                                             className="flex"
                                           >
-                                            {object.input1}
+                                            <div style={{display:"flex"}}>
+                                            <div>
+                                              {object.input1}
+                                              <div>
+                                              {
+                                                object.input4 === "" ? <span></span> : <p>{`(${object.input4} to ${object.input5})`}</p>
+                                              } 
+                                              </div>
+                                             
+                                            </div>
+                                            {
+                                                emp ? <div className="emp-delete-btn" id="emp-delete">
+                                                <button
+                                                  onClick={() =>
+                                                    deleteObject(object.id)
+                                                  }
+                                                  className="delete"
+                                                >
+                                                  <MdOutlineDelete />
+                                                </button>
+                                              </div> : <span></span>
+                                              }
+                                            
+ 
+                                            </div>
+                                            
+                                            
                                             <h5
                                               onClick={() => setemp(!emp)}
                                               style={{ cursor: "pointer" }}
@@ -1783,7 +1800,7 @@ function Hobbies() {
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div className="emp-delete-btn">
+                                              {/* <div className="emp-delete-btn">
                                                 <button
                                                   onClick={() =>
                                                     deleteObject(object.id)
@@ -1792,7 +1809,7 @@ function Hobbies() {
                                                 >
                                                   <MdOutlineDelete />
                                                 </button>
-                                              </div>
+                                              </div> */}
                                             </div>
                                           </div>
                                         </div>
@@ -1819,6 +1836,13 @@ function Hobbies() {
                                             className="flex"
                                           >
                                             {object.input1}
+                                            <div>
+                                              {
+                                                object.input4 === "" ? <span></span> : <p>{`(${object.input4} to ${object.input5})`}</p>
+                                              }
+                                              
+ 
+                                              </div>
                                             <h5
                                               onClick={() => setoction(!oction)}
                                               style={{ cursor: "pointer" }}
