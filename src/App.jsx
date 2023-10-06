@@ -2,15 +2,15 @@ import React from "react";
 
 import { BrowserRouter, Route, Routes, Link, useParams } from "react-router-dom";
 import "./Navbar.css"
-import curriculum from "./images/curriculum.png";
+// import curriculum from "/images/curriculum.png";
 // import mrssai from "./images/mrssai.avif";
 // import ushamadam from "./images/ushamadam.avif";
 // import acharjya from "./images/acharjya.avif";
 // import rajeshsir from "./images/rajeshsir.avif";
-import feat from "./images/feature-1-edf4481d69166ac81917d1e40e6597c8d61aa970ad44367ce78049bf830fbda5.svg";
-import feat1 from "./images/feature-2-a7a471bd973c02a55d1b3f8aff578cd3c9a4c5ac4fc74423d94ecc04aef3492b.svg";
-import feat2 from "./images/feature-3-4e87a82f83e260488c36f8105e26f439fdc3ee5009372bb5e12d9421f32eabdd.svg";
-import imagess from "./images/visual-0c7080adf17f1f207276f613447c924f667dab34b7ac415cd7ef653172defd0b.svg";
+// import feat from "./images/feature-1-edf4481d69166ac81917d1e40e6597c8d61aa970ad44367ce78049bf830fbda5.svg";
+// import feat1 from "./images/feature-2-a7a471bd973c02a55d1b3f8aff578cd3c9a4c5ac4fc74423d94ecc04aef3492b.svg";
+// import feat2 from "./images/feature-3-4e87a82f83e260488c36f8105e26f439fdc3ee5009372bb5e12d9421f32eabdd.svg";
+// import imagess from "./images/visual-0c7080adf17f1f207276f613447c924f667dab34b7ac415cd7ef653172defd0b.svg";
 
 // import Navbar from "./Navbar";
 
@@ -45,7 +45,7 @@ const LandingPage = () => {
         <nav className="navbar bg-white">
           <div className="logoooo">
             <a href="index.html" className="navbar-brand">
-              <img src={curriculum} alt="" className="navbar-brand-icon" />
+              <img src={process.env.PUBLIC_URL +"/images/curriculum.png"} alt="" className="navbar-brand-icon" />
               <span className="navbar-brand-text">build <span>resume.</span></span>
             </a>
             <button type="button" className="navbar-toggler-btn">
@@ -96,7 +96,7 @@ const LandingPage = () => {
           <div className="container">
             <div className="section-one-content">
               <div className="section-one-l">
-                <img src={imagess} />
+                <img src={process.env.PUBLIC_URL +"/images/visual-0c7080adf17f1f207276f613447c924f667dab34b7ac415cd7ef653172defd0b.svg"} />
               </div>
               <div className="section-one-r text-center">
                 <h2 className="lg-title">Use the best resume maker as your guide!</h2>
@@ -116,7 +116,7 @@ const LandingPage = () => {
               <div className="section-items">
                 <div className="section-item">
                   <div className="section-item-icon">
-                    <img src={feat} />
+                    <img src={process.env.PUBLIC_URL +"/images/feature-1-edf4481d69166ac81917d1e40e6597c8d61aa970ad44367ce78049bf830fbda5.svg"} />
                   </div>
                   <h5 className="section-item-title">Make a resume that wins interviews!</h5>
                   <p className="text">Use our resume maker with its advanced creation tools to tell a professional story that engages recruiters, hiring managers, and even CEOs.</p>
@@ -124,7 +124,7 @@ const LandingPage = () => {
 
                 <div className="section-item">
                   <div className="section-item-icon">
-                    <img src={feat1} />
+                    <img src={process.env.PUBLIC_URL +"/images/feature-2-a7a471bd973c02a55d1b3f8aff578cd3c9a4c5ac4fc74423d94ecc04aef3492b.svg"} />
                   </div>
                   <h5 className="section-item-title">Resume writing made easy!</h5>
                   <p className="text">Resume writing has never been this effortless. Pre-generated text, visual designs, and more - all already integrated into the resume maker. Just fill in your details.</p>
@@ -132,7 +132,7 @@ const LandingPage = () => {
 
                 <div className="section-item">
                   <div className="section-item-icon">
-                    <img src={feat2} />
+                    <img src={process.env.PUBLIC_URL +"/images/feature-3-4e87a82f83e260488c36f8105e26f439fdc3ee5009372bb5e12d9421f32eabdd.svg"} />
                   </div>
                   <h5 className="section-item-title">A recruiter-tested CV maker tool</h5>
                   <p className="text">Our resume builder and its pre-generated content are tested by recruiters and IT experts. We help your CV become truly competitive in the hiring process.</p>
