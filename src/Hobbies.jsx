@@ -166,7 +166,7 @@ function Hobbies() {
   const editingRef = useRef(editing);
   const [heading, setHeading] = useState("Personal Details");
   const [fname, setFname] = useState("File Name");
-  const [firstName, setFirstName] = useState("");
+  // const [name, setname] = useState("");
   const [lastName, setLastName] = useState("");
   const [selectedColor, setSelectedColor] = useState('#0f3871'); // Initial color
   const [skillsProgressBars, setSkillsProgressBars] = useState({});
@@ -1240,7 +1240,7 @@ function Hobbies() {
                       job === "" ? <h5 className="percentage">5% Role</h5> : <span></span>
                     }
                     {
-                      firstName === "" ? <h5 className="percentage">5% Name</h5> : <span></span>
+                      name === "" ? <h5 className="percentage">5% Name</h5> : <span></span>
                     }
                     {
                       email === "" ? <h5 className="percentage">5% Email</h5> : <span></span>
@@ -1373,11 +1373,11 @@ function Hobbies() {
                         type="text"
                         className="work"
                         // value={name}
-                        // onChange={(e) => {
-                        //   progress(e.target.value, name, "name", 5);
-                        // }}
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                         onChange={(e) => {
+                           progress(e.target.value, name, "name", 5);
+                         }}
+                        value={name}
+                        // onChange={(e) => setname(e.target.value)}
                       />
                     </div>
                   </div>
@@ -3730,7 +3730,7 @@ interests and curiosities"
                     </div>
                     <div>
                       <div style={{ display: "flex" }}>
-                        <h3 className="name1">{generateName(firstName, true) + " " + generateName(lastName, true)}</h3>
+                        <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
                         {/* <h3 className="name1">{name}</h3>
                         <h3 className="name2">{lastname}</h3> */}
                       </div>
