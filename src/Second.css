@@ -1633,4 +1633,27 @@ row-gap: 5px;
     .skill-name{
       font-size: 13px;
     }
-    
+    .question-icon{
+      font-size: 2rem;
+      color: #07d195;
+    }
+    .my-tooltip{
+      width: 100px;
+      background-color: #07d195;
+      color: black;
+      height: 50px;
+    }
+    .competion{
+      width: 100%;
+      min-height: 5vh;
+      max-height: auto;
+      background-color: #07d195;
+      border-radius: 15px;
+      padding: 5px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .percentage{
+      margin-left: 3%;
+      font-size: 1.5rem;
+    }
