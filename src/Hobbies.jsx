@@ -4401,7 +4401,7 @@ interests and curiosities"
             <section id="preview-sc" class="print_area">
                         <div class="container">
                             <div class="preview-cnt">
-                                <div class="preview-cnt-l bg-green text-white" id="color-container">
+                                <div class="preview-cnt-l bg-white text-white" id="color-container">
                                     <div class="preview-blk">
                                         <div class="preview-image">
                                             <img src="" alt="" id="image_dsp"/>
@@ -4547,7 +4547,7 @@ interests and curiosities"
            <section id="preview-sc" class="print_area">
                         <div class="container">
                             <div class="preview-cnt">
-                                <div class="preview-cnt-l bg-green text-white" id="color-container">
+                                <div class="preview-cnt-l bg-white text-white" id="color-container">
                                     <div class="preview-blk">
                                         <div class="preview-image">
                                             <img src="" alt="" id="image_dsp"/>
