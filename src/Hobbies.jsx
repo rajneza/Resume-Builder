@@ -1481,15 +1481,45 @@ function Hobbies() {
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
-                          <label htmlFor="">Driving License</label> <br />
-                          <input
+                          <label htmlFor="">Gender</label> <br />
+                          {/* <input
                             type="text"
                             className="work"
                             value={licence}
                             onChange={(e) => {
                               setlicense(e.target.value);
                             }}
-                          />
+                          /> */}
+                          <div className="main-gender">
+                          <label className="gender">
+    <input type="radio" name="gender" value="Male" 
+          onChange={(e) => {
+            setlicense(e.target.value);
+          }}/>
+    Male
+  </label>
+  <label className="gender">
+    <input type="radio" name="gender" value="Female" 
+          onChange={(e) => {
+            setlicense(e.target.value);
+          }}/>
+    Female
+  </label>
+  <label className="gender">
+    <input type="radio" name="gender" value="Other"
+          onChange={(e) => {
+            setlicense(e.target.value);
+          }}/>
+    Other
+  </label>
+  <label className="gender">
+    <input type="radio" name="gender" value="" 
+          onChange={(e) => {
+            setlicense(e.target.value);
+          }}/>
+    Do Not Display
+  </label>
+                          </div>
                         </div>
                       </div>
                       <div className="photo">
@@ -4046,7 +4076,7 @@ interests and curiosities"
                     {licence === "" ? (
                       <span></span>
                     ) : (
-                      <h4 className="heading1">Driving License</h4>
+                      <h4 className="heading1">Gender</h4>
                     )}
                     <div>
                       <p className="cit">{licence}</p>

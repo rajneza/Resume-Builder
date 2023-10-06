@@ -1661,3 +1661,16 @@ row-gap: 5px;
       font-size: 2rem;
       font-weight: bold;
     }
+    .main-gender{
+     
+      background-color: #eff2f9;
+      width: 20vw;
+      height: 6vh;
+      display: flex;
+      
+      align-items: center;
+    }
+    .gender{
+      margin-right: 7%;
+
+    }
