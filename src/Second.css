@@ -1657,3 +1657,7 @@ row-gap: 5px;
       margin-left: 3%;
       font-size: 1.5rem;
     }
+    .main-heading{
+      font-size: 2rem;
+      font-weight: bold;
+    }

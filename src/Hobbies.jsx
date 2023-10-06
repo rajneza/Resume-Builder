@@ -1212,7 +1212,7 @@ function Hobbies() {
               <div className="score-body">
                 <div className="score-content">
                   <div className="score-left-body">
-                    <div className="progress-score">{completionPercentage}%</div>
+                    {/* <div className="progress-score">{completionPercentage}%</div> */}
                     <p className="resume-para">Completion Score</p>
                   </div>
                   <div className="resume-profile-body">
@@ -1286,7 +1286,7 @@ function Hobbies() {
                       </div>
                     ) : (
                       <div className="handle-heading">
-                        <h3>{heading}</h3>
+                        <h2 className="main-heading">{heading}</h2>
                         <button onClick={handleEditClick}>
                           <EditIcon />
                         </button>
@@ -1559,7 +1559,7 @@ function Hobbies() {
               <div className="summary">
                 <div>
                   <div>
-                    <h2>Summary</h2>
+                  <h2 className="main-heading">Summary</h2>
                   </div>
                   <div>
                     <p>
@@ -1670,7 +1670,7 @@ function Hobbies() {
                                   {/* <Storelist {...store}/> */}
                                   {store.name === "Employment" ? (
                                     <div className="add-section-container">
-                                      <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                      <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
                                         {store.name}</h3>
                                       <p className="des">{store.description}</p>
@@ -1872,7 +1872,7 @@ function Hobbies() {
                                   )}
                                   {store.name === "Education" ? (
                                     <div className="education-container">
-                                      <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                      <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
                                         {store.name}</h3>
                                       <p className="des">{store.description}</p>
@@ -2063,7 +2063,7 @@ function Hobbies() {
                                       >
                                         
       
-                                        <h3>
+                                        <h3 className="main-heading">
                                         <a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
                                         {store.name}</h3>
@@ -2250,7 +2250,7 @@ interests and curiosities"
                                       <div
                                         className={cour ? "hidden" : "visible"}
                                       >
-                                        <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
                                         {store.name}</h3>
                                         <p className="des">{store.description}</p>
@@ -2393,7 +2393,7 @@ interests and curiosities"
                                       <div
                                         className={intern ? "hidden" : "visible"}
                                       >
-                                        <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
                                         {store.name}</h3>
                                         <div className="emp-div">
@@ -2576,7 +2576,7 @@ interests and curiosities"
                                       <div
                                         className={proj ? "hidden" : "visible"}
                                       >
-                                        <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
                                         {store.name}</h3>
                                         <div className="emp-div">
@@ -2803,7 +2803,7 @@ interests and curiosities"
                                           reference ? "hidden" : "visible"
                                         }
                                       >
-                                        <h3><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                        <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
                                         {store.name}</h3>
                                         <div className="emp-div">
@@ -3123,7 +3123,8 @@ interests and curiosities"
                 <div className="main-div">
                   <div className={link ? "hidden" : "visible"}>
                     <div>
-                      <h2> Websites & Social Links</h2>
+                      
+                      <h2 className="main-heading"> Websites & Social Links</h2>
                     </div>
                     <div>
                       <p>
@@ -3152,7 +3153,7 @@ interests and curiosities"
                                     <div style={{ display: "flex" }}>
                                       <div className="wanted">
                                         <div>
-                                          <label htmlFor="">Instagram</label>{" "}
+                                          <label htmlFor="">Website Name</label>{" "}
                                           <br />
                                           <input
                                             type="text"
@@ -3207,7 +3208,7 @@ interests and curiosities"
                   <div className="add_section_box">
                     <div className={label ? "hidden" : "visible"}>
                       <div>
-                        <h2> Skills</h2>
+                        <h2 className="main-heading"> Skills</h2>
                       </div>
                       <div>
                         <p>
@@ -3219,10 +3220,7 @@ interests and curiosities"
                       </div>
                       <div>
                         <label htmlFor="">
-                          <Switch
-                            onChange={handleSwitchChange}
-                            checked={isChecked}
-                          />{" "}
+                          {" "}
                           Show level
                         </label>
                       </div>
@@ -3376,7 +3374,7 @@ interests and curiosities"
                     <div className="add_section_box">
                       <div className={hobb ? "hidden" : "visible"}>
                         <div>
-                          <h2>Hobbies</h2>
+                          <h2 className="main-heading">Hobbies</h2>
                         </div>
                         <div className="emp-div">
                           {six.map((object) => (
@@ -3436,7 +3434,7 @@ interests and curiosities"
                       <div className="add_section_box">
                         <div className={lang ? "hidden" : "visible"}>
                           <div>
-                            <h2>Langugages</h2>
+                            <h2 className="main-heading">Langugages</h2>
                           </div>
                           <div className="emp-div">
                             {seven.map((object) => (
@@ -3535,7 +3533,7 @@ interests and curiosities"
                 </div>
               </div>
               <div className="add-section-container">
-                <h3 className="add-section-head">Add Section</h3>
+                <h3 className="add-section-head main-heading">Add Section</h3>
                 <div className="add-section-box">
                   <div className="custom-section">
                     <button className="custom-btn" onClick={handlecurricular}>
@@ -4034,7 +4032,10 @@ interests and curiosities"
                       <p className="cont">{address}</p>
                     </div>
                     <div>
-                      <p className="cit">{`${city} , ${post}`}</p>
+                      {
+                        post === "" ?  <p className="cit">{`${city}`}</p> :  <p className="cit">{`${city} , ${post}`}</p>
+                      }
+                      {/* <p className="cit">{`${city} , ${post}`}</p> */}
                     </div>
                     <div>
                       <p className="cit">{country}</p>
