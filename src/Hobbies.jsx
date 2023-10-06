@@ -1570,9 +1570,9 @@ function Hobbies(props) {
                 <div>
                   <div>
 
-                    <h2>Summary<span style={{color:"red"}}>*</span></h2>
+                    {/* <h2>Summary<span style={{color:"red"}}>*</span></h2> */}
 
-                  <h2 className="main-heading">Summary</h2>
+                  <h2 className="main-heading">Summary<span style={{color:"red",fontSize:"16px"}}>*</span></h2>
 
                   </div>
                   <div>
@@ -1892,11 +1892,11 @@ function Hobbies(props) {
                                   {store.name === "Education" ? (
                                     <div className="education-container">
 
-                                      <h3><MdDragIndicator className="drag" />{store.name}<span style={{color:"red"}}>*</span></h3>
+                                      {/* <h3><MdDragIndicator className="drag" />{store.name}<span style={{color:"red"}}>*</span></h3> */}
 
                                       <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
-                                        {store.name}</h3>
+                                        {store.name}<span style={{color:"red",fontSize:"17px"}}>*</span></h3>
 
                                       <p className="des">{store.description}</p>
                                       {education.map((object) => (
@@ -3236,9 +3236,9 @@ interests and curiosities"
                     <div className={label ? "hidden" : "visible"}>
                       <div>
 
-                        <h2> Skills<span style={{color:"red"}}>*</span></h2>
+                        {/* <h2> Skills<span style={{color:"red"}}>*</span></h2> */}
 
-                        <h2 className="main-heading"> Skills</h2>
+                        <h2 className="main-heading"> Skills<span style={{color:"red",fontSize:"17px"}}>*</span></h2>
 
                       </div>
                       <div>
