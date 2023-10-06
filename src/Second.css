@@ -107,20 +107,23 @@ Popup.css .popup {
   max-height: 80%;
   border-radius: 50%;
 }
-.select-photo-container{
+
+.select-photo-container {
   display: flex;
-  
+
 }
-.photo-icon{
+
+.photo-icon {
   font-size: 2rem;
 }
-.photo-edit-container{
+
+.photo-edit-container {
   margin-top: -13.55%;
   margin-bottom: 0%;
 }
 
 .job-title {
-   margin-bottom: 15px;
+  margin-bottom: 15px;
   display: flex;
 }
 
@@ -270,14 +273,14 @@ Popup.css .popup {
 .title-content {
   max-width: 100%;
   vertical-align: top;
-  
+
 }
 
 .content-box {
   /* max-width: 100%; */
   height: 35px;
   display: flex;
-  
+
 }
 
 .score-body {
@@ -326,9 +329,10 @@ Popup.css .popup {
 .left-pdetails-container {
   margin-bottom: 30px;
 }
-.css-i4bv87-MuiSvgIcon-root{
-  height:25px !important;
-  width:25px !important;
+
+.css-i4bv87-MuiSvgIcon-root {
+  height: 25px !important;
+  width: 25px !important;
 }
 
 .score-content {
@@ -423,7 +427,8 @@ Popup.css .popup {
   background-color: transparent;
 
 }
-.handle-heading h3{
+
+.handle-heading h3 {
   font-size: 23px;
   margin-right: 4px;
   font-weight: 600;
@@ -485,11 +490,12 @@ Popup.css .popup {
   font-weight: 500;
 }
 
-.edit-icon{
+.edit-icon {
   margin-right: 200px;
 }
-.css-i4bv87-MuiSvgIcon-root{
-  fill:blue !important;
+
+.css-i4bv87-MuiSvgIcon-root {
+  fill: blue !important;
 }
 
 .progress-score {
@@ -526,13 +532,14 @@ Popup.css .popup {
   justify-content: center;
   align-items: center;
 }
-.color-button{
+
+.color-button {
   width: 8px;
   height: 8px;
-  background-color:#0f3871;
+  background-color: #0f3871;
   margin-top: 13%;
-  margin-left:5px;
-  
+  margin-left: 5px;
+
 }
 
 .container {
@@ -645,7 +652,7 @@ Popup.css .popup {
 .job input,
 .photo input {
   padding: 12px 16px;
-  
+
 }
 
 .edit {
@@ -723,7 +730,7 @@ Popup.css .popup {
   /* background-color: black; */
   width: 90%;
   padding: 0%;
-  min-height: 300px!important;
+  min-height: 300px !important;
 }
 
 .two-one {
@@ -777,9 +784,10 @@ Popup.css .popup {
   margin-left: 0%;
 
 }
-.summry{
+
+.summry {
   margin-right: 3%;
-  
+
 }
 
 .prof {
@@ -810,7 +818,7 @@ Popup.css .popup {
 
 .main-full {
   background-color: gray;
-  width: 90%!important;
+  width: 90% !important;
   min-height: 600px;
   max-height: auto;
   overflow: visible;
@@ -824,7 +832,7 @@ Popup.css .popup {
 .main-right {
   width: 70%;
   background-color: white;
-  overflow-y:visible;
+  overflow-y: visible;
   overflow: auto;
   min-height: 92vh;
   max-height: auto;
@@ -903,7 +911,7 @@ Popup.css .popup {
 .emp-main input,
 .emp-main select {
   padding: 10px;
-  margin:8px 1vw 8px 0;
+  margin: 8px 1vw 8px 0;
 }
 
 .emp-container {
@@ -960,10 +968,10 @@ Popup.css .popup {
   font-size: 16px;
   margin-top: 10%;
   margin-bottom: 5%;
-  
+
 }
-.res
-.div-heading{
+
+.res .div-heading {
   font-size: 17px;
 }
 
@@ -1002,6 +1010,7 @@ Popup.css .popup {
   margin-top: 0%;
   overflow: hidden;
 }
+
 /* 
 .main-full {
   background-color: black;
@@ -1033,16 +1042,18 @@ Popup.css .popup {
   /* background-color: #0f3871; */
   margin-right: 0%;
 }
-.add-section-container{
+
+.add-section-container {
   cursor: default;
 }
-.drag{
+
+.drag {
   cursor: grab;
 
 
- margin-left: -3%;
- position: relative;
- top: -3px;
+  margin-left: -3%;
+  position: relative;
+  top: -3px;
 
 }
 
@@ -1113,7 +1124,7 @@ Popup.css .popup {
   margin-top: 20px;
 }
 
-.intern-job-emp{
+.intern-job-emp {
   display: flex;
 }
 
@@ -1168,23 +1179,26 @@ Popup.css .popup {
 
 .photo-heading h4 {
   width: 10vw;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 10px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
 }
-.mainphoto-heading{
+
+.mainphoto-heading {
   background-color: #ec930c;
 }
-.select-image{
+
+.select-image {
   display: flex;
   position: relative;
   right: 33px;
 }
-.person-icon{
+
+.person-icon {
   height: 100%;
   width: 100%;
 
@@ -1209,7 +1223,7 @@ Popup.css .popup {
 .add-section-container,
 .education-container,
 .add_section_box,
-.main-div{
+.main-div {
   margin-bottom: 30px;
 }
 
@@ -1247,42 +1261,59 @@ Popup.css .popup {
 
 .custom-section p {
   margin-top: 10px;
-  font-family: TT Commons,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-    font-size: 16px;
-    
+  font-family: TT Commons, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  font-size: 16px;
+
+}
+
+
+
+
+#reference {
+  width: 43vw;
+}
+
+.label {
+  margin-left: 6.7%;
+}
+
+
+@media print {
+  body {
+    margin: 0px;
+    /* Remove page margins */
+  }
+
+  @page {
+    margin: 0;
+    /* Remove margins for the printed page */
+  }
+
+  #pdf-content {
+    width: 99% !important;
+    /* Set the width to 100% for printing */
+    height: 100%;
+    /* Set the height to 100% for printing */
+    padding: 0;
+    /* Remove padding for printing */
+    margin: 0;
+    /* Remove margin for printing */
+    page-break-before: always;
+    /* Ensure each content section starts on a new page */
+  }
+
+
 }
 
 
 
 
-  #reference{
-    width: 43vw;
-  }
-  .label{
-    margin-left: 6.7%;
-  }
-
-  
-  @media print {
-    body {
-      margin: 0px; /* Remove page margins */
-    }
-    @page {
-      margin: 0; /* Remove margins for the printed page */
-    }
-  
-    #pdf-content {
-      width: 99%!important; /* Set the width to 100% for printing */
-      height: 100%; /* Set the height to 100% for printing */
-      padding: 0; /* Remove padding for printing */
-      margin: 0; /* Remove margin for printing */
-      page-break-before: always; /* Ensure each content section starts on a new page */
-    }
-   
-
+.generate {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
 }
-
-
 
   .generate{
    
@@ -1293,277 +1324,460 @@ Popup.css .popup {
   }
  
 
-  .skill-info {
-    text-align: right;
-    font-size: 14px;
-    color: black;
-    flex-grow: 1;
-  }
-  
-  .progress-container {
-    text-align: center;
-    position: relative;
-  }
-  
-  .stage-heading {
-    margin-top: 10px;
-  }
-  #myProgressBar{
-    display: flex;
-    width: 175%;
-    height: 40px;
-   margin-top: 6px;
-
-  }
-  .main-skillls{
-    display: flex;
-    column-gap: 10px;
-    width: 100%;
-    
-  }
 
 
-  #skillsContainer {
-    padding: 10px;
-    border: 1px solid rgb(207, 207, 207);
-    border-radius: 3px;
-    display: flex;
-    flex-wrap: wrap;
-    gap : 2px;
-    font-size: 10px;
+.skill-info {
+  text-align: right;
+  font-size: 14px;
+  color: black;
+  flex-grow: 1;
 }
-#skillsContainer button{
- font-size: 10px;
+
+.progress-container {
+  text-align: center;
+  position: relative;
+}
+
+.stage-heading {
+  margin-top: 10px;
+}
+
+#myProgressBar {
+  display: flex;
+  width: 175%;
+  height: 40px;
+  margin-top: 6px;
+
+}
+
+.main-skillls {
+  display: flex;
+  column-gap: 10px;
+  width: 100%;
+
 }
 
 
-  .progress {
-    width: 100%;
-    height: 30px;
-    background-color: rgb(39, 175, 175);
-    position: relative;
-    cursor: pointer;
-    margin-bottom: 20px;
-    overflow: hidden;
-   
-  }
-  
-  .progress-stage {
-    height: 100%;
-    width: 100%;
-    float: left;
-    transition: background-color 0.3s ease-in-out;
+#skillsContainer {
+  padding: 10px;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  font-size: 10px;
+}
 
-  }
-  
-  .progress-text {
-    position: sticky;
-    color: rgb(118, 119, 118);
-    font-weight: bold;
-    width: 100%;
-    text-align: center;
-    font-size: 13px;
-    display: flex;
-    justify-content: center;
-    margin-left: 65px;
-    margin-top: -20px;
-  }
-  #sec-progress{
-    margin-top: -20px;
-  }
-  
-  .progress-bar {
-    width: 100%;
-    height: 5px;
-    /* background-color: hsl(140, 93%, 49%); */
-    border-radius: 4px;
-    overflow: hidden;
-    margin-right: 10px;
-  }
- #myProgressBar button{
-   font-size: 13px;
-  }
-  .fresher {
-    background-color: green;
-    color: white;
-    transition: background-color 1.3s ease;
-    animation: colorChange 8s infinite alternate;
-    animation-delay: 2s;
-  }
-  .fresher:hover {
-    background-color: rgb(4, 158, 4);
+#skillsContainer button {
+  font-size: 10px;
+}
 
-   
+
+.progress {
+  width: 100%;
+  height: 30px;
+  background-color: rgb(39, 175, 175);
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 20px;
+  overflow: hidden;
+
+}
+
+.progress-stage {
+  height: 100%;
+  width: 100%;
+  float: left;
+  transition: background-color 0.3s ease-in-out;
+
+}
+
+.progress-text {
+  position: sticky;
+  color: rgb(118, 119, 118);
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  margin-left: 65px;
+    margin-top: -20px;
+}
+
+#sec-progress {
+  margin-top: -20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 5px;
+  /* background-color: hsl(140, 93%, 49%); */
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+#myProgressBar button {
+  font-size: 13px;
+}
+
+.fresher {
+  background-color: green;
+  color: white;
+  transition: background-color 1.3s ease;
+  animation: colorChange 8s infinite alternate;
+  animation-delay: 2s;
+}
+
+.fresher:hover {
+  background-color: rgb(4, 158, 4);
+
+
+}
+
+.experience {
+  background-color: rgb(2, 156, 2);
+  color: white;
+  animation-delay: 2s;
+  animation: colorChange1 8s infinite alternate;
+  transition: background-color 1.3s ease;
+}
+
+.experience:hover {
+  background-color: rgb(26, 207, 26);
+
+}
+
+.export {
+  background-color: rgb(19, 167, 19);
+  color: white;
+  animation-delay: 6s;
+  animation: colorChange2 8s infinite alternate;
+  transition: background-color 1.5s ease;
+}
+
+.export:hover {
+  background-color: rgb(75, 250, 75);
+
+}
+
+.pro {
+  background-color: rgb(36, 177, 36);
+  color: white;
+  animation-delay: 7s;
+  animation: colorChange3 8s infinite alternate;
+  transition: background-color 1.6s ease;
+}
+
+.pro :hover {
+  background-color: rgb(131, 248, 131);
+
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #8be90f;
+    /* Initial color */
   }
-  .experience {
-    background-color:  rgb(2, 156, 2);
-    color: white;
-    animation-delay: 2s;
-    animation: colorChange1 8s infinite alternate;
-    transition: background-color 1.3s ease;
+
+  25% {
+    background-color: #2ecc71;
   }
-  .experience:hover {
-    background-color:  rgb(26, 207, 26);
-    
+
+  50% {
+    background-color: #37fab9;
   }
-  
-  .export {
-    background-color:  rgb(19, 167, 19);
-    color: white;
-    animation-delay: 6s;
-    animation: colorChange2 8s infinite alternate;
-    transition: background-color 1.5s ease;
+
+  75% {
+    background-color: #07d195;
   }
-  .export:hover {
-    background-color:  rgb(75, 250, 75);
-   
+
+  100% {
+    background-color: #0fd139;
+    /* Back to initial color */
   }
-  .pro {
-    background-color:  rgb(36, 177, 36);
-    color: white;
-    animation-delay: 7s;
-    animation: colorChange3 8s infinite alternate;
-    transition: background-color 1.6s ease;
+}
+
+@keyframes colorChange1 {
+  0% {
+    background-color: #46e96f;
+    /* Initial color */
   }
-  .pro :hover{
-    background-color:  rgb(131, 248, 131);
-   
+
+  25% {
+    background-color: #2fc46d;
   }
-  @keyframes colorChange {
-    0% {
-      background-color: #8be90f; /* Initial color */
-    }
-    25% {
-      background-color: #2ecc71;
-    }
-    50% {
-      background-color: #37fab9;
-    }
-    75% {
-      background-color: #07d195;
-    }
-    100% {
-      background-color: #0fd139; /* Back to initial color */
-    }
+
+  50% {
+    background-color: #2ce414;
   }
-  @keyframes colorChange1 {
-    0% {
-      background-color: #46e96f; /* Initial color */
-    }
-    25% {
-      background-color: #2fc46d;
-    }
-    50% {
-      background-color: #2ce414;
-    }
-    75% {
-      background-color: #a3e606;
-    }
-    100% {
-      background-color: #98e983; /* Back to initial color */
-    }
+
+  75% {
+    background-color: #a3e606;
   }
-  @keyframes colorChange2 {
-    0% {
-      background-color: hsl(113, 81%, 47%); /* Initial color */
-    }
-    25% {
-      background-color: #5db481;
-    }
-    50% {
-      background-color: hsl(135, 69%, 54%);
-    }
-    75% {
-      background-color: #98f540;
-    }
-    100% {
-      background-color: #07b407; /* Back to initial color */
-    }
+
+  100% {
+    background-color: #98e983;
+    /* Back to initial color */
   }
-  @keyframes colorChange3 {
-    0% {
-      background-color: #0eeb3d; /* Initial color */
-    }
-    25% {
-      background-color: #2ecc71;
-    }
-    50% {
-      background-color: #3ce77e;
-    }
-    75% {
-      background-color: #2adb5f;
-    }
-    100% {
-      background-color: #1cdf0a; /* Back to initial color */
-    }
+}
+
+@keyframes colorChange2 {
+  0% {
+    background-color: hsl(113, 81%, 47%);
+    /* Initial color */
   }
-  
-  .progress-bar-container {
+
+  25% {
+    background-color: #5db481;
+  }
+
+  50% {
+    background-color: hsl(135, 69%, 54%);
+  }
+
+  75% {
+    background-color: #98f540;
+  }
+
+  100% {
+    background-color: #07b407;
+    /* Back to initial color */
+  }
+}
+
+@keyframes colorChange3 {
+  0% {
+    background-color: #0eeb3d;
+    /* Initial color */
+  }
+
+  25% {
+    background-color: #2ecc71;
+  }
+
+  50% {
+    background-color: #3ce77e;
+  }
+
+  75% {
+    background-color: #2adb5f;
+  }
+
+  100% {
+    background-color: #1cdf0a;
+    /* Back to initial color */
+  }
+}
+
+.progress-bar-container {
   display: flex;
 
   /* width: 165%; */
   flex-direction: column;
-row-gap: 5px;
-  }
-#secondProgressBarContainer{
+  row-gap: 5px;
+}
+
+#secondProgressBarContainer {
   width: 500%;
 }
- 
-  .inner-progress {
-    height: 5%;
-    width: 0;
-    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  }
-  
-  /* Specific CSS for second progress bar background color based on stages */
-  
-  .progress-bar-container[data-stage="Fresher"] .progress-bar .inner-progress {
-    background-color: green;
-    height: 100%;
-    /* Set a fixed height for all inner progress bars */
-  }
-  
-  .progress-bar-container[data-stage="Experience"] .progress-bar .inner-progress {
-    background-color:rgb(3, 170, 3) ;
-    height: 0%;
-    /* Set a fixed height for all inner progress bars */
-  }
-  
-  .progress-bar-container[data-stage="Export"] .progress-bar .inner-progress {
-    background-color: rgb(3, 212, 3);
-    height: 100%;
-    color: white;
-    /* Set a fixed height for all inner progress bars */
-  }
-  
-  .progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
-    background-color: rgb(16, 228, 16)!important;
-    height: 100%;
-    color: white;
-    /* Set a fixed height for all inner progress bars */
-  }
-  
-  /* In your App.css or a separate CSS file */
-  .custom-toast {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    }
-    .ill{
-      display: flex;
-      width: 100%;
-    column-gap: 2px;
-    max-width: 150%;
-    }
+
+.inner-progress {
+  height: 5%;
+  width: 0;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Specific CSS for second progress bar background color based on stages */
+
+.progress-bar-container[data-stage="Fresher"] .progress-bar .inner-progress {
+  background-color: green;
+  height: 100%;
+  /* Set a fixed height for all inner progress bars */
+}
+
+.progress-bar-container[data-stage="Experience"] .progress-bar .inner-progress {
+  background-color: rgb(3, 170, 3);
+  height: 0%;
+  /* Set a fixed height for all inner progress bars */
+}
+
+.progress-bar-container[data-stage="Export"] .progress-bar .inner-progress {
+  background-color: rgb(3, 212, 3);
+  height: 100%;
+  color: white;
+  /* Set a fixed height for all inner progress bars */
+}
+
+.progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
+  background-color: rgb(16, 228, 16) !important;
+  height: 100%;
+  color: white;
+  /* Set a fixed height for all inner progress bars */
+}
+
+/* In your App.css or a separate CSS file */
+.custom-toast {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ill {
+  display: flex;
+  width: 100%;
+  column-gap: 2px;
+  max-width: 150%;
+}
 
 
-.present-date{
+.present-date {
   margin-left: 52%;
 }
 
-.present-date:hover{
-  color:#1a91f0;
+.present-date:hover {
+  color: #1a91f0;
   font-weight: 500;
+
+}
+
+
+
+
+.inner-progress {
+  height: 5%;
+  width: 0;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Specific CSS for second progress bar background color based on stages */
+
+.progress-bar-container[data-stage="Fresher"] .progress-bar .inner-progress {
+  background-color: green;
+  height: 100%;
+  /* Set a fixed height for all inner progress bars */
+}
+
+.progress-bar-container[data-stage="Experience"] .progress-bar .inner-progress {
+  background-color: rgb(3, 170, 3);
+  height: 0%;
+  /* Set a fixed height for all inner progress bars */
+}
+
+.progress-bar-container[data-stage="Export"] .progress-bar .inner-progress {
+  background-color: rgb(3, 212, 3);
+  height: 100%;
+  color: white;
+  /* Set a fixed height for all inner progress bars */
+}
+
+.progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
+  background-color: rgb(16, 228, 16) !important;
+  height: 100%;
+  color: white;
+  /* Set a fixed height for all inner progress bars */
+}
+
+/* In your App.css or a separate CSS file */
+.custom-toast {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ill {
+  display: flex;
+  width: 100%;
+  column-gap: 2px;
+  max-width: 150%;
+
+}
+
+p {
+  font-size: 13px;
+}
+
+label {
+  font-size: 13px;
+}
+
+.text-area {
+  font-size: 13px;
+}
+
+.workk {
+  font-size: 13px;
+}
+
+option {
+  font-size: 13px;
+}
+
+select {
+  font-size: 13px;
+}
+
+.skill-name {
+  font-size: 13px;
+}
+
+
+.template1 {
+  background-color: lightblue;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.template2 {
+  background-color: rgb(125, 207, 30);
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.template3 {
+  background-color: rgb(189, 47, 89);
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.template4 {
+  background-color: #0596c7;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#color-picker {
+  width: 30px;
+  height: 30px;
+  background-color: #3498db;
+  /* You can change the color code */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  /* Text color */
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.generate #color-picker-button {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 } 
 .inner-progress {
     height: 5%;
@@ -1674,3 +1888,4 @@ row-gap: 5px;
       margin-right: 7%;
 
     }
+

@@ -117,7 +117,7 @@ const item = [
 ];
 
 
-function Hobbies() {
+function Hobbies(props) {
   const [job, setjob] = useState("");
   const [name, setname] = useState("");
   const [lastname, setlastname] = useState("");
@@ -176,7 +176,16 @@ function Hobbies() {
   const [stages, setStages] = useState(['Fresher', 'Experience', 'Export', 'Pro']);
   // const [recentlyAddedSkill, setRecentlyAddedSkill] = useState(null);
   const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
+
+  const { template, additionalProp } = props;
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const handleClick = () => {
+    setSelectedTemplate(template);
+  };
+ 
+
   const [percentage , setpercentage] = useState(false)
+
   const createSecondProgressBar = (skill) => {
     const initialProgress = {
       Fresher: 25,
@@ -1175,40 +1184,11 @@ function Hobbies() {
               <div className="resume-title">
                 <div className="title-content">
                   <div className="content-box">
-                  {editingFname ? (
-                        <div>
-                          <input
-                            type="text"
-                            id="file_name"
-                            value={fname}
-                            onChange={handleFnameChange}
-                            onBlur={handleFnameBlur}
-                            className="handle-input"
-                          />
-                        </div>
-                      ) : (
-                        <div className="handle-heading">
-                          <h3>{fname}</h3>
-                          <button onClick={handleFnameClick}>
-                            <EditIcon />
-                          </button>
-                        </div>
-                      )}
+                 
                   </div>
                 </div>
               </div>
-              <div className="ccccc">
-                <input
-                  id="color-picker"
-                  type="color"
-                  value={selectedColor}
-                  onChange={handleColorChange}
-                  style={{ display: 'none' }} // Hide the default color input UI
-                />
-                <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()}>
-                  Open Color Picker
-                </button>
-              </div>
+             
               <div className="score-body">
                 <div className="score-content">
                   <div className="score-left-body">
@@ -1297,7 +1277,7 @@ function Hobbies() {
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">
-                      <label htmlFor="">Role</label> <br />
+                      <label htmlFor="">Role<span style={{color:"red"}}>*</span></label> <br />
                       <input
                         type="text"
                         value={job}
@@ -1368,7 +1348,7 @@ function Hobbies() {
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">
-                      <label htmlFor="">First Name</label> <br />
+                      <label htmlFor="">First Name<span style={{color:"red"}}>*</span></label> <br />
                       <input
                         type="text"
                         className="work"
@@ -1382,7 +1362,7 @@ function Hobbies() {
                     </div>
                   </div>
                   <div className="photo">
-                    <label htmlFor="">Last Name</label> <br />
+                    <label htmlFor="">Last Name<span style={{color:"red"}}>*</span></label> <br />
                     <input
                       type="text"
                       className="work"
@@ -1398,7 +1378,7 @@ function Hobbies() {
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">
-                      <label htmlFor="">Email</label> <br />
+                      <label htmlFor="">Email<span style={{color:"red"}}>*</span></label> <br />
                       <input
                         type="email"
                         className="work"
@@ -1410,7 +1390,7 @@ function Hobbies() {
                     </div>
                   </div>
                   <div className="photo">
-                    <label htmlFor="">Phone</label> <br />
+                    <label htmlFor="">Phone<span style={{color:"red"}}>*</span></label> <br />
                     <PhoneInput
                       country={"in"}
                       className="work"
@@ -1422,7 +1402,7 @@ function Hobbies() {
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">
-                      <label htmlFor="">Country</label> <br />
+                      <label htmlFor="">Country<span style={{color:"red"}}>*</span></label> <br />
                       <input
                         type="text"
                         className="work"
@@ -1542,7 +1522,7 @@ function Hobbies() {
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
-                          <label htmlFor="">Place of Birth</label> <br />
+                          <label htmlFor="">Place of Birth<span style={{color:"red"}}>*</span></label> <br />
                           <input
                             type="text"
                             className="work"
@@ -1556,7 +1536,7 @@ function Hobbies() {
                         </div>
                       </div>
                       <div className="photo">
-                        <label htmlFor="">Date of Birth</label> <br />
+                        <label htmlFor="">Date of Birth<span style={{color:"red"}}>*</span></label> <br />
                         <input
                           type="text"
                           className="work"
@@ -1589,7 +1569,11 @@ function Hobbies() {
               <div className="summary">
                 <div>
                   <div>
+
+                    <h2>Summary<span style={{color:"red"}}>*</span></h2>
+
                   <h2 className="main-heading">Summary</h2>
+
                   </div>
                   <div>
                     <p>
@@ -1902,9 +1886,13 @@ function Hobbies() {
                                   )}
                                   {store.name === "Education" ? (
                                     <div className="education-container">
+
+                                      <h3><MdDragIndicator className="drag" />{store.name}<span style={{color:"red"}}>*</span></h3>
+
                                       <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
                                         {store.name}</h3>
+
                                       <p className="des">{store.description}</p>
                                       {education.map((object) => (
                                         <div key={object.id}>
@@ -3238,7 +3226,11 @@ interests and curiosities"
                   <div className="add_section_box">
                     <div className={label ? "hidden" : "visible"}>
                       <div>
+
+                        <h2> Skills<span style={{color:"red"}}>*</span></h2>
+
                         <h2 className="main-heading"> Skills</h2>
+
                       </div>
                       <div>
                         <p>
@@ -3681,6 +3673,36 @@ interests and curiosities"
         </div>
         <div className="resume-right">
           <div className="generate">
+          <input
+                  id="color-picker"
+                  type="color"
+                  value={selectedColor}
+                  onChange={handleColorChange}
+                  style={{ display: 'none' }} // Hide the default color input UI
+                />
+
+          <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()}className="text-white ">
+                  Open Color Picker <div id="color-picker"style={{ backgroundColor: selectedColor }}>Click</div>
+                </button>
+                {editingFname ? (
+                        <div>
+                          <input
+                            type="text"
+                            id="file_name"
+                            value={fname}
+                            onChange={handleFnameChange}
+                            onBlur={handleFnameBlur}
+                            className="handle-input"
+                          />
+                        </div>
+                      ) : (
+                        <div className="handle-heading">
+                          <h3 style={{color:"white"}}>{fname}</h3>
+                          <button onClick={handleFnameClick}>
+                            <EditIcon />
+                          </button>
+                        </div>
+                      )}
           <button onClick={handlePrint}className="btn btn-primary ">Generate PDF</button>
           </div>
           
@@ -3694,6 +3716,42 @@ interests and curiosities"
                 // marginBottom: '20px',
                 width:"97%"
               }}>
+                {/* {template === 'template1' && (
+        <div className="template1" onClick={handleClick}>
+           
+          <p>{`Additional Prop: ${additionalProp}`}</p>
+        </div>
+      )}
+
+      {template === 'template2' && (
+        <div className="template2" onClick={handleClick}>
+          <h2>{`Template ${template}`}</h2>
+          <p>{`This is the content of Template ${template}.`}</p>
+          <button>{`Button for ${template}`}</button>
+          <p>{`Additional Prop: ${additionalProp}`}</p>
+        </div>
+      )}
+
+      {template === 'template3' && (
+        <div className="template3" onClick={handleClick}>
+          <h2>{`Template ${template}`}</h2>
+          <p>{`This is the content of Template ${template}.`}</p>
+          <img src={`image_${template}.png`} alt={`Image for ${template}`} />
+          <p>{`Additional Prop: ${additionalProp}`}</p>
+        </div>
+      )}
+
+      {template === 'template4' && (
+        <div className="template4" onClick={handleClick}>
+          <h2>{`Template ${template}`}</h2>
+          <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+          </ul>
+          <p>{`Additional Prop: ${additionalProp}`}</p>
+        </div>
+      )} */}
               <div className="main-right">
                 <div>
                   <div style={{ display: "flex" }} className="cont-1">
