@@ -1828,7 +1828,12 @@ function Hobbies() {
                                                           )
                                                         }
                                                       />
-                                                       <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button>
+                                                      <div style={{display:"flex"}}  className="present-date">
+                                                      <input type="checkbox" name="" id="" value="Present" onClick={() => replaceWithPresent(object.id, 'input5')}/> <h5 className="present-cont">Present</h5>
+
+
+                                                      </div>
+                                                       {/* <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button> */}
                                                     </div>
                                                   </div>
                                                   <div>
@@ -1913,9 +1918,13 @@ function Hobbies() {
                                           >
                                             {object.input1}
                                             <div>
-                                              {
+                                              {/* {
                                                 object.input4 === "" ? <span></span> : <p>{`(${object.input4} to ${object.input5})`}</p>
-                                              }
+                                              } */}
+
+{
+                            object.input4 === "" ? <span></span> : object.input5 === "" ? <p className="fontt">{`${object.input4} to Present`}</p> : <p className="fontt">{`${object.input4} to ${object.input5}`}</p>
+                          }
                                               
  
                                               </div>
@@ -2011,7 +2020,7 @@ function Hobbies() {
                                                           )
                                                         }
                                                       />
-                                                      <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button>
+                                                      {/* <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button> */}
                                                     </div>
                                                   </div>
                                                   <div>
@@ -3850,7 +3859,10 @@ interests and curiosities"
                       ) : (
                         <div>
                           <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          {
+                            item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fontt">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                          }
+                          {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
                           <p className="fonttt">{item.input6}</p>
                         </div>
                       )}
