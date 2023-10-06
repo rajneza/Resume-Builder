@@ -826,7 +826,7 @@ Popup.css .popup {
   background-color: white;
   overflow-y:visible;
   overflow: auto;
-  min-height: fit-content;
+  min-height: 92vh;
   max-height: auto;
   scroll-behavior: none;
 }
