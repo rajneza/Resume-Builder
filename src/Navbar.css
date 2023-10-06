@@ -345,6 +345,7 @@ a{
 }
 .photooo{
     border: 5px solid rgb(208, 208, 211);
+    display: flex;
 }
 .text{
     display: flex;
@@ -409,4 +410,10 @@ a{
   }
   #uppper:hover{
     background-color: #1170CD;
+  }
+  .template-options{
+    display: flex;
+    column-gap: 4px;
+    background-color: #9da2ad;
+  
   }

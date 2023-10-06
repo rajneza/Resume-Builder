@@ -3,7 +3,7 @@ import "./Navbar.css";
 import curriculum from "./images/curriculum.png";
 import mrssai from "./images/mrssai.avif";
 import ushamadam from "./images/ushamadam.avif";
-import acharjya from "./images/acharjya.avif";
+// import acharjya from "./images/acharjya.avif";
 import rajeshsir from "./images/rajeshsir.avif";
 import feat from "./images/feature-1-edf4481d69166ac81917d1e40e6597c8d61aa970ad44367ce78049bf830fbda5.svg";
 import feat1 from "./images/feature-2-a7a471bd973c02a55d1b3f8aff578cd3c9a4c5ac4fc74423d94ecc04aef3492b.svg";
@@ -60,7 +60,7 @@ const Navbar = () => {
           Create My Resume
         </a></div>
             <div className="photooo">
-              <img src={acharjya} alt="sai" />
+              {/* <img src={acharjya} alt="sai" /> */}
               <a href="http://localhost:3000/hobbie" className="btn btn-primary text-uppercase link-overlay">
           Create My Resume
         </a></div>
