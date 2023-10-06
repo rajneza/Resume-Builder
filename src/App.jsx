@@ -24,6 +24,7 @@ import Hobbies from "./Hobbies";
 import Languages from "./Languages";
 import References from "./Reference";
 import Extracurricular from "./Extra-curricular";
+import Skills from "./Skills";
 
 
 const LandingPage = () => {
@@ -204,6 +205,7 @@ const App=()=>{
                 <Route path="/languages" element={<Languages></Languages>}></Route>
                 <Route path="/reference" element={<References></References>}></Route>
                 <Route path="/extra" element={<Extracurricular></Extracurricular>}></Route>
+                <Route path="/skills" element={<Skills></Skills>}></Route>
               
                  
                 <Route path="/" element={<LandingPage />} />

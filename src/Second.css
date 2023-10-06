@@ -1352,12 +1352,12 @@ Popup.css .popup {
   border-radius: 3px;
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  font-size: 13px;
+  gap: 2px;
+  font-size: 10px;
 }
 
 #skillsContainer button {
-  font-size: 13px;
+  font-size: 10px;
 }
 
 
@@ -1390,6 +1390,7 @@ Popup.css .popup {
   display: flex;
   justify-content: center;
   margin-left: 65px;
+    margin-top: -20px;
 }
 
 #sec-progress {
