@@ -293,6 +293,7 @@ a{
 .section-two{
     padding: 64px 0;
     height: 450px;
+   
 }
 .section-two .section-items{
     display: grid;
@@ -304,6 +305,8 @@ a{
     text-align: center;
     margin-right: auto;
     margin-left: auto;
+   border-right: 2px solid var(--clr-blue-mid);
+    width: 100%;
 }
 .section-two .section-item-icon{
     margin: 1rem 0;
@@ -401,4 +404,9 @@ a{
     justify-content: center;
     align-items: center;
   }
-  
+  #upper:hover{
+    background-color: #1170CD;
+  }
+  #uppper:hover{
+    background-color: #1170CD;
+  }
