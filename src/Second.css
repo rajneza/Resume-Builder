@@ -1892,5 +1892,13 @@ select {
       margin-right: 7%;
 
     }
+    .temp-image{
+      width: 40%;
+      height: 25%;
+      margin-left: 7%;
+    }
+    .main-temp{
+      padding: 15px;
+    }
 
      
