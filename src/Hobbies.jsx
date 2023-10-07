@@ -4242,16 +4242,7 @@ interests and curiosities"
             )}
 
             {template === 'template2' && (
-              <div className="template2" onClick={handleClick}>
-                <div ref={contentDivRef}
-                  contentEditable={false}
-                  style={{
-                    // border: '1px solid #ccc',
-                    // minHeight: '200px',
-                    // padding: '10px',
-                    // marginBottom: '20px',
-                    width: "100%"
-                  }}>
+             
                   <section id="preview-sc" class="print_area">
                     <div class="container">
                       <div class="preview-cnt">
@@ -4271,7 +4262,7 @@ interests and curiosities"
                           </div>
                           <div class="preview-blk">
                             <div class="preview-blk-title">
-                              {/* <h3>about</h3> */}
+                           
                             </div>
                             <div class="preview-blk-list">
                               <div class="preview-item">
@@ -4287,14 +4278,14 @@ interests and curiosities"
                                 <span class="preview-item-val" id="address_dsp"></span>
                               </div>
                               <div class="preview-item">
-                                {/* <div class="preview-blk-title"><h3>SUMMARY</h3></div>  */}
+                               
                                 <span class="preview-item-val" id="summary_dsp"></span>
                               </div>
                             </div>
                           </div>
                           <div class="preview-blk">
                             <div class="preview-blk-title">
-                              {/* <h3>skills</h3> */}
+                            
 
                             </div>
                             <div class="skills-items preview-blk-list" id="skills_dsp">
@@ -4333,7 +4324,7 @@ interests and curiosities"
                         <div class="preview-cnt-r bg-white">
                           <div class="preview-blk">
                             <div class="preview-blk-title">
-                              {/* <h3>Professional Summary</h3> */}
+                       
                             </div>
                             <div class="generated-resume" id="achievements_dsp1">
                               <div class="editor-content" id="content1"></div>
@@ -4344,7 +4335,7 @@ interests and curiosities"
                           <div class="preview-blk">
                             <div class="preview-blk-title">
                               <div class="right-side-container" id="right-side-container"></div>
-                              {/* <h3>Achievements</h3> */}
+                              
                             </div>
                             <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
                             <div class="editor-content" id="content2"></div>
@@ -4352,21 +4343,21 @@ interests and curiosities"
 
                           <div class="preview-blk">
                             <div class="preview-blk-title">
-                              {/* <h3>educations</h3> */}
+                             
                             </div>
                             <div class="educations-items preview-blk-list" id="educations_dsp"></div>
                             <div class="editor-content" id="content3"></div>
                           </div>
                           <div class="preview-blk">
                             <div class="preview-blk-title">
-                              {/* <h3>experiences</h3> */}
+                             
                             </div>
                             <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
                             <div class="editor-content" id="content4"></div>
                           </div>
                           <div class="preview-blk">
                             <div class="preview-blk-title">
-                              {/* <h3>projects</h3> */}
+                              
                             </div>
                             <div class="projects-items preview-blk-list" id="projects_dsp"></div>
                             <div class="editor-content" id="content5"></div>
@@ -4385,8 +4376,8 @@ interests and curiosities"
                       </div>
                     </div>
                   </section>
-                </div>
-              </div>
+                  
+              
             )}
 
             {template === 'template3' && (

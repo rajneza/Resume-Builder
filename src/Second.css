@@ -1739,6 +1739,8 @@ select {
   padding: 10px;
   /* margin: 10px; */
   cursor: pointer;
+  display: flex;
+  width: 100%;
 }
 
 .template3 {
