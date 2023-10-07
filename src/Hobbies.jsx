@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSaveArrow } from "react-icons/gi";
 import "./Second.css";
+import "./Sai.css";
 import "./Project/React.css";
 import Switch from "react-switch";
 import { render } from 'react-dom';
@@ -26,7 +27,7 @@ import image from "./Components/images/custom-extra.svg";
 import image1 from "./Components/images/custom-course.svg";
 import image2 from "./Components/images/custom-internship.svg";
 import image3 from "./Components/images/custom-references.svg";
- import image4 from "./Components/images/custom-section.svg";
+import image4 from "./Components/images/custom-section.svg";
 import image5 from "./Components/images/cutsom-projects.png";
 import image6 from "./Components/images/custom-links.jpg";
 import image7 from "./Components/images/custom-skills.webp";
@@ -37,7 +38,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css'
-import { AiFillQuestionCircle , AiFillCloseCircle } from "react-icons/ai"
+import { AiFillQuestionCircle, AiFillCloseCircle } from "react-icons/ai"
 
 
 
@@ -182,9 +183,9 @@ function Hobbies(props) {
   const handleClick = () => {
     setSelectedTemplate(template);
   };
- 
 
-  const [percentage , setpercentage] = useState(false)
+
+  const [percentage, setpercentage] = useState(false)
 
   const createSecondProgressBar = (skill) => {
     const initialProgress = {
@@ -358,9 +359,9 @@ function Hobbies(props) {
         // Convert the first word to lowercase and the rest to title case
         if (index === 0) {
           return word.toUpperCase();
-        } 
-          return word.charAt(0).toUpperCase() + word.slice(1).toUpperCase();
-        
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toUpperCase();
+
       })
       .join(' ');
 
@@ -1105,7 +1106,7 @@ function Hobbies(props) {
 
   };
 
-  
+
 
   const deleteskill = (objectId) => {
     const updatedObjects = skill.filter((object) => object.id !== objectId);
@@ -1184,11 +1185,11 @@ function Hobbies(props) {
               <div className="resume-title">
                 <div className="title-content">
                   <div className="content-box">
-                 
+
                   </div>
                 </div>
               </div>
-             
+
               <div className="score-body">
                 <div className="score-content">
                   <div className="score-left-body">
@@ -1199,13 +1200,13 @@ function Hobbies(props) {
                     <div className="resume-profile-content">
                       <div>
                         <div className="profile-body">
-                        <button onClick={()=>setpercentage(!percentage)}>
-                        
-                        {
-                          percentage ?   <AiFillCloseCircle  className="question-icon"/> : <AiFillQuestionCircle className="question-icon"/>
-                        }
-                        </button>
-                                        
+                          <button onClick={() => setpercentage(!percentage)}>
+
+                            {
+                              percentage ? <AiFillCloseCircle className="question-icon" /> : <AiFillQuestionCircle className="question-icon" />
+                            }
+                          </button>
+
                         </div>
                       </div>
                     </div>
@@ -1215,38 +1216,38 @@ function Hobbies(props) {
                   {<ProgressBar completed={completionPercentage}
                   />}
                   <div className={percentage ? "visible" : "hidden"}>
-                  <div className="competion">
-                    {
-                      job === "" ? <h5 className="percentage">5% Role</h5> : <span></span>
-                    }
-                    {
-                      name === "" ? <h5 className="percentage">5% Name</h5> : <span></span>
-                    }
-                    {
-                      email === "" ? <h5 className="percentage">5% Email</h5> : <span></span>
-                    }
-                    {
-                      phone === "" ? <h5 className="percentage">5% Phone</h5> : <span></span>
-                    }
-                    {
-                      country === "" ? <h5 className="percentage">5% Country</h5> : <span></span>
-                    }
-                    {
-                      place === "" ? <h5 className="percentage">5% Place of Birth</h5> : <span></span>
-                    }
-                    {
-                      birth === "" ? <h5 className="percentage">5% Date of Birth</h5> : <span></span>
-                    }
-                    {
-                      editorHtml === "" ? <h5 className="percentage">15% Summary</h5> : <span></span>
-                    }
-                    {
-                      skill.length === 0 ? <h5 className="percentage">25% Skills</h5> : <span></span>
-                    }
-                    {
-                      education.length === 0 ? <h5 className="percentage">25% Education</h5> : <span></span>
-                    }
-                  </div>
+                    <div className="competion">
+                      {
+                        job === "" ? <h5 className="percentage">5% Role</h5> : <span></span>
+                      }
+                      {
+                        name === "" ? <h5 className="percentage">5% Name</h5> : <span></span>
+                      }
+                      {
+                        email === "" ? <h5 className="percentage">5% Email</h5> : <span></span>
+                      }
+                      {
+                        phone === "" ? <h5 className="percentage">5% Phone</h5> : <span></span>
+                      }
+                      {
+                        country === "" ? <h5 className="percentage">5% Country</h5> : <span></span>
+                      }
+                      {
+                        place === "" ? <h5 className="percentage">5% Place of Birth</h5> : <span></span>
+                      }
+                      {
+                        birth === "" ? <h5 className="percentage">5% Date of Birth</h5> : <span></span>
+                      }
+                      {
+                        editorHtml === "" ? <h5 className="percentage">15% Summary</h5> : <span></span>
+                      }
+                      {
+                        skill.length === 0 ? <h5 className="percentage">25% Skills</h5> : <span></span>
+                      }
+                      {
+                        education.length === 0 ? <h5 className="percentage">25% Education</h5> : <span></span>
+                      }
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1277,7 +1278,7 @@ function Hobbies(props) {
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">
-                      <label htmlFor="">Role<span style={{color:"red"}}>*</span></label> <br />
+                      <label htmlFor="">Role<span style={{ color: "red" }}>*</span></label> <br />
                       <input
                         type="text"
                         value={job}
@@ -1348,21 +1349,21 @@ function Hobbies(props) {
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">
-                      <label htmlFor="">First Name<span style={{color:"red"}}>*</span></label> <br />
+                      <label htmlFor="">First Name<span style={{ color: "red" }}>*</span></label> <br />
                       <input
                         type="text"
                         className="work"
                         // value={name}
-                         onChange={(e) => {
-                           progress(e.target.value, name, "name", 5);
-                         }}
+                        onChange={(e) => {
+                          progress(e.target.value, name, "name", 5);
+                        }}
                         value={name}
-                        // onChange={(e) => setname(e.target.value)}
+                      // onChange={(e) => setname(e.target.value)}
                       />
                     </div>
                   </div>
                   <div className="photo">
-                    <label htmlFor="">Last Name<span style={{color:"red"}}>*</span></label> <br />
+                    <label htmlFor="">Last Name<span style={{ color: "red" }}>*</span></label> <br />
                     <input
                       type="text"
                       className="work"
@@ -1378,7 +1379,7 @@ function Hobbies(props) {
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">
-                      <label htmlFor="">Email<span style={{color:"red"}}>*</span></label> <br />
+                      <label htmlFor="">Email<span style={{ color: "red" }}>*</span></label> <br />
                       <input
                         type="email"
                         className="work"
@@ -1390,7 +1391,7 @@ function Hobbies(props) {
                     </div>
                   </div>
                   <div className="photo">
-                    <label htmlFor="">Phone<span style={{color:"red"}}>*</span></label> <br />
+                    <label htmlFor="">Phone<span style={{ color: "red" }}>*</span></label> <br />
                     <PhoneInput
                       country={"in"}
                       className="work"
@@ -1402,7 +1403,7 @@ function Hobbies(props) {
                 <div className="job-title">
                   <div className="wanted">
                     <div className="job">
-                      <label htmlFor="">Country<span style={{color:"red"}}>*</span></label> <br />
+                      <label htmlFor="">Country<span style={{ color: "red" }}>*</span></label> <br />
                       <input
                         type="text"
                         className="work"
@@ -1471,34 +1472,34 @@ function Hobbies(props) {
                             }}
                           /> */}
                           <div className="main-gender">
-                          <label className="gender">
-    <input type="radio" name="gender" value="Male" 
-          onChange={(e) => {
-            setlicense(e.target.value);
-          }}/>
-    Male
-  </label>
-  <label className="gender">
-    <input type="radio" name="gender" value="Female" 
-          onChange={(e) => {
-            setlicense(e.target.value);
-          }}/>
-    Female
-  </label>
-  <label className="gender">
-    <input type="radio" name="gender" value="Other"
-          onChange={(e) => {
-            setlicense(e.target.value);
-          }}/>
-    Other
-  </label>
-  <label className="gender">
-    <input type="radio" name="gender" value="" 
-          onChange={(e) => {
-            setlicense(e.target.value);
-          }}/>
-    Do Not Display
-  </label>
+                            <label className="gender">
+                              <input type="radio" name="gender" value="Male"
+                                onChange={(e) => {
+                                  setlicense(e.target.value);
+                                }} />
+                              Male
+                            </label>
+                            <label className="gender">
+                              <input type="radio" name="gender" value="Female"
+                                onChange={(e) => {
+                                  setlicense(e.target.value);
+                                }} />
+                              Female
+                            </label>
+                            <label className="gender">
+                              <input type="radio" name="gender" value="Other"
+                                onChange={(e) => {
+                                  setlicense(e.target.value);
+                                }} />
+                              Other
+                            </label>
+                            <label className="gender">
+                              <input type="radio" name="gender" value=""
+                                onChange={(e) => {
+                                  setlicense(e.target.value);
+                                }} />
+                              Do Not Display
+                            </label>
                           </div>
                         </div>
                       </div>
@@ -1522,7 +1523,7 @@ function Hobbies(props) {
                     <div className="job-title">
                       <div className="wanted">
                         <div className="job">
-                          <label htmlFor="">Place of Birth<span style={{color:"red"}}>*</span></label> <br />
+                          <label htmlFor="">Place of Birth<span style={{ color: "red" }}>*</span></label> <br />
                           <input
                             type="text"
                             className="work"
@@ -1536,7 +1537,7 @@ function Hobbies(props) {
                         </div>
                       </div>
                       <div className="photo">
-                        <label htmlFor="">Date of Birth<span style={{color:"red"}}>*</span></label> <br />
+                        <label htmlFor="">Date of Birth<span style={{ color: "red" }}>*</span></label> <br />
                         <input
                           type="text"
                           className="work"
@@ -1572,7 +1573,7 @@ function Hobbies(props) {
 
                     {/* <h2>Summary<span style={{color:"red"}}>*</span></h2> */}
 
-                  <h2 className="main-heading">Summary<span style={{color:"red",fontSize:"16px"}}>*</span></h2>
+                    <h2 className="main-heading">Summary<span style={{ color: "red", fontSize: "16px" }}>*</span></h2>
 
                   </div>
                   <div>
@@ -1584,7 +1585,7 @@ function Hobbies(props) {
                   </div>
                   <div>
                     <div>
-                      <ReactQuill style={{width:"100%"}}
+                      <ReactQuill style={{ width: "100%" }}
                         theme="snow"
                         value={editorHtml}
                         onChange={(value) =>
@@ -1693,33 +1694,33 @@ function Hobbies(props) {
                                           <div
                                             className="flex"
                                           >
-                                            <div style={{display:"flex"}}>
-                                            <div>
-                                              {object.input1}
+                                            <div style={{ display: "flex" }}>
                                               <div>
-                                              {
-                                                object.input4 === "" ? <span></span> : <p>{`(${object.input4} to ${object.input5})`}</p>
-                                              } 
-                                              </div>
-                                             
-                                            </div>
-                                            {
-                                                emp ? <div className="emp-delete-btn" id="emp-delete">
-                                                <button
-                                                  onClick={() =>
-                                                    deleteObject(object.id)
+                                                {object.input1}
+                                                <div>
+                                                  {
+                                                    object.input4 === "" ? <span></span> : <p>{`(${object.input4} to ${object.input5})`}</p>
                                                   }
-                                                  className="delete"
-                                                >
-                                                  <MdOutlineDelete />
-                                                </button>
-                                              </div> : <span></span>
+                                                </div>
+
+                                              </div>
+                                              {
+                                                emp ? <div className="emp-delete-btn" id="emp-delete">
+                                                  <button
+                                                    onClick={() =>
+                                                      deleteObject(object.id)
+                                                    }
+                                                    className="delete"
+                                                  >
+                                                    <MdOutlineDelete />
+                                                  </button>
+                                                </div> : <span></span>
                                               }
-                                            
- 
+
+
                                             </div>
-                                            
-                                            
+
+
                                             <h5
                                               onClick={() => setemp(!emp)}
                                               style={{ cursor: "pointer" }}
@@ -1729,141 +1730,141 @@ function Hobbies(props) {
                                                 emp ? <IoIosArrowUp /> : <IoIosArrowDown />
                                               }
                                             </h5>
-                                          
-                                          <div
-                                            className={
-                                              emp ? "visible" : "hidden"
-                                            }
-                                          >
-                                            <div className="emp-container">
-                                              <div className="emp-main">
-                                                <div
-                                                  style={{ display: "flex" }}
-                                                >
-                                                  <div className="wanted">
+
+                                            <div
+                                              className={
+                                                emp ? "visible" : "hidden"
+                                              }
+                                            >
+                                              <div className="emp-container">
+                                                <div className="emp-main">
+                                                  <div
+                                                    style={{ display: "flex" }}
+                                                  >
+                                                    <div className="wanted">
+                                                      <div>
+                                                        <label htmlFor="" className="data-label">
+                                                          Job title
+                                                        </label>{" "}
+                                                        <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className="work"
+                                                          onChange={(e) =>
+                                                            handleInputChange(
+                                                              e,
+                                                              object.id,
+                                                              "input1"
+                                                            )
+                                                          }
+                                                        />
+                                                      </div>
+                                                    </div>
                                                     <div>
-                                                      <label htmlFor="" className="data-label">
-                                                        Job title
+                                                      <label htmlFor="">
+                                                        Employer
                                                       </label>{" "}
                                                       <br />
                                                       <input
                                                         type="text"
-                                                        value={object.input1}
+                                                        value={object.input2}
                                                         className="work"
                                                         onChange={(e) =>
                                                           handleInputChange(
                                                             e,
                                                             object.id,
-                                                            "input1"
+                                                            "input2"
                                                           )
                                                         }
                                                       />
                                                     </div>
                                                   </div>
-                                                  <div>
-                                                    <label htmlFor="">
-                                                      Employer
-                                                    </label>{" "}
-                                                    <br />
-                                                    <input
-                                                      type="text"
-                                                      value={object.input2}
-                                                      className="work"
-                                                      onChange={(e) =>
-                                                        handleInputChange(
-                                                          e,
-                                                          object.id,
-                                                          "input2"
-                                                        )
-                                                      }
-                                                    />
-                                                  </div>
-                                                </div>
-                                                <div
-                                                  style={{ display: "flex" }}
-                                                >
-                                                  <div className="wanted">
+                                                  <div
+                                                    style={{ display: "flex" }}
+                                                  >
+                                                    <div className="wanted">
+                                                      <div>
+                                                        <label htmlFor="">
+                                                          Start & End Date
+                                                        </label>{" "}
+                                                        <br />
+                                                        <input
+                                                          type="date"
+                                                          value={object.input4}
+                                                          className="workk"
+                                                          onChange={(e) =>
+                                                            handleInputChange(
+                                                              e,
+                                                              object.id,
+                                                              "input4"
+                                                            )
+                                                          }
+                                                        />
+                                                        <input
+                                                          type="date"
+                                                          value={object.input5}
+                                                          className="workk"
+                                                          onChange={(e) =>
+                                                            handleInputChange(
+                                                              e,
+                                                              object.id,
+                                                              "input5"
+                                                            )
+                                                          }
+                                                        />
+                                                        <div style={{ display: "flex" }} className="present-date">
+                                                          <input type="checkbox" name="" id="" value="Present" onClick={() => replaceWithPresent(object.id, 'input5')} /> <h5 className="present-cont">Present</h5>
+
+
+                                                        </div>
+                                                        {/* <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button> */}
+                                                      </div>
+                                                    </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        Start & End Date
+                                                        City
                                                       </label>{" "}
                                                       <br />
                                                       <input
-                                                        type="date"
-                                                        value={object.input4}
-                                                        className="workk"
+                                                        type="text"
+                                                        value={object.input3}
+                                                        className="work"
                                                         onChange={(e) =>
                                                           handleInputChange(
                                                             e,
                                                             object.id,
-                                                            "input4"
+                                                            "input3"
                                                           )
                                                         }
                                                       />
-                                                      <input
-                                                        type="date"
-                                                        value={object.input5}
-                                                        className="workk"
-                                                        onChange={(e) =>
-                                                          handleInputChange(
-                                                            e,
-                                                            object.id,
-                                                            "input5"
-                                                          )
-                                                        }
-                                                      />
-                                                      <div style={{display:"flex"}}  className="present-date">
-                                                      <input type="checkbox" name="" id="" value="Present" onClick={() => replaceWithPresent(object.id, 'input5')}/> <h5 className="present-cont">Present</h5>
-
-
-                                                      </div>
-                                                       {/* <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button> */}
                                                     </div>
                                                   </div>
                                                   <div>
-                                                    <label htmlFor="">
-                                                      City
-                                                    </label>{" "}
-                                                    <br />
-                                                    <input
-                                                      type="text"
-                                                      value={object.input3}
-                                                      className="work"
-                                                      onChange={(e) =>
-                                                        handleInputChange(
-                                                          e,
-                                                          object.id,
-                                                          "input3"
-                                                        )
-                                                      }
-                                                    />
+                                                    <div>
+                                                      <label htmlFor="">
+                                                        Description
+                                                      </label>{" "}
+                                                      <br />
+                                                      <textarea
+                                                        name=""
+                                                        id=""
+                                                        cols="90"
+                                                        rows="15"
+                                                        value={object.input6}
+                                                        onChange={(e) =>
+                                                          handleInputChange(
+                                                            e,
+                                                            object.id,
+                                                            "input6"
+                                                          )
+                                                        }
+                                                        placeholder="e.g. Graduated with High Honors."
+                                                      />
+                                                    </div>
                                                   </div>
                                                 </div>
-                                                <div>
-                                                  <div>
-                                                    <label htmlFor="">
-                                                      Description
-                                                    </label>{" "}
-                                                    <br />
-                                                    <textarea
-                                                      name=""
-                                                      id=""
-                                                      cols="90"
-                                                      rows="15"
-                                                      value={object.input6}
-                                                      onChange={(e) =>
-                                                        handleInputChange(
-                                                          e,
-                                                          object.id,
-                                                          "input6"
-                                                        )
-                                                      }
-                                                      placeholder="e.g. Graduated with High Honors."
-                                                    />
-                                                  </div>
-                                                </div>
-                                              </div>
-                                              {/* <div className="emp-delete-btn">
+                                                {/* <div className="emp-delete-btn">
                                                 <button
                                                   onClick={() =>
                                                     deleteObject(object.id)
@@ -1873,9 +1874,9 @@ function Hobbies(props) {
                                                   <MdOutlineDelete />
                                                 </button>
                                               </div> */}
+                                              </div>
                                             </div>
                                           </div>
-                                        </div>
                                         </div>
                                       ))}
                                       <button
@@ -1896,7 +1897,7 @@ function Hobbies(props) {
 
                                       <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
                                         <Tooltip id="my-tooltip" />
-                                        {store.name}<span style={{color:"red",fontSize:"17px"}}>*</span></h3>
+                                        {store.name}<span style={{ color: "red", fontSize: "17px" }}>*</span></h3>
 
                                       <p className="des">{store.description}</p>
                                       {education.map((object) => (
@@ -1910,12 +1911,12 @@ function Hobbies(props) {
                                                 object.input4 === "" ? <span></span> : <p>{`(${object.input4} to ${object.input5})`}</p>
                                               } */}
 
-{
-                            object.input4 === "" ? <span></span> : object.input5 === "" ? <p className="fontt">{`${object.input4} to Present`}</p> : <p className="fontt">{`${object.input4} to ${object.input5}`}</p>
-                          }
-                                              
- 
-                                              </div>
+                                              {
+                                                object.input4 === "" ? <span></span> : object.input5 === "" ? <p className="fontt">{`${object.input4} to Present`}</p> : <p className="fontt">{`${object.input4} to ${object.input5}`}</p>
+                                              }
+
+
+                                            </div>
                                             <h5
                                               onClick={() => setoction(!oction)}
                                               style={{ cursor: "pointer" }}
@@ -1925,148 +1926,148 @@ function Hobbies(props) {
                                                 oction ? <IoIosArrowUp /> : <IoIosArrowDown />
                                               }
                                             </h5>
-                                          
-                                          <div
-                                            className={
-                                              oction ? "visible" : "hidden"
-                                            }
-                                          >
-                                            <div style={{ display: "flex" }}>
-                                              <div className="emp-main">
-                                                <div
-                                                  style={{ display: "flex" }}
-                                                >
-                                                  <div className="wanted">
+
+                                            <div
+                                              className={
+                                                oction ? "visible" : "hidden"
+                                              }
+                                            >
+                                              <div style={{ display: "flex" }}>
+                                                <div className="emp-main">
+                                                  <div
+                                                    style={{ display: "flex" }}
+                                                  >
+                                                    <div className="wanted">
+                                                      <div>
+                                                        <label htmlFor="">
+                                                          School
+                                                        </label>{" "}
+                                                        <br />
+                                                        <input
+                                                          type="text"
+                                                          value={object.input1}
+                                                          className="work"
+                                                          onChange={(e) =>
+                                                            handleInputedu(
+                                                              e,
+                                                              object.id,
+                                                              "input1"
+                                                            )
+                                                          }
+                                                        />
+                                                      </div>
+                                                    </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        School
+                                                        Degree
                                                       </label>{" "}
                                                       <br />
                                                       <input
                                                         type="text"
-                                                        value={object.input1}
+                                                        value={object.input2}
                                                         className="work"
                                                         onChange={(e) =>
                                                           handleInputedu(
                                                             e,
                                                             object.id,
-                                                            "input1"
+                                                            "input2"
                                                           )
                                                         }
                                                       />
                                                     </div>
                                                   </div>
-                                                  <div>
-                                                    <label htmlFor="">
-                                                      Degree
-                                                    </label>{" "}
-                                                    <br />
-                                                    <input
-                                                      type="text"
-                                                      value={object.input2}
-                                                      className="work"
-                                                      onChange={(e) =>
-                                                        handleInputedu(
-                                                          e,
-                                                          object.id,
-                                                          "input2"
-                                                        )
-                                                      }
-                                                    />
-                                                  </div>
-                                                </div>
-                                                <div
-                                                  style={{ display: "flex" }}
-                                                >
-                                                  <div className="wanted">
+                                                  <div
+                                                    style={{ display: "flex" }}
+                                                  >
+                                                    <div className="wanted">
+                                                      <div>
+                                                        <label htmlFor="">
+                                                          Start & End Date
+                                                        </label>{" "}
+                                                        <br />
+                                                        <input
+                                                          type="date"
+                                                          value={object.input4}
+                                                          className="workk"
+                                                          onChange={(e) =>
+                                                            handleInputedu(
+                                                              e,
+                                                              object.id,
+                                                              "input4"
+                                                            )
+                                                          }
+                                                        />
+                                                        <input
+                                                          type="date"
+                                                          value={object.input5}
+                                                          className="workk"
+                                                          onChange={(e) =>
+                                                            handleInputedu(
+                                                              e,
+                                                              object.id,
+                                                              "input5"
+                                                            )
+                                                          }
+                                                        />
+                                                        {/* <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button> */}
+                                                      </div>
+                                                    </div>
                                                     <div>
                                                       <label htmlFor="">
-                                                        Start & End Date
+                                                        City
                                                       </label>{" "}
                                                       <br />
                                                       <input
-                                                        type="date"
-                                                        value={object.input4}
-                                                        className="workk"
+                                                        type="text"
+                                                        value={object.input3}
+                                                        className="work"
                                                         onChange={(e) =>
                                                           handleInputedu(
                                                             e,
                                                             object.id,
-                                                            "input4"
+                                                            "input3"
                                                           )
                                                         }
                                                       />
-                                                      <input
-                                                        type="date"
-                                                        value={object.input5}
-                                                        className="workk"
-                                                        onChange={(e) =>
-                                                          handleInputedu(
-                                                            e,
-                                                            object.id,
-                                                            "input5"
-                                                          )
-                                                        }
-                                                      />
-                                                      {/* <button onClick={() => replaceWithPresent(object.id, 'input5')} className="present-date">Set Present</button> */}
                                                     </div>
                                                   </div>
                                                   <div>
-                                                    <label htmlFor="">
-                                                      City
-                                                    </label>{" "}
-                                                    <br />
-                                                    <input
-                                                      type="text"
-                                                      value={object.input3}
-                                                      className="work"
-                                                      onChange={(e) =>
-                                                        handleInputedu(
-                                                          e,
-                                                          object.id,
-                                                          "input3"
-                                                        )
-                                                      }
-                                                    />
+                                                    <div>
+                                                      <label htmlFor="">
+                                                        Description
+                                                      </label>{" "}
+                                                      <br />
+                                                      <textarea
+                                                        name=""
+                                                        id=""
+                                                        cols="85"
+                                                        rows="8"
+                                                        value={object.input6}
+                                                        onChange={(e) =>
+                                                          handleInputedu(
+                                                            e,
+                                                            object.id,
+                                                            "input6"
+                                                          )
+                                                        }
+                                                        placeholder="e.g. Graduated with High Honors."
+                                                      />
+                                                    </div>
                                                   </div>
                                                 </div>
-                                                <div>
-                                                  <div>
-                                                    <label htmlFor="">
-                                                      Description
-                                                    </label>{" "}
-                                                    <br />
-                                                    <textarea
-                                                      name=""
-                                                      id=""
-                                                      cols="85"
-                                                      rows="8"
-                                                      value={object.input6}
-                                                      onChange={(e) =>
-                                                        handleInputedu(
-                                                          e,
-                                                          object.id,
-                                                          "input6"
-                                                        )
-                                                      }
-                                                      placeholder="e.g. Graduated with High Honors."
-                                                    />
-                                                  </div>
+                                                <div className="emp-delete-btn">
+                                                  <button
+                                                    onClick={() =>
+                                                      deleteedu(object.id)
+                                                    }
+                                                    className="delete"
+                                                  >
+                                                    <MdOutlineDelete />
+                                                  </button>
                                                 </div>
-                                              </div>
-                                              <div className="emp-delete-btn">
-                                                <button
-                                                  onClick={() =>
-                                                    deleteedu(object.id)
-                                                  }
-                                                  className="delete"
-                                                >
-                                                  <MdOutlineDelete />
-                                                </button>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
                                         </div>
                                       ))}
                                       <button
@@ -2088,12 +2089,12 @@ function Hobbies(props) {
                                           curricular ? "hidden" : "visible"
                                         }
                                       >
-                                        
-      
+
+
                                         <h3 className="main-heading">
-                                        <a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
-                                        <Tooltip id="my-tooltip" />
-                                        {store.name}</h3>
+                                          <a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
+                                          <Tooltip id="my-tooltip" />
+                                          {store.name}</h3>
                                         <p className="des">{store.description}</p>
                                         <div className="emp-div">
                                           {four.map((object) => (
@@ -2278,8 +2279,8 @@ interests and curiosities"
                                         className={cour ? "hidden" : "visible"}
                                       >
                                         <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
-                                        <Tooltip id="my-tooltip" />
-                                        {store.name}</h3>
+                                          <Tooltip id="my-tooltip" />
+                                          {store.name}</h3>
                                         <p className="des">{store.description}</p>
                                         <div className="emp-div">
                                           {course.map((object) => (
@@ -2421,8 +2422,8 @@ interests and curiosities"
                                         className={intern ? "hidden" : "visible"}
                                       >
                                         <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
-                                        <Tooltip id="my-tooltip" />
-                                        {store.name}</h3>
+                                          <Tooltip id="my-tooltip" />
+                                          {store.name}</h3>
                                         <div className="emp-div">
                                           {five.map((object) => (
                                             <div key={object.id}>
@@ -2604,8 +2605,8 @@ interests and curiosities"
                                         className={proj ? "hidden" : "visible"}
                                       >
                                         <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
-                                        <Tooltip id="my-tooltip" />
-                                        {store.name}</h3>
+                                          <Tooltip id="my-tooltip" />
+                                          {store.name}</h3>
                                         <div className="emp-div">
                                           {project.map((object) => (
                                             <div key={object.id}>
@@ -2831,8 +2832,8 @@ interests and curiosities"
                                         }
                                       >
                                         <h3 className="main-heading"><a data-tooltip-id="my-tooltip" data-tooltip-content="Drag and Drop"><MdDragIndicator className="drag" /></a>
-                                        <Tooltip id="my-tooltip" />
-                                        {store.name}</h3>
+                                          <Tooltip id="my-tooltip" />
+                                          {store.name}</h3>
                                         <div className="emp-div">
                                           {three.map((object) => (
                                             <div key={object.id}>
@@ -3150,7 +3151,7 @@ interests and curiosities"
                 <div className="main-div">
                   <div className={link ? "hidden" : "visible"}>
                     <div>
-                      
+
                       <h2 className="main-heading"> Websites & Social Links</h2>
                     </div>
                     <div>
@@ -3238,7 +3239,7 @@ interests and curiosities"
 
                         {/* <h2> Skills<span style={{color:"red"}}>*</span></h2> */}
 
-                        <h2 className="main-heading"> Skills<span style={{color:"red",fontSize:"17px"}}>*</span></h2>
+                        <h2 className="main-heading"> Skills<span style={{ color: "red", fontSize: "17px" }}>*</span></h2>
 
                       </div>
                       <div>
@@ -3295,66 +3296,66 @@ interests and curiosities"
                                               }
                                             /> */}
                                             <div className="main-skillls">
-                                            <div className="col-12 col-md-9">
+                                              <div className="col-12 col-md-9">
 
-                                              <select
-                                                id="skills-select-box"
-                                                className="form-select"
-                                                value={selectedSkill}
-                                                onChange={handleSkillSelectChange}
-                                              >
-                                                <option>Select Skills</option>
-
-                                                <option value="add_skill">Add Skill</option>
-                                                {studentSkills.map((skill, index) => (
-                                                  <option key={index} value={skill}>
-                                                    {skill}
-                                                  </option>
-                                                ))}
-                                              </select>
-                                              <p id="skillsError" className="text-danger"></p>
-                                              <div id="skillsContainer">
-                                                {studentSkills.map((skill, index) => (
-                                                  <button
-                                                    key={index}
-                                                    className="btn btn-sm btn-primary px-3 rounded rounded-pill"
-                                                    type="button"
-                                                  >
-                                                    <span>{skill}</span>
-                                                    <i
-                                                      className="fas fa-times-circle ms-2"
-                                                      onClick={() => deleteSkill(index, skill)}
-                                                    ></i>
-                                                  </button>
-                                                ))}
-                                              </div>
-                                            </div>
-                                         
-                                            {/* <label htmlFor="">Level</label>  */}
-                                            <div className="col-12 col-md-6">
-                                            <div className="progress-text">{selectedStage}</div>
-                                            <div className="progress-bar-container">
-                                            <div className="progress" id="myProgressBar">
-                                              {stages.map((stage, index) => (
-                                                <button
-                                                  key={index}
-                                                  className={`progress-stage ${stage.toLowerCase()}`}
-                                                  data-stage={stage}
-                                                  onClick={() => handleStageClick(index)}
+                                                <select
+                                                  id="skills-select-box"
+                                                  className="form-select"
+                                                  value={selectedSkill}
+                                                  onChange={handleSkillSelectChange}
                                                 >
-                                                  {stage}
-                                                </button>
-                                              ))}
-                                              {/* <div className="progress-text">{selectedStage}</div> */}
-                                           </div>
+                                                  <option>Select Skills</option>
+
+                                                  <option value="add_skill">Add Skill</option>
+                                                  {studentSkills.map((skill, index) => (
+                                                    <option key={index} value={skill}>
+                                                      {skill}
+                                                    </option>
+                                                  ))}
+                                                </select>
+                                                <p id="skillsError" className="text-danger"></p>
+                                                <div id="skillsContainer">
+                                                  {studentSkills.map((skill, index) => (
+                                                    <button
+                                                      key={index}
+                                                      className="btn btn-sm btn-primary px-3 rounded rounded-pill"
+                                                      type="button"
+                                                    >
+                                                      <span>{skill}</span>
+                                                      <i
+                                                        className="fas fa-times-circle ms-2"
+                                                        onClick={() => deleteSkill(index, skill)}
+                                                      ></i>
+                                                    </button>
+                                                  ))}
+                                                </div>
+                                              </div>
+
+                                              {/* <label htmlFor="">Level</label>  */}
+                                              <div className="col-12 col-md-6">
+                                                <div className="progress-text">{selectedStage}</div>
+                                                <div className="progress-bar-container">
+                                                  <div className="progress" id="myProgressBar">
+                                                    {stages.map((stage, index) => (
+                                                      <button
+                                                        key={index}
+                                                        className={`progress-stage ${stage.toLowerCase()}`}
+                                                        data-stage={stage}
+                                                        onClick={() => handleStageClick(index)}
+                                                      >
+                                                        {stage}
+                                                      </button>
+                                                    ))}
+                                                    {/* <div className="progress-text">{selectedStage}</div> */}
+                                                  </div>
+                                                </div>
+                                              </div>
+
                                             </div>
-                                            </div>
-                                               
                                           </div>
-                                        </div>
-                                        <div>
-                                         
-                                          {/* <select
+                                          <div>
+
+                                            {/* <select
                                             name=""
                                             id=""
                                             value={object.input2}
@@ -3373,8 +3374,8 @@ interests and curiosities"
                                             <option value="4">Level 4</option>
                                             <option value="5">Level 5</option>
                                           </select> */}
-                                            
-                                         
+
+
                                           </div>
                                         </div>
                                       </div>
@@ -3682,1238 +3683,1010 @@ interests and curiosities"
         </div>
         <div className="resume-right">
           <div className="generate">
-          <input
-                  id="color-picker"
-                  type="color"
-                  value={selectedColor}
-                  onChange={handleColorChange}
-                  style={{ display: 'none' }} // Hide the default color input UI
+            <input
+              id="color-picker"
+              type="color"
+              value={selectedColor}
+              onChange={handleColorChange}
+              style={{ display: 'none' }} // Hide the default color input UI
+            />
+
+            <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()} className="text-white ">
+              Open Color Picker <div id="color-picker" style={{ backgroundColor: selectedColor }}>Click</div>
+            </button>
+            {editingFname ? (
+              <div>
+                <input
+                  type="text"
+                  id="file_name"
+                  value={fname}
+                  onChange={handleFnameChange}
+                  onBlur={handleFnameBlur}
+                  className="handle-input"
                 />
-
-          <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()}className="text-white ">
-                  Open Color Picker <div id="color-picker"style={{ backgroundColor: selectedColor }}>Click</div>
+              </div>
+            ) : (
+              <div className="handle-heading">
+                <h3 style={{ color: "white" }}>{fname}</h3>
+                <button onClick={handleFnameClick}>
+                  <EditIcon />
                 </button>
-                {editingFname ? (
-                        <div>
-                          <input
-                            type="text"
-                            id="file_name"
-                            value={fname}
-                            onChange={handleFnameChange}
-                            onBlur={handleFnameBlur}
-                            className="handle-input"
-                          />
-                        </div>
-                      ) : (
-                        <div className="handle-heading">
-                          <h3 style={{color:"white"}}>{fname}</h3>
-                          <button onClick={handleFnameClick}>
-                            <EditIcon />
-                          </button>
-                        </div>
-                      )}
-          <button onClick={handlePrint}className="btn btn-primary ">Generate PDF</button>
+              </div>
+            )}
+            <button onClick={handlePrint} className="btn btn-primary ">Generate PDF</button>
           </div>
-          
+
           <Scrollbars>
-          {template === 'template1' && (
-        <div className="template1" onClick={handleClick}>
-           
-          {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
-            <div className="main-full" id="pdf-content" ref={contentDivRef}
-              contentEditable={false}
-              style={{
-                // border: '1px solid #ccc',
-                // minHeight: '200px',
-                // padding: '10px',
-                // marginBottom: '20px',
-                width:"97%"
-              }}>
-         
-          <div className="main-right">
-                <div>
-                  <div style={{ display: "flex" }} className="cont-1">
-                    <div className="profile-pic">
-                      <Dropzone
-                        onDrop={handleDrop}
-                        accept="image/*"
-                        multiple={false}
-                      >
-                        {({ getRootProps, getInputProps }) => (
-                          <div
-                            className="dropzone"
-                            id="drop"
-                            {...getRootProps()}
-                          >
-                            <input {...getInputProps()} />
-                            {selectedFile ? (
-                              <div className="image">
-                                <div className="image-container">
-                                  <img
-                                    src={URL.createObjectURL(selectedFile)}
-                                    alt="Uploaded"
-                                    className="rounded-image"
-                                    onClick={handleView}
-                                  />
-                                </div>
-                              </div>
-                            ) : (
-                              <div style={{ display: "flex" }}></div>
-                            )}
-                          </div>
-                        )}
-                      </Dropzone>
-                    </div>
+            {template === 'template1' && (
+              <div className="template1" onClick={handleClick}>
+
+                {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
+                <div className="main-full" id="pdf-content" ref={contentDivRef}
+                  contentEditable={false}
+                  style={{
+                    // border: '1px solid #ccc',
+                    // minHeight: '200px',
+                    // padding: '10px',
+                    // marginBottom: '20px',
+                    width: "97%"
+                  }}>
+
+                  <div className="main-right">
                     <div>
-                      <div style={{ display: "flex" }}>
-                        <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
-                        {/* <h3 className="name1">{name}</h3>
+                      <div style={{ display: "flex" }} className="cont-1">
+                        <div className="profile-pic">
+                          <Dropzone
+                            onDrop={handleDrop}
+                            accept="image/*"
+                            multiple={false}
+                          >
+                            {({ getRootProps, getInputProps }) => (
+                              <div
+                                className="dropzone"
+                                id="drop"
+                                {...getRootProps()}
+                              >
+                                <input {...getInputProps()} />
+                                {selectedFile ? (
+                                  <div className="image">
+                                    <div className="image-container">
+                                      <img
+                                        src={URL.createObjectURL(selectedFile)}
+                                        alt="Uploaded"
+                                        className="rounded-image"
+                                        onClick={handleView}
+                                      />
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <div style={{ display: "flex" }}></div>
+                                )}
+                              </div>
+                            )}
+                          </Dropzone>
+                        </div>
+                        <div>
+                          <div style={{ display: "flex" }}>
+                            <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
+                            {/* <h3 className="name1">{name}</h3>
                         <h3 className="name2">{lastname}</h3> */}
+                          </div>
+                          <div>
+                            <h6 className="name">{job}</h6>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <h6 className="name">{job}</h6>
+                      <div className="summry">
+                        {editorHtml === "" ? (
+                          <span></span>
+                        ) : (
+                          <h2 className="prof">Summary</h2>
+                        )}
+                        <div
+                          className="mess"
+                          dangerouslySetInnerHTML={{ __html: editorHtml }}
+                        />
                       </div>
                     </div>
-                  </div>
-                  <div className="summry">
-                    {editorHtml === "" ? (
-                      <span></span>
-                    ) : (
-                      <h2 className="prof">Summary</h2>
-                    )}
-                    <div
-                      className="mess"
-                      dangerouslySetInnerHTML={{ __html: editorHtml }}
-                    />
-                  </div>
-                </div>
 
-                <div>
-                  <DragDropContext onDragEnd={handleDragDrop}>
-                    <div className="movement">
-                      <Droppable droppableId="Root" type="group">
-                        {(provided) => (
-                          <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                          >
-                            {ite.map((store, index) => (
-                              <Draggable
-                                draggableId={store.id}
-                                key={store.id}
-                                index={index}
+                    <div>
+                      <DragDropContext onDragEnd={handleDragDrop}>
+                        <div className="movement">
+                          <Droppable droppableId="Root" type="group">
+                            {(provided) => (
+                              <div
+                                {...provided.droppableProps}
+                                ref={provided.innerRef}
                               >
-                                {(provided) => (
-                                  <div
-                                    {...provided.dragHandleProps}
-                                    {...provided.draggableProps}
-                                    ref={provided.innerRef}
+                                {ite.map((store, index) => (
+                                  <Draggable
+                                    draggableId={store.id}
+                                    key={store.id}
+                                    index={index}
                                   >
-                                    {/* <h3>{store.name}</h3> */}
-                                    {/* <Storelist {...store} /> */}
-                                    <div>
-                                      <div>{/* <h3>{name}</h3> */}</div>
-                                      <div>
-                                        {store.id === "06" ? (
+                                    {(provided) => (
+                                      <div
+                                        {...provided.dragHandleProps}
+                                        {...provided.draggableProps}
+                                        ref={provided.innerRef}
+                                      >
+                                        {/* <h3>{store.name}</h3> */}
+                                        {/* <Storelist {...store} /> */}
+                                        <div>
+                                          <div>{/* <h3>{name}</h3> */}</div>
                                           <div>
-                                            {
-                                              three.length === 0 ? <span></span> : <h2 className="head">References</h2>
-                                            }
-                                            {store.it.map((item, index) => (
-                                              <div className="store">
-                                                {item.input1 === undefined ? (
-                                                  <span></span>
-                                                ) : (
-                                                  <div>
-                                                    {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-            <p className="fonttt">{item.input6}</p> */}
-
-                                                    <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
-                                                    <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
-                                                  </div>
-                                                )}
-                                              </div>
-                                            ))}
-                                          </div>
-                                        ) : (
-                                          <span></span>
-                                        )}
-                                        {store.id === "01" ? (
-                                          <div>
-                                            {
-                                              objects.length === 0 ? <span></span> : <h2 className="head">Employment</h2>
-                                            }
-                                            {store.it.map((item, index) => (
-                                              <div className="store">
-                                                {item.input1 === undefined ? (
-                                                  <span></span>
-                                                ) : (
+                                            {store.id === "06" ? (
+                                              <div>
+                                                {
+                                                  three.length === 0 ? <span></span> : <h2 className="head">References</h2>
+                                                }
+                                                {store.it.map((item, index) => (
                                                   <div className="store">
                                                     {item.input1 === undefined ? (
                                                       <span></span>
                                                     ) : (
                                                       <div>
-                                                        <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                        {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+            <p className="fonttt">{item.input6}</p> */}
 
-                                                        <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                        <p className="fonttt">{item.input6}</p>
+                                                        <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
+                                                        <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
                                                       </div>
                                                     )}
                                                   </div>
-                                                )}
+                                                ))}
                                               </div>
-                                            ))}
-                                          </div>
-                                        ) : (
-                                          <span></span>
-                                        )}
+                                            ) : (
+                                              <span></span>
+                                            )}
+                                            {store.id === "01" ? (
+                                              <div>
+                                                {
+                                                  objects.length === 0 ? <span></span> : <h2 className="head">Employment</h2>
+                                                }
+                                                {store.it.map((item, index) => (
+                                                  <div className="store">
+                                                    {item.input1 === undefined ? (
+                                                      <span></span>
+                                                    ) : (
+                                                      <div className="store">
+                                                        {item.input1 === undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div>
+                                                            <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
 
-          {store.id === "02" ? (
-            <div>
-              {
-                education.length === 0 ? <span></span> : <h2 className="head">Education</h2>
-              }
-              {store.it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                          {
-                            item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fontt">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                          }
-                          {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
-                          <p className="fonttt">{item.input6}</p>
+                                                            <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                            <p className="fonttt">{item.input6}</p>
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            ) : (
+                                              <span></span>
+                                            )}
+
+                                            {store.id === "02" ? (
+                                              <div>
+                                                {
+                                                  education.length === 0 ? <span></span> : <h2 className="head">Education</h2>
+                                                }
+                                                {store.it.map((item, index) => (
+                                                  <div className="store">
+                                                    {item.input1 === undefined ? (
+                                                      <span></span>
+                                                    ) : (
+                                                      <div className="store">
+
+                                                        {item.input1 === undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div>
+                                                            <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                            {
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fontt">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                            }
+                                                            {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
+                                                            <p className="fonttt">{item.input6}</p>
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            ) : (
+                                              <span></span>
+                                            )}
+                                            {store.id === "03" ? (
+                                              <div>
+                                                {
+                                                  four.length === 0 ? <span></span> : <h2 className="head">Extra-curricular activites</h2>
+                                                }
+                                                {store.it.map((item, index) => (
+                                                  <div className="store">
+                                                    {item.input1 === undefined ? (
+                                                      <span></span>
+                                                    ) : (
+                                                      <div>
+                                                        <div className="store">
+
+                                                          {item.input1 === undefined ? (
+                                                            <span></span>
+                                                          ) : (
+                                                            <div>
+                                                              <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                              {
+                                                                item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                              }
+                                                              <p className="fonttt">{item.input6}</p>
+                                                            </div>
+                                                          )}
+                                                        </div>
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            ) : (
+                                              <span></span>
+                                            )}
+                                            {store.id === "04" ? (
+                                              <div>
+                                                {
+                                                  course.length === 0 ? <span></span> : <h2 className="head">Course</h2>
+                                                }
+                                                {store.it.map((item, index) => (
+                                                  <div className="store">
+                                                    {item.input1 === undefined ? (
+                                                      <span></span>
+                                                    ) : (
+                                                      <div className="store">
+
+                                                        {item.input1 === undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div>
+                                                            <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                            <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                            <p className="fonttt">{item.input6}</p>
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            ) : (
+                                              <span></span>
+                                            )}
+                                            {store.id === "05" ? (
+                                              <div>
+                                                {
+                                                  five.length === 0 ? <span></span> : <h2 className="head">Internships</h2>
+                                                }
+                                                {store.it.map((item, index) => (
+                                                  <div className="store">
+                                                    {item.input1 === undefined ? (
+                                                      <span></span>
+                                                    ) : (
+                                                      <div className="store">
+
+                                                        {item.input1 === undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div>
+                                                            <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                            <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                            <p className="fonttt">{item.input6}</p>
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            ) : (
+                                              <span></span>
+                                            )}
+                                            {store.id === "07" ? (
+                                              <div>
+                                                {
+                                                  project.length === 0 ? <span></span> : <h2 className="head">Projects</h2>
+                                                }
+                                                {store.it.map((item, index) => (
+                                                  <div className="store">
+                                                    {item.input1 === undefined ? (
+                                                      <span></span>
+                                                    ) : (
+                                                      <div className="store">
+
+                                                        {item.input1 === undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div>
+                                                            <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                            {
+                                                              item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                            }
+
+                                                            {
+                                                              item.input7 === "" ? <span></span> : <p className="fontt">{`My Role : ${item.input7}`}</p>
+                                                            }
+                                                            {
+                                                              item.input8 === "" ? <span></span> : <p className="fontt">{`Skills Used In This  Project : ${item.input8}`}</p>
+                                                            }
+
+                                                            <p className="fonttt">{item.input6}</p>
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            ) : (
+                                              <span></span>
+                                            )}
+                                            {store.id === "08" ? (
+                                              <div>
+                                                {
+                                                  cust.length === 0 ? <span></span> : <h2 className="head">{store.head}</h2>
+                                                }
+                                                {store.it.map((item, index) => (
+                                                  <div className="store">
+                                                    {item.input1 === undefined ? (
+                                                      <span></span>
+                                                    ) : (
+                                                      <div className="store">
+                                                        {item.input1 === undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div>
+                                                            <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                            <p className="fontt">{`${item.input4}`}</p>
+                                                            <p className="fonttt">{item.input5}</p>
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )}
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            ) : (
+                                              <span></span>
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </Draggable>
+                                ))}
+                              </div>
+                            )}
+                          </Droppable>
                         </div>
-                      )}
+                      </DragDropContext>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {store.id === "03" ? (
-            <div>
-              {
-                four.length === 0 ? <span></span> : <h2 className="head">Extra-curricular activites</h2>
-              }
-              {store.it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div>
-                      <div className="store">
-                        
-                        {item.input1 === undefined ? (
+                  </div>
+                  <div className="main-left" style={{ backgroundColor: selectedColor }}>
+                    <div className="pincode">
+                      <div className="details">
+                        {email === "" ? (
                           <span></span>
                         ) : (
-                          <div>
-                            <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                            {
-                            item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                          }
-                            <p className="fonttt">{item.input6}</p>
-                          </div>
+                          <h4 className="heading div-heading">Contact</h4>
                         )}
+                        <div>
+                          {
+                            phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
+                          }
+
+                        </div>
+                        <div>
+                          <p className="conte">{email}</p>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {store.id === "04" ? (
-            <div>
-              {
-                course.length === 0 ? <span></span> :  <h2 className="head">Course</h2>
-              }
-              {store.it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                     
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                          <p className="fonttt">{item.input6}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {store.id === "05" ? (
-            <div>
-              {
-                five.length === 0 ? <span></span> : <h2 className="head">Internships</h2>
-              }
-              {store.it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                          <p className="fonttt">{item.input6}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {store.id === "07" ? (
-            <div>
-              {
-                project.length === 0 ? <span></span> : <h2 className="head">Projects</h2>
-              }
-              {store.it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                          {
-                            item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                          }
-                          
-                          {
-                            item.input7 === "" ? <span></span> : <p className="fontt">{`My Role : ${item.input7}`}</p>
-                          }
-                          {
-                            item.input8 === "" ? <span></span> : <p className="fontt">{`Skills Used In This  Project : ${item.input8}`}</p>
-                          }
-                          
-                          <p className="fonttt">{item.input6}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-          {store.id === "08" ? (
-            <div>
-              {
-                cust.length === 0 ? <span></span> : <h2 className="head">{store.head}</h2>
-              }
-              {store.it.map((item, index) => (
-                <div className="store">
-                  {item.input1 === undefined ? (
-                    <span></span>
-                  ) : (
-                    <div className="store">
-                      {item.input1 === undefined ? (
-                        <span></span>
-                      ) : (
-                        <div>
-                          <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                          <p className="fontt">{`${item.input4}`}</p>
-                          <p className="fonttt">{item.input5}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <span></span>
-          )}
-        </div>
-      </div>
-                                  </div>
-                                )}
-                              </Draggable>
-                            ))}
-                          </div>
+                      <div>
+                        {address === "" ? (
+                          <span></span>
+                        ) : (
+                          <h4 className="heading div-heading">Address</h4>
                         )}
-                      </Droppable>
-                    </div>
-                  </DragDropContext>
-                </div>
-              </div>
-              <div className="main-left" style={{ backgroundColor: selectedColor }}>
-                <div className="pincode">
-                  <div className="details">
-                    {email === "" ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading div-heading">Contact</h4>
-                    )}
-                    <div>
-                      {
-                        phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
-                      }
 
-                    </div>
-                    <div>
-                      <p className="conte">{email}</p>
-                    </div>
-                  </div>
-                  <div>
-                    {address === "" ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading div-heading">Address</h4>
-                    )}
+                        <div>
+                          <p className="cont">{address}</p>
+                        </div>
+                        <div>
+                          {
+                            post === "" ? <p className="cit">{`${city}`}</p> : <p className="cit">{`${city} , ${post}`}</p>
+                          }
+                          {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                        </div>
+                        <div>
+                          <p className="cit">{country}</p>
+                        </div>
+                      </div>
 
-                    <div>
-                      <p className="cont">{address}</p>
-                    </div>
-                    <div>
-                      {
-                        post === "" ?  <p className="cit">{`${city}`}</p> :  <p className="cit">{`${city} , ${post}`}</p>
-                      }
-                      {/* <p className="cit">{`${city} , ${post}`}</p> */}
-                    </div>
-                    <div>
-                      <p className="cit">{country}</p>
-                    </div>
-                  </div>
+                      <div>
+                        {licence === "" ? (
+                          <span></span>
+                        ) : (
+                          <h4 className="heading1">Gender</h4>
+                        )}
+                        <div>
+                          <p className="cit">{licence}</p>
+                        </div>
+                      </div>
+                      <div>
+                        {nation === "" ? (
+                          <span></span>
+                        ) : (
+                          <h4 className="heading1">Nationality</h4>
+                        )}
+                        <div>
+                          <p className="cit">{nation}</p>
+                        </div>
+                      </div>
+                      <div>
+                        {place && birth !== "" ? (
+                          <h4 className="heading1">Place/Date of Birth</h4>
+                        ) : place !== "" ? (
+                          <h4 className="heading1">Place of Birth</h4>
+                        ) : birth !== "" ? (
+                          <h4 className="heading1">Date of Birth</h4>
+                        ) : (
+                          <span></span>
+                        )}
+                        <div>
+                          <p className="cit">{birth}</p>
+                          <p className="cit">{place}</p>
+                        </div>
+                      </div>
+                      <div className="top">
+                        {skill.length === 0 ? (
+                          <span></span>
+                        ) : (
+                          <h4 className="heading div-heading">Skills</h4>
+                        )}
+                        {skill.map((object) => (
 
-                  <div>
-                    {licence === "" ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading1">Gender</h4>
-                    )}
-                    <div>
-                      <p className="cit">{licence}</p>
-                    </div>
-                  </div>
-                  <div>
-                    {nation === "" ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading1">Nationality</h4>
-                    )}
-                    <div>
-                      <p className="cit">{nation}</p>
-                    </div>
-                  </div>
-                  <div>
-                    {place && birth !== "" ? (
-                      <h4 className="heading1">Place/Date of Birth</h4>
-                    ) : place !== "" ? (
-                      <h4 className="heading1">Place of Birth</h4>
-                    ) : birth !== "" ? (
-                      <h4 className="heading1">Date of Birth</h4>
-                    ) : (
-                      <span></span>
-                    )}
-                    <div>
-                      <p className="cit">{birth}</p>
-                      <p className="cit">{place}</p>
-                    </div>
-                  </div>
-                  <div className="top">
-                    {skill.length === 0 ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading div-heading">Skills</h4>
-                    )}
-                    {skill.map((object) => (
+                          <div key={object.id} className="ill">
+                            <div className="progress-bar-container" id="secondProgressBarContainer">
+                              {studentSkills.map((skill, index) => (
+                                <div key={index} className="progress-bar-container">
+                                  <div className="skill-name">{skill}</div>
+                                  {renderSecondProgressBar(skill)}
+                                </div>
+                              ))}
+                            </div>
+                            <ToastContainer className="custom-toast" />
 
-                      <div key={object.id} className="ill">
-                        <div className="progress-bar-container" id="secondProgressBarContainer">
-                          {studentSkills.map((skill, index) => (
-                            <div key={index} className="progress-bar-container">
-                              <div className="skill-name">{skill}</div>
-                              {renderSecondProgressBar(skill)}
+                            <p className="cit" id="cit">{`${object.input1}`}</p>
+
+                            <div className="ski1">
+
+                              {isChecked ? (
+                                <div>
+                                  {object.input2 === "" ? (
+                                    <span></span>
+                                  ) : (
+                                    <p className="ski">{`${object.input2}/5`}</p>
+                                  )}
+                                </div>
+                              ) : (
+                                <span></span>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="top">
+                        {website.length === 0 ? (
+                          <span></span>
+                        ) : (
+                          <h4 className="heading div-heading">Links</h4>
+                        )}
+                        {website.map((object) => (
+                          <div key={object.id}>
+                            {/* <p className="cit">{`${object.input1}`}</p> */}
+                            <Link to={object.input2} className="cit" id="link">
+                              {object.input1}
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="top">
+                        {six.length === 0 ? (
+                          <span></span>
+                        ) : (
+                          <h4 className="heading div-heading">Hobbies</h4>
+                        )}
+                        <div>
+                          {six.map((object) => (
+                            <div key={object.id} className="ill">
+                              <p className="cit">{`${object.input1}`}</p>
                             </div>
                           ))}
                         </div>
-                        <ToastContainer className="custom-toast" />
-
-                        <p className="cit" id="cit">{`${object.input1}`}</p>
-
-                        <div className="ski1">
-
-                          {isChecked ? (
-                            <div>
-                              {object.input2 === "" ? (
-                                <span></span>
-                              ) : (
+                      </div>
+                      <div className="top">
+                        {seven.length === 0 ? (
+                          <span></span>
+                        ) : (
+                          <h4 className="heading div-heading">Languages</h4>
+                        )}
+                        <div>
+                          {seven.map((object) => (
+                            <div key={object.id} className="ill">
+                              <p className="cit" id="cit">{`${object.input1}`}</p>
+                              <div className="ski1">
                                 <p className="ski">{`${object.input2}/5`}</p>
-                              )}
+                              </div>
                             </div>
-                          ) : (
-                            <span></span>
-                          )}
+                          ))}
                         </div>
                       </div>
-                    ))}
-                  </div>
-                  <div className="top">
-                    {website.length === 0 ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading div-heading">Links</h4>
-                    )}
-                    {website.map((object) => (
-                      <div key={object.id}>
-                        {/* <p className="cit">{`${object.input1}`}</p> */}
-                        <Link to={object.input2} className="cit" id="link">
-                          {object.input1}
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="top">
-                    {six.length === 0 ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading div-heading">Hobbies</h4>
-                    )}
-                    <div>
-                      {six.map((object) => (
-                        <div key={object.id} className="ill">
-                          <p className="cit">{`${object.input1}`}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="top">
-                    {seven.length === 0 ? (
-                      <span></span>
-                    ) : (
-                      <h4 className="heading div-heading">Languages</h4>
-                    )}
-                    <div>
-                      {seven.map((object) => (
-                        <div key={object.id} className="ill">
-                          <p className="cit" id="cit">{`${object.input1}`}</p>
-                          <div className="ski1">
-                            <p className="ski">{`${object.input2}/5`}</p>
-                          </div>
-                        </div>
-                      ))}
                     </div>
                   </div>
                 </div>
+
+
+
+
               </div>
-        </div>
-     
+            )}
 
-      
-             
-            </div>
-             )}
-           
-             {template === 'template2' && (
-        <div className="template2" onClick={handleClick}>
-          <div ref={contentDivRef}
-              contentEditable={false}
-              style={{
-                // border: '1px solid #ccc',
-                // minHeight: '200px',
-                // padding: '10px',
-                // marginBottom: '20px',
-                width:"100%"
-              }}>
-                 <section id="preview-sc" class="print_area">
-                        <div class="container">
-                            <div class="preview-cnt">
-                                <div class="preview-cnt-l bg-green text-white" id="color-container">
-                                    <div class="preview-blk">
-                                        <div class="preview-image">
-                                            <img src="" alt="" id="image_dsp"/>
-                                        </div>
-                                        <div class="preview-item preview-item-name">
-                                            <span class="preview-item-val fw-6" id="fullname_dsp"></span>
-                                        </div>
-                                        <div class="preview-item">
-                                            <span class="preview-item-val text-uppercase fw-6 ls-1"
-                                                id="designation_dsp"></span>
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>about</h3>
-                                        </div> 
-                                        <div class="preview-blk-list">
-                                            <div class="preview-item">
-
-                                                <span class="preview-item-val" id="phoneno_dsp"></span>
-                                            </div>
-                                            <div class="preview-item">
-
-                                                <span class="preview-item-val" id="email_dsp"></span>
-                                            </div>
-                                            <div class="preview-item">
-
-                                                <span class="preview-item-val" id="address_dsp"></span>
-                                            </div>
-                                            <div class="preview-item">
-                                                <div class="preview-blk-title"><h3>SUMMARY</h3></div> 
-                                                <span class="preview-item-val" id="summary_dsp"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>skills</h3>
-
-                                        </div>
-                                        <div class="skills-items preview-blk-list" id="skills_dsp">
-                                       
-
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title" id="achievements_dsp1">
-                                            <div id="skillsFormatted"></div> 
-                                            <div class="progress-bar-container" id="secondProgressBarContainer">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title1" id="achievements_dsp1">
-                                            <div class="right-side" id="rightSide">
-
-                                                <div class="display-container"></div><br />
-                                                <div class="display-container"></div>
-                                                <div class="right-side-container" id="right-side-container"></div>
-                                                <div class="output-container right-side">
-                                                    <ul id="right-side-list"></ul>
-                                                </div> 
-                                                <div class="output1-container right-side1">
-
-                                                </div>
-                                                <div class="content-container"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="preview-cnt-r bg-white">
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>Professional Summary</h3>
-                                        </div>
-                                        <div class="generated-resume" id="achievements_dsp1">
-                                            <div class="editor-content" id="content1"></div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <div class="right-side-container" id="right-side-container"></div>
-                                            <h3>Achievements</h3>
-                                        </div>
-                                        <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
-                                        <div class="editor-content" id="content2"></div>
-                                    </div>
-                                  
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>educations</h3>
-                                        </div>
-                                        <div class="educations-items preview-blk-list" id="educations_dsp"></div>
-                                        <div class="editor-content" id="content3"></div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>experiences</h3>
-                                        </div>
-                                        <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
-                                        <div class="editor-content" id="content4"></div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>projects</h3>
-                                        </div>
-                                        <div class="projects-items preview-blk-list" id="projects_dsp"></div>
-                                        <div class="editor-content" id="content5"></div>
-
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div  id="rightSide1">
-                                            <div class="preview-blk-title">
-                                            <div class="display-container1"></div></div>
-                                            <div class="preview-blk-title">
-                                            <div class="display-container1"></div></div>
-                                         
-                                          </div>
-                                       </div>
-                                </div>
+            {template === 'template2' && (
+              <div className="template2" onClick={handleClick}>
+                <div ref={contentDivRef}
+                  contentEditable={false}
+                  style={{
+                    // border: '1px solid #ccc',
+                    // minHeight: '200px',
+                    // padding: '10px',
+                    // marginBottom: '20px',
+                    width: "100%"
+                  }}>
+                  <section id="preview-sc" class="print_area">
+                    <div class="container">
+                      <div class="preview-cnt">
+                        <div class="preview-cnt-l bg-green text-white" id="color-container">
+                          <div class="preview-blk">
+                            <div class="preview-image">
+                              <img src="" alt="" id="image_dsp" />
+                             
                             </div>
+                            <div class="preview-item preview-item-name">
+                              <span class="preview-item-val fw-6" id="fullname_dsp"></span>
+                            </div>
+                            <div class="preview-item">
+                              <span class="preview-item-val text-uppercase fw-6 ls-1"
+                                id="designation_dsp"></span>
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>about</h3> */}
+                            </div>
+                            <div class="preview-blk-list">
+                              <div class="preview-item">
+
+                                <span class="preview-item-val" id="phoneno_dsp"></span>
+                              </div>
+                              <div class="preview-item">
+
+                                <span class="preview-item-val" id="email_dsp"></span>
+                              </div>
+                              <div class="preview-item">
+
+                                <span class="preview-item-val" id="address_dsp"></span>
+                              </div>
+                              <div class="preview-item">
+                                {/* <div class="preview-blk-title"><h3>SUMMARY</h3></div>  */}
+                                <span class="preview-item-val" id="summary_dsp"></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>skills</h3> */}
+
+                            </div>
+                            <div class="skills-items preview-blk-list" id="skills_dsp">
+
+
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title" id="achievements_dsp1">
+                              <div id="skillsFormatted"></div>
+                              <div class="progress-bar-container" id="secondProgressBarContainer">
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title1" id="achievements_dsp1">
+                              <div class="right-side" id="rightSide">
+
+                                <div class="display-container"></div><br />
+                                <div class="display-container"></div>
+                                <div class="right-side-container" id="right-side-container"></div>
+                                <div class="output-container right-side">
+                                  <ul id="right-side-list"></ul>
+                                </div>
+                                <div class="output1-container right-side1">
+
+                                </div>
+                                <div class="content-container"></div>
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
-                    </section>
+
+                        <div class="preview-cnt-r bg-white">
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>Professional Summary</h3> */}
+                            </div>
+                            <div class="generated-resume" id="achievements_dsp1">
+                              <div class="editor-content" id="content1"></div>
+                            </div>
+                          </div>
+
+
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              <div class="right-side-container" id="right-side-container"></div>
+                              {/* <h3>Achievements</h3> */}
+                            </div>
+                            <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
+                            <div class="editor-content" id="content2"></div>
+                          </div>
+
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>educations</h3> */}
+                            </div>
+                            <div class="educations-items preview-blk-list" id="educations_dsp"></div>
+                            <div class="editor-content" id="content3"></div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>experiences</h3> */}
+                            </div>
+                            <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
+                            <div class="editor-content" id="content4"></div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>projects</h3> */}
+                            </div>
+                            <div class="projects-items preview-blk-list" id="projects_dsp"></div>
+                            <div class="editor-content" id="content5"></div>
+
+                          </div>
+                          <div class="preview-blk">
+                            <div id="rightSide1">
+                              <div class="preview-blk-title">
+                                <div class="display-container1"></div></div>
+                              <div class="preview-blk-title">
+                                <div class="display-container1"></div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
               </div>
-        </div>
-      )}
+            )}
 
-      {template === 'template3' && (
-        <div className="template3" onClick={handleClick}>
-            <div ref={contentDivRef}
-              contentEditable={false}
-              style={{
-                // border: '1px solid #ccc',
-                // minHeight: '200px',
-                // padding: '10px',
-                // marginBottom: '20px',
-                width:"100%"
-              }}>
-            <section id="preview-sc" class="print_area">
-                        <div class="container">
-                            <div class="preview-cnt">
-                                <div class="preview-cnt-l bg-white text-white" id="color-container">
-                                    <div class="preview-blk">
-                                        <div class="preview-image">
-                                            <img src="" alt="" id="image_dsp"/>
-                                        </div>
-                                        <div class="preview-item preview-item-name">
-                                            <span class="preview-item-val fw-6" id="fullname_dsp"></span>
-                                        </div>
-                                        <div class="preview-item">
-                                            <span class="preview-item-val text-uppercase fw-6 ls-1"
-                                                id="designation_dsp"></span>
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>about</h3>
-                                        </div> 
-                                        <div class="preview-blk-list">
-                                            <div class="preview-item">
-
-                                                <span class="preview-item-val" id="phoneno_dsp"></span>
-                                            </div>
-                                            <div class="preview-item">
-
-                                                <span class="preview-item-val" id="email_dsp"></span>
-                                            </div>
-                                            <div class="preview-item">
-
-                                                <span class="preview-item-val" id="address_dsp"></span>
-                                            </div>
-                                            <div class="preview-item">
-                                                <div class="preview-blk-title"><h3>SUMMARY</h3></div> 
-                                                <span class="preview-item-val" id="summary_dsp"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>skills</h3>
-
-                                        </div>
-                                        <div class="skills-items preview-blk-list" id="skills_dsp">
-                                       
-
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title" id="achievements_dsp1">
-                                            <div id="skillsFormatted"></div> 
-                                            <div class="progress-bar-container" id="secondProgressBarContainer">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title1" id="achievements_dsp1">
-                                            <div class="right-side" id="rightSide">
-
-                                                <div class="display-container"></div><br />
-                                                <div class="display-container"></div>
-                                                <div class="right-side-container" id="right-side-container"></div>
-                                                <div class="output-container right-side">
-                                                    <ul id="right-side-list"></ul>
-                                                </div> 
-                                                <div class="output1-container right-side1">
-
-                                                </div>
-                                                <div class="content-container"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="preview-cnt-r bg-white">
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>Professional Summary</h3>
-                                        </div>
-                                        <div class="generated-resume" id="achievements_dsp1">
-                                            <div class="editor-content" id="content1"></div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <div class="right-side-container" id="right-side-container"></div>
-                                            <h3>Achievements</h3>
-                                        </div>
-                                        <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
-                                        <div class="editor-content" id="content2"></div>
-                                    </div>
-                                  
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>educations</h3>
-                                        </div>
-                                        <div class="educations-items preview-blk-list" id="educations_dsp"></div>
-                                        <div class="editor-content" id="content3"></div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>experiences</h3>
-                                        </div>
-                                        <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
-                                        <div class="editor-content" id="content4"></div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>projects</h3>
-                                        </div>
-                                        <div class="projects-items preview-blk-list" id="projects_dsp"></div>
-                                        <div class="editor-content" id="content5"></div>
-
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div  id="rightSide1">
-                                            <div class="preview-blk-title">
-                                            <div class="display-container1"></div></div>
-                                            <div class="preview-blk-title">
-                                            <div class="display-container1"></div></div>
-                                         
-                                          </div>
-                                       </div>
-                                </div>
+            {template === 'template3' && (
+              <div className="template3" onClick={handleClick}>
+                <div ref={contentDivRef}
+                  contentEditable={false}
+                  style={{
+                    // border: '1px solid #ccc',
+                    // minHeight: '200px',
+                    // padding: '10px',
+                    // marginBottom: '20px',
+                    width: "100%"
+                  }}>
+                  <section id="preview-sc" class="print_area">
+                    <div class="container">
+                      <div class="preview-cnt">
+                        <div class="preview-cnt-l bg-white text-white" id="color-container">
+                          <div class="preview-blk">
+                            <div class="preview-image">
+                              <img src="" alt="" id="image_dsp" />
                             </div>
-                        </div>
-                    </section>
-        </div></div>
-      )}
-
-      {template === 'template4' && (
-        <div className="template4" onClick={handleClick}>
-            <div ref={contentDivRef}
-              contentEditable={false}
-              style={{
-                // border: '1px solid #ccc',
-                // minHeight: '200px',
-                // padding: '10px',
-                // marginBottom: '20px',
-                width:"100%"
-              }}>
-           <section id="preview-sc" class="print_area">
-                        <div class="container">
-                            <div class="preview-cnt">
-                                <div class="preview-cnt-l bg-white text-white" id="color-container">
-                                    <div class="preview-blk">
-                                        <div class="preview-image">
-                                            <img src="" alt="" id="image_dsp"/>
-                                        </div>
-                                        <div class="preview-item preview-item-name">
-                                            <span class="preview-item-val fw-6" id="fullname_dsp"></span>
-                                        </div>
-                                        <div class="preview-item">
-                                            <span class="preview-item-val text-uppercase fw-6 ls-1"
-                                                id="designation_dsp"></span>
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>about</h3>
-                                        </div> 
-                                        <div class="preview-blk-list">
-                                            <div class="preview-item">
-
-                                                <span class="preview-item-val" id="phoneno_dsp"></span>
-                                            </div>
-                                            <div class="preview-item">
-
-                                                <span class="preview-item-val" id="email_dsp"></span>
-                                            </div>
-                                            <div class="preview-item">
-
-                                                <span class="preview-item-val" id="address_dsp"></span>
-                                            </div>
-                                            <div class="preview-item">
-                                                <div class="preview-blk-title"><h3>SUMMARY</h3></div> 
-                                                <span class="preview-item-val" id="summary_dsp"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>skills</h3>
-
-                                        </div>
-                                        <div class="skills-items preview-blk-list" id="skills_dsp">
-                                       
-
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title" id="achievements_dsp1">
-                                            <div id="skillsFormatted"></div> 
-                                            <div class="progress-bar-container" id="secondProgressBarContainer">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title1" id="achievements_dsp1">
-                                            <div class="right-side" id="rightSide">
-
-                                                <div class="display-container"></div><br />
-                                                <div class="display-container"></div>
-                                                <div class="right-side-container" id="right-side-container"></div>
-                                                <div class="output-container right-side">
-                                                    <ul id="right-side-list"></ul>
-                                                </div> 
-                                                <div class="output1-container right-side1">
-
-                                                </div>
-                                                <div class="content-container"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="preview-cnt-r bg-white">
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>Professional Summary</h3>
-                                        </div>
-                                        <div class="generated-resume" id="achievements_dsp1">
-                                            <div class="editor-content" id="content1"></div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <div class="right-side-container" id="right-side-container"></div>
-                                            <h3>Achievements</h3>
-                                        </div>
-                                        <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
-                                        <div class="editor-content" id="content2"></div>
-                                    </div>
-                                  
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>educations</h3>
-                                        </div>
-                                        <div class="educations-items preview-blk-list" id="educations_dsp"></div>
-                                        <div class="editor-content" id="content3"></div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>experiences</h3>
-                                        </div>
-                                        <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
-                                        <div class="editor-content" id="content4"></div>
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div class="preview-blk-title">
-                                            <h3>projects</h3>
-                                        </div>
-                                        <div class="projects-items preview-blk-list" id="projects_dsp"></div>
-                                        <div class="editor-content" id="content5"></div>
-
-                                    </div>
-                                    <div class="preview-blk">
-                                        <div  id="rightSide1">
-                                            <div class="preview-blk-title">
-                                            <div class="display-container1"></div></div>
-                                            <div class="preview-blk-title">
-                                            <div class="display-container1"></div></div>
-                                         
-                                          </div>
-                                       </div>
-                                </div>
+                            <div class="preview-item preview-item-name">
+                              <span class="preview-item-val fw-6" id="fullname_dsp"></span>
                             </div>
+                            <div class="preview-item">
+                              <span class="preview-item-val text-uppercase fw-6 ls-1"
+                                id="designation_dsp"></span>
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>about</h3> */}
+                            </div>
+                            <div class="preview-blk-list">
+                              <div class="preview-item">
+
+                                <span class="preview-item-val" id="phoneno_dsp"></span>
+                              </div>
+                              <div class="preview-item">
+
+                                <span class="preview-item-val" id="email_dsp"></span>
+                              </div>
+                              <div class="preview-item">
+
+                                <span class="preview-item-val" id="address_dsp"></span>
+                              </div>
+                              <div class="preview-item">
+                                {/* <div class="preview-blk-title"><h3>SUMMARY</h3></div>  */}
+                                <span class="preview-item-val" id="summary_dsp"></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>skills</h3> */}
+
+                            </div>
+                            <div class="skills-items preview-blk-list" id="skills_dsp">
+
+
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title" id="achievements_dsp1">
+                              <div id="skillsFormatted"></div>
+                              <div class="progress-bar-container" id="secondProgressBarContainer">
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title1" id="achievements_dsp1">
+                              <div class="right-side" id="rightSide">
+
+                                <div class="display-container"></div><br />
+                                <div class="display-container"></div>
+                                <div class="right-side-container" id="right-side-container"></div>
+                                <div class="output-container right-side">
+                                  <ul id="right-side-list"></ul>
+                                </div>
+                                <div class="output1-container right-side1">
+
+                                </div>
+                                <div class="content-container"></div>
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
-                    </section>
-        </div></div>
-      )}
+
+                        <div class="preview-cnt-r bg-white">
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>Professional Summary</h3> */}
+                            </div>
+                            <div class="generated-resume" id="achievements_dsp1">
+                              <div class="editor-content" id="content1"></div>
+                            </div>
+                          </div>
+
+
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              <div class="right-side-container" id="right-side-container"></div>
+                              {/* <h3>Achievements</h3> */}
+                            </div>
+                            <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
+                            <div class="editor-content" id="content2"></div>
+                          </div>
+
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>educations</h3> */}
+                            </div>
+                            <div class="educations-items preview-blk-list" id="educations_dsp"></div>
+                            <div class="editor-content" id="content3"></div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>experiences</h3> */}
+                            </div>
+                            <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
+                            <div class="editor-content" id="content4"></div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>projects</h3> */}
+                            </div>
+                            <div class="projects-items preview-blk-list" id="projects_dsp"></div>
+                            <div class="editor-content" id="content5"></div>
+
+                          </div>
+                          <div class="preview-blk">
+                            <div id="rightSide1">
+                              <div class="preview-blk-title">
+                                <div class="display-container1"></div></div>
+                              <div class="preview-blk-title">
+                                <div class="display-container1"></div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div></div>
+            )}
+
+            {template === 'template4' && (
+              <div className="template4" onClick={handleClick}>
+                <div ref={contentDivRef}
+                  contentEditable={false}
+                  style={{
+                    // border: '1px solid #ccc',
+                    // minHeight: '200px',
+                    // padding: '10px',
+                    // marginBottom: '20px',
+                    width: "100%"
+                  }}>
+                  <section id="preview-sc" class="print_area">
+                    <div class="container">
+                      <div class="preview-cnt">
+                        <div class="preview-cnt-l bg-white text-white" id="color-container">
+                          <div class="preview-blk">
+                            <div class="preview-image">
+                              <img src="" id="image_dsp" />
+                            </div>
+                            <div class="preview-item preview-item-name">
+                              <span class="preview-item-val fw-6" id="fullname_dsp"></span>
+                            </div>
+                            <div class="preview-item">
+                              <span class="preview-item-val text-uppercase fw-6 ls-1"
+                                id="designation_dsp"></span>
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>about</h3> */}
+                            </div>
+                            <div class="preview-blk-list">
+                              <div class="preview-item">
+
+                                <span class="preview-item-val" id="phoneno_dsp"></span>
+                              </div>
+                              <div class="preview-item">
+
+                                <span class="preview-item-val" id="email_dsp"></span>
+                              </div>
+                              <div class="preview-item">
+
+                                <span class="preview-item-val" id="address_dsp"></span>
+                              </div>
+                              <div class="preview-item">
+                                {/* <div class="preview-blk-title"><h3>SUMMARY</h3></div>  */}
+                                <span class="preview-item-val" id="summary_dsp"></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>skills</h3> */}
+
+                            </div>
+                            <div class="skills-items preview-blk-list" id="skills_dsp">
+
+
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title" id="achievements_dsp1">
+                              <div id="skillsFormatted"></div>
+                              <div class="progress-bar-container" id="secondProgressBarContainer">
+
+                              </div>
+                            </div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title1" id="achievements_dsp1">
+                              <div class="right-side" id="rightSide">
+
+                                <div class="display-container"></div><br />
+                                <div class="display-container"></div>
+                                <div class="right-side-container" id="right-side-container"></div>
+                                <div class="output-container right-side">
+                                  <ul id="right-side-list"></ul>
+                                </div>
+                                <div class="output1-container right-side1">
+
+                                </div>
+                                <div class="content-container"></div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="preview-cnt-r bg-white">
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>Professional Summary</h3> */}
+                            </div>
+                            <div class="generated-resume" id="achievements_dsp1">
+                              <div class="editor-content" id="content1"></div>
+                            </div>
+                          </div>
+
+
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              <div class="right-side-container" id="right-side-container"></div>
+                              {/* <h3>Achievements</h3> */}
+                            </div>
+                            <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
+                            <div class="editor-content" id="content2"></div>
+                          </div>
+
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>educations</h3> */}
+                            </div>
+                            <div class="educations-items preview-blk-list" id="educations_dsp"></div>
+                            <div class="editor-content" id="content3"></div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>experiences</h3> */}
+                            </div>
+                            <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
+                            <div class="editor-content" id="content4"></div>
+                          </div>
+                          <div class="preview-blk">
+                            <div class="preview-blk-title">
+                              {/* <h3>projects</h3> */}
+                            </div>
+                            <div class="projects-items preview-blk-list" id="projects_dsp"></div>
+                            <div class="editor-content" id="content5"></div>
+
+                          </div>
+                          <div class="preview-blk">
+                            <div id="rightSide1">
+                              <div class="preview-blk-title">
+                                <div class="display-container1"></div></div>
+                              <div class="preview-blk-title">
+                                <div class="display-container1"></div></div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div></div>
+            )}
           </Scrollbars>
         </div>
       </div>
     </div>
   );
 
-//   function Storelist({ name, it, id, head }) {
-//     return (
-//       <div>
-//         <div>{/* <h3>{name}</h3> */}</div>
-//         <div>
-//           {id === "06" ? (
-//             <div>
-//               {it.map((item, index) => (
-//                 <div className="store">
-//                   {item.input1 === undefined ? (
-//                     <span></span>
-//                   ) : (
-//                     <div>
-//                       {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-//             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-//             <p className="fonttt">{item.input6}</p> */}
-//                       <h2 className="head">References</h2>
-//                       <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
-//                       <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//           ) : (
-//             <span></span>
-//           )}
-//           {id === "01" ? (
-//             <div>
-//               <h2 className="head">Employment</h2>
-//               {it.map((item, index) => (
-//                 <div className="store">
-//                   {item.input1 === undefined ? (
-//                     <span></span>
-//                   ) : (
-//                     <div className="store">
-//                       {item.input1 === undefined ? (
-//                         <span></span>
-//                       ) : (
-//                         <div>
-//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-
-//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-//                           <p className="fonttt">{item.input6}</p>
-//                         </div>
-//                       )}
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//           ) : (
-//             <span></span>
-//           )}
-
-//           {id === "02" ? (
-//             <div>
-//               {it.map((item, index) => (
-//                 <div className="store">
-//                   {item.input1 === undefined ? (
-//                     <span></span>
-//                   ) : (
-//                     <div className="store">
-//                       <h2 className="head">Education</h2>
-//                       {item.input1 === undefined ? (
-//                         <span></span>
-//                       ) : (
-//                         <div>
-//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-//                           <p className="fonttt">{item.input6}</p>
-//                         </div>
-//                       )}
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//           ) : (
-//             <span></span>
-//           )}
-//           {id === "03" ? (
-//             <div>
-//               {it.map((item, index) => (
-//                 <div className="store">
-//                   {item.input1 === undefined ? (
-//                     <span></span>
-//                   ) : (
-//                     <div>
-//                       <div className="store">
-//                         <h2 className="head">Extra-curricular activites</h2>
-//                         {item.input1 === undefined ? (
-//                           <span></span>
-//                         ) : (
-//                           <div>
-//                             <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-//                             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-//                             <p className="fonttt">{item.input6}</p>
-//                           </div>
-//                         )}
-//                       </div>
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//           ) : (
-//             <span></span>
-//           )}
-//           {id === "04" ? (
-//             <div>
-//               {it.map((item, index) => (
-//                 <div className="store">
-//                   {item.input1 === undefined ? (
-//                     <span></span>
-//                   ) : (
-//                     <div className="store">
-//                       <h2 className="head">Course</h2>
-//                       {item.input1 === undefined ? (
-//                         <span></span>
-//                       ) : (
-//                         <div>
-//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-//                           <p className="fonttt">{item.input6}</p>
-//                         </div>
-//                       )}
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//           ) : (
-//             <span></span>
-//           )}
-//           {id === "05" ? (
-//             <div>
-//               {it.map((item, index) => (
-//                 <div className="store">
-//                   {item.input1 === undefined ? (
-//                     <span></span>
-//                   ) : (
-//                     <div className="store">
-//                       <h2 className="head">Internships</h2>
-//                       {item.input1 === undefined ? (
-//                         <span></span>
-//                       ) : (
-//                         <div>
-//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-//                           <p className="fonttt">{item.input6}</p>
-//                         </div>
-//                       )}
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//           ) : (
-//             <span></span>
-//           )}
-//           {id === "07" ? (
-//             <div>
-//               {it.map((item, index) => (
-//                 <div className="store">
-//                   {item.input1 === undefined ? (
-//                     <span></span>
-//                   ) : (
-//                     <div className="store">
-//                       <h2 className="head">Project</h2>
-//                       {item.input1 === undefined ? (
-//                         <span></span>
-//                       ) : (
-//                         <div>
-//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-//                           <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-//                           <p className="fonttt">{item.input6}</p>
-//                         </div>
-//                       )}
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//           ) : (
-//             <span></span>
-//           )}
-//           {id === "08" ? (
-//             <div>
-//               <h2 className="head">{head}</h2>
-//               {it.map((item, index) => (
-//                 <div className="store">
-//                   {item.input1 === undefined ? (
-//                     <span></span>
-//                   ) : (
-//                     <div className="store">
-//                       {item.input1 === undefined ? (
-//                         <span></span>
-//                       ) : (
-//                         <div>
-//                           <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-//                           <p className="fontt">{`${item.input4}`}</p>
-//                           <p className="fonttt">{item.input5}</p>
-//                         </div>
-//                       )}
-//                     </div>
-//                   )}
-//                 </div>
-//               ))}
-//             </div>
-//           ) : (
-//             <span></span>
-//           )}
-
-//           {/* {it.map((item,index) => (
-//           <div className="store">
-//             {
-//               item.input1 === undefined ? <span></span> : <div>
-//                     <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-//             <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-//             <p className="fonttt">{item.input6}</p>
-//               </div>
-//             }
-            
-//           </div>
-//         ))} */}
-//         </div>
-//       </div>
-//     );
-//   }
+  
 }
 
 export default Hobbies;

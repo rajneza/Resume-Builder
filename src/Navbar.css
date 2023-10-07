@@ -47,11 +47,11 @@ a{
     text-decoration: none;
 }
 
-/* fonts */
+
 .font-poppins{font-family: var(--font-poppins);}
 .font-manrope{font-family: var(--font-manrope);}
 
-/* text colors */
+
 .text-blue{color: var(--clr-blue);}
 .text-blue-mid{color: var(--clr-blue-mid);}
 .text-blue-dark{color: var(--clr-blue-dark);}
@@ -60,7 +60,7 @@ a{
 .text-grey{color: var(--clr-grey);}
 .text-white{color: var(--clr-white);}
 
-/* backgrounds */
+
 .bg-blue{background-color: var(--clr-blue);}
 .bg-blue-mid{background-color: var(--clr-blue-mid);}
 .bg-blue-dark{background-color: var(--clr-blue-dark);}
@@ -117,7 +117,7 @@ a{
 .truetalent-landing-page{
     height: 100px;
 }
-/* bars button */
+
 .bars{
     display: flex;
     flex-direction: column;
@@ -136,7 +136,7 @@ a{
     background-color: var(--clr-dark);
 }
 
-/* buttons */
+
 .btn{
     font-size: 14.5px;
     font-weight: 600;
@@ -175,7 +175,6 @@ a{
     margin-right: 1rem!important;
 }
 
-/* navbar part */
 .navbar{
     height: 50px;
     display: flex;
@@ -255,7 +254,7 @@ a{
 }
 
 
-/* section one */
+
 .section-one{
     padding: 64px 0;
     
@@ -289,7 +288,7 @@ a{
 .section-one-content{
     max-height: 100px;
 }
-/* section two */
+
 .section-two{
     padding: 64px 0;
     height: 450px;
@@ -328,7 +327,7 @@ a{
     font-size: 15px;
 }
 
-/* footer */
+
 .footer{
     padding: 3rem 0;
     height: 300px;
@@ -353,7 +352,7 @@ a{
 .paragraphhh{
     display: flex;
 }
-/* media queries */
+
 @media screen and (min-width: 768px){
     .section-two .section-items{
         grid-template-columns: repeat(2, 1fr);
@@ -382,7 +381,7 @@ a{
 
 .photooo {
     position: relative;
-    display: inline-block; /* Make the container shrink to the size of the image */
+    display: inline-block; 
   }
   
   .link-overlay {
