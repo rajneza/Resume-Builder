@@ -169,7 +169,8 @@ function Hobbies(props) {
   const [fname, setFname] = useState("File Name");
   // const [name, setname] = useState("");
   const [lastName, setLastName] = useState("");
-  const [selectedColor, setSelectedColor] = useState('#0f3871'); // Initial color
+  const [selectedColor, setSelectedColor] = useState('#0f3871');
+  const [selectedColor1, setSelectedColor1] = useState('#084C41'); 
   const [skillsProgressBars, setSkillsProgressBars] = useState({});
   const [studentSkills, setStudentSkills] = useState([]);
   const [selectedSkill, setSelectedSkill] = useState('');
@@ -350,7 +351,10 @@ function Hobbies(props) {
     const newColor = event.target.value;
     setSelectedColor(newColor);
   };
-
+  const handleColorChange1 = (event) => {
+    const newColor = event.target.value;
+    setSelectedColor1(newColor);
+  };
   const generateName = (inputValue, addSpace) => {
     const cleanedName = inputValue.replace(/\s+/g, " ").trim();
     const fullName = cleanedName
@@ -1290,7 +1294,7 @@ function Hobbies(props) {
                     </div>
                   </div>
                   <div className="photo">
-                    {/* <PhotoUpload></PhotoUpload> */}
+                   
 
                     <div className="select-photo-container">
                       <Dropzone
@@ -1340,7 +1344,7 @@ function Hobbies(props) {
                             </div>
                           </div>
                         ) : (
-                          <div>{/* <h4>Upload photo</h4> */}</div>
+                          <div></div>
                         )}
                       </div>
                     </div>
@@ -3688,11 +3692,17 @@ interests and curiosities"
               type="color"
               value={selectedColor}
               onChange={handleColorChange}
-              style={{ display: 'none' }} // Hide the default color input UI
+              style={{ display: 'none' }} 
             />
-
+          <input
+              id="color-picker1"
+              type="color"
+              value={selectedColor1}
+              onChange={handleColorChange1}
+              style={{ display: 'none' }} 
+            />
             <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()} className="text-white ">
-              Open Color Picker <div id="color-picker" style={{ backgroundColor: selectedColor }}>Click</div>
+              Open Color Picker <div id="color-picker" style={{ backgroundColor: selectedColor1 }}>Click</div>
             </button>
             {editingFname ? (
               <div>
@@ -4073,7 +4083,7 @@ interests and curiosities"
                       </DragDropContext>
                     </div>
                   </div>
-                  <div className="main-left" style={{ backgroundColor: selectedColor }}>
+                  <div className="main-left1" style={{ backgroundColor: selectedColor1 }}>
                     <div className="pincode">
                       <div className="details">
                         {email === "" ? (
@@ -4376,7 +4386,7 @@ interests and curiosities"
                   //     </div>
                   //   </div>
                   // </section>
-                  <div className="template3" onClick={handleClick}>
+                  <div className="template2" onClick={handleClick}>
                   <div className="main-full" id="pdf-content" ref={contentDivRef}
                     contentEditable={false}
                     style={{
@@ -4387,7 +4397,51 @@ interests and curiosities"
                       width: "97%"
                     }}>
                       
-                        <div className="main-left" style={{ backgroundColor: selectedColor }}>
+                        <div className="main-left" style={{ backgroundColor: selectedColor1 }}>
+                        <div class="preview-image">
+                            
+                             
+                          
+                        <Dropzone
+                              onDrop={handleDrop}
+                              accept="image/*"
+                              multiple={false}
+                            >
+                              {({ getRootProps, getInputProps }) => (
+                                <div
+                                  className="dropzone"
+                                  id="drop"
+                                  {...getRootProps()}
+                                >
+                                  <input {...getInputProps()} />
+                                  {selectedFile ? (
+                                    <div className="image">
+                                      <div className="image-container">
+                                        <img
+                                          src={URL.createObjectURL(selectedFile)}
+                                          alt="Uploaded"
+                                          className="rounded-image"
+                                          onClick={handleView}
+                                          style={{ borderRadius: "50%" }}
+                                        />
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <div style={{ display: "flex" }}></div>
+                                  )}
+                                </div>
+                              )}
+                            </Dropzone></div>
+                            <div>
+                            <div style={{ display: "flex" }}>
+                              <h3 className="name11">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
+                             {/* <h3 className="name1">{name}</h3>
+                          <h3 className="name2">{lastname}</h3>  */}
+                            </div>
+                            <div>
+                              <h6 className="name1">{job}</h6>
+                            </div>
+                          </div>
                       <div className="pincode">
                         <div className="details">
                           {email === "" ? (
@@ -4551,7 +4605,7 @@ interests and curiosities"
                       <div>
                         <div style={{ display: "flex" }} className="cont-1">
                           <div className="profile-pic">
-                            <Dropzone
+                            {/* <Dropzone
                               onDrop={handleDrop}
                               accept="image/*"
                               multiple={false}
@@ -4579,19 +4633,19 @@ interests and curiosities"
                                   )}
                                 </div>
                               )}
-                            </Dropzone>
+                            </Dropzone> */}
                           </div>
-                          <div>
+                          {/* <div>
                             <div style={{ display: "flex" }}>
                               <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
-                              {/* <h3 className="name1">{name}</h3>
-                          <h3 className="name2">{lastname}</h3> */}
+                             <h3 className="name1">{name}</h3>
+                          <h3 className="name2">{lastname}</h3> 
                             </div>
                             <div>
                               <h6 className="name">{job}</h6>
                             </div>
-                          </div>
-                        </div>
+                          </div> */}
+                        </div> 
                         <div className="summry">
                           {editorHtml === "" ? (
                             <span></span>
@@ -4906,7 +4960,7 @@ interests and curiosities"
                     width: "97%"
                   }}>
                     
-                      <div className="main-left" style={{ backgroundColor: selectedColor }}>
+                      <div className="main-left bg-green text-white" style={{ backgroundColor: selectedColor }}>
                     <div className="pincode">
                       <div className="details">
                         {email === "" ? (
