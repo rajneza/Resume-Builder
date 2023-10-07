@@ -39,6 +39,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css'
 import { AiFillQuestionCircle, AiFillCloseCircle } from "react-icons/ai"
+import mrssai from "./images/mrssai.avif";
+import ushamadam from "./images/ushamadam.avif";
+import rajeshsir from "./images/rajeshsir.avif";
+
 
 
 
@@ -168,6 +172,7 @@ function Hobbies(props) {
   const [heading, setHeading] = useState("Personal Details");
   const [fname, setFname] = useState("File Name");
   // const [name, setname] = useState("");
+  const [showtemplate, setshowTeemplate] = useState(true)
   const [lastName, setLastName] = useState("");
   const [selectedColor, setSelectedColor] = useState('#0f3871');
   const [selectedColor1, setSelectedColor1] = useState('#084C41'); 
@@ -606,6 +611,12 @@ function Hobbies(props) {
   const delete6 = () => {
     setlangu(true);
   };
+
+  // Show Template
+
+  const showTemplate=()=>{
+         setshowTeemplate(false)
+  }
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [showFullView, setShowFullView] = useState(false);
@@ -3687,6 +3698,9 @@ interests and curiosities"
         </div>
         <div className="resume-right">
           <div className="generate">
+            <div>
+              <button onClick={showTemplate}>Select Template</button>
+            </div>
             <input
               id="color-picker"
               type="color"
@@ -3725,7 +3739,20 @@ interests and curiosities"
             )}
             <button onClick={handlePrint} className="btn btn-primary ">Generate PDF</button>
           </div>
+          {
+              showtemplate === false ? 
+                <Scrollbars>
+                <div style={{display:"flex"}} className="main-temp">
+                <img src={rajeshsir} alt="" className="temp-image"/>
+                <img src={mrssai} alt="" className="temp-image"/>
+                </div>
+                <div style={{display:"flex"}} className="main-temp">
+                <img src={ushamadam} alt="" className="temp-image"/>
+                <img src={mrssai} alt="" className="temp-image"/>
+                </div>
+                </Scrollbars>
 
+               : 
           <Scrollbars>
             {template === 'template1' && (
               <div className="template1" onClick={handleClick}>
@@ -5612,6 +5639,7 @@ interests and curiosities"
                 </div></div>
             )}
           </Scrollbars>
+          }
         </div>
       </div>
     </div>
