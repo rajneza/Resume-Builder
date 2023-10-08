@@ -176,6 +176,7 @@ function Hobbies(props) {
   const [lastName, setLastName] = useState("");
   const [selectedColor, setSelectedColor] = useState('#0f3871');
   const [selectedColor1, setSelectedColor1] = useState('#084C41'); 
+  const [isColor1Active, setIsColor1Active] = useState(true);
   const [skillsProgressBars, setSkillsProgressBars] = useState({});
   const [studentSkills, setStudentSkills] = useState([]);
   const [selectedSkill, setSelectedSkill] = useState('');
@@ -352,13 +353,26 @@ function Hobbies(props) {
     return colors[randomIndex];
   };
 
+  useEffect(() => {
+    // Set the default color based on the active template
+    const defaultColor = isColor1Active ? selectedColor1 : selectedColor;
+    document.getElementById('color-picker').value = defaultColor;
+  }, [isColor1Active, selectedColor, selectedColor1]);
+
   const handleColorChange = (event) => {
     const newColor = event.target.value;
-    setSelectedColor(newColor);
+    isColor1Active ? setSelectedColor1(newColor) : setSelectedColor(newColor);
   };
-  const handleColorChange1 = (event) => {
-    const newColor = event.target.value;
-    setSelectedColor1(newColor);
+
+  const handleColorButtonClick = () => {
+    const colorPicker = document.getElementById('color-picker');
+    colorPicker.click();
+  };
+
+  
+  
+  const handleTemplateChange = () => {
+    setIsColor1Active((prev) => !prev);
   };
   const generateName = (inputValue, addSpace) => {
     const cleanedName = inputValue.replace(/\s+/g, " ").trim();
@@ -3701,23 +3715,27 @@ interests and curiosities"
             <div>
               <button onClick={showTemplate}>Select Template</button>
             </div>
+            <div className="coll">
             <input
-              id="color-picker"
-              type="color"
-              value={selectedColor}
-              onChange={handleColorChange}
-              style={{ display: 'none' }} 
-            />
-          <input
-              id="color-picker1"
-              type="color"
-              value={selectedColor1}
-              onChange={handleColorChange1}
-              style={{ display: 'none' }} 
-            />
-            <button id="color-picker-button" onClick={() => document.getElementById('color-picker').click()} className="text-white ">
-              Open Color Picker <div id="color-picker" style={{ backgroundColor: selectedColor1 }}>Click</div>
-            </button>
+        id="color-picker"
+        type="color"
+        value={isColor1Active ? selectedColor1 : selectedColor}
+        onChange={handleColorChange}
+        style={{ display: 'none' }}
+      />
+      <button onClick={handleColorButtonClick} className="text-white">
+        {/* Open Color Picker */}
+        <div
+          id="color-picker"
+          style={{ backgroundColor: isColor1Active ? selectedColor1 : selectedColor }}
+        >
+          Click
+        </div>
+      </button>
+      <button onClick={handleTemplateChange}>Switch Template</button>
+      </div>
+         
+    
             {editingFname ? (
               <div>
                 <input
@@ -4110,7 +4128,7 @@ interests and curiosities"
                       </DragDropContext>
                     </div>
                   </div>
-                  <div className="main-left1" style={{ backgroundColor: selectedColor1 }}>
+                  <div className="main-left1" style={{ backgroundColor: selectedColor }}>
                     <div className="pincode">
                       <div className="details">
                         {email === "" ? (
@@ -4458,16 +4476,16 @@ interests and curiosities"
                                   )}
                                 </div>
                               )}
-                            </Dropzone></div>
+                            </Dropzone></div><br/>
                             <div>
-                            <div style={{ display: "flex" }}>
+                            <div style={{ display: "flex" }}className="fullname_dsp">
                               <h3 className="name11">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
                              {/* <h3 className="name1">{name}</h3>
                           <h3 className="name2">{lastname}</h3>  */}
                             </div>
-                            <div>
-                              <h6 className="name1">{job}</h6>
-                            </div>
+                            <div className="name1"></div>
+                              <h6 className="namee text-uppercase">{job}</h6>
+                          
                           </div>
                       <div className="pincode">
                         <div className="details">
@@ -4629,7 +4647,8 @@ interests and curiosities"
                       </div>
                     </div>
                     <div className="main-right">
-                      <div>
+                      <div id="cont">
+                      <div >
                         <div style={{ display: "flex" }} className="cont-1">
                           <div className="profile-pic">
                             {/* <Dropzone
@@ -4972,7 +4991,7 @@ interests and curiosities"
                     </div>
                   </div>
                   </div>
-              
+                  </div>
             )}
 
             {template === 'template3' && (
@@ -4987,7 +5006,7 @@ interests and curiosities"
                     width: "97%"
                   }}>
                     
-                      <div className="main-left bg-green text-white" style={{ backgroundColor: selectedColor }}>
+                      <div className="main-left bg-green text-white" style={{ backgroundColor: selectedColor1 }}>
                     <div className="pincode">
                       <div className="details">
                         {email === "" ? (

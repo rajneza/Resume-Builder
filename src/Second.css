@@ -846,6 +846,7 @@ Popup.css .popup {
   background-color: #0f3871;
   overflow-y: auto;
   color: white;
+  text-align: justify!important;
 }
 
 .name1 {
@@ -935,6 +936,7 @@ Popup.css .popup {
 .pincode {
   text-align: left;
   margin-left: 15%;
+  margin-top: -50px;
 }
 
 .heading {
@@ -1313,15 +1315,10 @@ Popup.css .popup {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
 
-  .generate{
-   
-   display: flex;
-   justify-content: space-evenly;
-   align-items: center;
-   text-align: center;
-  }
+
  
 
 
@@ -1901,4 +1898,4 @@ select {
       padding: 15px;
     }
 
-     
+   
