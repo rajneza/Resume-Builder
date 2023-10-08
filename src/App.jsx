@@ -2,15 +2,6 @@ import React from "react";
 
 import { BrowserRouter, Route, Routes, Link, useParams } from "react-router-dom";
 import "./Navbar.css"
-// import curriculum from "/images/curriculum.png";
-// import mrssai from "./images/mrssai.avif";
-// import ushamadam from "./images/ushamadam.avif";
-// import acharjya from "./images/acharjya.avif";
-// import rajeshsir from "./images/rajeshsir.avif";
-// import feat from "./images/feature-1-edf4481d69166ac81917d1e40e6597c8d61aa970ad44367ce78049bf830fbda5.svg";
-// import feat1 from "./images/feature-2-a7a471bd973c02a55d1b3f8aff578cd3c9a4c5ac4fc74423d94ecc04aef3492b.svg";
-// import feat2 from "./images/feature-3-4e87a82f83e260488c36f8105e26f439fdc3ee5009372bb5e12d9421f32eabdd.svg";
-// import imagess from "./images/visual-0c7080adf17f1f207276f613447c924f667dab34b7ac415cd7ef653172defd0b.svg";
 
 // import Navbar from "./Navbar";
 
