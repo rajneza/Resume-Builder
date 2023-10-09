@@ -3842,7 +3842,7 @@ interests and curiosities"
                               </div>
                             </div>
                           </div>
-                          <div className="summry">
+                          <div className={`summry ${editorHtml === "" ? "hidden" : ""}`}>
                             {editorHtml === "" ? (
                               <span></span>
                             ) : (
@@ -4454,6 +4454,7 @@ interests and curiosities"
                       }}>
 
                       <div className="main-left" style={{ backgroundColor: selectedColor1 }}>
+                        <div className="main-sai">
                         <div class="preview-image">
 
 
@@ -4503,7 +4504,7 @@ interests and curiosities"
                             {email === "" ? (
                               <span></span>
                             ) : (
-                              <h4 className="heading div-heading">Contact</h4>
+                              <div className="preview-blk-title"><h4 className="headingg div-heading">Contact</h4></div>
                             )}
                             <div>
                               {
@@ -4519,7 +4520,7 @@ interests and curiosities"
                             {address === "" ? (
                               <span></span>
                             ) : (
-                              <h4 className="heading div-heading">Address</h4>
+                              <div className="preview-blk-title"><h4 className="headingg div-heading">Address</h4></div>
                             )}
 
                             <div>
@@ -4540,7 +4541,7 @@ interests and curiosities"
                             {licence === "" ? (
                               <span></span>
                             ) : (
-                              <h4 className="heading1">Gender</h4>
+                              <div className="preview-blk-title"><h4 className="heading11">Gender</h4></div>
                             )}
                             <div>
                               <p className="cit">{licence}</p>
@@ -4550,7 +4551,7 @@ interests and curiosities"
                             {nation === "" ? (
                               <span></span>
                             ) : (
-                              <h4 className="heading1">Nationality</h4>
+                              <div className="preview-blk-title"><h4 className="heading11">Nationality</h4></div>
                             )}
                             <div>
                               <p className="cit">{nation}</p>
@@ -4558,11 +4559,11 @@ interests and curiosities"
                           </div>
                           <div>
                             {place && birth !== "" ? (
-                              <h4 className="heading1">Place/Date of Birth</h4>
+                             <div className="preview-blk-title"><h4 className="heading11">Place/Date of Birth</h4></div>
                             ) : place !== "" ? (
                               <h4 className="heading1">Place of Birth</h4>
                             ) : birth !== "" ? (
-                              <h4 className="heading1">Date of Birth</h4>
+                              <div className="preview-blk-title"><h4 className="heading11">Date of Birth</h4></div>
                             ) : (
                               <span></span>
                             )}
@@ -4575,7 +4576,7 @@ interests and curiosities"
                             {skill.length === 0 ? (
                               <span></span>
                             ) : (
-                              <h4 className="heading div-heading">Skills</h4>
+                              <div className="preview-blk-title"><h4 className="headingg div-heading">Skills</h4></div>
                             )}
                             {skill.map((object) => (
 
@@ -4613,7 +4614,7 @@ interests and curiosities"
                             {website.length === 0 ? (
                               <span></span>
                             ) : (
-                              <h4 className="heading div-heading">Links</h4>
+                              <div className="preview-blk-title"><h4 className="headingg div-heading">Links</h4></div>
                             )}
                             {website.map((object) => (
                               <div key={object.id}>
@@ -4628,7 +4629,7 @@ interests and curiosities"
                             {six.length === 0 ? (
                               <span></span>
                             ) : (
-                              <h4 className="heading div-heading">Hobbies</h4>
+                              <div className="preview-blk-title"><h4 className="headingg div-heading">Hobbies</h4></div>
                             )}
                             <div>
                               {six.map((object) => (
@@ -4642,7 +4643,7 @@ interests and curiosities"
                             {seven.length === 0 ? (
                               <span></span>
                             ) : (
-                              <h4 className="heading div-heading">Languages</h4>
+                              <div className="preview-blk-title"><h4 className="headingg div-heading">Languages</h4></div>
                             )}
                             <div>
                               {seven.map((object) => (
@@ -4657,57 +4658,22 @@ interests and curiosities"
                           </div>
                         </div>
                       </div>
+                      </div>
                       <div className="main-right">
                         <div id="cont">
                           <div >
                             <div style={{ display: "flex" }} className="cont-1">
                               <div className="profile-pic">
-                                {/* <Dropzone
-                              onDrop={handleDrop}
-                              accept="image/*"
-                              multiple={false}
-                            >
-                              {({ getRootProps, getInputProps }) => (
-                                <div
-                                  className="dropzone"
-                                  id="drop"
-                                  {...getRootProps()}
-                                >
-                                  <input {...getInputProps()} />
-                                  {selectedFile ? (
-                                    <div className="image">
-                                      <div className="image-container">
-                                        <img
-                                          src={URL.createObjectURL(selectedFile)}
-                                          alt="Uploaded"
-                                          className="rounded-image"
-                                          onClick={handleView}
-                                        />
-                                      </div>
-                                    </div>
-                                  ) : (
-                                    <div style={{ display: "flex" }}></div>
-                                  )}
-                                </div>
-                              )}
-                            </Dropzone> */}
+                               
                               </div>
-                              {/* <div>
-                            <div style={{ display: "flex" }}>
-                              <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
-                             <h3 className="name1">{name}</h3>
-                          <h3 className="name2">{lastname}</h3> 
-                            </div>
-                            <div>
-                              <h6 className="name">{job}</h6>
-                            </div>
-                          </div> */}
+                            
                             </div>
                             <div className="summry">
                               {editorHtml === "" ? (
                                 <span></span>
                               ) : (
-                                <h2 className="prof">Summary</h2>
+                                <div className="preview-blk-title">
+                                <h2 className="proff">Summary</h2></div>
                               )}
                               <div
                                 className="mess"
@@ -4745,7 +4711,7 @@ interests and curiosities"
                                                   {store.id === "06" ? (
                                                     <div>
                                                       {
-                                                        three.length === 0 ? <span></span> : <h2 className="head">References</h2>
+                                                        three.length === 0 ? <span></span> : <div className="preview-blk-title"><h2 className="headd">References</h2></div>
                                                       }
                                                       {store.it.map((item, index) => (
                                                         <div className="store">
@@ -4757,8 +4723,8 @@ interests and curiosities"
               <p className="fontt">{`${item.input4}/${item.input5}`}</p>
               <p className="fonttt">{item.input6}</p> */}
 
-                                                              <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
-                                                              <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                                                              <p className="fontttee">{`${item.input1} from ${item.input2}`}</p>
+                                                              <p className="fontt1">{`${item.input4} | ${item.input5}`}</p>
                                                             </div>
                                                           )}
                                                         </div>
@@ -4770,7 +4736,7 @@ interests and curiosities"
                                                   {store.id === "01" ? (
                                                     <div>
                                                       {
-                                                        objects.length === 0 ? <span></span> : <h2 className="head">Employment</h2>
+                                                        objects.length === 0 ? <span></span> :<div className="preview-blk-title"> <h2 className="headd">Employment</h2></div>
                                                       }
                                                       {store.it.map((item, index) => (
                                                         <div className="store">
@@ -4782,7 +4748,7 @@ interests and curiosities"
                                                                 <span></span>
                                                               ) : (
                                                                 <div>
-                                                                  <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                                  <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
 
                                                                   <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                                   <p className="fonttt">{item.input6}</p>
@@ -4800,7 +4766,7 @@ interests and curiosities"
                                                   {store.id === "02" ? (
                                                     <div>
                                                       {
-                                                        education.length === 0 ? <span></span> : <h2 className="head">Education</h2>
+                                                        education.length === 0 ? <span></span> : <div className="preview-blk-title"><h2 className="headd">Education</h2></div>
                                                       }
                                                       {store.it.map((item, index) => (
                                                         <div className="store">
@@ -4813,7 +4779,7 @@ interests and curiosities"
                                                                 <span></span>
                                                               ) : (
                                                                 <div>
-                                                                  <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                                  <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                   {
                                                                     item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fontt">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                                   }
@@ -4832,7 +4798,7 @@ interests and curiosities"
                                                   {store.id === "03" ? (
                                                     <div>
                                                       {
-                                                        four.length === 0 ? <span></span> : <h2 className="head">Extra-curricular activites</h2>
+                                                        four.length === 0 ? <span></span> : <div className="preview-blk-title"><h2 className="headd">Extra-curricular activites</h2></div>
                                                       }
                                                       {store.it.map((item, index) => (
                                                         <div className="store">
@@ -4846,7 +4812,7 @@ interests and curiosities"
                                                                   <span></span>
                                                                 ) : (
                                                                   <div>
-                                                                    <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                     {
                                                                       item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                                     }
@@ -4865,7 +4831,7 @@ interests and curiosities"
                                                   {store.id === "04" ? (
                                                     <div>
                                                       {
-                                                        course.length === 0 ? <span></span> : <h2 className="head">Course</h2>
+                                                        course.length === 0 ? <span></span> : <div className="preview-blk-title"><h2 className="headd">Course</h2></div>
                                                       }
                                                       {store.it.map((item, index) => (
                                                         <div className="store">
@@ -4878,7 +4844,7 @@ interests and curiosities"
                                                                 <span></span>
                                                               ) : (
                                                                 <div>
-                                                                  <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                                  <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                   <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                                   <p className="fonttt">{item.input6}</p>
                                                                 </div>
@@ -4894,7 +4860,7 @@ interests and curiosities"
                                                   {store.id === "05" ? (
                                                     <div>
                                                       {
-                                                        five.length === 0 ? <span></span> : <h2 className="head">Internships</h2>
+                                                        five.length === 0 ? <span></span> : <div className="preview-blk-title"><h2 className="headd">Internships</h2></div>
                                                       }
                                                       {store.it.map((item, index) => (
                                                         <div className="store">
@@ -4907,7 +4873,7 @@ interests and curiosities"
                                                                 <span></span>
                                                               ) : (
                                                                 <div>
-                                                                  <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                                  <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                   <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                                   <p className="fonttt">{item.input6}</p>
                                                                 </div>
@@ -4923,7 +4889,7 @@ interests and curiosities"
                                                   {store.id === "07" ? (
                                                     <div>
                                                       {
-                                                        project.length === 0 ? <span></span> : <h2 className="head">Projects</h2>
+                                                        project.length === 0 ? <span></span> : <div className="preview-blk-title"><h2 className="headd">Projects</h2></div>
                                                       }
                                                       {store.it.map((item, index) => (
                                                         <div className="store">
@@ -4942,10 +4908,10 @@ interests and curiosities"
                                                                   }
 
                                                                   {
-                                                                    item.input7 === "" ? <span></span> : <p className="fontt">{`My Role : ${item.input7}`}</p>
+                                                                    item.input7 === "" ? <span></span> : <p className="fontt1">{`My Role : ${item.input7}`}</p>
                                                                   }
                                                                   {
-                                                                    item.input8 === "" ? <span></span> : <p className="fontt">{`Skills Used In This  Project : ${item.input8}`}</p>
+                                                                    item.input8 === "" ? <span></span> : <p className="fontt1">{`Skills Used In This  Project : ${item.input8}`}</p>
                                                                   }
 
                                                                   <p className="fonttt">{item.input6}</p>
@@ -4962,7 +4928,7 @@ interests and curiosities"
                                                   {store.id === "08" ? (
                                                     <div>
                                                       {
-                                                        cust.length === 0 ? <span></span> : <h2 className="head">{store.head}</h2>
+                                                        cust.length === 0 ? <span></span> : <div className="preview-blk-title"><h2 className="headd">{store.head}</h2></div>
                                                       }
                                                       {store.it.map((item, index) => (
                                                         <div className="store">
@@ -4974,7 +4940,7 @@ interests and curiosities"
                                                                 <span></span>
                                                               ) : (
                                                                 <div>
-                                                                  <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                                  <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                   <p className="fontt">{`${item.input4}`}</p>
                                                                   <p className="fonttt">{item.input5}</p>
                                                                 </div>

@@ -782,12 +782,28 @@ Popup.css .popup {
   height: fit-content;
   margin-bottom: 30px;
   margin-left: 0%;
-
+margin-top: 10px;
 }
 
 .summry {
   margin-right: 3%;
+  /* border-bottom: 0.5px solid rgb(230, 224, 224); */
+  margin-top: 10px;
+}
+.prof {
 
+  text-align: left;
+  width: 100%;
+  flex-wrap: wrap;
+  height: fit-content;
+  margin-bottom: 30px;
+  margin-left: 0%;
+
+}
+
+.prof {
+  margin-right: 3%;
+  /* border-bottom: 0.5px solid rgb(230, 224, 224); */
 }
 
 .prof {
@@ -876,6 +892,7 @@ Popup.css .popup {
   font-weight: bolder;
   margin-top: 2%;
   margin-bottom: 1%;
+  
 }
 
 .head {
@@ -936,7 +953,7 @@ Popup.css .popup {
 .pincode {
   text-align: left;
   margin-left: 15%;
-  margin-top: -50px;
+  margin-top: -65px;
 }
 
 .heading {
