@@ -10,7 +10,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSaveArrow } from "react-icons/gi";
 import "./Second.css";
@@ -183,11 +183,17 @@ function Hobbies(props) {
   // const [recentlyAddedSkill, setRecentlyAddedSkill] = useState(null);
   const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
 
-  const { template, additionalProp } = props;
-  const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const handleClick = () => {
-    setSelectedTemplate(template);
-  };
+  const { template, setTemplate } = props;
+  //const [selectedTemplate, setSelectedTemplate] = useState(null);
+  // const handleClick = () => {
+  //   setSelectedTemplate(template);
+  // };
+
+  const [activeComponent, setActiveComponent] = useState(null);
+
+   const toggleComponent = (componentName) => {
+     setTemplate(activeComponent === componentName ? null : componentName);
+   };
 
 
   const [percentage, setpercentage] = useState(false)
@@ -2273,7 +2279,7 @@ interests and curiosities"
                                             className="add"
                                           >
                                             {" "}
-                                            + Add Employment
+                                            + Add Extra-Curricular Acvtivity
                                           </button>
                                         </div>
 
@@ -3733,8 +3739,8 @@ interests and curiosities"
               showtemplate === false ? 
                 <Scrollbars>
                 <div style={{display:"flex"}} className="main-temp">
-                <img src={rajeshsir} alt="" className="temp-image"/>
-                <img src={mrssai} alt="" className="temp-image"/>
+                <img src={rajeshsir} alt="" className="temp-image"  onClick={()=> toggleComponent('template1')}/>
+                <img src={mrssai} alt="" className="temp-image"  onClick={() => toggleComponent('template2')}/>
                 </div>
                 <div style={{display:"flex"}} className="main-temp">
                 <img src={ushamadam} alt="" className="temp-image"/>
@@ -3745,7 +3751,7 @@ interests and curiosities"
                : 
           <Scrollbars>
             {template === 'template1' && (
-              <div className="template1" onClick={handleClick}>
+              <div className="template1">
 
                 {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
                 <div className="main-full" id="pdf-content" ref={contentDivRef}
@@ -4269,141 +4275,7 @@ interests and curiosities"
             )}
 
             {template === 'template2' && (
-             
-                  // <section id="preview-sc" class="print_area">
-                  //   <div class="container">
-                  //     <div class="preview-cnt">
-                  //       <div class="preview-cnt-l bg-green text-white" id="color-container">
-                  //         <div class="preview-blk">
-                  //           <div class="preview-image">
-                  //             <img src="" alt="" id="image_dsp" />
-                             
-                  //           </div>
-                  //           <div class="preview-item preview-item-name">
-                  //             <span class="preview-item-val fw-6" id="fullname_dsp"></span>
-                  //           </div>
-                  //           <div class="preview-item">
-                  //             <span class="preview-item-val text-uppercase fw-6 ls-1"
-                  //               id="designation_dsp"></span>
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-                           
-                  //           </div>
-                  //           <div class="preview-blk-list">
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="phoneno_dsp"></span>
-                  //             </div>
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="email_dsp"></span>
-                  //             </div>
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="address_dsp"></span>
-                  //             </div>
-                  //             <div class="preview-item">
-                               
-                  //               <span class="preview-item-val" id="summary_dsp"></span>
-                  //             </div>
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-                            
-
-                  //           </div>
-                  //           <div class="skills-items preview-blk-list" id="skills_dsp">
-
-
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title" id="achievements_dsp1">
-                  //             <div id="skillsFormatted"></div>
-                  //             <div class="progress-bar-container" id="secondProgressBarContainer">
-
-                  //             </div>
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title1" id="achievements_dsp1">
-                  //             <div class="right-side" id="rightSide">
-
-                  //               <div class="display-container"></div><br />
-                  //               <div class="display-container"></div>
-                  //               <div class="right-side-container" id="right-side-container"></div>
-                  //               <div class="output-container right-side">
-                  //                 <ul id="right-side-list"></ul>
-                  //               </div>
-                  //               <div class="output1-container right-side1">
-
-                  //               </div>
-                  //               <div class="content-container"></div>
-                  //             </div>
-                  //           </div>
-                  //         </div>
-
-                  //       </div>
-
-                  //       <div class="preview-cnt-r bg-white">
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-                       
-                  //           </div>
-                  //           <div class="generated-resume" id="achievements_dsp1">
-                  //             <div class="editor-content" id="content1"></div>
-                  //           </div>
-                  //         </div>
-
-
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-                  //             <div class="right-side-container" id="right-side-container"></div>
-                              
-                  //           </div>
-                  //           <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
-                  //           <div class="editor-content" id="content2"></div>
-                  //         </div>
-
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-                             
-                  //           </div>
-                  //           <div class="educations-items preview-blk-list" id="educations_dsp"></div>
-                  //           <div class="editor-content" id="content3"></div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-                             
-                  //           </div>
-                  //           <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
-                  //           <div class="editor-content" id="content4"></div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-                              
-                  //           </div>
-                  //           <div class="projects-items preview-blk-list" id="projects_dsp"></div>
-                  //           <div class="editor-content" id="content5"></div>
-
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div id="rightSide1">
-                  //             <div class="preview-blk-title">
-                  //               <div class="display-container1"></div></div>
-                  //             <div class="preview-blk-title">
-                  //               <div class="display-container1"></div></div>
-
-                  //           </div>
-                  //         </div>
-                  //       </div>
-                  //     </div>
-                  //   </div>
-                  // </section>
-                  <div className="template3" onClick={handleClick}>
+                  <div className="template3">
                   <div className="main-full" id="pdf-content" ref={contentDivRef}
                     contentEditable={false}
                     style={{
@@ -4922,7 +4794,7 @@ interests and curiosities"
             )}
 
             {template === 'template3' && (
-              <div className="template3" onClick={handleClick}>
+              <div className="template3">
                 <div className="main-full" id="pdf-content" ref={contentDivRef}
                   contentEditable={false}
                   style={{
@@ -5440,7 +5312,7 @@ interests and curiosities"
             )}
 
             {template === 'template4' && (
-              <div className="template4" onClick={handleClick}>
+              <div className="template4">
                 <div ref={contentDivRef}
                   contentEditable={false}
                   style={{
@@ -5589,9 +5461,8 @@ interests and curiosities"
         </div>
       </div>
     </div>
-  );
-
-  
+  );  
 }
+
 
 export default Hobbies;
