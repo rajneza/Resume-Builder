@@ -243,6 +243,7 @@ Popup.css .popup {
   margin-top: 50%;
 }
 
+
 .place {
   margin-top: 5%;
 }
@@ -860,6 +861,21 @@ margin-top: 10px;
   margin-top: 1%;
   margin-right: 0%;
   margin-bottom: 5%;
+ 
+}
+.main-fulll{
+  background-color: gray;
+  width: 90% !important;
+  min-height: 600px;
+  max-height: auto;
+  overflow: visible;
+  margin-left: 4.8%;
+  margin-top: 1%;
+  margin-right: 0%;
+  margin-bottom: 5%;
+}
+.second-full{
+  display: flex;
 }
 
 .main-right {
@@ -880,6 +896,9 @@ margin-top: 10px;
   overflow-y: auto;
   color: white;
   text-align: justify!important;
+
+
+  
 }
 
 .name1 {
@@ -1336,8 +1355,8 @@ margin-top: 10px;
     /* Remove margin for printing */
     page-break-before: always;
     /* Ensure each content section starts on a new page */
+  
   }
-
 
 }
 
@@ -1771,7 +1790,7 @@ select {
   /* margin: 10px; */
   cursor: pointer;
   display: flex;
-  width: 100%;
+ 
 }
 
 .template3 {
@@ -1930,6 +1949,42 @@ select {
     }
     .main-temp{
       padding: 15px;
+    }
+    .main-top{
+      width: 100%;
+      min-height: 100px;
+      max-height: auto;
+      background-color: #07d195;
+      display: flex;
+    }
+    .summryA{
+      
+      margin-top: 3%;
+    }
+    .headingA{
+      margin-top: 0%;
+      margin-bottom: 0%;
+    }
+    .NameA{
+      margin-top: 0%;
+      margin-bottom: 0%;
+    }
+    .detailsA{
+      margin-top: 0%;
+      
+    }
+    .nameA{
+      margin-bottom: 0%;
+      margin-top: 0%;
+    }
+    .nameAA{
+      margin-bottom: 3%;
+      margin-left: 0%;
+    }
+    .top-right{
+      width: 70%;
+      
+      margin-left: 10%;
     }
 
    

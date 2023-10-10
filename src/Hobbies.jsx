@@ -14,7 +14,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSaveArrow } from "react-icons/gi";
 import "./Second.css";
@@ -190,7 +190,7 @@ function Hobbies(props) {
   ]);
   // const [recentlyAddedSkill, setRecentlyAddedSkill] = useState(null);
   const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
-
+  const [isPrinting, setIsPrinting] = useState(false);
   const { template, additionalProp } = props;
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const handleClick = () => {
@@ -400,9 +400,10 @@ function Hobbies(props) {
       .map((word, index) => {
         // Convert the first word to lowercase and the rest to title case
         if (index === 0) {
-          return word.toUpperCase();
+          return word.toLowerCase();
         }
-        return word.charAt(0).toUpperCase() + word.slice(1).toUpperCase();
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+
       })
       .join(" ");
 
@@ -2412,7 +2413,7 @@ interests and curiosities"
                                             className="add"
                                           >
                                             {" "}
-                                            + Add Employment
+                                            + Add Extra-Curricular Acvtivity
                                           </button>
                                         </div>
 
@@ -4090,79 +4091,73 @@ interests and curiosities"
               Generate PDF
             </button>
           </div>
-          {showtemplate === false ? (
-            <Scrollbars>
-              <div style={{ display: "flex" }} className="main-temp">
-                <img src={rajeshsir} alt="" className="temp-image" />
-                <img src={mrssai} alt="" className="temp-image" />
-              </div>
-              <div style={{ display: "flex" }} className="main-temp">
-                <img src={ushamadam} alt="" className="temp-image" />
-                <img src={mrssai} alt="" className="temp-image" />
-              </div>
-            </Scrollbars>
-          ) : (
-            <Scrollbars>
-              {template === "template1" && (
-                <div className="template1" onClick={handleClick}>
-                  {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
-                  <div
-                    className="main-full"
-                    id="pdf-content"
-                    ref={contentDivRef}
-                    contentEditable={false}
-                    style={{
-                      // border: '1px solid #ccc',
-                      // minHeight: '200px',
-                      // padding: '10px',
-                      // marginBottom: '20px',
-                      width: "97%",
-                    }}
-                  >
-                    <div className="main-right">
-                      <div>
-                        <div style={{ display: "flex" }} className="cont-1">
-                          <div className="profile-pic">
-                            <Dropzone
-                              onDrop={handleDrop}
-                              accept="image/*"
-                              multiple={false}
-                            >
-                              {({ getRootProps, getInputProps }) => (
-                                <div
-                                  className="dropzone"
-                                  id="drop"
-                                  {...getRootProps()}
-                                >
-                                  <input {...getInputProps()} />
-                                  {selectedFile ? (
-                                    <div className="image">
-                                      <div className="image-container">
-                                        <img
-                                          src={URL.createObjectURL(
-                                            selectedFile
-                                          )}
-                                          alt="Uploaded"
-                                          className="rounded-image"
-                                          onClick={handleView}
-                                        />
+          {
+            showtemplate === false ?
+              <Scrollbars>
+                <div style={{ display: "flex" }} className="main-temp">
+                  <img src={rajeshsir} alt="" className="temp-image"/>
+                  <img src={mrssai} alt="" className="temp-image" />
+                </div>
+                <div style={{ display: "flex" }} className="main-temp">
+                  <img src={ushamadam} alt="" className="temp-image" />
+                  <img src={mrssai} alt="" className="temp-image" />
+                </div>
+              </Scrollbars>
+
+              :
+              <Scrollbars>
+                {template === 'template1' && (
+                  <div className="template1">
+
+                    {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
+                    <div className="main-full" id="pdf-content" ref={contentDivRef}
+                      contentEditable={false}
+                      style={{
+                        // border: '1px solid #ccc',
+                        // minHeight: '200px',
+                        // padding: '10px',
+                        // marginBottom: '20px',
+                        width: "97%"
+                      }}>
+
+                      <div className="main-right">
+                        <div>
+                          <div style={{ display: "flex" }} className="cont-1">
+                            <div className="profile-pic">
+                              <Dropzone
+                                onDrop={handleDrop}
+                                accept="image/*"
+                                multiple={false}
+                              >
+                                {({ getRootProps, getInputProps }) => (
+                                  <div
+                                    className="dropzone"
+                                    id="drop"
+                                    {...getRootProps()}
+                                  >
+                                    <input {...getInputProps()} />
+                                    {selectedFile ? (
+                                      <div className="image">
+                                        <div className="image-container">
+                                          <img
+                                            src={URL.createObjectURL(selectedFile)}
+                                            alt="Uploaded"
+                                            className="rounded-image"
+                                            onClick={handleView}
+                                          />
+                                        </div>
                                       </div>
-                                    </div>
-                                  ) : (
-                                    <div style={{ display: "flex" }}></div>
-                                  )}
-                                </div>
-                              )}
-                            </Dropzone>
-                          </div>
-                          <div>
-                            <div style={{ display: "flex" }}>
-                              <h3 className="name1">
-                                {generateName(name, true) +
-                                  " " +
-                                  generateName(lastName, true)}
-                              </h3>
-                              {/* <h3 className="name1">{name}</h3>
+                                    ) : (
+                                      <div style={{ display: "flex" }}></div>
+                                    )}
+                                  </div>
+                                )}
+                              </Dropzone>
+                            </div>
+                            <div>
+                              <div style={{ display: "flex" }}>
+                                <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
+                                {/* <h3 className="name1">{name}</h3>
                         <h3 className="name2">{lastname}</h3> */}
                             </div>
                             <div>
@@ -4753,156 +4748,22 @@ interests and curiosities"
                 </div>
               )}
 
-              {template === "template2" && (
-                // <section id="preview-sc" class="print_area">
-                //   <div class="container">
-                //     <div class="preview-cnt">
-                //       <div class="preview-cnt-l bg-green text-white" id="color-container">
-                //         <div class="preview-blk">
-                //           <div class="preview-image">
-                //             <img src="" alt="" id="image_dsp" />
+                {template === 'template2' && (
 
-                //           </div>
-                //           <div class="preview-item preview-item-name">
-                //             <span class="preview-item-val fw-6" id="fullname_dsp"></span>
-                //           </div>
-                //           <div class="preview-item">
-                //             <span class="preview-item-val text-uppercase fw-6 ls-1"
-                //               id="designation_dsp"></span>
-                //           </div>
-                //         </div>
-                //         <div class="preview-blk">
-                //           <div class="preview-blk-title">
+                  
+                  <div className="template2" onClick={handleClick}>
+                    <div className="main-full" id="pdf-content" ref={contentDivRef}
+                      contentEditable={false}
+                      style={{
+                        // border: '1px solid #ccc',
+                        // minHeight: '200px',
+                        // padding: '10px',
+                        // marginBottom: '20px',
+                        width: "97%"
+                      }}>
 
-                //           </div>
-                //           <div class="preview-blk-list">
-                //             <div class="preview-item">
-
-                //               <span class="preview-item-val" id="phoneno_dsp"></span>
-                //             </div>
-                //             <div class="preview-item">
-
-                //               <span class="preview-item-val" id="email_dsp"></span>
-                //             </div>
-                //             <div class="preview-item">
-
-                //               <span class="preview-item-val" id="address_dsp"></span>
-                //             </div>
-                //             <div class="preview-item">
-
-                //               <span class="preview-item-val" id="summary_dsp"></span>
-                //             </div>
-                //           </div>
-                //         </div>
-                //         <div class="preview-blk">
-                //           <div class="preview-blk-title">
-
-                //           </div>
-                //           <div class="skills-items preview-blk-list" id="skills_dsp">
-
-                //           </div>
-                //         </div>
-                //         <div class="preview-blk">
-                //           <div class="preview-blk-title" id="achievements_dsp1">
-                //             <div id="skillsFormatted"></div>
-                //             <div class="progress-bar-container" id="secondProgressBarContainer">
-
-                //             </div>
-                //           </div>
-                //         </div>
-                //         <div class="preview-blk">
-                //           <div class="preview-blk-title1" id="achievements_dsp1">
-                //             <div class="right-side" id="rightSide">
-
-                //               <div class="display-container"></div><br />
-                //               <div class="display-container"></div>
-                //               <div class="right-side-container" id="right-side-container"></div>
-                //               <div class="output-container right-side">
-                //                 <ul id="right-side-list"></ul>
-                //               </div>
-                //               <div class="output1-container right-side1">
-
-                //               </div>
-                //               <div class="content-container"></div>
-                //             </div>
-                //           </div>
-                //         </div>
-
-                //       </div>
-
-                //       <div class="preview-cnt-r bg-white">
-                //         <div class="preview-blk">
-                //           <div class="preview-blk-title">
-
-                //           </div>
-                //           <div class="generated-resume" id="achievements_dsp1">
-                //             <div class="editor-content" id="content1"></div>
-                //           </div>
-                //         </div>
-
-                //         <div class="preview-blk">
-                //           <div class="preview-blk-title">
-                //             <div class="right-side-container" id="right-side-container"></div>
-
-                //           </div>
-                //           <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
-                //           <div class="editor-content" id="content2"></div>
-                //         </div>
-
-                //         <div class="preview-blk">
-                //           <div class="preview-blk-title">
-
-                //           </div>
-                //           <div class="educations-items preview-blk-list" id="educations_dsp"></div>
-                //           <div class="editor-content" id="content3"></div>
-                //         </div>
-                //         <div class="preview-blk">
-                //           <div class="preview-blk-title">
-
-                //           </div>
-                //           <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
-                //           <div class="editor-content" id="content4"></div>
-                //         </div>
-                //         <div class="preview-blk">
-                //           <div class="preview-blk-title">
-
-                //           </div>
-                //           <div class="projects-items preview-blk-list" id="projects_dsp"></div>
-                //           <div class="editor-content" id="content5"></div>
-
-                //         </div>
-                //         <div class="preview-blk">
-                //           <div id="rightSide1">
-                //             <div class="preview-blk-title">
-                //               <div class="display-container1"></div></div>
-                //             <div class="preview-blk-title">
-                //               <div class="display-container1"></div></div>
-
-                //           </div>
-                //         </div>
-                //       </div>
-                //     </div>
-                //   </div>
-                // </section>
-                <div className="template2" onClick={handleClick}>
-                  <div
-                    className="main-full"
-                    id="pdf-content"
-                    ref={contentDivRef}
-                    contentEditable={false}
-                    style={{
-                      // border: '1px solid #ccc',
-                      // minHeight: '200px',
-                      // padding: '10px',
-                      // marginBottom: '20px',
-                      width: "97%",
-                    }}
-                  >
-                    <div
-                      className="main-left"
-                      style={{ backgroundColor: selectedColor1 }}
-                    >
-                      <div className="main-sai">
+                      <div className="main-left" style={{ backgroundColor: selectedColor1 }}>
+                        <div className="main-sai">
                         <div class="preview-image">
                           <Dropzone
                             onDrop={handleDrop}
@@ -4922,7 +4783,7 @@ interests and curiosities"
                                       <img
                                         src={URL.createObjectURL(selectedFile)}
                                         alt="Uploaded"
-                                        className="rounded-image"
+                                        className={`rounded-image ${isPrinting ? 'print-preview-image' : ''}`}
                                         onClick={handleView}
                                         style={{ borderRadius: "50%" }}
                                       />
@@ -5267,12 +5128,8 @@ interests and curiosities"
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
 
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                  <p className="fonttt">
-                                                                    {
-                                                                      item.input6
-                                                                    }
-                                                                  </p>
+                                                                  <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
                                                             </div>
@@ -5310,21 +5167,11 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  {item.input4 ===
-                                                                  "" ? (
-                                                                    <span></span>
-                                                                  ) : item.input5 ===
-                                                                    "" ? (
-                                                                    <p className="fontt">{`${item.input4} to Present`}</p>
-                                                                  ) : (
-                                                                    <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                  )}
+                                                                  {
+                                                                    item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fonttw">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  }
                                                                   {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
-                                                                  <p className="fonttt">
-                                                                    {
-                                                                      item.input6
-                                                                    }
-                                                                  </p>
+                                                                  <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
                                                             </div>
@@ -5363,20 +5210,10 @@ interests and curiosities"
                                                                 ) : (
                                                                   <div>
                                                                     <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                    {item.image4 ===
-                                                                    "" ? (
-                                                                      <span></span>
-                                                                    ) : item.input5 ===
-                                                                      "" ? (
-                                                                      <span></span>
-                                                                    ) : (
-                                                                      <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                    )}
-                                                                    <p className="fonttt">
-                                                                      {
-                                                                        item.input6
-                                                                      }
-                                                                    </p>
+                                                                    {
+                                                                      item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
+                                                                    }
+                                                                    <p className="fonttt">{item.input6}</p>
                                                                   </div>
                                                                 )}
                                                               </div>
@@ -5414,12 +5251,8 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                  <p className="fonttt">
-                                                                    {
-                                                                      item.input6
-                                                                    }
-                                                                  </p>
+                                                                  <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
                                                             </div>
@@ -5456,12 +5289,8 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                  <p className="fonttt">
-                                                                    {
-                                                                      item.input6
-                                                                    }
-                                                                  </p>
+                                                                  <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
                                                             </div>
@@ -5498,15 +5327,9 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  {item.image4 ===
-                                                                  "" ? (
-                                                                    <span></span>
-                                                                  ) : item.input5 ===
-                                                                    "" ? (
-                                                                    <span></span>
-                                                                  ) : (
-                                                                    <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                  )}
+                                                                  {
+                                                                    item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
+                                                                  }
 
                                                                   {item.input7 ===
                                                                   "" ? (
@@ -5562,12 +5385,8 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  <p className="fontt">{`${item.input4}`}</p>
-                                                                  <p className="fonttt">
-                                                                    {
-                                                                      item.input5
-                                                                    }
-                                                                  </p>
+                                                                  <p className="fonttw">{`${item.input4}`}</p>
+                                                                  <p className="fonttt">{item.input5}</p>
                                                                 </div>
                                                               )}
                                                             </div>
@@ -5661,200 +5480,160 @@ interests and curiosities"
                 </div>
               )}
 
-              {template === "template4" && (
-                <div className="template4" onClick={handleClick}>
-                  <div
-                    ref={contentDivRef}
-                    contentEditable={false}
-                    style={{
-                      // border: '1px solid #ccc',
-                      // minHeight: '200px',
-                      // padding: '10px',
-                      // marginBottom: '20px',
-                      width: "100%",
-                    }}
-                  >
-                    <section id="preview-sc" class="print_area">
-                      <div class="container">
-                        <div class="preview-cnt">
-                          <div
-                            class="preview-cnt-l bg-white text-white"
-                            id="color-container"
-                          >
-                            <div class="preview-blk">
-                              <div class="preview-image">
-                                <img src="" id="image_dsp" />
-                              </div>
-                              <div class="preview-item preview-item-name">
-                                <span
-                                  class="preview-item-val fw-6"
-                                  id="fullname_dsp"
-                                ></span>
-                              </div>
-                              <div class="preview-item">
-                                <span
-                                  class="preview-item-val text-uppercase fw-6 ls-1"
-                                  id="designation_dsp"
-                                ></span>
-                              </div>
-                            </div>
-                            <div class="preview-blk">
-                              <div class="preview-blk-title">
-                                {/* <h3>about</h3> */}
-                              </div>
-                              <div class="preview-blk-list">
-                                <div class="preview-item">
-                                  <span
-                                    class="preview-item-val"
-                                    id="phoneno_dsp"
-                                  ></span>
+                                                                
+
+                {template === 'template4' && (
+                  <div className="template4" onClick={handleClick}>
+                    <div ref={contentDivRef}
+                      contentEditable={false}
+                      style={{
+                        // border: '1px solid #ccc',
+                        // minHeight: '200px',
+                        // padding: '10px',
+                        // marginBottom: '20px',
+                        width: "100%"
+                      }}>
+                      <section id="preview-sc" class="print_area">
+                        <div class="container">
+                          <div class="preview-cnt">
+                            <div class="preview-cnt-l bg-white text-white" id="color-container">
+                              <div class="preview-blk">
+                                <div class="preview-image">
+                                  <img src="" id="image_dsp" />
+                                </div>
+                                <div class="preview-item preview-item-name">
+                                  <span class="preview-item-val fw-6" id="fullname_dsp"></span>
                                 </div>
                                 <div class="preview-item">
-                                  <span
-                                    class="preview-item-val"
-                                    id="email_dsp"
-                                  ></span>
-                                </div>
-                                <div class="preview-item">
-                                  <span
-                                    class="preview-item-val"
-                                    id="address_dsp"
-                                  ></span>
-                                </div>
-                                <div class="preview-item">
-                                  {/* <div class="preview-blk-title"><h3>SUMMARY</h3></div>  */}
-                                  <span
-                                    class="preview-item-val"
-                                    id="summary_dsp"
-                                  ></span>
+                                  <span class="preview-item-val text-uppercase fw-6 ls-1"
+                                    id="designation_dsp"></span>
                                 </div>
                               </div>
-                            </div>
-                            <div class="preview-blk">
-                              <div class="preview-blk-title">
-                                {/* <h3>skills</h3> */}
-                              </div>
-                              <div
-                                class="skills-items preview-blk-list"
-                                id="skills_dsp"
-                              ></div>
-                            </div>
-                            <div class="preview-blk">
-                              <div
-                                class="preview-blk-title"
-                                id="achievements_dsp1"
-                              >
-                                <div id="skillsFormatted"></div>
-                                <div
-                                  class="progress-bar-container"
-                                  id="secondProgressBarContainer"
-                                ></div>
-                              </div>
-                            </div>
-                            <div class="preview-blk">
-                              <div
-                                class="preview-blk-title1"
-                                id="achievements_dsp1"
-                              >
-                                <div class="right-side" id="rightSide">
-                                  <div class="display-container"></div>
-                                  <br />
-                                  <div class="display-container"></div>
-                                  <div
-                                    class="right-side-container"
-                                    id="right-side-container"
-                                  ></div>
-                                  <div class="output-container right-side">
-                                    <ul id="right-side-list"></ul>
+                              <div class="preview-blk">
+                                <div class="preview-blk-title">
+                                  {/* <h3>about</h3> */}
+                                </div>
+                                <div class="preview-blk-list">
+                                  <div class="preview-item">
+
+                                    <span class="preview-item-val" id="phoneno_dsp"></span>
                                   </div>
-                                  <div class="output1-container right-side1"></div>
-                                  <div class="content-container"></div>
+                                  <div class="preview-item">
+
+                                    <span class="preview-item-val" id="email_dsp"></span>
+                                  </div>
+                                  <div class="preview-item">
+
+                                    <span class="preview-item-val" id="address_dsp"></span>
+                                  </div>
+                                  <div class="preview-item">
+                                    {/* <div class="preview-blk-title"><h3>SUMMARY</h3></div>  */}
+                                    <span class="preview-item-val" id="summary_dsp"></span>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </div>
-
-                          <div class="preview-cnt-r bg-white">
-                            <div class="preview-blk">
-                              <div class="preview-blk-title">
-                                {/* <h3>Professional Summary</h3> */}
-                              </div>
-                              <div
-                                class="generated-resume"
-                                id="achievements_dsp1"
-                              >
-                                <div class="editor-content" id="content1"></div>
-                              </div>
-                            </div>
-
-                            <div class="preview-blk">
-                              <div class="preview-blk-title">
-                                <div
-                                  class="right-side-container"
-                                  id="right-side-container"
-                                ></div>
-                                {/* <h3>Achievements</h3> */}
-                              </div>
-                              <div
-                                class="achievements-items preview-blk-list"
-                                id="achievements_dsp"
-                              ></div>
-                              <div class="editor-content" id="content2"></div>
-                            </div>
-
-                            <div class="preview-blk">
-                              <div class="preview-blk-title">
-                                {/* <h3>educations</h3> */}
-                              </div>
-                              <div
-                                class="educations-items preview-blk-list"
-                                id="educations_dsp"
-                              ></div>
-                              <div class="editor-content" id="content3"></div>
-                            </div>
-                            <div class="preview-blk">
-                              <div class="preview-blk-title">
-                                {/* <h3>experiences</h3> */}
-                              </div>
-                              <div
-                                class="experiences-items preview-blk-list"
-                                id="experiences_dsp"
-                              ></div>
-                              <div class="editor-content" id="content4"></div>
-                            </div>
-                            <div class="preview-blk">
-                              <div class="preview-blk-title">
-                                {/* <h3>projects</h3> */}
-                              </div>
-                              <div
-                                class="projects-items preview-blk-list"
-                                id="projects_dsp"
-                              ></div>
-                              <div class="editor-content" id="content5"></div>
-                            </div>
-                            <div class="preview-blk">
-                              <div id="rightSide1">
+                              <div class="preview-blk">
                                 <div class="preview-blk-title">
-                                  <div class="display-container1"></div>
+                                  {/* <h3>skills</h3> */}
+
                                 </div>
+                                <div class="skills-items preview-blk-list" id="skills_dsp">
+
+
+                                </div>
+                              </div>
+                              <div class="preview-blk">
+                                <div class="preview-blk-title" id="achievements_dsp1">
+                                  <div id="skillsFormatted"></div>
+                                  <div class="progress-bar-container" id="secondProgressBarContainer">
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="preview-blk">
+                                <div class="preview-blk-title1" id="achievements_dsp1">
+                                  <div class="right-side" id="rightSide">
+
+                                    <div class="display-container"></div><br />
+                                    <div class="display-container"></div>
+                                    <div class="right-side-container" id="right-side-container"></div>
+                                    <div class="output-container right-side">
+                                      <ul id="right-side-list"></ul>
+                                    </div>
+                                    <div class="output1-container right-side1">
+
+                                    </div>
+                                    <div class="content-container"></div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <div class="preview-cnt-r bg-white">
+                              <div class="preview-blk">
                                 <div class="preview-blk-title">
-                                  <div class="display-container1"></div>
+                                  {/* <h3>Professional Summary</h3> */}
+                                </div>
+                                <div class="generated-resume" id="achievements_dsp1">
+                                  <div class="editor-content" id="content1"></div>
+                                </div>
+                              </div>
+
+
+                              <div class="preview-blk">
+                                <div class="preview-blk-title">
+                                  <div class="right-side-container" id="right-side-container"></div>
+                                  {/* <h3>Achievements</h3> */}
+                                </div>
+                                <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
+                                <div class="editor-content" id="content2"></div>
+                              </div>
+
+                              <div class="preview-blk">
+                                <div class="preview-blk-title">
+                                  {/* <h3>educations</h3> */}
+                                </div>
+                                <div class="educations-items preview-blk-list" id="educations_dsp"></div>
+                                <div class="editor-content" id="content3"></div>
+                              </div>
+                              <div class="preview-blk">
+                                <div class="preview-blk-title">
+                                  {/* <h3>experiences</h3> */}
+                                </div>
+                                <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
+                                <div class="editor-content" id="content4"></div>
+                              </div>
+                              <div class="preview-blk">
+                                <div class="preview-blk-title">
+                                  {/* <h3>projects</h3> */}
+                                </div>
+                                <div class="projects-items preview-blk-list" id="projects_dsp"></div>
+                                <div class="editor-content" id="content5"></div>
+
+                              </div>
+                              <div class="preview-blk">
+                                <div id="rightSide1">
+                                  <div class="preview-blk-title">
+                                    <div class="display-container1"></div></div>
+                                  <div class="preview-blk-title">
+                                    <div class="display-container1"></div></div>
+
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              )}
-            </Scrollbars>
-          )}
+                      </section>
+                    </div></div>
+                )}
+              </Scrollbars>
+          }
         </div>
       </div>
     </div>
   );
 }
+
 
 export default Hobbies;
