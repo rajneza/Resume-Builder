@@ -5789,53 +5789,56 @@ interests and curiosities"
                        </DragDropContext>
                      </div>
                    </div>
-                   <div className="main-left bg-green text-white" style={{ backgroundColor: selectedColor1 }}>
-                     <div className="pincode">
+                   <div className="main-left bg-green text-white" style={{backgroundColor:"white"}} >
+                     <div className="pincodeA">
                        <div className="top">
                          {skill.length === 0 ? (
                            <span></span>
                          ) : (
-                           <h4 className="heading div-heading">Skills</h4>
-                         )}
-                         {skill.map((object) => (
+                           <div className="skill-bg">
+                            <h4 className="heading div-heading">Skills</h4>
+                            {skill.map((object) => (
 
-                           <div key={object.id} className="ill">
-                             <div className="progress-bar-container" id="secondProgressBarContainer">
-                               {studentSkills.map((skill, index) => (
-                                 <div key={index} className="progress-bar-container">
-                                   <div className="skill-name">{skill}</div>
-                                   {renderSecondProgressBar(skill)}
-                                 </div>
-                               ))}
-                             </div>
-                             <ToastContainer className="custom-toast" />
+<div key={object.id} className="ill">
+  <div className="progress-bar-container" id="secondProgressBarContainer">
+    {studentSkills.map((skill, index) => (
+      <div key={index} className="progress-bar-container">
+        <div className="skill-name">{skill}</div>
+        {renderSecondProgressBar(skill)}
+      </div>
+    ))}
+  </div>
+  <ToastContainer className="custom-toast" />
 
-                             <p className="cit" id="cit">{`${object.input1}`}</p>
+  <p className="cit" id="cit">{`${object.input1}`}</p>
 
-                             <div className="ski1">
+  <div className="ski1">
 
-                               {isChecked ? (
-                                 <div>
-                                   {object.input2 === "" ? (
-                                     <span></span>
-                                   ) : (
-                                     <p className="ski">{`${object.input2}/5`}</p>
-                                   )}
-                                 </div>
-                               ) : (
-                                 <span></span>
-                               )}
-                             </div>
+    {isChecked ? (
+      <div>
+        {object.input2 === "" ? (
+          <span></span>
+        ) : (
+          <p className="ski">{`${object.input2}/5`}</p>
+        )}
+      </div>
+    ) : (
+      <span></span>
+    )}
+  </div>
+</div>
+))}
                            </div>
-                         ))}
+                         )}
+                         
                        </div>
                        <div className="top">
                          {website.length === 0 ? (
                            <span></span>
                          ) : (
-                           <h4 className="heading div-heading">Links</h4>
-                         )}
-                         {website.map((object) => (
+                           <div className="skill-bg">
+                            <h4 className="heading div-heading">Links</h4>
+                            {website.map((object) => (
                            <div key={object.id}>
                              {/* <p className="cit">{`${object.input1}`}</p> */}
                              <Link to={object.input2} className="cit" id="link">
@@ -5843,29 +5846,36 @@ interests and curiosities"
                              </Link>
                            </div>
                          ))}
+                           </div>
+                         )}
+                         
                        </div>
                        <div className="top">
                          {six.length === 0 ? (
                            <span></span>
                          ) : (
-                           <h4 className="heading div-heading">Hobbies</h4>
-                         )}
-                         <div>
-                           {six.map((object) => (
+                          <div className="skill-bg">
+                            <h4 className="heading div-heading">Hobbies</h4>
+                            {six.map((object) => (
                              <div key={object.id} className="ill">
                                <p className="cit">{`${object.input1}`}</p>
                              </div>
                            ))}
+
+                          </div>
+                           
+                         )}
+                         <div>
+                          
                          </div>
                        </div>
                        <div className="top">
                          {seven.length === 0 ? (
                            <span></span>
                          ) : (
-                           <h4 className="heading div-heading">Languages</h4>
-                         )}
-                         <div>
-                           {seven.map((object) => (
+                           <div className="skill-bg">
+                            <h4 className="heading div-heading">Languages</h4>
+                            {seven.map((object) => (
                              <div key={object.id} className="ill">
                                <p className="cit" id="cit">{`${object.input1}`}</p>
                                <div className="ski1">
@@ -5873,6 +5883,10 @@ interests and curiosities"
                                </div>
                              </div>
                            ))}
+                           </div>
+                         )}
+                         <div>
+                           
                          </div>
                        </div>
                      </div>
