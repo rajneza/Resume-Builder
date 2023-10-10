@@ -843,6 +843,7 @@ margin-top: 10px;
   margin-top: 1%;
   margin-right: 0%;
   margin-bottom: 5%;
+ 
 }
 
 .main-right {
@@ -863,6 +864,9 @@ margin-top: 10px;
   overflow-y: auto;
   color: white;
   text-align: justify!important;
+
+
+  
 }
 
 .name1 {
@@ -1319,8 +1323,8 @@ margin-top: 10px;
     /* Remove margin for printing */
     page-break-before: always;
     /* Ensure each content section starts on a new page */
+  
   }
-
 
 }
 
@@ -1754,7 +1758,7 @@ select {
   /* margin: 10px; */
   cursor: pointer;
   display: flex;
-  width: 100%;
+ 
 }
 
 .template3 {

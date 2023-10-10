@@ -184,7 +184,7 @@ function Hobbies(props) {
   const [stages, setStages] = useState(['Fresher', 'Experience', 'Export', 'Pro']);
   // const [recentlyAddedSkill, setRecentlyAddedSkill] = useState(null);
   const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
-
+  const [isPrinting, setIsPrinting] = useState(false);
   const { template, additionalProp } = props;
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const handleClick = () => {
@@ -381,9 +381,9 @@ function Hobbies(props) {
       .map((word, index) => {
         // Convert the first word to lowercase and the rest to title case
         if (index === 0) {
-          return word.toUpperCase();
+          return word.toLowerCase();
         }
-        return word.charAt(0).toUpperCase() + word.slice(1).toUpperCase();
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 
       })
       .join(' ');
@@ -4309,139 +4309,7 @@ interests and curiosities"
 
                 {template === 'template2' && (
 
-                  // <section id="preview-sc" class="print_area">
-                  //   <div class="container">
-                  //     <div class="preview-cnt">
-                  //       <div class="preview-cnt-l bg-green text-white" id="color-container">
-                  //         <div class="preview-blk">
-                  //           <div class="preview-image">
-                  //             <img src="" alt="" id="image_dsp" />
-
-                  //           </div>
-                  //           <div class="preview-item preview-item-name">
-                  //             <span class="preview-item-val fw-6" id="fullname_dsp"></span>
-                  //           </div>
-                  //           <div class="preview-item">
-                  //             <span class="preview-item-val text-uppercase fw-6 ls-1"
-                  //               id="designation_dsp"></span>
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="preview-blk-list">
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="phoneno_dsp"></span>
-                  //             </div>
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="email_dsp"></span>
-                  //             </div>
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="address_dsp"></span>
-                  //             </div>
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="summary_dsp"></span>
-                  //             </div>
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-
-                  //           </div>
-                  //           <div class="skills-items preview-blk-list" id="skills_dsp">
-
-
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title" id="achievements_dsp1">
-                  //             <div id="skillsFormatted"></div>
-                  //             <div class="progress-bar-container" id="secondProgressBarContainer">
-
-                  //             </div>
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title1" id="achievements_dsp1">
-                  //             <div class="right-side" id="rightSide">
-
-                  //               <div class="display-container"></div><br />
-                  //               <div class="display-container"></div>
-                  //               <div class="right-side-container" id="right-side-container"></div>
-                  //               <div class="output-container right-side">
-                  //                 <ul id="right-side-list"></ul>
-                  //               </div>
-                  //               <div class="output1-container right-side1">
-
-                  //               </div>
-                  //               <div class="content-container"></div>
-                  //             </div>
-                  //           </div>
-                  //         </div>
-
-                  //       </div>
-
-                  //       <div class="preview-cnt-r bg-white">
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="generated-resume" id="achievements_dsp1">
-                  //             <div class="editor-content" id="content1"></div>
-                  //           </div>
-                  //         </div>
-
-
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-                  //             <div class="right-side-container" id="right-side-container"></div>
-
-                  //           </div>
-                  //           <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
-                  //           <div class="editor-content" id="content2"></div>
-                  //         </div>
-
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="educations-items preview-blk-list" id="educations_dsp"></div>
-                  //           <div class="editor-content" id="content3"></div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
-                  //           <div class="editor-content" id="content4"></div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="projects-items preview-blk-list" id="projects_dsp"></div>
-                  //           <div class="editor-content" id="content5"></div>
-
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div id="rightSide1">
-                  //             <div class="preview-blk-title">
-                  //               <div class="display-container1"></div></div>
-                  //             <div class="preview-blk-title">
-                  //               <div class="display-container1"></div></div>
-
-                  //           </div>
-                  //         </div>
-                  //       </div>
-                  //     </div>
-                  //   </div>
-                  // </section>
+                  
                   <div className="template2" onClick={handleClick}>
                     <div className="main-full" id="pdf-content" ref={contentDivRef}
                       contentEditable={false}
@@ -4477,7 +4345,7 @@ interests and curiosities"
                                       <img
                                         src={URL.createObjectURL(selectedFile)}
                                         alt="Uploaded"
-                                        className="rounded-image"
+                                        className={`rounded-image ${isPrinting ? 'print-preview-image' : ''}`}
                                         onClick={handleView}
                                         style={{ borderRadius: "50%" }}
                                       />
@@ -4750,7 +4618,7 @@ interests and curiosities"
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
 
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
@@ -4781,7 +4649,7 @@ interests and curiosities"
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                   {
-                                                                    item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fontt">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fonttw">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                                   }
                                                                   {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
                                                                   <p className="fonttt">{item.input6}</p>
@@ -4814,7 +4682,7 @@ interests and curiosities"
                                                                   <div>
                                                                     <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                     {
-                                                                      item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                      item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                     }
                                                                     <p className="fonttt">{item.input6}</p>
                                                                   </div>
@@ -4845,7 +4713,7 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
@@ -4874,7 +4742,7 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
@@ -4904,7 +4772,7 @@ interests and curiosities"
                                                                 <div>
                                                                   <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                   {
-                                                                    item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   }
 
                                                                   {
@@ -4941,7 +4809,7 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  <p className="fontt">{`${item.input4}`}</p>
+                                                                  <p className="fonttw">{`${item.input4}`}</p>
                                                                   <p className="fonttt">{item.input5}</p>
                                                                 </div>
                                                               )}
