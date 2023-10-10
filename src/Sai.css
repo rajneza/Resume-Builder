@@ -1051,18 +1051,18 @@ textarea {
     width: 98%;
   }
   
-.fontt {
-    font-size: 12.8px;
+.fonttw {
+    font-size: 10.8px;
     font-weight: bold;
     margin-top: 0%;
     margin-bottom: 0%;
     margin-right: 1rem;
-    /* background-color: var(--clr-green);
+    background-color: var(--clr-green);
     color: var(--clr-white);
     padding: 0 1rem;
     border-radius: 0.6rem;
     white-space: nowrap;
-    width: fit-content; */
+    width: fit-content;
   }
   .fontt1{
     font-size: 12.8px;

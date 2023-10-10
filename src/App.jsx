@@ -182,8 +182,6 @@ const App = () => {
           <Route path="/extra" element={<Extracurricular></Extracurricular>}></Route>
           <Route path="/skills" element={<Skills></Skills>}></Route>
           <Route path="/website" element={<Websites></Websites>}></Route>
-
-
           <Route path="/" element={<LandingPage />} />
           <Route path="/:template" element={<RightSide />} />
 

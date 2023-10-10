@@ -10,7 +10,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProgressBar from "@ramonak/react-progress-bar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSaveArrow } from "react-icons/gi";
 import "./Second.css";
@@ -184,7 +184,7 @@ function Hobbies(props) {
   const [stages, setStages] = useState(['Fresher', 'Experience', 'Export', 'Pro']);
   // const [recentlyAddedSkill, setRecentlyAddedSkill] = useState(null);
   const [recentlyAddedSkill, setRecentlyAddedSkill] = useState([]);
-
+  const [isPrinting, setIsPrinting] = useState(false);
   const { template, additionalProp } = props;
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const handleClick = () => {
@@ -381,9 +381,9 @@ function Hobbies(props) {
       .map((word, index) => {
         // Convert the first word to lowercase and the rest to title case
         if (index === 0) {
-          return word.toUpperCase();
+          return word.toLowerCase();
         }
-        return word.charAt(0).toUpperCase() + word.slice(1).toUpperCase();
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 
       })
       .join(' ');
@@ -2302,7 +2302,7 @@ interests and curiosities"
                                             className="add"
                                           >
                                             {" "}
-                                            + Add Employment
+                                            + Add Extra-Curricular Acvtivity
                                           </button>
                                         </div>
 
@@ -3772,7 +3772,7 @@ interests and curiosities"
             showtemplate === false ?
               <Scrollbars>
                 <div style={{ display: "flex" }} className="main-temp">
-                  <img src={rajeshsir} alt="" className="temp-image" />
+                  <img src={rajeshsir} alt="" className="temp-image"/>
                   <img src={mrssai} alt="" className="temp-image" />
                 </div>
                 <div style={{ display: "flex" }} className="main-temp">
@@ -3784,7 +3784,7 @@ interests and curiosities"
               :
               <Scrollbars>
                 {template === 'template1' && (
-                  <div className="template1" onClick={handleClick}>
+                  <div className="template1">
 
                     {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
                     <div className="main-full" id="pdf-content" ref={contentDivRef}
@@ -4309,139 +4309,7 @@ interests and curiosities"
 
                 {template === 'template2' && (
 
-                  // <section id="preview-sc" class="print_area">
-                  //   <div class="container">
-                  //     <div class="preview-cnt">
-                  //       <div class="preview-cnt-l bg-green text-white" id="color-container">
-                  //         <div class="preview-blk">
-                  //           <div class="preview-image">
-                  //             <img src="" alt="" id="image_dsp" />
-
-                  //           </div>
-                  //           <div class="preview-item preview-item-name">
-                  //             <span class="preview-item-val fw-6" id="fullname_dsp"></span>
-                  //           </div>
-                  //           <div class="preview-item">
-                  //             <span class="preview-item-val text-uppercase fw-6 ls-1"
-                  //               id="designation_dsp"></span>
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="preview-blk-list">
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="phoneno_dsp"></span>
-                  //             </div>
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="email_dsp"></span>
-                  //             </div>
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="address_dsp"></span>
-                  //             </div>
-                  //             <div class="preview-item">
-
-                  //               <span class="preview-item-val" id="summary_dsp"></span>
-                  //             </div>
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-
-                  //           </div>
-                  //           <div class="skills-items preview-blk-list" id="skills_dsp">
-
-
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title" id="achievements_dsp1">
-                  //             <div id="skillsFormatted"></div>
-                  //             <div class="progress-bar-container" id="secondProgressBarContainer">
-
-                  //             </div>
-                  //           </div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title1" id="achievements_dsp1">
-                  //             <div class="right-side" id="rightSide">
-
-                  //               <div class="display-container"></div><br />
-                  //               <div class="display-container"></div>
-                  //               <div class="right-side-container" id="right-side-container"></div>
-                  //               <div class="output-container right-side">
-                  //                 <ul id="right-side-list"></ul>
-                  //               </div>
-                  //               <div class="output1-container right-side1">
-
-                  //               </div>
-                  //               <div class="content-container"></div>
-                  //             </div>
-                  //           </div>
-                  //         </div>
-
-                  //       </div>
-
-                  //       <div class="preview-cnt-r bg-white">
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="generated-resume" id="achievements_dsp1">
-                  //             <div class="editor-content" id="content1"></div>
-                  //           </div>
-                  //         </div>
-
-
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-                  //             <div class="right-side-container" id="right-side-container"></div>
-
-                  //           </div>
-                  //           <div class="achievements-items preview-blk-list" id="achievements_dsp"></div>
-                  //           <div class="editor-content" id="content2"></div>
-                  //         </div>
-
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="educations-items preview-blk-list" id="educations_dsp"></div>
-                  //           <div class="editor-content" id="content3"></div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="experiences-items preview-blk-list" id="experiences_dsp"></div>
-                  //           <div class="editor-content" id="content4"></div>
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div class="preview-blk-title">
-
-                  //           </div>
-                  //           <div class="projects-items preview-blk-list" id="projects_dsp"></div>
-                  //           <div class="editor-content" id="content5"></div>
-
-                  //         </div>
-                  //         <div class="preview-blk">
-                  //           <div id="rightSide1">
-                  //             <div class="preview-blk-title">
-                  //               <div class="display-container1"></div></div>
-                  //             <div class="preview-blk-title">
-                  //               <div class="display-container1"></div></div>
-
-                  //           </div>
-                  //         </div>
-                  //       </div>
-                  //     </div>
-                  //   </div>
-                  // </section>
+                  
                   <div className="template2" onClick={handleClick}>
                     <div className="main-full" id="pdf-content" ref={contentDivRef}
                       contentEditable={false}
@@ -4477,7 +4345,7 @@ interests and curiosities"
                                       <img
                                         src={URL.createObjectURL(selectedFile)}
                                         alt="Uploaded"
-                                        className="rounded-image"
+                                        className={`rounded-image ${isPrinting ? 'print-preview-image' : ''}`}
                                         onClick={handleView}
                                         style={{ borderRadius: "50%" }}
                                       />
@@ -4750,7 +4618,7 @@ interests and curiosities"
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
 
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
@@ -4781,7 +4649,7 @@ interests and curiosities"
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                   {
-                                                                    item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fontt">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fonttw">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                                   }
                                                                   {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
                                                                   <p className="fonttt">{item.input6}</p>
@@ -4814,7 +4682,7 @@ interests and curiosities"
                                                                   <div>
                                                                     <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                     {
-                                                                      item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                      item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                     }
                                                                     <p className="fonttt">{item.input6}</p>
                                                                   </div>
@@ -4845,7 +4713,7 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
@@ -4874,7 +4742,7 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   <p className="fonttt">{item.input6}</p>
                                                                 </div>
                                                               )}
@@ -4904,7 +4772,7 @@ interests and curiosities"
                                                                 <div>
                                                                   <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                   {
-                                                                    item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   }
 
                                                                   {
@@ -4941,7 +4809,7 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                   <h4 className="fonn">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  <p className="fontt">{`${item.input4}`}</p>
+                                                                  <p className="fonttw">{`${item.input4}`}</p>
                                                                   <p className="fonttt">{item.input5}</p>
                                                                 </div>
                                                               )}
@@ -4972,7 +4840,7 @@ interests and curiosities"
                 )}
 
                 {template === 'template3' && (
-                  <div className="template3" onClick={handleClick}>
+                  <div className="template3">
                     <div className="main-full" id="pdf-content" ref={contentDivRef}
                       contentEditable={false}
                       style={{
@@ -5180,8 +5048,7 @@ interests and curiosities"
                             <div>
                               <div style={{ display: "flex" }}>
                                 <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
-                                {/* <h3 className="name1">{name}</h3>
-                        <h3 className="name2">{lastname}</h3> */}
+                                
                               </div>
                               <div>
                                 <h6 className="name">{job}</h6>
@@ -5490,10 +5357,8 @@ interests and curiosities"
                 )}
 
                 {template === 'template4' && (
-                 <div className="template4" onClick={handleClick}>
-
-                 {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
-                 <div className="main-full" id="pdf-content" ref={contentDivRef}
+                 <div className="template3">
+                 <div className="main-fulll" id="pdf-content" ref={contentDivRef}
                    contentEditable={false}
                    style={{
                      // border: '1px solid #ccc',
@@ -5503,11 +5368,12 @@ interests and curiosities"
                      width: "97%"
                    }}>
 
-                   <div className="main-right">
-                     <div>
-                       <div style={{ display: "flex" }} className="cont-1">
-                         <div className="profile-pic">
-                           <Dropzone
+                   <div className="main-top">
+                    <div>
+                    <div className="profile-pic">
+                          
+                          
+                    <Dropzone
                              onDrop={handleDrop}
                              accept="image/*"
                              multiple={false}
@@ -5536,29 +5402,107 @@ interests and curiosities"
                                </div>
                              )}
                            </Dropzone>
-                         </div>
-                         <div>
-                           <div style={{ display: "flex" }}>
-                             <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
-                             {/* <h3 className="name1">{name}</h3>
-                     <h3 className="name2">{lastname}</h3> */}
                            </div>
                            <div>
-                             <h6 className="name">{job}</h6>
+                           <div className="NameA">
+                             <h6 className="nameA">{job}</h6>
                            </div>
-                         </div>
-                       </div>
-                       <div className={`summry ${editorHtml === "" ? "hidden" : ""}`}>
-                         {editorHtml === "" ? (
+                           <div className="detailsA">
+                         {/* {email === "" ? (
                            <span></span>
                          ) : (
-                           <h2 className="prof">Summary</h2>
-                         )}
-                         <div
-                           className="mess"
-                           dangerouslySetInnerHTML={{ __html: editorHtml }}
-                         />
+                           <h4 className="heading div-heading headingA">Contact</h4>
+                         )} */}
+                         <div>
+                           {
+                             phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
+                           }
+
+                         </div>
+                         <div>
+                           <p className="conte">{email}</p>
+                         </div>
                        </div>
+                       <div>
+                         {/* {address === "" ? (
+                           <span></span>
+                         ) : (
+                           <h4 className="heading div-heading">Address</h4>
+                         )} */}
+
+                         <div>
+                           <p className="cont">{address}</p>
+                         </div>
+                         <div>
+                           {
+                             post === "" ? <p className="cit">{`${city}`}</p> : <p className="cit">{`${city} , ${post}`}</p>
+                           }
+                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                         </div>
+                         <div>
+                           <p className="cit">{country}</p>
+                         </div>
+                       </div>
+                       <div>
+                         {/* {licence === "" ? (
+                           <span></span>
+                         ) : (
+                           <h4 className="heading1">Gender</h4>
+                         )} */}
+                         <div>
+                           <p className="cit">{licence}</p>
+                         </div>
+                       </div>
+                       <div>
+                         {/* {nation === "" ? (
+                           <span></span>
+                         ) : (
+                           <h4 className="heading1">Nationality</h4>
+                         )} */}
+                         <div>
+                           <p className="cit">{nation}</p>
+                         </div>
+                       </div>
+                       <div>
+                         {/* {place && birth !== "" ? (
+                           <h4 className="heading1">Place/Date of Birth</h4>
+                         ) : place !== "" ? (
+                           <h4 className="heading1">Place of Birth</h4>
+                         ) : birth !== "" ? (
+                           <h4 className="heading1">Date of Birth</h4>
+                         ) : (
+                           <span></span>
+                         )} */}
+                         <div>
+                           <p className="cit">{birth}</p>
+                           <p className="cit">{place}</p>
+                         </div>
+                       </div>
+
+                           </div>
+
+                    </div>
+                    <div className="top-right">
+                    <div style={{ display: "flex" }}>
+                                <h3 className="name1 nameAA">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
+                                
+                              </div>
+                              <div className="summryA" id="summryA">
+                                {
+                                  editorHtml === "" ? <span></span> : <h4>Summary</h4>
+                                }
+                                <div dangerouslySetInnerHTML={{ __html: editorHtml }}/>
+                       </div>
+
+                    </div>
+
+                   </div>
+                   <div className="second-full">
+                   <div className="main-right">
+                     <div>
+                       <div style={{ display: "flex" }} className="cont-1">
+                       </div>
+                       
                      </div>
 
                      <div>
@@ -5845,80 +5789,8 @@ interests and curiosities"
                        </DragDropContext>
                      </div>
                    </div>
-                   <div className="main-left1" style={{ backgroundColor: selectedColor }}>
+                   <div className="main-left bg-green text-white" style={{ backgroundColor: selectedColor1 }}>
                      <div className="pincode">
-                       <div className="details">
-                         {email === "" ? (
-                           <span></span>
-                         ) : (
-                           <h4 className="heading div-heading">Contact</h4>
-                         )}
-                         <div>
-                           {
-                             phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
-                           }
-
-                         </div>
-                         <div>
-                           <p className="conte">{email}</p>
-                         </div>
-                       </div>
-                       <div>
-                         {address === "" ? (
-                           <span></span>
-                         ) : (
-                           <h4 className="heading div-heading">Address</h4>
-                         )}
-
-                         <div>
-                           <p className="cont">{address}</p>
-                         </div>
-                         <div>
-                           {
-                             post === "" ? <p className="cit">{`${city}`}</p> : <p className="cit">{`${city} , ${post}`}</p>
-                           }
-                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
-                         </div>
-                         <div>
-                           <p className="cit">{country}</p>
-                         </div>
-                       </div>
-
-                       <div>
-                         {licence === "" ? (
-                           <span></span>
-                         ) : (
-                           <h4 className="heading1">Gender</h4>
-                         )}
-                         <div>
-                           <p className="cit">{licence}</p>
-                         </div>
-                       </div>
-                       <div>
-                         {nation === "" ? (
-                           <span></span>
-                         ) : (
-                           <h4 className="heading1">Nationality</h4>
-                         )}
-                         <div>
-                           <p className="cit">{nation}</p>
-                         </div>
-                       </div>
-                       <div>
-                         {place && birth !== "" ? (
-                           <h4 className="heading1">Place/Date of Birth</h4>
-                         ) : place !== "" ? (
-                           <h4 className="heading1">Place of Birth</h4>
-                         ) : birth !== "" ? (
-                           <h4 className="heading1">Date of Birth</h4>
-                         ) : (
-                           <span></span>
-                         )}
-                         <div>
-                           <p className="cit">{birth}</p>
-                           <p className="cit">{place}</p>
-                         </div>
-                       </div>
                        <div className="top">
                          {skill.length === 0 ? (
                            <span></span>
@@ -6006,12 +5878,9 @@ interests and curiosities"
                      </div>
                    </div>
                  </div>
-
-
-
-
                </div>
-             )}
+               </div>
+                )}
               </Scrollbars>
           }
         </div>
@@ -6021,5 +5890,6 @@ interests and curiosities"
 
 
 }
+
 
 export default Hobbies;
