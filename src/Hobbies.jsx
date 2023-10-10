@@ -187,6 +187,8 @@ function Hobbies(props) {
   const [isPrinting, setIsPrinting] = useState(false);
   const { template, additionalProp } = props;
   const [selectedTemplate, setSelectedTemplate] = useState(null);
+
+
   const handleClick = () => {
     setSelectedTemplate(template);
   };
@@ -374,7 +376,24 @@ function Hobbies(props) {
   const handleTemplateChange = () => {
     setIsColor1Active((prev) => !prev);
   };
-  const generateName = (inputValue, addSpace) => {
+  // const generateName = (inputValue, addSpace) => {
+  //   const cleanedName = inputValue.replace(/\s+/g, " ").trim();
+  //   const fullName = cleanedName
+  //     .split(" ")
+  //     .map((word, index) => {
+  //       // Convert the first word to lowercase and the rest to title case
+  //       if (index === 0) {
+  //         return word.toLowerCase();
+  //       }
+  //       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+
+  //     })
+  //     .join(' ');
+
+  //   const camelCaseName = fullName.charAt(0).toUpperCase() + fullName.slice(1);
+  //   return addSpace ? camelCaseName : camelCaseName.replace(/\s+/g, "");
+  // };
+  const generateName = (inputValue) => {
     const cleanedName = inputValue.replace(/\s+/g, " ").trim();
     const fullName = cleanedName
       .split(" ")
@@ -384,13 +403,30 @@ function Hobbies(props) {
           return word.toLowerCase();
         }
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-
       })
       .join(' ');
 
     const camelCaseName = fullName.charAt(0).toUpperCase() + fullName.slice(1);
-    return addSpace ? camelCaseName : camelCaseName.replace(/\s+/g, "");
+    return camelCaseName;
   };
+
+  const updateField = (value, typevalue, type, score) => {
+    if (value.trim() !== "") {
+      setField(value, type);
+
+      if (typevalue === "") {
+        setCompletionPercentage(
+          (completionPercentage) => completionPercentage + score
+        );
+      }
+    } else {
+      setField(value, type);
+      setCompletionPercentage(
+        (completionPercentage) => completionPercentage - score
+      );
+    }
+  };
+
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -1449,7 +1485,7 @@ function Hobbies(props) {
                         className="work"
                         value={country}
                         onChange={(e) => {
-                          progress(e.target.value, country, "country", 5);
+                          updateField(e.target.value, country, "country", 5);
                         }}
                       // value={country}
                       // onChange={(e) => setCountry(e.target.value)}
@@ -1463,7 +1499,7 @@ function Hobbies(props) {
                       className="work"
                       value={city}
                       onChange={(e) => {
-                        progress(e.target.value, city, "city", 5);
+                        updateField(e.target.value, city, "city", 5);
                       }}
                     // value={city}
                     // onChange={(e) => setCity(e.target.value)}
@@ -1551,7 +1587,7 @@ function Hobbies(props) {
                           className="work"
                           value={nation}
                           onChange={(e) => {
-                            progress(e.target.value, nation, "nation", 5);
+                            updateField(e.target.value, nation, "nation", 5);
                           }}
                         // value={nation}
                         // onChange={(e) => setNation(e.target.value)}
@@ -1569,7 +1605,7 @@ function Hobbies(props) {
                             className="work"
                             value={place}
                             onChange={(e) => {
-                              progress(e.target.value, place, "place", 5);
+                              updateField(e.target.value, place, "place", 5);
                             }}
                           // value={placeOfBirth}
                           // onChange={(e) => setPlaceOfBirth(e.target.value)}
@@ -4165,7 +4201,7 @@ interests and curiosities"
                       </div>
                       <div className="main-left1" style={{ backgroundColor: selectedColor }}>
                         <div className="pincode">
-                          <div className="details">
+                        <div className="details">
                             {email === "" ? (
                               <span></span>
                             ) : (
@@ -4191,14 +4227,23 @@ interests and curiosities"
                             <div>
                               <p className="cont">{address}</p>
                             </div>
+                            
                             <div>
-                              {
-                                post === "" ? <p className="cit">{`${city}`}</p> : <p className="cit">{`${city} , ${post}`}</p>
-                              }
-                              {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                              {country && (
+                                <div className="preview-blk-title"><h4 className="heading11">Country</h4></div>
+                              )}
+                              <div>
+                                <p className="cit">{generateName(country)}</p>
+                              </div>
                             </div>
+
                             <div>
-                              <p className="cit">{country}</p>
+                              {city && (
+                                <div className="preview-blk-title"><h4 className="heading11">City</h4></div>
+                              )}
+                              <div>
+                                <p className="cit">{generateName(city)}</p>
+                              </div>
                             </div>
                           </div>
 
@@ -4212,16 +4257,16 @@ interests and curiosities"
                               <p className="cit">{licence}</p>
                             </div>
                           </div>
+                          
                           <div>
-                            {nation === "" ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading1">Nationality</h4>
+                            {nation && (
+                              <div className="preview-blk-title"><h4 className="heading11">Nation</h4></div>
                             )}
                             <div>
-                              <p className="cit">{nation}</p>
+                              <p className="cit">{generateName(nation)}</p>
                             </div>
                           </div>
+
                           <div>
                             {place && birth !== "" ? (
                               <h4 className="heading1">Place/Date of Birth</h4>
@@ -4234,9 +4279,19 @@ interests and curiosities"
                             )}
                             <div>
                               <p className="cit">{birth}</p>
-                              <p className="cit">{place}</p>
+                              {/* <p className="cit">{place}</p> */}
+                              <div>
+                              
+                                <div>
+                                  <p className="cit">{generateName(place)}</p>
+                                </div>
+                              </div>
+
                             </div>
                           </div>
+
+
+
                           <div className="top">
                             {skill.length === 0 ? (
                               <span></span>
@@ -4333,7 +4388,7 @@ interests and curiosities"
 
                 {template === 'template2' && (
 
-                  
+
                   <div className="template2" onClick={handleClick}>
                     <div className="main-full" id="pdf-content" ref={contentDivRef}
                       contentEditable={false}
@@ -4347,225 +4402,233 @@ interests and curiosities"
 
                       <div className="main-left" style={{ backgroundColor: selectedColor1 }}>
                         <div className="main-sai">
-                        <div class="preview-image">
+                          <div class="preview-image">
 
 
 
-                          <Dropzone
-                            onDrop={handleDrop}
-                            accept="image/*"
-                            multiple={false}
-                          >
-                            {({ getRootProps, getInputProps }) => (
-                              <div
-                                className="dropzone"
-                                id="drop"
-                                {...getRootProps()}
-                              >
-                                <input {...getInputProps()} />
-                                {selectedFile ? (
-                                  <div className="image">
-                                    <div className="image-container">
-                                      <img
-                                        src={URL.createObjectURL(selectedFile)}
-                                        alt="Uploaded"
-                                        className={`rounded-image ${isPrinting ? 'print-preview-image' : ''}`}
-                                        onClick={handleView}
-                                        style={{ borderRadius: "50%" }}
-                                      />
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <div style={{ display: "flex" }}></div>
-                                )}
-                              </div>
-                            )}
-                          </Dropzone></div><br />
-                        <div>
-                          <div style={{ display: "flex" }} className="fullname_dsp">
-                            <h3 className="name11">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
-                            {/* <h3 className="name1">{name}</h3>
-                          <h3 className="name2">{lastname}</h3>  */}
-                          </div>
-                          <div className="name1"></div>
-                          <h6 className="namee text-uppercase">{job}</h6>
-
-                        </div>
-                        <div className="pincode">
-                          <div className="details">
-                            {email === "" ? (
-                              <span></span>
-                            ) : (
-                              <div className="preview-blk-title"><h4 className="headingg div-heading">Contact</h4></div>
-                            )}
-                            <div>
-                              {
-                                phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
-                              }
-
-                            </div>
-                            <div>
-                              <p className="conte">{email}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {address === "" ? (
-                              <span></span>
-                            ) : (
-                              <div className="preview-blk-title"><h4 className="headingg div-heading">Address</h4></div>
-                            )}
-
-                            <div>
-                              <p className="cont">{address}</p>
-                            </div>
-                            <div>
-                              {
-                                post === "" ? <p className="cit">{`${city}`}</p> : <p className="cit">{`${city} , ${post}`}</p>
-                              }
-                              {/* <p className="cit">{`${city} , ${post}`}</p> */}
-                            </div>
-                            <div>
-                              <p className="cit">{country}</p>
-                            </div>
-                          </div>
-
-                          <div>
-                            {licence === "" ? (
-                              <span></span>
-                            ) : (
-                              <div className="preview-blk-title"><h4 className="heading11">Gender</h4></div>
-                            )}
-                            <div>
-                              <p className="cit">{licence}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {nation === "" ? (
-                              <span></span>
-                            ) : (
-                              <div className="preview-blk-title"><h4 className="heading11">Nationality</h4></div>
-                            )}
-                            <div>
-                              <p className="cit">{nation}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {place && birth !== "" ? (
-                             <div className="preview-blk-title"><h4 className="heading11">Place/Date of Birth</h4></div>
-                            ) : place !== "" ? (
-                              <h4 className="heading1">Place of Birth</h4>
-                            ) : birth !== "" ? (
-                              <div className="preview-blk-title"><h4 className="heading11">Date of Birth</h4></div>
-                            ) : (
-                              <span></span>
-                            )}
-                            <div>
-                              <p className="cit">{birth}</p>
-                              <p className="cit">{place}</p>
-                            </div>
-                          </div>
-                          <div className="top">
-                            {skill.length === 0 ? (
-                              <span></span>
-                            ) : (
-                              <div className="preview-blk-title"><h4 className="headingg div-heading">Skills</h4></div>
-                            )}
-                            {skill.map((object) => (
-
-                              <div key={object.id} className="ill">
-                                <div className="progress-bar-container" id="secondProgressBarContainer">
-                                  {studentSkills.map((skill, index) => (
-                                    <div key={index} className="progress-bar-container">
-                                      <div className="skill-name">{skill}</div>
-                                      {renderSecondProgressBar(skill)}
-                                    </div>
-                                  ))}
-                                </div>
-                                <ToastContainer className="custom-toast" />
-
-                                <p className="cit" id="cit">{`${object.input1}`}</p>
-
-                                <div className="ski1">
-
-                                  {isChecked ? (
-                                    <div>
-                                      {object.input2 === "" ? (
-                                        <span></span>
-                                      ) : (
-                                        <p className="ski">{`${object.input2}/5`}</p>
-                                      )}
+                            <Dropzone
+                              onDrop={handleDrop}
+                              accept="image/*"
+                              multiple={false}
+                            >
+                              {({ getRootProps, getInputProps }) => (
+                                <div
+                                  className="dropzone"
+                                  id="drop"
+                                  {...getRootProps()}
+                                >
+                                  <input {...getInputProps()} />
+                                  {selectedFile ? (
+                                    <div className="image">
+                                      <div className="image-container">
+                                        <img
+                                          src={URL.createObjectURL(selectedFile)}
+                                          alt="Uploaded"
+                                          className={`rounded-image ${isPrinting ? 'print-preview-image' : ''}`}
+                                          onClick={handleView}
+                                          style={{ borderRadius: "50%" }}
+                                        />
+                                      </div>
                                     </div>
                                   ) : (
-                                    <span></span>
+                                    <div style={{ display: "flex" }}></div>
                                   )}
                                 </div>
-                              </div>
-                            ))}
+                              )}
+                            </Dropzone></div><br />
+                          <div>
+                            <div style={{ display: "flex" }} className="fullname_dsp">
+                              <h3 className="name11">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
+                              {/* <h3 className="name1">{name}</h3>
+                          <h3 className="name2">{lastname}</h3>  */}
+                            </div>
+                            <div className="name1"></div>
+                            <h6 className="namee text-uppercase">{job}</h6>
+
                           </div>
-                          <div className="top">
-                            {website.length === 0 ? (
-                              <span></span>
-                            ) : (
-                              <div className="preview-blk-title"><h4 className="headingg div-heading">Links</h4></div>
-                            )}
-                            {website.map((object) => (
-                              <div key={object.id}>
-                                {/* <p className="cit">{`${object.input1}`}</p> */}
-                                <Link to={object.input2} className="cit" id="link">
-                                  {object.input1}
-                                </Link>
+                          <div className="pincode">
+                            <div className="details">
+                              {email === "" ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Contact</h4></div>
+                              )}
+                              <div>
+                                {
+                                  phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
+                                }
+
                               </div>
-                            ))}
-                          </div>
-                          <div className="top">
-                            {six.length === 0 ? (
-                              <span></span>
-                            ) : (
-                              <div className="preview-blk-title"><h4 className="headingg div-heading">Hobbies</h4></div>
+                              <div>
+                                <p className="conte">{email}</p>
+                              </div>
+                            </div>
+                            <div>
+                              {address === "" ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Address</h4></div>
+                              )}
+
+                              <div>
+                                <p className="cont">{address}</p>
+                              </div>
+                              <div>
+                              {country && (
+                                <div className="preview-blk-title"><h4 className="heading11">Country</h4></div>
+                              )}
+                              <div>
+                                <p className="cit">{generateName(country)}</p>
+                              </div>
+                            </div>
+                            <div>
+                              {city && (
+                                <div className="preview-blk-title"><h4 className="heading11">City</h4></div>
+                              )}
+                              <div>
+                                <p className="cit">{generateName(city)}</p>
+                              </div>
+                            </div>
+                            </div>
+
+                            <div>
+                              {licence === "" ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="heading11">Gender</h4></div>
+                              )}
+                              <div>
+                                <p className="cit">{licence}</p>
+                              </div>
+                            </div>
+                            <div>
+                            {nation && (
+                              <div className="preview-blk-title"><h4 className="heading11">Nation</h4></div>
                             )}
                             <div>
-                              {six.map((object) => (
-                                <div key={object.id} className="ill">
-                                  <p className="cit">{`${object.input1}`}</p>
-                                </div>
-                              ))}
+                              <p className="cit">{generateName(nation)}</p>
                             </div>
                           </div>
-                          <div className="top">
-                            {seven.length === 0 ? (
-                              <span></span>
-                            ) : (
-                              <div className="preview-blk-title"><h4 className="headingg div-heading">Languages</h4></div>
-                            )}
                             <div>
-                              {seven.map((object) => (
+                              {place && birth !== "" ? (
+                                <div className="preview-blk-title"><h4 className="heading11">Place/Date of Birth</h4></div>
+                              ) : place !== "" ? (
+                                <h4 className="heading1">Place of Birth</h4>
+                              ) : birth !== "" ? (
+                                <div className="preview-blk-title"><h4 className="heading11">Date of Birth</h4></div>
+                              ) : (
+                                <span></span>
+                              )}
+                              <div>
+                                <p className="cit">{birth}</p>
+                                {/* <p className="cit">{place}</p> */}
+                              </div>
+                              <div>
+                                  <p className="cit">{generateName(place)}</p>
+                                </div>
+                            </div>
+                            <div className="top">
+                              {skill.length === 0 ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Skills</h4></div>
+                              )}
+                              {skill.map((object) => (
+
                                 <div key={object.id} className="ill">
+                                  <div className="progress-bar-container" id="secondProgressBarContainer">
+                                    {studentSkills.map((skill, index) => (
+                                      <div key={index} className="progress-bar-container">
+                                        <div className="skill-name">{skill}</div>
+                                        {renderSecondProgressBar(skill)}
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <ToastContainer className="custom-toast" />
+
                                   <p className="cit" id="cit">{`${object.input1}`}</p>
+
                                   <div className="ski1">
-                                    <p className="ski">{`${object.input2}/5`}</p>
+
+                                    {isChecked ? (
+                                      <div>
+                                        {object.input2 === "" ? (
+                                          <span></span>
+                                        ) : (
+                                          <p className="ski">{`${object.input2}/5`}</p>
+                                        )}
+                                      </div>
+                                    ) : (
+                                      <span></span>
+                                    )}
                                   </div>
                                 </div>
                               ))}
                             </div>
+                            <div className="top">
+                              {website.length === 0 ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Links</h4></div>
+                              )}
+                              {website.map((object) => (
+                                <div key={object.id}>
+                                  {/* <p className="cit">{`${object.input1}`}</p> */}
+                                  <Link to={object.input2} className="cit" id="link">
+                                    {object.input1}
+                                  </Link>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="top">
+                              {six.length === 0 ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Hobbies</h4></div>
+                              )}
+                              <div>
+                                {six.map((object) => (
+                                  <div key={object.id} className="ill">
+                                    <p className="cit">{`${object.input1}`}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="top">
+                              {seven.length === 0 ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Languages</h4></div>
+                              )}
+                              <div>
+                                {seven.map((object) => (
+                                  <div key={object.id} className="ill">
+                                    <p className="cit" id="cit">{`${object.input1}`}</p>
+                                    <div className="ski1">
+                                      <p className="ski">{`${object.input2}/5`}</p>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
                       </div>
                       <div className="main-right">
                         <div id="cont">
                           <div >
                             <div style={{ display: "flex" }} className="cont-1">
                               <div className="profile-pic">
-                               
+
                               </div>
-                            
+
                             </div>
                             <div className="summry">
                               {editorHtml === "" ? (
                                 <span></span>
                               ) : (
                                 <div className="preview-blk-title">
-                                <h2 className="proff">Summary</h2></div>
+                                  <h2 className="proff">Summary</h2></div>
                               )}
                               <div
                                 className="mess"
@@ -4628,7 +4691,7 @@ interests and curiosities"
                                                   {store.id === "01" ? (
                                                     <div>
                                                       {
-                                                        objects.length === 0 ? <span></span> :<div className="preview-blk-title"> <h2 className="headd">Employment</h2></div>
+                                                        objects.length === 0 ? <span></span> : <div className="preview-blk-title"> <h2 className="headd">Employment</h2></div>
                                                       }
                                                       {store.it.map((item, index) => (
                                                         <div className="store">
@@ -5030,12 +5093,12 @@ interests and curiosities"
                     </div>
                     <div className="top-right">
                     <div style={{ display: "flex" }}>
-                                <h3 className="name1 nameAA">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
+                                <h3 className="name1 nameAA" id="name">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
                                 
                               </div>
                               <div className="summryA" id="summryA">
                                 {
-                                  editorHtml === "" ? <span></span> : <h4>Summary</h4>
+                                  editorHtml === "" ? <div></div> : <h4>Summary</h4>
                                 }
                                 <div dangerouslySetInnerHTML={{ __html: editorHtml }}/>
                        </div>
@@ -5044,16 +5107,11 @@ interests and curiosities"
 
                    </div>
                    <div className="second-full">
-                   <div className="main-right">
-                     <div>
-                       <div style={{ display: "flex" }} className="cont-1">
-                       </div>
-                       
-                     </div>
+                   <div className="main-right" id="main-right">
 
                      <div>
                        <DragDropContext onDragEnd={handleDragDrop}>
-                         <div className="movement">
+                         <div className="movement" id="movement">
                            <Droppable droppableId="Root" type="group">
                              {(provided) => (
                                <div
