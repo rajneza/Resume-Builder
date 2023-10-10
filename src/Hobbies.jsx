@@ -5030,12 +5030,12 @@ interests and curiosities"
                     </div>
                     <div className="top-right">
                     <div style={{ display: "flex" }}>
-                                <h3 className="name1 nameAA">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
+                                <h3 className="name1 nameAA" id="name">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
                                 
                               </div>
                               <div className="summryA" id="summryA">
                                 {
-                                  editorHtml === "" ? <span></span> : <h4>Summary</h4>
+                                  editorHtml === "" ? <div></div> : <h4>Summary</h4>
                                 }
                                 <div dangerouslySetInnerHTML={{ __html: editorHtml }}/>
                        </div>
@@ -5044,16 +5044,11 @@ interests and curiosities"
 
                    </div>
                    <div className="second-full">
-                   <div className="main-right">
-                     <div>
-                       <div style={{ display: "flex" }} className="cont-1">
-                       </div>
-                       
-                     </div>
+                   <div className="main-right" id="main-right">
 
                      <div>
                        <DragDropContext onDragEnd={handleDragDrop}>
-                         <div className="movement">
+                         <div className="movement" id="movement">
                            <Droppable droppableId="Root" type="group">
                              {(provided) => (
                                <div
