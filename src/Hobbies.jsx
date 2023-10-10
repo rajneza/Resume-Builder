@@ -4886,11 +4886,16 @@ interests and curiosities"
                     </div>
                     <div className="col-8 custom-height-column personal">
                       <div className="resume-name">
-                        {/* <h6 className="fname">{firstName}</h6> */}
-                        <h6>{lastName}</h6>
+                      <h3 className="name11">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
                       </div>
-                      {/* <p className="right-title">{title}</p> */}
-                      <p className="resume-address">{address}</p>
+                      <h6 className="namee text-uppercase right-title">{job}</h6>
+                      
+                      {/* <p className="resume-address">{address}</p> */}
+                      {address === "" ? (
+                              <span>add</span>
+                            ) : (
+                              <p className="cont">{address}</p>
+                            )}
                       <div className="personal-data">
                         <p className="resume-city">{city}</p>
                         {/* <p className="resume-code">{code}</p> */}

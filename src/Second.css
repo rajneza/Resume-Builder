@@ -744,6 +744,23 @@ Popup.css .popup {
   
 }
 
+.resume-name {
+  display: flex;
+}
+
+.right-title {
+  font-size: 12px;
+  /* position: relative; */
+  bottom: 8px;
+  font-weight: 500;
+  display: block;
+  margin-top: 10px;
+
+}
+.custom-height-column {
+  flex-wrap: wrap;
+}
+
 .pic-container {
   height: 100px;
   flex-wrap: wrap;
