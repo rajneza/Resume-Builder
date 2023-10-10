@@ -3100,13 +3100,13 @@ interests and curiosities"
                                                             <br />
                                                             <input
                                                               type="date"
-                                                              value={object.input4}
+                                                              value={object.input3}
                                                               className="workk"
                                                               onChange={(e) =>
                                                                 handleInputcust(
                                                                   e,
                                                                   object.id,
-                                                                  "input4"
+                                                                  "input3"
                                                                 )
                                                               }
                                                             />
@@ -3118,7 +3118,7 @@ interests and curiosities"
                                                                 handleInputcust(
                                                                   e,
                                                                   object.id,
-                                                                  "input6"
+                                                                  "input4"
                                                                 )
                                                               }
                                                             />
@@ -4841,518 +4841,7 @@ interests and curiosities"
 
                 {template === 'template3' && (
                   <div className="template3">
-                    <div className="main-full" id="pdf-content" ref={contentDivRef}
-                      contentEditable={false}
-                      style={{
-                        // border: '1px solid #ccc',
-                        // minHeight: '200px',
-                        // padding: '10px',
-                        // marginBottom: '20px',
-                        width: "97%"
-                      }}>
-
-                      <div className="main-left bg-green text-white" style={{ backgroundColor: selectedColor1 }}>
-                        <div className="pincode">
-                          <div className="details">
-                            {email === "" ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading div-heading">Contact</h4>
-                            )}
-                            <div>
-                              {
-                                phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
-                              }
-
-                            </div>
-                            <div>
-                              <p className="conte">{email}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {address === "" ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading div-heading">Address</h4>
-                            )}
-
-                            <div>
-                              <p className="cont">{address}</p>
-                            </div>
-                            <div>
-                              {
-                                post === "" ? <p className="cit">{`${city}`}</p> : <p className="cit">{`${city} , ${post}`}</p>
-                              }
-                              {/* <p className="cit">{`${city} , ${post}`}</p> */}
-                            </div>
-                            <div>
-                              <p className="cit">{country}</p>
-                            </div>
-                          </div>
-
-                          <div>
-                            {licence === "" ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading1">Gender</h4>
-                            )}
-                            <div>
-                              <p className="cit">{licence}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {nation === "" ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading1">Nationality</h4>
-                            )}
-                            <div>
-                              <p className="cit">{nation}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {place && birth !== "" ? (
-                              <h4 className="heading1">Place/Date of Birth</h4>
-                            ) : place !== "" ? (
-                              <h4 className="heading1">Place of Birth</h4>
-                            ) : birth !== "" ? (
-                              <h4 className="heading1">Date of Birth</h4>
-                            ) : (
-                              <span></span>
-                            )}
-                            <div>
-                              <p className="cit">{birth}</p>
-                              <p className="cit">{place}</p>
-                            </div>
-                          </div>
-                          <div className="top">
-                            {skill.length === 0 ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading div-heading">Skills</h4>
-                            )}
-                            {skill.map((object) => (
-
-                              <div key={object.id} className="ill">
-                                <div className="progress-bar-container" id="secondProgressBarContainer">
-                                  {studentSkills.map((skill, index) => (
-                                    <div key={index} className="progress-bar-container">
-                                      <div className="skill-name">{skill}</div>
-                                      {renderSecondProgressBar(skill)}
-                                    </div>
-                                  ))}
-                                </div>
-                                <ToastContainer className="custom-toast" />
-
-                                <p className="cit" id="cit">{`${object.input1}`}</p>
-
-                                <div className="ski1">
-
-                                  {isChecked ? (
-                                    <div>
-                                      {object.input2 === "" ? (
-                                        <span></span>
-                                      ) : (
-                                        <p className="ski">{`${object.input2}/5`}</p>
-                                      )}
-                                    </div>
-                                  ) : (
-                                    <span></span>
-                                  )}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="top">
-                            {website.length === 0 ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading div-heading">Links</h4>
-                            )}
-                            {website.map((object) => (
-                              <div key={object.id}>
-                                {/* <p className="cit">{`${object.input1}`}</p> */}
-                                <Link to={object.input2} className="cit" id="link">
-                                  {object.input1}
-                                </Link>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="top">
-                            {six.length === 0 ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading div-heading">Hobbies</h4>
-                            )}
-                            <div>
-                              {six.map((object) => (
-                                <div key={object.id} className="ill">
-                                  <p className="cit">{`${object.input1}`}</p>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                          <div className="top">
-                            {seven.length === 0 ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading div-heading">Languages</h4>
-                            )}
-                            <div>
-                              {seven.map((object) => (
-                                <div key={object.id} className="ill">
-                                  <p className="cit" id="cit">{`${object.input1}`}</p>
-                                  <div className="ski1">
-                                    <p className="ski">{`${object.input2}/5`}</p>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="main-right">
-                        <div>
-                          <div style={{ display: "flex" }} className="cont-1">
-                            <div className="profile-pic">
-                              <Dropzone
-                                onDrop={handleDrop}
-                                accept="image/*"
-                                multiple={false}
-                              >
-                                {({ getRootProps, getInputProps }) => (
-                                  <div
-                                    className="dropzone"
-                                    id="drop"
-                                    {...getRootProps()}
-                                  >
-                                    <input {...getInputProps()} />
-                                    {selectedFile ? (
-                                      <div className="image">
-                                        <div className="image-container">
-                                          <img
-                                            src={URL.createObjectURL(selectedFile)}
-                                            alt="Uploaded"
-                                            className="rounded-image"
-                                            onClick={handleView}
-                                          />
-                                        </div>
-                                      </div>
-                                    ) : (
-                                      <div style={{ display: "flex" }}></div>
-                                    )}
-                                  </div>
-                                )}
-                              </Dropzone>
-                            </div>
-                            <div>
-                              <div style={{ display: "flex" }}>
-                                <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
-                                
-                              </div>
-                              <div>
-                                <h6 className="name">{job}</h6>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="summry">
-                            {editorHtml === "" ? (
-                              <span></span>
-                            ) : (
-                              <h2 className="prof">Summary</h2>
-                            )}
-                            <div
-                              className="mess"
-                              dangerouslySetInnerHTML={{ __html: editorHtml }}
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          <DragDropContext onDragEnd={handleDragDrop}>
-                            <div className="movement">
-                              <Droppable droppableId="Root" type="group">
-                                {(provided) => (
-                                  <div
-                                    {...provided.droppableProps}
-                                    ref={provided.innerRef}
-                                  >
-                                    {ite.map((store, index) => (
-                                      <Draggable
-                                        draggableId={store.id}
-                                        key={store.id}
-                                        index={index}
-                                      >
-                                        {(provided) => (
-                                          <div
-                                            {...provided.dragHandleProps}
-                                            {...provided.draggableProps}
-                                            ref={provided.innerRef}
-                                          >
-                                            {/* <h3>{store.name}</h3> */}
-                                            {/* <Storelist {...store} /> */}
-                                            <div>
-                                              <div>{/* <h3>{name}</h3> */}</div>
-                                              <div>
-                                                {store.id === "06" ? (
-                                                  <div>
-                                                    {
-                                                      three.length === 0 ? <span></span> : <h2 className="head">References</h2>
-                                                    }
-                                                    {store.it.map((item, index) => (
-                                                      <div className="store">
-                                                        {item.input1 === undefined ? (
-                                                          <span></span>
-                                                        ) : (
-                                                          <div>
-                                                            {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
-            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
-            <p className="fonttt">{item.input6}</p> */}
-
-                                                            <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
-                                                            <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
-                                                          </div>
-                                                        )}
-                                                      </div>
-                                                    ))}
-                                                  </div>
-                                                ) : (
-                                                  <span></span>
-                                                )}
-                                                {store.id === "01" ? (
-                                                  <div>
-                                                    {
-                                                      objects.length === 0 ? <span></span> : <h2 className="head">Employment</h2>
-                                                    }
-                                                    {store.it.map((item, index) => (
-                                                      <div className="store">
-                                                        {item.input1 === undefined ? (
-                                                          <span></span>
-                                                        ) : (
-                                                          <div className="store">
-                                                            {item.input1 === undefined ? (
-                                                              <span></span>
-                                                            ) : (
-                                                              <div>
-                                                                <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-
-                                                                <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                <p className="fonttt">{item.input6}</p>
-                                                              </div>
-                                                            )}
-                                                          </div>
-                                                        )}
-                                                      </div>
-                                                    ))}
-                                                  </div>
-                                                ) : (
-                                                  <span></span>
-                                                )}
-
-                                                {store.id === "02" ? (
-                                                  <div>
-                                                    {
-                                                      education.length === 0 ? <span></span> : <h2 className="head">Education</h2>
-                                                    }
-                                                    {store.it.map((item, index) => (
-                                                      <div className="store">
-                                                        {item.input1 === undefined ? (
-                                                          <span></span>
-                                                        ) : (
-                                                          <div className="store">
-
-                                                            {item.input1 === undefined ? (
-                                                              <span></span>
-                                                            ) : (
-                                                              <div>
-                                                                <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                {
-                                                                  item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fontt">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                }
-                                                                {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
-                                                                <p className="fonttt">{item.input6}</p>
-                                                              </div>
-                                                            )}
-                                                          </div>
-                                                        )}
-                                                      </div>
-                                                    ))}
-                                                  </div>
-                                                ) : (
-                                                  <span></span>
-                                                )}
-                                                {store.id === "03" ? (
-                                                  <div>
-                                                    {
-                                                      four.length === 0 ? <span></span> : <h2 className="head">Extra-curricular activites</h2>
-                                                    }
-                                                    {store.it.map((item, index) => (
-                                                      <div className="store">
-                                                        {item.input1 === undefined ? (
-                                                          <span></span>
-                                                        ) : (
-                                                          <div>
-                                                            <div className="store">
-
-                                                              {item.input1 === undefined ? (
-                                                                <span></span>
-                                                              ) : (
-                                                                <div>
-                                                                  <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                  {
-                                                                    item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                  }
-                                                                  <p className="fonttt">{item.input6}</p>
-                                                                </div>
-                                                              )}
-                                                            </div>
-                                                          </div>
-                                                        )}
-                                                      </div>
-                                                    ))}
-                                                  </div>
-                                                ) : (
-                                                  <span></span>
-                                                )}
-                                                {store.id === "04" ? (
-                                                  <div>
-                                                    {
-                                                      course.length === 0 ? <span></span> : <h2 className="head">Course</h2>
-                                                    }
-                                                    {store.it.map((item, index) => (
-                                                      <div className="store">
-                                                        {item.input1 === undefined ? (
-                                                          <span></span>
-                                                        ) : (
-                                                          <div className="store">
-
-                                                            {item.input1 === undefined ? (
-                                                              <span></span>
-                                                            ) : (
-                                                              <div>
-                                                                <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                <p className="fonttt">{item.input6}</p>
-                                                              </div>
-                                                            )}
-                                                          </div>
-                                                        )}
-                                                      </div>
-                                                    ))}
-                                                  </div>
-                                                ) : (
-                                                  <span></span>
-                                                )}
-                                                {store.id === "05" ? (
-                                                  <div>
-                                                    {
-                                                      five.length === 0 ? <span></span> : <h2 className="head">Internships</h2>
-                                                    }
-                                                    {store.it.map((item, index) => (
-                                                      <div className="store">
-                                                        {item.input1 === undefined ? (
-                                                          <span></span>
-                                                        ) : (
-                                                          <div className="store">
-
-                                                            {item.input1 === undefined ? (
-                                                              <span></span>
-                                                            ) : (
-                                                              <div>
-                                                                <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                <p className="fonttt">{item.input6}</p>
-                                                              </div>
-                                                            )}
-                                                          </div>
-                                                        )}
-                                                      </div>
-                                                    ))}
-                                                  </div>
-                                                ) : (
-                                                  <span></span>
-                                                )}
-                                                {store.id === "07" ? (
-                                                  <div>
-                                                    {
-                                                      project.length === 0 ? <span></span> : <h2 className="head">Projects</h2>
-                                                    }
-                                                    {store.it.map((item, index) => (
-                                                      <div className="store">
-                                                        {item.input1 === undefined ? (
-                                                          <span></span>
-                                                        ) : (
-                                                          <div className="store">
-
-                                                            {item.input1 === undefined ? (
-                                                              <span></span>
-                                                            ) : (
-                                                              <div>
-                                                                <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                {
-                                                                  item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                                }
-
-                                                                {
-                                                                  item.input7 === "" ? <span></span> : <p className="fontt">{`My Role : ${item.input7}`}</p>
-                                                                }
-                                                                {
-                                                                  item.input8 === "" ? <span></span> : <p className="fontt">{`Skills Used In This  Project : ${item.input8}`}</p>
-                                                                }
-
-                                                                <p className="fonttt">{item.input6}</p>
-                                                              </div>
-                                                            )}
-                                                          </div>
-                                                        )}
-                                                      </div>
-                                                    ))}
-                                                  </div>
-                                                ) : (
-                                                  <span></span>
-                                                )}
-                                                {store.id === "08" ? (
-                                                  <div>
-                                                    {
-                                                      cust.length === 0 ? <span></span> : <h2 className="head">{store.head}</h2>
-                                                    }
-                                                    {store.it.map((item, index) => (
-                                                      <div className="store">
-                                                        {item.input1 === undefined ? (
-                                                          <span></span>
-                                                        ) : (
-                                                          <div className="store">
-                                                            {item.input1 === undefined ? (
-                                                              <span></span>
-                                                            ) : (
-                                                              <div>
-                                                                <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                                <p className="fontt">{`${item.input4}`}</p>
-                                                                <p className="fonttt">{item.input5}</p>
-                                                              </div>
-                                                            )}
-                                                          </div>
-                                                        )}
-                                                      </div>
-                                                    ))}
-                                                  </div>
-                                                ) : (
-                                                  <span></span>
-                                                )}
-                                              </div>
-                                            </div>
-                                          </div>
-                                        )}
-                                      </Draggable>
-                                    ))}
-                                  </div>
-                                )}
-                              </Droppable>
-                            </div>
-                          </DragDropContext>
-                        </div>
-                      </div>
-                    </div>
+                    
                   </div>
                 )}
 
@@ -5369,7 +4858,7 @@ interests and curiosities"
                    }}>
 
                    <div className="main-top">
-                    <div>
+                    <div className="top-left">
                     <div className="profile-pic">
                           
                           
@@ -5415,12 +4904,12 @@ interests and curiosities"
                          )} */}
                          <div>
                            {
-                             phone === "" ? <span></span> : <p className="cit">{`+${phone}`}</p>
+                             phone === "" ? <span></span> : <p className="cit citA">{`+${phone}`}</p>
                            }
 
                          </div>
                          <div>
-                           <p className="conte">{email}</p>
+                           <p className="conte size">{email}</p>
                          </div>
                        </div>
                        <div>
@@ -5431,51 +4920,51 @@ interests and curiosities"
                          )} */}
 
                          <div>
-                           <p className="cont">{address}</p>
+                           <p className="cont contA size">{address}</p>
                          </div>
                          <div>
                            {
-                             post === "" ? <p className="cit">{`${city}`}</p> : <p className="cit">{`${city} , ${post}`}</p>
+                             post === "" ? <p className="cit size">{`${city}`}</p> : <p className="cit size">{`${city} , ${post}`}</p>
                            }
                            {/* <p className="cit">{`${city} , ${post}`}</p> */}
                          </div>
                          <div>
-                           <p className="cit">{country}</p>
+                           <p className="cit size">{country}</p>
                          </div>
                        </div>
                        <div>
-                         {/* {licence === "" ? (
+                         {licence === "" ? (
                            <span></span>
                          ) : (
-                           <h4 className="heading1">Gender</h4>
-                         )} */}
+                           <h4 className="heading1 headingA">Gender</h4>
+                         )}
                          <div>
-                           <p className="cit">{licence}</p>
+                           <p className="cit citA size">{licence}</p>
                          </div>
                        </div>
                        <div>
-                         {/* {nation === "" ? (
+                         {nation === "" ? (
                            <span></span>
                          ) : (
-                           <h4 className="heading1">Nationality</h4>
-                         )} */}
+                           <h4 className="heading1 headingA">Nationality</h4>
+                         )}
                          <div>
-                           <p className="cit">{nation}</p>
+                           <p className="cit size">{nation}</p>
                          </div>
                        </div>
                        <div>
-                         {/* {place && birth !== "" ? (
-                           <h4 className="heading1">Place/Date of Birth</h4>
+                         {place && birth !== "" ? (
+                           <h4 className="heading1 headingA">Place/Date of Birth</h4>
                          ) : place !== "" ? (
-                           <h4 className="heading1">Place of Birth</h4>
+                           <h4 className="heading1 headingA">Place of Birth</h4>
                          ) : birth !== "" ? (
-                           <h4 className="heading1">Date of Birth</h4>
+                           <h4 className="heading1 headingA">Date of Birth</h4>
                          ) : (
                            <span></span>
-                         )} */}
-                         <div>
-                           <p className="cit">{birth}</p>
-                           <p className="cit">{place}</p>
+                         )}
+                         <div style={{display:"flex"}}>
+                           <p className="cit size">{birth}</p>
+                           <p className="cit size">{place}</p>
                          </div>
                        </div>
 
@@ -5571,9 +5060,13 @@ interests and curiosities"
                                                            <span></span>
                                                          ) : (
                                                            <div>
-                                                             <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-
-                                                             <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                            {
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fon fon1 fonB">{item.input1}</h4> : item.input3 === "" ? <h4 className="fon fon1 fonB">{`${item.input1},${item.input2}`}</h4> : <h4 className="fon fon1 fonB">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                            }
+                                                             {
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt fon1 fonA">{`${item.input4} to ${item.input5}`}</p>
+                                                             }
+                                                             
                                                              <p className="fonttt">{item.input6}</p>
                                                            </div>
                                                          )}
@@ -5602,7 +5095,12 @@ interests and curiosities"
                                                            <span></span>
                                                          ) : (
                                                            <div>
-                                                             <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
+                                                             {
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fon fon1 fonB">{item.input1}</h4> : item.input3 === "" ? <h4 className="fon fon1 fonB">{`${item.input1},${item.input2}`}</h4> : <h4 className="fon fon1 fonB">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                            }
+                                                             {
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt fon1 fonA">{`${item.input4} to ${item.input5}`}</p>
+                                                             }
                                                              {
                                                                item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fontt">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                              }
@@ -5635,10 +5133,12 @@ interests and curiosities"
                                                              <span></span>
                                                            ) : (
                                                              <div>
-                                                               <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                                {
-                                                                 item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                               }
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fon fon1 fonB">{item.input1}</h4> : item.input3 === "" ? <h4 className="fon fon1 fonB">{`${item.input1},${item.input2}`}</h4> : <h4 className="fon fon1 fonB">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                            }
+                                                             {
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt fon1 fonA">{`${item.input4} to ${item.input5}`}</p>
+                                                             }
                                                                <p className="fonttt">{item.input6}</p>
                                                              </div>
                                                            )}
@@ -5667,9 +5167,12 @@ interests and curiosities"
                                                            <span></span>
                                                          ) : (
                                                            <div>
-                                                             <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                             <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                             <p className="fonttt">{item.input6}</p>
+                                                            {
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fon fon1 fonB">{item.input1}</h4> : item.input3 === "" ? <h4 className="fon fon1 fonB">{`${item.input1},${item.input2}`}</h4> : <h4 className="fon fon1 fonB">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                            }
+                                                             {
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt fon1 fonA">{`${item.input4} to ${item.input5}`}</p>
+                                                             }<p className="fonttt">{item.input6}</p>
                                                            </div>
                                                          )}
                                                        </div>
@@ -5696,9 +5199,12 @@ interests and curiosities"
                                                            <span></span>
                                                          ) : (
                                                            <div>
-                                                             <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                             <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
-                                                             <p className="fonttt">{item.input6}</p>
+                                                             {
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fon fon1 fonB">{item.input1}</h4> : item.input3 === "" ? <h4 className="fon fon1 fonB">{`${item.input1},${item.input2}`}</h4> : <h4 className="fon fon1 fonB">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                            }
+                                                             {
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt fon1 fonA">{`${item.input4} to ${item.input5}`}</p>
+                                                             }<p className="fonttt">{item.input6}</p>
                                                            </div>
                                                          )}
                                                        </div>
@@ -5725,9 +5231,11 @@ interests and curiosities"
                                                            <span></span>
                                                          ) : (
                                                            <div>
-                                                             <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
                                                              {
-                                                               item.image4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fon fon1 fonB">{item.input1}</h4> : item.input3 === "" ? <h4 className="fon fon1 fonB">{`${item.input1},${item.input2}`}</h4> : <h4 className="fon fon1 fonB">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                            }
+                                                             {
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt fon1 fonA">{`${item.input4} to ${item.input5}`}</p>
                                                              }
 
                                                              {
@@ -5763,8 +5271,12 @@ interests and curiosities"
                                                            <span></span>
                                                          ) : (
                                                            <div>
-                                                             <h4 className="fon">{`${item.input1}, ${item.input2}, ${item.input3}`}</h4>
-                                                             <p className="fontt">{`${item.input4}`}</p>
+                                                             {
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fon fon1 fonB">{item.input1}</h4> :  <h4 className="fon fon1 fonB">{`${item.input1},${item.input2}`}</h4>
+                                                            }
+                                                             {
+                                                              item.input3 === "" ? <span></span> : item.input4 === "" ? <span></span> : <p className="fontt fon1 fonA">{`${item.input3} to ${item.input4}`}</p>
+                                                             }
                                                              <p className="fonttt">{item.input5}</p>
                                                            </div>
                                                          )}
