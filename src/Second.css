@@ -208,11 +208,11 @@ Popup.css .popup {
   display: flex;
 }
 
-#pdf-content {
+/* #pdf-content {
   background-color: black;
   width: 100%;
   padding: 100%;
-}
+} */
 
 .two-one {
   width: 70%;
@@ -728,9 +728,26 @@ Popup.css .popup {
 
 #pdf-content {
   /* background-color: black; */
-  width: 90%;
+  width: 100%;
   padding: 0%;
   min-height: 300px !important;
+}
+
+.temp3-container {
+  font-size: 10px;
+  background-color: white;
+  width: 50vw;
+  height: 88vh;
+  border-radius: 5px;
+  padding: 10px;
+  
+}
+
+.pic-container {
+  height: 100px;
+  flex-wrap: wrap;
+  background-color: #5dffd4;
+  
 }
 
 .two-one {
