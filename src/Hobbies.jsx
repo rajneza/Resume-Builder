@@ -4841,7 +4841,17 @@ interests and curiosities"
 
                 {template === 'template3' && (
                   <div className="template3">
-                    
+                    <div className="main-full" id="pdf-content" ref={contentDivRef}
+                      contentEditable={false}
+                      style={{
+                        // border: '1px solid #ccc',
+                        // minHeight: '200px',
+                        // padding: '10px',
+                        // marginBottom: '20px',
+                        width: "97%"
+                      }}>
+
+                    </div>
                   </div>
                 )}
 
