@@ -1,69 +1,57 @@
 import React, { useState } from 'react';
 
 function Skills() {
-  const [skill, setskill] = useState([]);
+  const [data, setData] = useState([]);
+  const [newItem, setNewItem] = useState({ id: '', name: '' });
 
-  const createskill = () => {
-    const newObject = { id: skill.length + 1, input1: '', input2: ''};
-    setskill([...skill, newObject]);
-  };
-
-  const handleInputskill = (e, objectId, inputName) => {
-    const updatedObjects = skill.map((object) => {
-      if (object.id === objectId) {
-        return { ...object, [inputName]: e.target.value };
-      }
-      return object;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewItem({
+      ...newItem,
+      [name]: value,
     });
-    setskill(updatedObjects);
   };
 
-  const deleteskill = (objectId) => {
-        const updatedObjects = skill.filter((object) => object.id !== objectId);
-         setskill(updatedObjects);
-       };
+  const addItem = () => {
+    if (newItem.id && newItem.name) {
+      setData([...data, newItem]);
+      setNewItem({ id: '', name: '' });
+    }
+  };
 
   return (
-    <div className='emp-div'>
-      
-      {skill.map((object) => (
-        <div key={object.id} style={{display:"flex"}}>
-          <div className='emp-main'>
-          
-          <div style={{display:"flex"}}>
-            <div className='wanted'>
-            <div>
-                <label htmlFor="">Label</label> <br />
-                <input
-            type="text"
-            value={object.input1}
-            className='work'
-            onChange={(e) => handleInputskill(e, object.id, 'input1')}
-          />
-            </div>
-            </div>
-          </div>
-          </div>
-          <div>
-          <button onClick={() => deleteskill(object.id)}>Delete</button>
-          </div>
-    </div>
-      ))}
-      <button onClick={createskill}> + Add more skill</button>
-      
+    <div>
+      <h1>List of Items</h1>
+      <ul>
+        {data.map((item, index) => (
+          <li key={index}>{item.id} - {item.name}</li>
+        ))}
+      </ul>
+
+      <div>
+        <input
+          type="text"
+          placeholder="ID"
+          name="id"
+          value={newItem.id}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Name"
+          name="name"
+          value={newItem.name}
+          onChange={handleChange}
+        />
+        <button onClick={addItem}>Add Item</button>
+      </div>
+      <ul>
+        {data.map((item, index) => (
+          <li key={index}>{item.id} - {item.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default Skills;
-
-{/* <div>
-        <h2>Input Values:</h2>
-        {skill.map((object) => (
-          <div key={object.id}>
-            <p>{object.input1}</p>
-            <p>{object.input2}</p>
-            <p>{object.input3}</p>
-          </div>
-        ))}
-      </div> */}
