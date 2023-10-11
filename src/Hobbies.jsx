@@ -6595,7 +6595,6 @@ interests and curiosities"
                         </DragDropContext>
                       </div>
 
-
                         </div>
                       </div>
                     </div>
