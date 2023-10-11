@@ -4782,25 +4782,31 @@ interests and curiosities"
                           </div>
 
                           <div>
-                            {country && (
-                              <div className="preview-blk-title">
-                                <h4 className="heading11">Country</h4>
-                              </div>
-                            )}
+                            {/* {country && (
+                              
+                                <h4 className="heading1">Country</h4>
+                             
+                            )} */}
                             <div>
                               <p className="cit">{generateName(country)}</p>
                             </div>
                           </div>
 
                           <div>
-                            {city && (
-                              <div className="preview-blk-title">
-                                <h4 className="heading11">City</h4>
-                              </div>
-                            )}
+                            {/* {city && (
+                             
+                                <h4 className="heading1">City</h4>
+                             
+                            )} */}
                             <div>
                               <p className="cit">{generateName(city)}</p>
                             </div>
+                            <div>
+                           {
+                             post === "" ? <p className="cit"></p> : <p className="cit"> {post}</p>
+                           }
+                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                         </div>
                           </div>
                         </div>
 
@@ -4817,9 +4823,9 @@ interests and curiosities"
 
                         <div>
                           {nation && (
-                            <div className="preview-blk-title">
-                              <h4 className="heading11">Nation</h4>
-                            </div>
+                          
+                              <h4 className="heading1">Nation</h4>
+                           
                           )}
                           <div>
                             <p className="cit">{generateName(nation)}</p>
@@ -5024,7 +5030,7 @@ interests and curiosities"
                           <div className="name1"></div>
                           <h6 className="namee text-uppercase">{job}</h6>
                         </div>
-                        <div className="pincode">
+                        <div className="pincodee">
                           <div className="details">
                             {email === "" ? (
                               <span></span>
@@ -5061,24 +5067,30 @@ interests and curiosities"
                               <p className="cont">{address}</p>
                             </div>
                             <div>
-                              {country && (
+                              {/* {country && (
                                 <div className="preview-blk-title">
                                   <h4 className="heading11">Country</h4>
                                 </div>
-                              )}
+                              )} */}
                               <div>
                                 <p className="cit">{generateName(country)}</p>
                               </div>
                             </div>
                             <div>
-                              {city && (
+                              {/* {city && (
                                 <div className="preview-blk-title">
                                   <h4 className="heading11">City</h4>
                                 </div>
-                              )}
+                              )} */}
                               <div>
                                 <p className="cit">{generateName(city)}</p>
                               </div>
+                              <div>
+                           {
+                             post === "" ? <p className="cit"></p> : <p className="cit"> {post}</p>
+                           }
+                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                         </div>
                             </div>
                           </div>
 

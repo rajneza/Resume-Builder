@@ -979,6 +979,11 @@ textarea {
     justify-content: center;
     align-items: center;
 }
+.pincodee {
+    text-align: left;
+    margin-left: 15%;
+    margin-top: 5px;
+  }
 
 .main-sai {
     margin-top: 70px;
