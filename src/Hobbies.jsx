@@ -5840,7 +5840,7 @@ interests and curiosities"
                       width: "97%",
                     }}
                   >
-                    <div className="temp3-container">
+                    <div className="temp3-container" >
                       <div className="row pic-container">
                         <div className="col-4 profile-photo">
                           <Dropzone
