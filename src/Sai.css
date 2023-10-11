@@ -796,7 +796,7 @@ textarea {
 .preview-blk-title h4 {
     /* text-transform: uppercase; */
     letter-spacing: 0.5px;
-    border-bottom: 0.5px solid gainsboro;
+    border-bottom: 0.5px solid #00382f;
     padding-bottom: 0.5rem;
 }
 
@@ -986,24 +986,20 @@ textarea {
   }
 
 .main-sai {
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 .proff {
 
-    text-align: left;
-    width: 100%;
-    flex-wrap: wrap;
-    height: fit-content;
-    margin-bottom: 30px;
-    margin-left: 0%;
+    margin-bottom: 0%;
+    font-size: 18px;
 
 }
 
 .proff {
-    margin-right: 3%;
+    /* margin-right: 3%; */
     border-bottom: 0.5px solid rgb(230, 224, 224);
-
+    font-size: 18px;
 }
 
 .proff ,
@@ -1015,7 +1011,7 @@ textarea {
 
 .headd {
     margin-bottom: 0%;
-    margin-top: 3%;
+    margin-top: -1%;
     font-size: 18px;
     border-bottom: 0.5px solid rgb(230, 224, 224);
     margin-right: 3%;
@@ -1023,7 +1019,10 @@ textarea {
 
 .headingg {
     border-bottom: 0.5px solid rgb(230, 224, 224);
-    width: 90%;
+    width: 80%;
+    margin-bottom: 5%;
+    margin-top: 7%;
+    font-size: 16px;
 }
 
 .heading11 {
@@ -1031,7 +1030,7 @@ textarea {
     font-size: 16px;
     margin-top: 10%;
     margin-bottom: 5%;
-    width: 90%;
+    width: 80%;
 }
 .fonn {
     font-size: 15.8px;
@@ -1041,9 +1040,9 @@ textarea {
     display: block;
     font-weight: 600;
     margin-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.03);
+    /* background-color: rgba(0, 0, 0, 0.03); */
     width: 98%;
-   
+    font-weight: bolder;
     border-radius: 10px;
   }
   .fonnn{
@@ -1054,7 +1053,7 @@ textarea {
     display: block;
     font-weight: 600;
     margin-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.03);
+    /* background-color: rgba(0, 0, 0, 0.03); */
     width: 98%;
     font-style: italic;
   }
@@ -1066,12 +1065,12 @@ textarea {
     display: block;
     font-weight: 600;
     margin-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.03);
+    /* background-color: rgba(0, 0, 0, 0.03); */
     width: 98%;
   }
   
 .fonttw {
-    font-size: 10.8px;
+    font-size: 12.0px;
     font-weight: bold;
     margin-top: 0%;
     margin-bottom: 0%;

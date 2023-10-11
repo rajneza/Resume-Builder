@@ -1852,7 +1852,13 @@ select {
   /* margin: 10px; */
   cursor: pointer;
 }
-
+.template5 {
+  /* background-color: #0596c7; */
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  /* margin: 10px; */
+  cursor: pointer;
+}
 #color-picker {
   width: 30px;
   height: 30px;

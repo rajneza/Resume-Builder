@@ -25,6 +25,7 @@ const LandingPage = () => {
     { id: 'template2', imageName: 'mrssai.avif' },
     { id: 'template3', imageName: 'ushamadam.avif' },
     { id: 'template4', imageName: 'acharjya.avif' },
+    { id: 'template5', imageName: 'sai2.avif' },
   ];
 
   return (
