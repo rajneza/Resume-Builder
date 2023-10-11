@@ -394,23 +394,7 @@ function Hobbies(props) {
   const handleTemplateChange = () => {
     setIsColor1Active((prev) => !prev);
   };
-  // const generateName = (inputValue, addSpace) => {
-  //   const cleanedName = inputValue.replace(/\s+/g, " ").trim();
-  //   const fullName = cleanedName
-  //     .split(" ")
-  //     .map((word, index) => {
-  //       // Convert the first word to lowercase and the rest to title case
-  //       if (index === 0) {
-  //         return word.toLowerCase();
-  //       }
-  //       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-
-  //     })
-  //     .join(' ');
-
-  //   const camelCaseName = fullName.charAt(0).toUpperCase() + fullName.slice(1);
-  //   return addSpace ? camelCaseName : camelCaseName.replace(/\s+/g, "");
-  // };
+  
   const generateName = (inputValue) => {
     const cleanedName = inputValue.replace(/\s+/g, " ").trim();
     const fullName = cleanedName
@@ -5062,9 +5046,13 @@ interests and curiosities"
                             </div>
                             <div>
                               {country && (
+
+                                <h4 className="heading1">Country</h4>
+
                                 <div className="preview-blk-title">
                                   <h4 className="heading11">Country</h4>
                                 </div>
+
                               )}
                               <div>
                                 <p className="cit">{generateName(country)}</p>
@@ -5072,14 +5060,25 @@ interests and curiosities"
                             </div>
                             <div>
                               {city && (
+
+                                <h4 className="heading1">City</h4>
+
                                 <div className="preview-blk-title">
                                   <h4 className="heading11">City</h4>
                                 </div>
+
                               )}
-                              <div>
+                              {/* <div>
                                 <p className="cit">{generateName(city)}</p>
-                              </div>
+                              </div> */}
+                              <div>
+                           {
+                             post === "" ? <p className="cit size">{generateName(city)}</p> : <p className="cit size">{`${city} , ${post}`}</p>
+                           }
+                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                         </div>
                             </div>
+                           
                           </div>
 
                           <div>
@@ -5096,9 +5095,13 @@ interests and curiosities"
                           </div>
                           <div>
                             {nation && (
+
+                              <div ><h4 className="heading1">Nation</h4></div>
+
                               <div className="preview-blk-title">
                                 <h4 className="heading11">Nation</h4>
                               </div>
+
                             )}
                             <div>
                               <p className="cit">{generateName(nation)}</p>
@@ -5262,6 +5265,203 @@ interests and curiosities"
                           </div>
                         </div>
 
+                              <div>
+                                <p className="cont">{address}</p>
+                              </div>
+                              <div>
+                              {/* {country && (
+                                <div className="preview-blk-title"><h4 className="heading11">Country</h4></div>
+                              )} */}
+                              <div>
+                                <p className="cit">{generateName(country)}</p>
+                              </div>
+                            </div>
+                            <div>
+                              {/* {city && (
+                                <div className="preview-blk-title"><h4 className="heading11">City</h4></div>
+                              )} */}
+                              {/* <div>
+                                <p className="cit">{generateName(city)}</p>
+                              </div> */}
+                            </div>
+                            <div>
+                           {
+                             post === "" ? <p className="cit size">{generateName(city)}</p> : <p className="cit size">{`${city} , ${post}`}</p>
+                           }
+                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                         </div>
+                            </div>
+
+                            <div>
+                              {licence === "" ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="heading11">Gender</h4></div>
+                              )}
+                              <div>
+                                <p className="cit">{licence}</p>
+                              </div>
+                            </div>
+                            <div>
+                            {nation && (
+                              <div className="preview-blk-title"><h4 className="heading11">Nation</h4></div>
+                            )}
+                            <div>
+                              <p className="cit">{generateName(nation)}</p>
+                            </div>
+                          </div>
+                            <div>
+                              {place && birth !== "" ? (
+                                <div className="preview-blk-title"><h4 className="heading11">Place/Date of Birth</h4></div>
+                              ) : place !== "" ? (
+                                <h4 className="heading1">Place of Birth</h4>
+                              ) : birth !== "" ? (
+                                <div className="preview-blk-title"><h4 className="heading11">Date of Birth</h4></div>
+                              ) : (
+                                <span></span>
+                              )}
+                              <div>
+                                <p className="cit">{birth}</p>
+                                {/* <p className="cit">{place}</p> */}
+                              </div>
+                              <div>
+                                  <p className="cit">{generateName(place)}</p>
+                                </div>
+                            </div>
+                            <div className="top">
+                              {skill.length === 0 ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Skills</h4></div>
+                              )}
+                              {skill.map((object) => (
+
+                                <div key={object.id} className="ill">
+                                  <div className="progress-bar-container" id="secondProgressBarContainer">
+                                    {studentSkills.map((skill, index) => (
+                                      <div key={index} className="progress-bar-container">
+                                        <div className="skill-name">{skill}</div>
+                                        {renderSecondProgressBar(skill)}
+                                      </div>
+                                    ))}
+                                  </div>
+                                  <ToastContainer className="custom-toast" />
+
+                                  <p className="cit" id="cit">{`${object.input1}`}</p>
+
+                                  <div className="ski1">
+
+                                    {isChecked ? (
+                                      <div>
+                                        {object.input2 === "" ? (
+                                          <span></span>
+                                        ) : (
+                                          <p className="ski">{`${object.input2}/5`}</p>
+                                        )}
+                                      </div>
+                                    ) : (
+                                      <span></span>
+                                    )}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="top">
+                              {website.length === 0 ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Links</h4></div>
+                              )}
+                              {website.map((object) => (
+                                <div key={object.id}>
+                                  {/* <p className="cit">{`${object.input1}`}</p> */}
+                                  <Link to={object.input2} className="cit" id="link">
+                                    {object.input1}
+                                  </Link>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="top">
+                              {six.length === 0 ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Hobbies</h4></div>
+                              )}
+                              <div>
+                                {six.map((object) => (
+                                  <div key={object.id} className="ill">
+                                    <p className="cit">{`${object.input1}`}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="top">
+                              {seven.length === 0 ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title"><h4 className="headingg div-heading">Languages</h4></div>
+                              )}
+                              <div>
+                                {seven.map((object) => (
+                                  <div key={object.id} className="ill">
+                                    <p className="cit" id="cit">{`${object.input1}`}</p>
+                                    <div className="ski1">
+                                      <p className="ski">{`${object.input2}/5`}</p>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="main-right">
+                        <div id="cont">
+                          <div >
+                            <div style={{ display: "flex" }} className="cont-1">
+                              <div className="profile-pic">
+
+                              </div>
+
+                            </div>
+                            <div className="summry">
+                              {editorHtml === "" ? (
+                                <span></span>
+                              ) : (
+                                <div className="preview-blk-title">
+                                  <h2 className="proff">Summary</h2></div>
+                              )}
+                              <div
+                                className="mess"
+                                dangerouslySetInnerHTML={{ __html: editorHtml }}
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <DragDropContext onDragEnd={handleDragDrop}>
+                              <div className="movement">
+                                <Droppable droppableId="Root" type="group">
+                                  {(provided) => (
+                                    <div
+                                      {...provided.droppableProps}
+                                      ref={provided.innerRef}
+                                    >
+                                      {ite.map((store, index) => (
+                                        <Draggable
+                                          draggableId={store.id}
+                                          key={store.id}
+                                          index={index}
+                                        >
+                                          {(provided) => (
+                                            <div
+                                              {...provided.dragHandleProps}
+                                              {...provided.draggableProps}
+                                              ref={provided.innerRef}
+                                            >
+                                              {/* <h3>{store.name}</h3> */}
+                                              {/* <Storelist {...store} /> */}
+
                         <div>
                           <DragDropContext onDragEnd={handleDragDrop}>
                             <div className="movement">
@@ -5287,6 +5487,7 @@ interests and curiosities"
                                             {/* <Storelist {...store} /> */}
                                             <div>
                                               <div>{/* <h3>{name}</h3> */}</div>
+
                                               <div>
                                                 {store.id === "06" ? (
                                                   <div>
@@ -5413,6 +5614,16 @@ interests and curiosities"
                                                                 <span></span>
                                                               ) : (
                                                                 <div>
+
+                                                                   {
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fonn">{item.input1}</h4> : item.input3 === "" ? <h4 className="fonn">{`${item.input1},${item.input2}`}</h4> : <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                            }
+                                                             {
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
+                                                             }{
+                                                                    // item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fonttw">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  }
+
                                                                   {item.input1 ===
                                                                   "" ? (
                                                                     <span></span>
@@ -5447,6 +5658,7 @@ interests and curiosities"
                                                                   ) : (
                                                                     <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                                   )}
+
                                                                   {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
                                                                   <p className="fonttt">
                                                                     {
@@ -5490,6 +5702,15 @@ interests and curiosities"
                                                                   <span></span>
                                                                 ) : (
                                                                   <div>
+
+                                                                     {
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fonn">{item.input1}</h4> : item.input3 === "" ? <h4 className="fonn">{`${item.input1},${item.input2}`}</h4> : <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                            }
+                                                             {
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
+                                                             }
+                                                                    <p className="fonttt">{item.input6}</p>
+
                                                                     {item.input1 ===
                                                                     "" ? (
                                                                       <span></span>
@@ -5520,6 +5741,7 @@ interests and curiosities"
                                                                         item.input6
                                                                       }
                                                                     </p>
+
                                                                   </div>
                                                                 )}
                                                               </div>
