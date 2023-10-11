@@ -17,9 +17,25 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSaveArrow } from "react-icons/gi";
+import { BsPeopleFill} from "react-icons/bs";
+
 import "./Second.css";
 import "./Sai.css";
 import "./Project/React.css";
+import { BsFillPersonFill } from "react-icons/bs";
+import {FaLayerGroup } from "react-icons/fa";
+import {IoIosBriefcase } from "react-icons/io";
+import {AiFillRead} from "react-icons/ai";
+import { TbSeeding} from "react-icons/tb";
+import {BsFillMegaphoneFill } from "react-icons/bs";
+import {BsFront } from "react-icons/bs";
+import { IoStar} from "react-icons/io5";
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { AiFillBank} from "react-icons/ai";
+import {FaUserFriends} from "react-icons/fa";
+import { FaWordpressSimple} from "react-icons/fa";
+import { FaCalendarAlt} from "react-icons/fa";
+import { FaStream } from "react-icons/fa";
 import Switch from "react-switch";
 import { render } from "react-dom";
 import { useReactToPrint } from "react-to-print";
@@ -6944,7 +6960,7 @@ interests and curiosities"
                                                       <span></span>
                                                     ) : (
                                                       <h2 className="head">
-                                                        Extra-curricular
+                                                       <TbSeeding/> Extra-curricular
                                                         activites
                                                       </h2>
                                                     )}
@@ -7411,9 +7427,30 @@ interests and curiosities"
                     }}
                   >
                     <div className="temp3-container">
-                      <div className="row pic-container">
+                      <div className="row picc-container">
                         <div className="col-4 profile-photo">
-                          <Dropzone
+                        <h3 className="name11">
+                              {generateName(name, true) +
+                                " " +
+                                generateName(lastName, true)}
+                            </h3>
+                              <h6 className="namee text-uppercase right-title">
+                            {job}
+                          </h6>
+                         
+                        </div>
+                        <div className="col-8 custom-height-column personal">
+                          <div className="resume-name">
+                            {/* <h3 className="name11">
+                              {generateName(name, true) +
+                                " " +
+                                generateName(lastName, true)}
+                            </h3> */}
+                          </div>
+                          {/* <h6 className="namee text-uppercase right-title">
+                            {job}
+                          </h6> */}
+                           {/* <Dropzone
                             onDrop={handleDrop}
                             accept="image/*"
                             multiple={false}
@@ -7442,57 +7479,117 @@ interests and curiosities"
                                 )}
                               </div>
                             )}
-                          </Dropzone>
-                        </div>
-                        <div className="col-8 custom-height-column personal">
-                          <div className="resume-name">
-                            <h3 className="name11">
-                              {generateName(name, true) +
-                                " " +
-                                generateName(lastName, true)}
-                            </h3>
-                          </div>
-                          <h6 className="namee text-uppercase right-title">
-                            {job}
-                          </h6>
+                          </Dropzone> */}
                           <div className="personal-data">
-                            <p className="cont">{address}</p>
-                            <p className="resume-city">{generateName(city)}</p>
-                            <p className="resume-code">{post}</p>
-                            <p className="resume-country">{generateName(country)}</p>
+                         
                           </div>
                         </div>
                       </div>
                       <div className="row">
                         <div className="col-4">
+                       
                         <div className="details">
+                            {email === "" ? (
+                              <span></span>
+                            ) : (
+                             
+                                <h4 className="heading div-heading">
+                                 <BsFillTelephoneFill/> Contact
+                                </h4>
+                             
+                            )}
                             <div>
                               {phone === "" ? (
                                 <span></span>
                               ) : (
-                                <div>
-                                <h6>Phone</h6>
                                 <p className="cit">{`+${phone}`}</p>
-                                </div>
                               )}
                             </div>
                             <div>
-                              {email === "" ? (
-                                <span></span>
-                              ) : (
-                                <div>
-                                <h6>Email</h6>
-                                <p className="cit">{`${email}`}</p>
-                                </div>
-                              )}
+                              <p className="conte">{email}</p>
                             </div>
                           </div>
                           <div>
-                            {place || birth !== "" ? (
-                                <h4>
-                                  Place/Date of Birth
+                            {address === "" ? (
+                              <span></span>
+                            ) : (
+                              
+                                <h4 className="heading div-heading">
+                                  <AiFillBank/>Address
                                 </h4>
-                            ):<span></span> }
+                              
+                            )}
+
+                            <div>
+                              <p className="cont">{address}</p>
+                            </div>
+                            <div>
+                              {/* {country && (
+                                <div className="preview-blk-title">
+                                  <h4 className="heading11">Country</h4>
+                                </div>
+                              )} */}
+                              <div>
+                                <p className="cit">{generateName(country)}</p>
+                              </div>
+                            </div>
+                            <div>
+                              {/* {city && (
+                                <div className="preview-blk-title">
+                                  <h4 className="heading11">City</h4>
+                                </div>
+                              )} */}
+                              <div>
+                                <p className="cit">{generateName(city)}</p>
+                              </div>
+                              <div>
+                           {
+                             post === "" ? <p className="cit"></p> : <p className="cit"> {post}</p>
+                           }
+                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                         </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            {licence === "" ? (
+                              <span></span>
+                            ) : (
+                             
+                                <h4 className="heading1"><FaUserFriends/>Gender</h4>
+                             
+                            )}
+                            <div>
+                              <p className="cit">{licence}</p>
+                            </div>
+                          </div>
+                          <div>
+                            {nation && (
+                              
+                                <h4 className="heading1"><FaWordpressSimple/>Nation</h4>
+                              
+                            )}
+                            <div>
+                              <p className="cit">{generateName(nation)}</p>
+                            </div>
+                          </div>
+                          <div>
+                            {place && birth !== "" ? (
+                              
+                                <h4 className="heading1">
+                                 <FaCalendarAlt/> Place/Date of Birth
+                                </h4>
+                              
+                            ) : place !== "" ? (
+                             
+                              <h4 className="heading1">Place of Birth</h4>
+                            ) : birth !== "" ? (
+                             
+                                <h4 className="heading1">Date of Birth</h4>
+                              
+                            ) : (
+                              <span></span>
+                            )}
                             <div>
                               <p className="cit">{birth}</p>
                               {/* <p className="cit">{place}</p> */}
@@ -7501,29 +7598,13 @@ interests and curiosities"
                               <p className="cit">{generateName(place)}</p>
                             </div>
                           </div>
-                          <div>
-                            {nation && (
-                                <h4>Nationality</h4>
-                            )}
-                            <div>
-                              <p className="cit">{generateName(nation)}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {licence === "" ? (
-                              <span></span>
-                            ) : (
-                                <h4 >Gender</h4>
-                            )}
-                            <div>
-                              <p className="cit">{licence}</p>
-                            </div>
-                          </div>
+                           
+                          
                           <div className="top">
                             {website.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4 className="div-heading">Links</h4>
+                                <h4 className="div-heading">🔗Links</h4>
                             )}
                             {website.map((object) => (
                               <div key={object.id}>
@@ -7540,14 +7621,14 @@ interests and curiosities"
                             {skill.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4>Skills</h4>
+                                <h4><FaStream/>Skills</h4>
                               
                             )}
                             {skill.map((object) => (
                               <div key={object.id} className="ill">
                                 <div
                                   className="progress-bar-container"
-                                  id="secondProgressBarContainer"
+                                  id="secondProgressBarContainerr"
                                 >
                                   {studentSkills.map((skill, index) => (
                                     <div
@@ -7587,7 +7668,7 @@ interests and curiosities"
                               <span></span>
                             ) : (
                                 <h4>
-                                  Hobbies
+                                 🎮  Hobbies
                                 </h4>
                             )}
                             <div>
@@ -7603,7 +7684,7 @@ interests and curiosities"
                               <span></span>
                             ) : (
                                 <h4>
-                                  Languages
+                                  💬Languages
                                 </h4>
                             )}
                             <div>
@@ -7627,7 +7708,7 @@ interests and curiosities"
                             {editorHtml === "" ? (
                               <span></span>
                             ) : (
-                                <h2 className="temp3-proff">Summary</h2>
+                                <h2 className="temp3-proff"><BsFillPersonFill/>Summary</h2>
                             )}
                             <div
                               className="mess"
@@ -7668,7 +7749,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      References
+                                                      <BsFillMegaphoneFill/>References
                                                     </h2>
                                                   )}
                                                   {store.it.map(
@@ -7700,7 +7781,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      Employment
+                                                      <IoIosBriefcase/>Employment
                                                     </h2>
                                                   )}
                                                   {store.it.map(
@@ -7762,7 +7843,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      Education
+                                                     <FaLayerGroup/> Education
                                                     </h2>
                                                   )}
                                                   {store.it.map(
@@ -7833,7 +7914,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      Extra-curricular activites
+                                                      <TbSeeding/>Extra-curricular activites
                                                     </h2>
                                                   )}
                                                   {store.it.map(
@@ -7899,7 +7980,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      Course
+                                                      <AiFillRead/>Course
                                                     </h2>
                                                   )}
                                                   {store.it.map(
@@ -7960,7 +8041,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      Internships
+                                                     <BsPeopleFill/> Internships
                                                     </h2>
                                                   )}
                                                   {store.it.map(
@@ -8021,7 +8102,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      Projects
+                                                      <BsFront/>Projects
                                                     </h2>
                                                   )}
                                                   {store.it.map(
@@ -8096,7 +8177,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      {store.head}
+                                                     <IoStar/> {store.head}
                                                     </h2>
                                                   )}
                                                   {store.it.map(
