@@ -5848,14 +5848,14 @@ interests and curiosities"
                               >
                                 <input {...getInputProps()} />
                                 {selectedFile ? (
-                                  <div className="image">
+                                  <div className="image-temp3">
                                     <div className="image-container">
                                       <img
                                         src={URL.createObjectURL(selectedFile)}
                                         alt="Uploaded"
-                                        className="rounded-image"
+                                        className="rounded-image-temp3"
                                         onClick={handleView}
-                                        style={{ borderRadius: "50%" }}
+                                        
                                       />
                                     </div>
                                   </div>

@@ -43,20 +43,24 @@ Popup.css .popup {
 }
 
 .dropzone {
-
-
   text-align: center;
   cursor: pointer;
   width: 4vw;
   height: 8vh;
 }
 
-.dropzone img {
+.rounded-image {
   width: 100%;
   height: 100%;
   display: block;
 
 
+}
+
+.rounded-image-temp3{
+  width: 185%;
+  height: 100%;
+  display: block;
 }
 
 .image {
@@ -575,18 +579,21 @@ Popup.css .popup {
   height: 8vh;
 }
 
-.dropzone img {
+/* .dropzone img {
   width: 100%;
   height: 100%;
   display: block;
 
-}
+} */
 
 .image {
   height: 8vh;
   display: flex;
 }
 
+.image-temp3{
+  height: 15vh;
+}
 .icon {
   width: 100%;
   height: 100%;
@@ -743,6 +750,7 @@ Popup.css .popup {
   height: 88vh;
   border-radius: 5px;
   padding: 10px;
+  overflow: overlay;
   
 }
 
