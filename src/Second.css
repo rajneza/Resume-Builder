@@ -1819,6 +1819,10 @@ select {
   display: flex;
 }
 
+.temp3-heading{
+  font-size: 16px;
+}
+
 .template1 {
   /* background-color: rgb(39, 216, 4); */
   /* border: 1px solid #ddd; */

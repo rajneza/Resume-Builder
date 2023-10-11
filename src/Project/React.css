@@ -499,8 +499,11 @@
 }
 
 .movement {
-  /* background-color: #c3e5fe; */
   margin-left: 9%;
+  pointer-events: none;
+}
+
+.movement-temp3{
   pointer-events: none;
 }
 

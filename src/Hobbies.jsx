@@ -5905,7 +5905,7 @@ interests and curiosities"
                                 <span></span>
                               ) : (
                                 <div>
-                                <h6>Phone</h6>
+                                <h6 className="temp3-heading">Phone</h6>
                                 <p className="cit">{`+${phone}`}</p>
                                 </div>
                               )}
@@ -5915,15 +5915,15 @@ interests and curiosities"
                                 <span></span>
                               ) : (
                                 <div>
-                                <h6>Email</h6>
-                                <p className="cit">{`+${email}`}</p>
+                                <h6 className="temp3-heading">Email</h6>
+                                <p className="cit">{`${email}`}</p>
                                 </div>
                               )}
                             </div>
                           </div>
                           <div>
                             {place || birth !== "" ? (
-                                <h4>
+                                <h4 className="temp3-heading">
                                   Place/Date of Birth
                                 </h4>
                             ):<span></span> }
@@ -5937,7 +5937,7 @@ interests and curiosities"
                           </div>
                           <div>
                             {nation && (
-                                <h4>Nationality</h4>
+                                <h4 className="temp3-heading">Nationality</h4>
                             )}
                             <div>
                               <p className="cit">{generateName(nation)}</p>
@@ -5947,7 +5947,7 @@ interests and curiosities"
                             {licence === "" ? (
                               <span></span>
                             ) : (
-                                <h4 >Gender</h4>
+                                <h4 className="temp3-heading">Gender</h4>
                             )}
                             <div>
                               <p className="cit">{licence}</p>
@@ -5974,7 +5974,7 @@ interests and curiosities"
                             {skill.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4>Skills</h4>
+                                <h4 className="temp3-heading">Skills</h4>
                               
                             )}
                             {skill.map((object) => (
@@ -6020,7 +6020,7 @@ interests and curiosities"
                             {six.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4>
+                                <h4 className="temp3-heading">
                                   Hobbies
                                 </h4>
                             )}
@@ -6036,7 +6036,7 @@ interests and curiosities"
                             {seven.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4>
+                                <h4 className="temp3-heading">
                                   Languages
                                 </h4>
                             )}
@@ -6061,7 +6061,7 @@ interests and curiosities"
                             {editorHtml === "" ? (
                               <span></span>
                             ) : (
-                                <h2 className="temp3-proff">Summary</h2>
+                                <h2 className="temp3-proff temp3-heading">Summary</h2>
                             )}
                             <div
                               className="mess"
@@ -6072,7 +6072,7 @@ interests and curiosities"
 
                         <div>
                         <DragDropContext onDragEnd={handleDragDrop}>
-                          <div className="movement">
+                          <div className="movement-temp3">
                             <Droppable droppableId="Root" type="group">
                               {(provided) => (
                                 <div
@@ -6101,7 +6101,7 @@ interests and curiosities"
                                                   {three.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <h2 className="head temp3-heading">
                                                       References
                                                     </h2>
                                                   )}
@@ -6133,7 +6133,7 @@ interests and curiosities"
                                                   {objects.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <h2 className="head temp3-heading">
                                                       Employment
                                                     </h2>
                                                   )}
@@ -6195,7 +6195,7 @@ interests and curiosities"
                                                   {education.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <h2 className="head temp3-heading">
                                                       Education
                                                     </h2>
                                                   )}
@@ -6266,7 +6266,7 @@ interests and curiosities"
                                                   {four.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <h2 className="head temp3-heading">
                                                       Extra-curricular activites
                                                     </h2>
                                                   )}
@@ -6393,7 +6393,7 @@ interests and curiosities"
                                                   {five.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <h2 className="head temp3-heading">
                                                       Internships
                                                     </h2>
                                                   )}
@@ -6454,7 +6454,7 @@ interests and curiosities"
                                                   {project.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <h2 className="head temp3-heading">
                                                       Projects
                                                     </h2>
                                                   )}
