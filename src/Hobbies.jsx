@@ -6129,133 +6129,114 @@ interests and curiosities"
                            <h4 className="heading div-heading">Address</h4>
                          )} */}
 
-                            <div>
-                              <p className="cont contA size">{address}</p>
-                            </div>
-                            <div>
-                              {post === "" ? (
-                                <p className="cit size">{`${city}`}</p>
-                              ) : (
-                                <p className="cit size">{`${city} , ${post}`}</p>
-                              )}
-                              {/* <p className="cit">{`${city} , ${post}`}</p> */}
-                            </div>
-                            <div>
-                              <p className="cit size">{country}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {licence === "" ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading1 headingA">Gender</h4>
-                            )}
-                            <div>
-                              <p className="cit citA size">{licence}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {nation === "" ? (
-                              <span></span>
-                            ) : (
-                              <h4 className="heading1 headingA">Nationality</h4>
-                            )}
-                            <div>
-                              <p className="cit size">{nation}</p>
-                            </div>
-                          </div>
-                          <div>
-                            {place && birth !== "" ? (
-                              <h4 className="heading1 headingA">
-                                Place/Date of Birth
-                              </h4>
-                            ) : place !== "" ? (
-                              <h4 className="heading1 headingA">
-                                Place of Birth
-                              </h4>
-                            ) : birth !== "" ? (
-                              <h4 className="heading1 headingA">
-                                Date of Birth
-                              </h4>
-                            ) : (
-                              <span></span>
-                            )}
-                            <div style={{ display: "flex" }}>
-                              <p className="cit size">{birth}</p>
-                              <p className="cit size">{place}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="top-right">
-                        <div style={{ display: "flex" }}>
-                          <h3 className="name1 nameAA">
-                            {generateName(name, true) +
-                              " " +
-                              generateName(lastName, true)}
-                          </h3>
-                        </div>
-                        <div className="summryA" id="summryA">
-                          {editorHtml === "" ? <span></span> : <h4>Summary</h4>}
-                          <div
-                            dangerouslySetInnerHTML={{ __html: editorHtml }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="second-full">
-                      <div className="main-right">
-                        <div>
-                          <div
-                            style={{ display: "flex" }}
-                            className="cont-1"
-                          ></div>
-                        </div>
+                         <div>
+                           <p className="cont contA size">{address}</p>
+                         </div>
+                         <div>
+                           {
+                             post === "" ? <p className="cit size">{`${city}`}</p> : <p className="cit size">{`${city} , ${post}`}</p>
+                           }
+                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                         </div>
+                         <div>
+                           <p className="cit size">{country}</p>
+                         </div>
+                       </div>
+                       <div>
+                         {licence === "" ? (
+                           <span></span>
+                         ) : (
+                           <h4 className="heading1 headingA">Gender</h4>
+                         )}
+                         <div>
+                           <p className="cit citA size">{licence}</p>
+                         </div>
+                       </div>
+                       <div>
+                         {nation === "" ? (
+                           <span></span>
+                         ) : (
+                           <h4 className="heading1 headingA">Nationality</h4>
+                         )}
+                         <div>
+                           <p className="cit size">{nation}</p>
+                         </div>
+                       </div>
+                       <div>
+                         {place && birth !== "" ? (
+                           <h4 className="heading1 headingA">Place/Date of Birth</h4>
+                         ) : place !== "" ? (
+                           <h4 className="heading1 headingA">Place of Birth</h4>
+                         ) : birth !== "" ? (
+                           <h4 className="heading1 headingA">Date of Birth</h4>
+                         ) : (
+                           <span></span>
+                         )}
+                         <div style={{display:"flex"}}>
+                           <p className="cit size">{birth}</p>
+                           <p className="cit size">{place}</p>
+                         </div>
+                       </div>
 
-                        <div>
-                          <DragDropContext onDragEnd={handleDragDrop}>
-                            <div className="movement">
-                              <Droppable droppableId="Root" type="group">
-                                {(provided) => (
-                                  <div
-                                    {...provided.droppableProps}
-                                    ref={provided.innerRef}
-                                  >
-                                    {ite.map((store, index) => (
-                                      <Draggable
-                                        draggableId={store.id}
-                                        key={store.id}
-                                        index={index}
-                                      >
-                                        {(provided) => (
-                                          <div
-                                            {...provided.dragHandleProps}
-                                            {...provided.draggableProps}
-                                            ref={provided.innerRef}
-                                          >
-                                            {/* <h3>{store.name}</h3> */}
-                                            {/* <Storelist {...store} /> */}
-                                            <div>
-                                              <div>{/* <h3>{name}</h3> */}</div>
-                                              <div>
-                                                {store.id === "06" ? (
-                                                  <div>
-                                                    {three.length === 0 ? (
-                                                      <span></span>
-                                                    ) : (
-                                                      <h2 className="head">
-                                                        References
-                                                      </h2>
-                                                    )}
-                                                    {store.it.map(
-                                                      (item, index) => (
-                                                        <div className="store">
-                                                          {item.input1 ===
-                                                          undefined ? (
-                                                            <span></span>
-                                                          ) : (
-                                                            <div>
-                                                              {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                           </div>
+
+                    </div>
+                    <div className="top-right">
+                    <div style={{ display: "flex" }}>
+                                <h3 className="name1 nameAA" id="name">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
+                                
+                              </div>
+                              <div className="summryA" id="summryA">
+                                {
+                                  editorHtml === "" ? <div></div> : <h4>Summary</h4>
+                                }
+                                <div dangerouslySetInnerHTML={{ __html: editorHtml }}/>
+                       </div>
+
+                    </div>
+
+                   </div>
+                   <div className="second-full">
+                   <div className="main-right" id="main-right">
+
+                     <div>
+                       <DragDropContext onDragEnd={handleDragDrop}>
+                         <div className="movement" id="movement">
+                           <Droppable droppableId="Root" type="group">
+                             {(provided) => (
+                               <div
+                                 {...provided.droppableProps}
+                                 ref={provided.innerRef}
+                               >
+                                 {ite.map((store, index) => (
+                                   <Draggable
+                                     draggableId={store.id}
+                                     key={store.id}
+                                     index={index}
+                                   >
+                                     {(provided) => (
+                                       <div
+                                         {...provided.dragHandleProps}
+                                         {...provided.draggableProps}
+                                         ref={provided.innerRef}
+                                       >
+                                         {/* <h3>{store.name}</h3> */}
+                                         {/* <Storelist {...store} /> */}
+                                         <div>
+                                           <div>{/* <h3>{name}</h3> */}</div>
+                                           <div>
+                                             {store.id === "06" ? (
+                                               <div>
+                                                 {
+                                                   three.length === 0 ? <span></span> : <h2 className="head">References</h2>
+                                                 }
+                                                 {store.it.map((item, index) => (
+                                                   <div className="store">
+                                                     {item.input1 === undefined ? (
+                                                       <span></span>
+                                                     ) : (
+                                                       <div>
+                                                         {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
          <p className="fontt">{`${item.input4}/${item.input5}`}</p>
          <p className="fonttt">{item.input6}</p> */}
 

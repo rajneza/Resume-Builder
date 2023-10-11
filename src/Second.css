@@ -934,6 +934,7 @@ margin-top: 10px;
   margin-bottom: 0%;
   margin-left: 9%;
   margin-right: 5%;
+  border: none;
 }
 
 .name2 {
@@ -1986,6 +1987,7 @@ select {
       background-color: white;
       border-bottom: 1px solid gray;
       display: flex;
+      margin-bottom: 0%;
     }
     .summryA{
       background-color: gray;
@@ -2002,6 +2004,7 @@ select {
     .NameA{
       margin-top: 0%;
       margin-bottom: 0%;
+      border: none;
     }
     .detailsA{
       margin-top: 0%;
@@ -2011,10 +2014,12 @@ select {
       margin-bottom: 0%;
       margin-top: 1%;
       font-weight: bold;
+      border: none;
     }
     .nameAA{
       margin-bottom: 3%;
       margin-left: 0%;
+      border: none;
     }
     .top-right{
       width: 70%;
@@ -2024,6 +2029,9 @@ select {
       width: 30%;
       padding-left: 10px;
       padding-top: 5px;
+    }
+    #name{
+      border: none;
     }
     .skill-bg{
       background-color: gray;
@@ -2046,6 +2054,7 @@ select {
     }
     .fon1{
       background-color: black;
+      width: fit-content;
       color: white;
     }
     .fonA{
@@ -2053,5 +2062,14 @@ select {
     }
     .fonB{
       margin-bottom: 0%;
+    }
+    #main-right{
+      margin-top: 0%;
+      margin-left: 0%;
+      
+    }
+    #movement{
+       margin-left: 2%;
+       margin-top: 6%;
     }
    
