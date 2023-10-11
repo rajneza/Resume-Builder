@@ -187,7 +187,21 @@ function Hobbies(props) {
   const [isPrinting, setIsPrinting] = useState(false);
   const { template, additionalProp } = props;
   const [selectedTemplate, setSelectedTemplate] = useState(null);
-
+  const [chooseTemplate , setchooseTemplate] = useState("")
+  const handletemplate = () =>{
+    setshowTeemplate(true)
+    setchooseTemplate("template1")
+    console.log(chooseTemplate);
+    <Link to='/template1'/>
+  }
+  const handletemplate1 = () =>{
+    setshowTeemplate(true)
+    setchooseTemplate("template2")
+    console.log(chooseTemplate);
+    <Link to='/template2'/>
+   // console.log(template);
+   
+  }
 
   const handleClick = () => {
     setSelectedTemplate(template);
@@ -3808,8 +3822,8 @@ interests and curiosities"
             showtemplate === false ?
               <Scrollbars>
                 <div style={{ display: "flex" }} className="main-temp">
-                  <img src={rajeshsir} alt="" className="temp-image"/>
-                  <img src={mrssai} alt="" className="temp-image" />
+                  <img src={rajeshsir} alt="" className="temp-image"  onClick={handletemplate}/>
+                  <img src={mrssai} alt="" className="temp-image" onClick={handletemplate1}/>
                 </div>
                 <div style={{ display: "flex" }} className="main-temp">
                   <img src={ushamadam} alt="" className="temp-image" />
@@ -3819,7 +3833,7 @@ interests and curiosities"
 
               :
               <Scrollbars>
-                {template === 'template1' && (
+                { (template || chooseTemplate) == 'template1' ? (
                   <div className="template1">
 
                     {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
@@ -4384,9 +4398,9 @@ interests and curiosities"
 
 
                   </div>
-                )}
+                ) : <span></span>}
 
-                {template === 'template2' && (
+                { (template || chooseTemplate) === 'template2' && (
 
 
                   <div className="template2" onClick={handleClick}>
