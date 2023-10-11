@@ -5373,7 +5373,7 @@ interests and curiosities"
                                                                     "" ? (
                                                                     <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
                                                                   ) : (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
                                                                   )}
                                                                   {item.input4 ===
                                                                   "" ? (
@@ -5382,7 +5382,7 @@ interests and curiosities"
                                                                     "" ? (
                                                                     <span></span>
                                                                   ) : (
-                                                                    <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   )}
                                                                   <p className="fonttt">
                                                                     {
@@ -5437,9 +5437,9 @@ interests and curiosities"
                                                                     </h4>
                                                                   ) : item.input3 ===
                                                                     "" ? (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2}`}</h4>
                                                                   ) : (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
                                                                   )}
                                                                   {item.input4 ===
                                                                   "" ? (
@@ -5448,7 +5448,7 @@ interests and curiosities"
                                                                     "" ? (
                                                                     <span></span>
                                                                   ) : (
-                                                                    <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    <p className="fontt"></p>
                                                                   )}
                                                                   {item.input4 ===
                                                                   "" ? (
@@ -5457,7 +5457,7 @@ interests and curiosities"
                                                                     "" ? (
                                                                     <p className="fonttw">{`${item.input4} to Present`}</p>
                                                                   ) : (
-                                                                    <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   )}
                                                                   {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
                                                                   <p className="fonttt">
@@ -5507,16 +5507,16 @@ interests and curiosities"
                                                                       <span></span>
                                                                     ) : item.input2 ===
                                                                       "" ? (
-                                                                      <h4 className="fon">
+                                                                      <h4 className="fonn">
                                                                         {
                                                                           item.input1
                                                                         }
                                                                       </h4>
                                                                     ) : item.input3 ===
                                                                       "" ? (
-                                                                      <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                      <h4 className="fonn">{`${item.input1},${item.input2}`}</h4>
                                                                     ) : (
-                                                                      <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                      <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
                                                                     )}
                                                                     {item.input4 ===
                                                                     "" ? (
@@ -5525,7 +5525,7 @@ interests and curiosities"
                                                                       "" ? (
                                                                       <span></span>
                                                                     ) : (
-                                                                      <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                      <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                     )}
                                                                     <p className="fonttt">
                                                                       {
@@ -5573,16 +5573,16 @@ interests and curiosities"
                                                                     <span></span>
                                                                   ) : item.input2 ===
                                                                     "" ? (
-                                                                    <h4 className="fon">
+                                                                    <h4 className="fonn">
                                                                       {
                                                                         item.input1
                                                                       }
                                                                     </h4>
                                                                   ) : item.input3 ===
                                                                     "" ? (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2}`}</h4>
                                                                   ) : (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
                                                                   )}
                                                                   {item.input4 ===
                                                                   "" ? (
@@ -5591,7 +5591,7 @@ interests and curiosities"
                                                                     "" ? (
                                                                     <span></span>
                                                                   ) : (
-                                                                    <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   )}
                                                                   <p className="fonttt">
                                                                     {
@@ -5638,16 +5638,16 @@ interests and curiosities"
                                                                     <span></span>
                                                                   ) : item.input2 ===
                                                                     "" ? (
-                                                                    <h4 className="fon">
+                                                                    <h4 className="fonn">
                                                                       {
                                                                         item.input1
                                                                       }
                                                                     </h4>
                                                                   ) : item.input3 ===
                                                                     "" ? (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2}`}</h4>
                                                                   ) : (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
                                                                   )}
                                                                   {item.input4 ===
                                                                   "" ? (
@@ -5656,7 +5656,7 @@ interests and curiosities"
                                                                     "" ? (
                                                                     <span></span>
                                                                   ) : (
-                                                                    <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   )}
                                                                   <p className="fonttt">
                                                                     {
@@ -5703,16 +5703,16 @@ interests and curiosities"
                                                                     <span></span>
                                                                   ) : item.input2 ===
                                                                     "" ? (
-                                                                    <h4 className="fon">
+                                                                    <h4 className="fonn">
                                                                       {
                                                                         item.input1
                                                                       }
                                                                     </h4>
                                                                   ) : item.input3 ===
                                                                     "" ? (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2}`}</h4>
                                                                   ) : (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
                                                                   )}
                                                                   {item.input4 ===
                                                                   "" ? (
@@ -5721,7 +5721,7 @@ interests and curiosities"
                                                                     "" ? (
                                                                     <span></span>
                                                                   ) : (
-                                                                    <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                                   )}
 
                                                                   {item.input7 ===
@@ -5782,13 +5782,13 @@ interests and curiosities"
                                                                     <span></span>
                                                                   ) : item.input2 ===
                                                                     "" ? (
-                                                                    <h4 className="fon">
+                                                                    <h4 className="fonn">
                                                                       {
                                                                         item.input1
                                                                       }
                                                                     </h4>
                                                                   ) : (
-                                                                    <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                    <h4 className="fonn">{`${item.input1},${item.input2}`}</h4>
                                                                   )}
                                                                   {item.input3 ===
                                                                   "" ? (
@@ -5797,7 +5797,7 @@ interests and curiosities"
                                                                     "" ? (
                                                                     <span></span>
                                                                   ) : (
-                                                                    <p className="fontt">{`${item.input3} to ${item.input4}`}</p>
+                                                                    <p className="fonttw">{`${item.input3} to ${item.input4}`}</p>
                                                                   )}
                                                                   <p className="fonttt">
                                                                     {
@@ -5891,9 +5891,9 @@ interests and curiosities"
                           </h6>
                           <div className="personal-data">
                             <p className="cont">{address}</p>
-                            <p className="resume-city">{city}</p>
+                            <p className="resume-city">{generateName(city)}</p>
                             <p className="resume-code">{post}</p>
-                            <p className="resume-country">{country}</p>
+                            <p className="resume-country">{generateName(country)}</p>
                           </div>
                         </div>
                       </div>
@@ -6684,12 +6684,12 @@ interests and curiosities"
                          </div>
                          <div>
                            {
-                             post === "" ? <p className="cit size">{`${city}`}</p> : <p className="cit size">{`${city} , ${post}`}</p>
+                             post === "" ? <p className="cit size">{generateName(city)}</p> : <p className="cit size"> {post}</p>
                            }
                            {/* <p className="cit">{`${city} , ${post}`}</p> */}
                          </div>
                          <div>
-                           <p className="cit size">{country}</p>
+                           <p className="cit size">{generateName(country)}</p>
                          </div>
                        </div>
                        <div>
@@ -6709,7 +6709,7 @@ interests and curiosities"
                            <h4 className="heading1 headingA">Nationality</h4>
                          )}
                          <div>
-                           <p className="cit size">{nation}</p>
+                           <p className="cit size">{generateName(nation)}</p>
                          </div>
                        </div>
                        <div>
