@@ -5,17 +5,10 @@ import "./Navbar.css"
 
 // import Navbar from "./Navbar";
 
-import Resume from "./Resume";
 
 import Websites from "./Websites";
-
-
-import Internships from "./Internship";
 import Hobbies from "./Hobbies";
-import Languages from "./Languages";
-import References from "./Reference";
-import Extracurricular from "./Extra-curricular";
-import Skills from "./Skills";
+
 
 
 const LandingPage = () => {
@@ -175,13 +168,9 @@ const App = () => {
 
 
           {/* <Route path="/" element={<Navbar></Navbar>}></Route> */}
-          <Route path="/intership" element={<Internships></Internships>}></Route>
-          <Route path="/resume" element={<Resume></Resume>}></Route>
+          
+          
           <Route path="/hobbie" element={<Hobbies></Hobbies>}></Route>
-          <Route path="/languages" element={<Languages></Languages>}></Route>
-          <Route path="/reference" element={<References></References>}></Route>
-          <Route path="/extra" element={<Extracurricular></Extracurricular>}></Route>
-          <Route path="/skills" element={<Skills></Skills>}></Route>
           <Route path="/website" element={<Websites></Websites>}></Route>
           <Route path="/" element={<LandingPage />} />
           <Route path="/:template" element={<RightSide />} />
