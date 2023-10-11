@@ -6008,11 +6008,9 @@ interests and curiosities"
                             {six.length === 0 ? (
                               <span></span>
                             ) : (
-                              
                                 <h4>
                                   Hobbies
                                 </h4>
-                              
                             )}
                             <div>
                               {six.map((object) => (
@@ -6029,7 +6027,6 @@ interests and curiosities"
                                 <h4>
                                   Languages
                                 </h4>
-                              
                             )}
                             <div>
                               {seven.map((object) => (
@@ -6046,7 +6043,21 @@ interests and curiosities"
                             </div>
                           </div>
                         </div>
-                        <div className="col-8"></div>
+                        <div className="col-8">
+                        <div>
+                          <div className="temp3-summary">
+                            {editorHtml === "" ? (
+                              <span></span>
+                            ) : (
+                                <h2 className="temp3-proff">Summary</h2>
+                            )}
+                            <div
+                              className="mess"
+                              dangerouslySetInnerHTML={{ __html: editorHtml }}
+                            />
+                          </div>
+                        </div>
+                        </div>
                       </div>
                     </div>
                   </div>

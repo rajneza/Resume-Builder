@@ -1001,7 +1001,8 @@ textarea {
 
 }
 
-.proff {
+.proff ,
+.temp3-proff{
     margin-bottom: 0%;
     font-size: 18px;
 
