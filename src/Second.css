@@ -770,11 +770,10 @@ Popup.css .popup {
 
 .personal-data {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   /* position: relative; */
   bottom: 15px;
   flex-wrap: wrap;
-  
 }
 
 .personal-data p{
@@ -786,9 +785,9 @@ Popup.css .popup {
 }
 
 .pic-container {
-  height: 100px;
+  height: 135px;
   flex-wrap: wrap;
-  background-color: #5dffd4;
+  background-color: #08d2ff;
   
 }
 
@@ -1821,6 +1820,7 @@ select {
 
 .temp3-heading{
   font-size: 16px;
+  margin-top: 5%;
 }
 
 .template1 {

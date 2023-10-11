@@ -5886,7 +5886,7 @@ interests and curiosities"
                                 generateName(lastName, true)}
                             </h3>
                           </div>
-                          <h6 className="namee text-uppercase right-title">
+                          <h6 className="text-uppercase right-title">
                             {job}
                           </h6>
                           <div className="personal-data">
