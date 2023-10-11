@@ -979,6 +979,11 @@ textarea {
     justify-content: center;
     align-items: center;
 }
+.pincodee {
+    text-align: left;
+    margin-left: 15%;
+    margin-top: 5px;
+  }
 
 .main-sai {
     margin-top: 70px;
@@ -1039,7 +1044,18 @@ textarea {
     background-color: rgba(0, 0, 0, 0.03);
     width: 98%;
   }
-  
+  .fonnn{
+    font-size: 12.8px;
+    font-weight: bolder;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    width: 98%;
+    font-style: italic;
+  }
 .fontttee {
     font-size: 12.8px;
     font-weight: bold;

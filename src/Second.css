@@ -1030,7 +1030,7 @@ margin-top: 10px;
 .pincode {
   text-align: left;
   margin-left: 15%;
-  margin-top: -65px;
+  margin-top: 55px;
 }
 
 .heading {
@@ -1397,6 +1397,9 @@ margin-top: 10px;
     page-break-before: always;
     /* Ensure each content section starts on a new page */
   
+  }
+  .temp3-container{
+    width: 100%;
   }
 
 }
