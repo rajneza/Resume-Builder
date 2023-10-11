@@ -43,20 +43,24 @@ Popup.css .popup {
 }
 
 .dropzone {
-
-
   text-align: center;
   cursor: pointer;
   width: 4vw;
   height: 8vh;
 }
 
-.dropzone img {
+.rounded-image {
   width: 100%;
   height: 100%;
   display: block;
 
 
+}
+
+.rounded-image-temp3{
+  width: 185%;
+  height: 100%;
+  display: block;
 }
 
 .image {
@@ -208,11 +212,11 @@ Popup.css .popup {
   display: flex;
 }
 
-#pdf-content {
+/* #pdf-content {
   background-color: black;
   width: 100%;
   padding: 100%;
-}
+} */
 
 .two-one {
   width: 70%;
@@ -239,8 +243,7 @@ Popup.css .popup {
 }
 
 .details {
-
-  margin-top: 50%;
+  margin-top: 5%;
 }
 
 
@@ -374,6 +377,9 @@ Popup.css .popup {
   margin-bottom: 5px;
 }
 
+.temp3-summary{
+  margin-top:5%;
+}
 .resume-profile-content {
   position: relative;
 }
@@ -573,18 +579,21 @@ Popup.css .popup {
   height: 8vh;
 }
 
-.dropzone img {
+/* .dropzone img {
   width: 100%;
   height: 100%;
   display: block;
 
-}
+} */
 
 .image {
   height: 8vh;
   display: flex;
 }
 
+.image-temp3{
+  height: 15vh;
+}
 .icon {
   width: 100%;
   height: 100%;
@@ -729,9 +738,58 @@ Popup.css .popup {
 
 #pdf-content {
   /* background-color: black; */
-  width: 90%;
+  width: 100%;
   padding: 0%;
   min-height: 300px !important;
+}
+
+.temp3-container {
+  font-size: 10px;
+  background-color: white;
+  width: 50vw;
+  height: 88vh;
+  border-radius: 5px;
+  padding: 10px;
+  overflow: overlay;
+  
+}
+
+.resume-name {
+  display: flex;
+}
+
+.right-title {
+  font-size: 12px;
+  /* position: relative; */
+  bottom: 8px;
+  font-weight: 500;
+  display: block;
+  margin-top: 10px;
+
+}
+
+.personal-data {
+  display: flex;
+  align-items: center;
+  /* position: relative; */
+  bottom: 15px;
+  flex-wrap: wrap;
+  
+}
+
+.personal-data p{
+  margin-right: 3px;
+}
+
+.custom-height-column {
+  flex-wrap: wrap;
+}
+
+.pic-container {
+  height: 100px;
+  flex-wrap: wrap;
+  background-color: #5dffd4;
+  
 }
 
 .two-one {
@@ -758,10 +816,9 @@ Popup.css .popup {
 
 }
 
-.details {
-
+/* .details {
   margin-top: 50%;
-}
+} */
 
 .place {
   margin-top: 5%;
@@ -973,7 +1030,7 @@ margin-top: 10px;
 .pincode {
   text-align: left;
   margin-left: 15%;
-  margin-top: -65px;
+  margin-top: 55px;
 }
 
 .heading {
@@ -1340,6 +1397,9 @@ margin-top: 10px;
     page-break-before: always;
     /* Ensure each content section starts on a new page */
   
+  }
+  .temp3-container{
+    width: 100%;
   }
 
 }

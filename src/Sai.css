@@ -787,14 +787,14 @@ textarea {
 
 
 .preview-blk-title h2 {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 0.5px;
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
     padding-bottom: 0.5rem;
 }
 
 .preview-blk-title h4 {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 0.5px;
     border-bottom: 0.5px solid gainsboro;
     padding-bottom: 0.5rem;
@@ -979,6 +979,11 @@ textarea {
     justify-content: center;
     align-items: center;
 }
+.pincodee {
+    text-align: left;
+    margin-left: 15%;
+    margin-top: 5px;
+  }
 
 .main-sai {
     margin-top: 70px;
@@ -1001,7 +1006,8 @@ textarea {
 
 }
 
-.proff {
+.proff ,
+.temp3-proff{
     margin-bottom: 0%;
     font-size: 18px;
 
@@ -1028,6 +1034,19 @@ textarea {
     width: 90%;
 }
 .fonn {
+    font-size: 15.8px;
+    font-weight: bolder;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    width: 98%;
+   
+    border-radius: 10px;
+  }
+  .fonnn{
     font-size: 12.8px;
     font-weight: bolder;
     margin-top: 2%;
@@ -1037,8 +1056,8 @@ textarea {
     margin-bottom: 1rem;
     background-color: rgba(0, 0, 0, 0.03);
     width: 98%;
+    font-style: italic;
   }
-  
 .fontttee {
     font-size: 12.8px;
     font-weight: bold;
@@ -1056,9 +1075,10 @@ textarea {
     font-weight: bold;
     margin-top: 0%;
     margin-bottom: 0%;
-    margin-right: 1rem;
-    background-color: var(--clr-green);
-    color: var(--clr-white);
+    margin-right: 2rem;
+    margin-left: -10px;
+    /* background-color: var(--clr-green);
+    color: var(--clr-white); */
     padding: 0 1rem;
     border-radius: 0.6rem;
     white-space: nowrap;
