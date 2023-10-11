@@ -239,8 +239,7 @@ Popup.css .popup {
 }
 
 .details {
-
-  margin-top: 50%;
+  margin-top: 5%;
 }
 
 
@@ -757,6 +756,20 @@ Popup.css .popup {
   margin-top: 10px;
 
 }
+
+.personal-data {
+  display: flex;
+  align-items: center;
+  /* position: relative; */
+  bottom: 15px;
+  flex-wrap: wrap;
+  
+}
+
+.personal-data p{
+  margin-right: 3px;
+}
+
 .custom-height-column {
   flex-wrap: wrap;
 }
@@ -792,10 +805,9 @@ Popup.css .popup {
 
 }
 
-.details {
-
+/* .details {
   margin-top: 50%;
-}
+} */
 
 .place {
   margin-top: 5%;
