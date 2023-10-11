@@ -17,7 +17,8 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { GiSaveArrow } from "react-icons/gi";
-import { IconName } from "react-icons/bs";
+import { BsPeopleFill} from "react-icons/bs";
+
 import "./Second.css";
 import "./Sai.css";
 import "./Project/React.css";
@@ -27,6 +28,14 @@ import {IoIosBriefcase } from "react-icons/io";
 import {AiFillRead} from "react-icons/ai";
 import { TbSeeding} from "react-icons/tb";
 import {BsFillMegaphoneFill } from "react-icons/bs";
+import {BsFront } from "react-icons/bs";
+import { IoStar} from "react-icons/io5";
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { AiFillBank} from "react-icons/ai";
+import {FaUserFriends} from "react-icons/fa";
+import { FaWordpressSimple} from "react-icons/fa";
+import { FaCalendarAlt} from "react-icons/fa";
+import { FaStream } from "react-icons/fa";
 import Switch from "react-switch";
 import { render } from "react-dom";
 import { useReactToPrint } from "react-to-print";
@@ -7485,7 +7494,7 @@ interests and curiosities"
                             ) : (
                              
                                 <h4 className="heading div-heading">
-                                  Contact
+                                 <BsFillTelephoneFill/> Contact
                                 </h4>
                              
                             )}
@@ -7506,7 +7515,7 @@ interests and curiosities"
                             ) : (
                               
                                 <h4 className="heading div-heading">
-                                  Address
+                                  <AiFillBank/>Address
                                 </h4>
                               
                             )}
@@ -7547,7 +7556,7 @@ interests and curiosities"
                               <span></span>
                             ) : (
                              
-                                <h4 className="heading1">Gender</h4>
+                                <h4 className="heading1"><FaUserFriends/>Gender</h4>
                              
                             )}
                             <div>
@@ -7557,7 +7566,7 @@ interests and curiosities"
                           <div>
                             {nation && (
                               
-                                <h4 className="heading1">Nation</h4>
+                                <h4 className="heading1"><FaWordpressSimple/>Nation</h4>
                               
                             )}
                             <div>
@@ -7568,7 +7577,7 @@ interests and curiosities"
                             {place && birth !== "" ? (
                               
                                 <h4 className="heading1">
-                                  Place/Date of Birth
+                                 <FaCalendarAlt/> Place/Date of Birth
                                 </h4>
                               
                             ) : place !== "" ? (
@@ -7595,7 +7604,7 @@ interests and curiosities"
                             {website.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4 className="div-heading">Links</h4>
+                                <h4 className="div-heading">🔗Links</h4>
                             )}
                             {website.map((object) => (
                               <div key={object.id}>
@@ -7612,7 +7621,7 @@ interests and curiosities"
                             {skill.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4>Skills</h4>
+                                <h4><FaStream/>Skills</h4>
                               
                             )}
                             {skill.map((object) => (
@@ -7659,7 +7668,7 @@ interests and curiosities"
                               <span></span>
                             ) : (
                                 <h4>
-                                  Hobbies
+                                 🎮  Hobbies
                                 </h4>
                             )}
                             <div>
@@ -7675,7 +7684,7 @@ interests and curiosities"
                               <span></span>
                             ) : (
                                 <h4>
-                                  Languages
+                                  💬Languages
                                 </h4>
                             )}
                             <div>
@@ -8032,7 +8041,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      Internships
+                                                     <BsPeopleFill/> Internships
                                                     </h2>
                                                   )}
                                                   {store.it.map(
@@ -8093,7 +8102,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      Projects
+                                                      <BsFront/>Projects
                                                     </h2>
                                                   )}
                                                   {store.it.map(
@@ -8168,7 +8177,7 @@ interests and curiosities"
                                                     <span></span>
                                                   ) : (
                                                     <h2 className="head">
-                                                      {store.head}
+                                                     <IoStar/> {store.head}
                                                     </h2>
                                                   )}
                                                   {store.it.map(
