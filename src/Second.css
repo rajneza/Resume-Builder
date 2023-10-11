@@ -1387,6 +1387,9 @@ margin-top: 10px;
     /* Ensure each content section starts on a new page */
   
   }
+  .temp3-container{
+    width: 100%;
+  }
 
 }
 
