@@ -376,23 +376,7 @@ function Hobbies(props) {
   const handleTemplateChange = () => {
     setIsColor1Active((prev) => !prev);
   };
-  // const generateName = (inputValue, addSpace) => {
-  //   const cleanedName = inputValue.replace(/\s+/g, " ").trim();
-  //   const fullName = cleanedName
-  //     .split(" ")
-  //     .map((word, index) => {
-  //       // Convert the first word to lowercase and the rest to title case
-  //       if (index === 0) {
-  //         return word.toLowerCase();
-  //       }
-  //       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-
-  //     })
-  //     .join(' ');
-
-  //   const camelCaseName = fullName.charAt(0).toUpperCase() + fullName.slice(1);
-  //   return addSpace ? camelCaseName : camelCaseName.replace(/\s+/g, "");
-  // };
+  
   const generateName = (inputValue) => {
     const cleanedName = inputValue.replace(/\s+/g, " ").trim();
     const fullName = cleanedName
@@ -4230,7 +4214,7 @@ interests and curiosities"
                             
                             <div>
                               {country && (
-                                <div className="preview-blk-title"><h4 className="heading11">Country</h4></div>
+                                <h4 className="heading1">Country</h4>
                               )}
                               <div>
                                 <p className="cit">{generateName(country)}</p>
@@ -4239,12 +4223,19 @@ interests and curiosities"
 
                             <div>
                               {city && (
-                                <div className="preview-blk-title"><h4 className="heading11">City</h4></div>
+                                <h4 className="heading1">City</h4>
                               )}
-                              <div>
+                              {/* <div>
                                 <p className="cit">{generateName(city)}</p>
-                              </div>
+                              </div> */}
+                              <div>
+                           {
+                             post === "" ? <p className="cit size">{generateName(city)}</p> : <p className="cit size">{`${city} , ${post}`}</p>
+                           }
+                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                         </div>
                             </div>
+                           
                           </div>
 
                           <div>
@@ -4260,7 +4251,7 @@ interests and curiosities"
                           
                           <div>
                             {nation && (
-                              <div className="preview-blk-title"><h4 className="heading11">Nation</h4></div>
+                              <div ><h4 className="heading1">Nation</h4></div>
                             )}
                             <div>
                               <p className="cit">{generateName(nation)}</p>
@@ -4474,21 +4465,27 @@ interests and curiosities"
                                 <p className="cont">{address}</p>
                               </div>
                               <div>
-                              {country && (
+                              {/* {country && (
                                 <div className="preview-blk-title"><h4 className="heading11">Country</h4></div>
-                              )}
+                              )} */}
                               <div>
                                 <p className="cit">{generateName(country)}</p>
                               </div>
                             </div>
                             <div>
-                              {city && (
+                              {/* {city && (
                                 <div className="preview-blk-title"><h4 className="heading11">City</h4></div>
-                              )}
-                              <div>
+                              )} */}
+                              {/* <div>
                                 <p className="cit">{generateName(city)}</p>
-                              </div>
+                              </div> */}
                             </div>
+                            <div>
+                           {
+                             post === "" ? <p className="cit size">{generateName(city)}</p> : <p className="cit size">{`${city} , ${post}`}</p>
+                           }
+                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                         </div>
                             </div>
 
                             <div>
@@ -4738,12 +4735,12 @@ interests and curiosities"
                                                               ) : (
                                                                 <div>
                                                                    {
-                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fon">{item.input1}</h4> : item.input3 === "" ? <h4 className="fon">{`${item.input1},${item.input2}`}</h4> : <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fonn">{item.input1}</h4> : item.input3 === "" ? <h4 className="fonn">{`${item.input1},${item.input2}`}</h4> : <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
                                                             }
                                                              {
-                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                              }{
-                                                                    item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fonttw">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                    // item.input4 === "" ? <span></span> : item.input5 === "" ? <p className="fonttw">{`${item.input4} to Present`}</p> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
                                                                   }
                                                                   {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
                                                                   <p className="fonttt">{item.input6}</p>
@@ -4775,10 +4772,10 @@ interests and curiosities"
                                                                 ) : (
                                                                   <div>
                                                                      {
-                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fon">{item.input1}</h4> : item.input3 === "" ? <h4 className="fon">{`${item.input1},${item.input2}`}</h4> : <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                              item.input1 === "" ? <span></span> : item.input2 === "" ? <h4 className="fonn">{item.input1}</h4> : item.input3 === "" ? <h4 className="fonn">{`${item.input1},${item.input2}`}</h4> : <h4 className="fonn">{`${item.input1},${item.input2},${item.input3}`}</h4>
                                                             }
                                                              {
-                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                              item.input4 === "" ? <span></span> : item.input5 === "" ? <span></span> : <p className="fonttw">{`${item.input4} to ${item.input5}`}</p>
                                                              }
                                                                     <p className="fonttt">{item.input6}</p>
                                                                   </div>
