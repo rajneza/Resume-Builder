@@ -6057,6 +6057,530 @@ interests and curiosities"
                             />
                           </div>
                         </div>
+                        <div>
+                        <DragDropContext onDragEnd={handleDragDrop}>
+                          <div className="movement">
+                            <Droppable droppableId="Root" type="group">
+                              {(provided) => (
+                                <div
+                                  {...provided.droppableProps}
+                                  ref={provided.innerRef}
+                                >
+                                  {ite.map((store, index) => (
+                                    <Draggable
+                                      draggableId={store.id}
+                                      key={store.id}
+                                      index={index}
+                                    >
+                                      {(provided) => (
+                                        <div
+                                          {...provided.dragHandleProps}
+                                          {...provided.draggableProps}
+                                          ref={provided.innerRef}
+                                        >
+                                          {/* <h3>{store.name}</h3> */}
+                                          {/* <Storelist {...store} /> */}
+                                          <div>
+                                            <div>{/* <h3>{name}</h3> */}</div>
+                                            <div>
+                                              {store.id === "06" ? (
+                                                <div>
+                                                  {three.length === 0 ? (
+                                                    <span></span>
+                                                  ) : (
+                                                    <h2 className="head">
+                                                      References
+                                                    </h2>
+                                                  )}
+                                                  {store.it.map(
+                                                    (item, index) => (
+                                                      <div className="store">
+                                                        {item.input1 ===
+                                                        undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div>
+                                                            {/* <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+            <p className="fontt">{`${item.input4}/${item.input5}`}</p>
+            <p className="fonttt">{item.input6}</p> */}
+
+                                                            <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
+                                                            <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )
+                                                  )}
+                                                </div>
+                                              ) : (
+                                                <span></span>
+                                              )}
+                                              {store.id === "01" ? (
+                                                <div>
+                                                  {objects.length === 0 ? (
+                                                    <span></span>
+                                                  ) : (
+                                                    <h2 className="head">
+                                                      Employment
+                                                    </h2>
+                                                  )}
+                                                  {store.it.map(
+                                                    (item, index) => (
+                                                      <div className="store">
+                                                        {item.input1 ===
+                                                        undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div className="store">
+                                                            {item.input1 ===
+                                                            undefined ? (
+                                                              <span></span>
+                                                            ) : (
+                                                              <div>
+                                                                {item.input1 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input2 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">
+                                                                    {
+                                                                      item.input1
+                                                                    }
+                                                                  </h4>
+                                                                ) : item.input3 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                ) : (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                )}
+                                                                {item.input4 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input5 ===
+                                                                  "" ? (
+                                                                  <span></span>
+                                                                ) : (
+                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                )}
+                                                                <p className="fonttt">
+                                                                  {item.input6}
+                                                                </p>
+                                                              </div>
+                                                            )}
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )
+                                                  )}
+                                                </div>
+                                              ) : (
+                                                <span></span>
+                                              )}
+
+                                              {store.id === "02" ? (
+                                                <div>
+                                                  {education.length === 0 ? (
+                                                    <span></span>
+                                                  ) : (
+                                                    <h2 className="head">
+                                                      Education
+                                                    </h2>
+                                                  )}
+                                                  {store.it.map(
+                                                    (item, index) => (
+                                                      <div className="store">
+                                                        {item.input1 ===
+                                                        undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div className="store">
+                                                            {item.input1 ===
+                                                            undefined ? (
+                                                              <span></span>
+                                                            ) : (
+                                                              <div>
+                                                                {item.input1 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input2 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">
+                                                                    {
+                                                                      item.input1
+                                                                    }
+                                                                  </h4>
+                                                                ) : item.input3 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                ) : (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                )}
+                                                                {item.input4 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input5 ===
+                                                                  "" ? (
+                                                                  <span></span>
+                                                                ) : (
+                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                )}
+                                                                {item.input4 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input5 ===
+                                                                  "" ? (
+                                                                  <p className="fontt">{`${item.input4} to Present`}</p>
+                                                                ) : (
+                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                )}
+                                                                {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
+                                                                <p className="fonttt">
+                                                                  {item.input6}
+                                                                </p>
+                                                              </div>
+                                                            )}
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )
+                                                  )}
+                                                </div>
+                                              ) : (
+                                                <span></span>
+                                              )}
+                                              {store.id === "03" ? (
+                                                <div>
+                                                  {four.length === 0 ? (
+                                                    <span></span>
+                                                  ) : (
+                                                    <h2 className="head">
+                                                      Extra-curricular activites
+                                                    </h2>
+                                                  )}
+                                                  {store.it.map(
+                                                    (item, index) => (
+                                                      <div className="store">
+                                                        {item.input1 ===
+                                                        undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div>
+                                                            <div className="store">
+                                                              {item.input1 ===
+                                                              undefined ? (
+                                                                <span></span>
+                                                              ) : (
+                                                                <div>
+                                                                  {item.input1 ===
+                                                                  "" ? (
+                                                                    <span></span>
+                                                                  ) : item.input2 ===
+                                                                    "" ? (
+                                                                    <h4 className="fon">
+                                                                      {
+                                                                        item.input1
+                                                                      }
+                                                                    </h4>
+                                                                  ) : item.input3 ===
+                                                                    "" ? (
+                                                                    <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                  ) : (
+                                                                    <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                  )}
+                                                                  {item.input4 ===
+                                                                  "" ? (
+                                                                    <span></span>
+                                                                  ) : item.input5 ===
+                                                                    "" ? (
+                                                                    <span></span>
+                                                                  ) : (
+                                                                    <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  )}
+
+                                                                  <p className="fonttt">
+                                                                    {
+                                                                      item.input6
+                                                                    }
+                                                                  </p>
+                                                                </div>
+                                                              )}
+                                                            </div>
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )
+                                                  )}
+                                                </div>
+                                              ) : (
+                                                <span></span>
+                                              )}
+                                              {store.id === "04" ? (
+                                                <div>
+                                                  {course.length === 0 ? (
+                                                    <span></span>
+                                                  ) : (
+                                                    <h2 className="head">
+                                                      Course
+                                                    </h2>
+                                                  )}
+                                                  {store.it.map(
+                                                    (item, index) => (
+                                                      <div className="store">
+                                                        {item.input1 ===
+                                                        undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div className="store">
+                                                            {item.input1 ===
+                                                            undefined ? (
+                                                              <span></span>
+                                                            ) : (
+                                                              <div>
+                                                                {item.input1 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input2 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">
+                                                                    {
+                                                                      item.input1
+                                                                    }
+                                                                  </h4>
+                                                                ) : item.input3 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                ) : (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                )}
+                                                                {item.input4 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input5 ===
+                                                                  "" ? (
+                                                                  <span></span>
+                                                                ) : (
+                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                )}
+                                                                <p className="fonttt">
+                                                                  {item.input6}
+                                                                </p>
+                                                              </div>
+                                                            )}
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )
+                                                  )}
+                                                </div>
+                                              ) : (
+                                                <span></span>
+                                              )}
+                                              {store.id === "05" ? (
+                                                <div>
+                                                  {five.length === 0 ? (
+                                                    <span></span>
+                                                  ) : (
+                                                    <h2 className="head">
+                                                      Internships
+                                                    </h2>
+                                                  )}
+                                                  {store.it.map(
+                                                    (item, index) => (
+                                                      <div className="store">
+                                                        {item.input1 ===
+                                                        undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div className="store">
+                                                            {item.input1 ===
+                                                            undefined ? (
+                                                              <span></span>
+                                                            ) : (
+                                                              <div>
+                                                                {item.input1 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input2 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">
+                                                                    {
+                                                                      item.input1
+                                                                    }
+                                                                  </h4>
+                                                                ) : item.input3 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                ) : (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                )}
+                                                                {item.input4 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input5 ===
+                                                                  "" ? (
+                                                                  <span></span>
+                                                                ) : (
+                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                )}
+                                                                <p className="fonttt">
+                                                                  {item.input6}
+                                                                </p>
+                                                              </div>
+                                                            )}
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )
+                                                  )}
+                                                </div>
+                                              ) : (
+                                                <span></span>
+                                              )}
+                                              {store.id === "07" ? (
+                                                <div>
+                                                  {project.length === 0 ? (
+                                                    <span></span>
+                                                  ) : (
+                                                    <h2 className="head">
+                                                      Projects
+                                                    </h2>
+                                                  )}
+                                                  {store.it.map(
+                                                    (item, index) => (
+                                                      <div className="store">
+                                                        {item.input1 ===
+                                                        undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div className="store">
+                                                            {item.input1 ===
+                                                            undefined ? (
+                                                              <span></span>
+                                                            ) : (
+                                                              <div>
+                                                                {item.input1 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input2 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">
+                                                                    {
+                                                                      item.input1
+                                                                    }
+                                                                  </h4>
+                                                                ) : item.input3 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                ) : (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2},${item.input3}`}</h4>
+                                                                )}
+                                                                {item.input4 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input5 ===
+                                                                  "" ? (
+                                                                  <span></span>
+                                                                ) : (
+                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                )}
+
+                                                                {item.input7 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : (
+                                                                  <p className="fontt">{`My Role : ${item.input7}`}</p>
+                                                                )}
+                                                                {item.input8 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : (
+                                                                  <p className="fontt">{`Skills Used In This  Project : ${item.input8}`}</p>
+                                                                )}
+
+                                                                <p className="fonttt">
+                                                                  {item.input6}
+                                                                </p>
+                                                              </div>
+                                                            )}
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )
+                                                  )}
+                                                </div>
+                                              ) : (
+                                                <span></span>
+                                              )}
+                                              {store.id === "08" ? (
+                                                <div>
+                                                  {cust.length === 0 ? (
+                                                    <span></span>
+                                                  ) : (
+                                                    <h2 className="head">
+                                                      {store.head}
+                                                    </h2>
+                                                  )}
+                                                  {store.it.map(
+                                                    (item, index) => (
+                                                      <div className="store">
+                                                        {item.input1 ===
+                                                        undefined ? (
+                                                          <span></span>
+                                                        ) : (
+                                                          <div className="store">
+                                                            {item.input1 ===
+                                                            undefined ? (
+                                                              <span></span>
+                                                            ) : (
+                                                              <div>
+                                                                {item.input1 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input2 ===
+                                                                  "" ? (
+                                                                  <h4 className="fon">
+                                                                    {
+                                                                      item.input1
+                                                                    }
+                                                                  </h4>
+                                                                ) : (
+                                                                  <h4 className="fon">{`${item.input1},${item.input2}`}</h4>
+                                                                )}
+                                                                {item.input3 ===
+                                                                "" ? (
+                                                                  <span></span>
+                                                                ) : item.input4 ===
+                                                                  "" ? (
+                                                                  <span></span>
+                                                                ) : (
+                                                                  <p className="fontt">{`${item.input3} to ${item.input4}`}</p>
+                                                                )}
+                                                                <p className="fonttt">
+                                                                  {item.input5}
+                                                                </p>
+                                                              </div>
+                                                            )}
+                                                          </div>
+                                                        )}
+                                                      </div>
+                                                    )
+                                                  )}
+                                                </div>
+                                              ) : (
+                                                <span></span>
+                                              )}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </Draggable>
+                                  ))}
+                                </div>
+                              )}
+                            </Droppable>
+                          </div>
+                        </DragDropContext>
+                      </div>
                         </div>
                       </div>
                     </div>
