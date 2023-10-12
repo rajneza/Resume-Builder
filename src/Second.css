@@ -2103,6 +2103,7 @@ select {
        margin-left: 2%;
        margin-top: 6%;
     }
+
    
     /* .temp5-right-section{
       
@@ -2137,3 +2138,10 @@ select {
       background-color: #b30707;
       content: '';
       }
+
+
+    .temp5-right-section{
+      background-color: hotpink;
+    }
+   
+
