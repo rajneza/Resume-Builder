@@ -7428,7 +7428,7 @@ interests and curiosities"
                   >
                     <div className="temp3-container">
                       <div className="row picc-container">
-                        <div className="col-4 profile-photo">
+                        <div className="col-4 profile-photo ">
                         <h3 className="name11">
                               {generateName(name, true) +
                                 " " +
@@ -7439,7 +7439,7 @@ interests and curiosities"
                           </h6>
                          
                         </div>
-                        <div className="col-8 custom-height-column personal">
+                        <div className="col-8 custom-height-column personal ">
                           <div className="resume-name">
                             {/* <h3 className="name11">
                               {generateName(name, true) +
@@ -7486,7 +7486,7 @@ interests and curiosities"
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col-4">
+                        <div className="col-4 temp5-left-section">
                        
                         <div className="details">
                             {email === "" ? (
@@ -7702,7 +7702,7 @@ interests and curiosities"
                             </div>
                           </div>
                         </div>
-                        <div className="col-8">
+                        <div className="col-8 temp5-right-section">
                         <div>
                           <div className="temp3-summary">
                             {editorHtml === "" ? (
@@ -7719,7 +7719,7 @@ interests and curiosities"
 
                         <div>
                         <DragDropContext onDragEnd={handleDragDrop}>
-                          <div className="movement">
+                          <div className="movement-sai">
                             <Droppable droppableId="Root" type="group">
                               {(provided) => (
                                 <div
