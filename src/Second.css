@@ -2048,7 +2048,7 @@ select {
       min-height: 100px;
       max-height: auto;
       background-color: white;
-      background-color: rgb(182, 182, 182);
+      /* border-bottom: 1px solid gray; */
       display: flex;
       margin-bottom: 0%;
     }

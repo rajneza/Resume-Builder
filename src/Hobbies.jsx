@@ -4985,10 +4985,7 @@ interests and curiosities"
                     ref={contentDivRef}
                     contentEditable={false}
                     style={{
-                      // border: '1px solid #ccc',
-                      // minHeight: '200px',
-                      // padding: '10px',
-                      // marginBottom: '20px',
+                     
                       width: "97%",
                     }}
                   >
@@ -5044,8 +5041,7 @@ interests and curiosities"
                                 " " +
                                 generateName(lastName, true)}
                             </h3>
-                            {/* <h3 className="name1">{name}</h3>
-                          <h3 className="name2">{lastname}</h3>  */}
+                          
                           </div>
                           <div className="name1"></div>
                           <h6 className="namee text-uppercase">{job}</h6>
@@ -5087,21 +5083,13 @@ interests and curiosities"
                               <p className="cont">{address}</p>
                             </div>
                             <div>
-                              {/* {country && (
-                                <div className="preview-blk-title">
-                                  <h4 className="heading11">Country</h4>
-                                </div>
-                              )} */}
+                              
                               <div>
                                 <p className="cit">{generateName(country)}</p>
                               </div>
                             </div>
                             <div>
-                              {/* {city && (
-                                <div className="preview-blk-title">
-                                  <h4 className="heading11">City</h4>
-                                </div>
-                              )} */}
+                              
                               <div>
                                 <p className="cit">{generateName(city)}</p>
                               </div>
@@ -5109,7 +5097,7 @@ interests and curiosities"
                            {
                              post === "" ? <p className="cit"></p> : <p className="cit"> {post}</p>
                            }
-                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                          
                          </div>
                             </div>
                           </div>
@@ -7448,45 +7436,10 @@ interests and curiosities"
                         </div>
                         <div className="col-8 custom-height-column personal ">
                           <div className="resume-name">
-                            {/* <h3 className="name11">
-                              {generateName(name, true) +
-                                " " +
-                                generateName(lastName, true)}
-                            </h3> */}
+                           
                           </div>
-                          {/* <h6 className="namee text-uppercase right-title">
-                            {job}
-                          </h6> */}
-                           {/* <Dropzone
-                            onDrop={handleDrop}
-                            accept="image/*"
-                            multiple={false}
-                          >
-                            {({ getRootProps, getInputProps }) => (
-                              <div
-                                className="dropzone"
-                                id="drop"
-                                {...getRootProps()}
-                              >
-                                <input {...getInputProps()} />
-                                {selectedFile ? (
-                                  <div className="image-temp3">
-                                    <div className="image-container">
-                                      <img
-                                        src={URL.createObjectURL(selectedFile)}
-                                        alt="Uploaded"
-                                        className="rounded-image-temp3"
-                                        onClick={handleView}
-                                        
-                                      />
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <div style={{ display: "flex" }}></div>
-                                )}
-                              </div>
-                            )}
-                          </Dropzone> */}
+                          
+                           
                           <div className="personal-data">
                          
                           </div>
@@ -7532,21 +7485,13 @@ interests and curiosities"
                               <p className="cont">{address}</p>
                             </div>
                             <div>
-                              {/* {country && (
-                                <div className="preview-blk-title">
-                                  <h4 className="heading11">Country</h4>
-                                </div>
-                              )} */}
+                          
                               <div>
                                 <p className="cit">{generateName(country)}</p>
                               </div>
                             </div>
                             <div>
-                              {/* {city && (
-                                <div className="preview-blk-title">
-                                  <h4 className="heading11">City</h4>
-                                </div>
-                              )} */}
+                            
                               <div>
                                 <p className="cit">{generateName(city)}</p>
                               </div>
@@ -7554,7 +7499,7 @@ interests and curiosities"
                            {
                              post === "" ? <p className="cit"></p> : <p className="cit"> {post}</p>
                            }
-                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                          
                          </div>
                             </div>
                           </div>
@@ -7600,7 +7545,7 @@ interests and curiosities"
                             )}
                             <div>
                               <p className="cit">{birth}</p>
-                              {/* <p className="cit">{place}</p> */}
+                             
                             </div>
                             <div>
                               <p className="cit">{generateName(place)}</p>
@@ -7612,10 +7557,15 @@ interests and curiosities"
                             {website.length === 0 ? (
                               <span></span>
                             ) : (
+
+                              
+                                <h4 className="div-heading">🔗Links</h4>
+
                               <div>
                                 <h4 className="div-heading temp5-heading ">🔗Links</h4>
                                 <div className="heading-underline"></div>
                                 </div>
+
                             )}
                             {website.map((object) => (
                               <div key={object.id}>
@@ -7641,7 +7591,7 @@ interests and curiosities"
                               <div key={object.id} className="ill">
                                 <div
                                   className="progress-bar-container"
-                                  id="secondProgressBarContainerr"
+                                  id="secondProgressBarContainer"
                                 >
                                   {studentSkills.map((skill, index) => (
                                     <div
@@ -7725,16 +7675,21 @@ interests and curiosities"
                             {editorHtml === "" ? (
                               <span></span>
                             ) : (
+
+                              <h2 className="temp3-proff"><BsFillPersonFill/>Summary</h2>
+
                               <div>
                                 <h2 className="temp3-proff temp5-heading"><BsFillPersonFill/>Summary</h2>
                                 <div className="heading-underline-right"></div>
                                 </div>
+
                             )}
                             <div
                               className="mess"
                               dangerouslySetInnerHTML={{ __html: editorHtml }}
                             />
                           </div>
+                          {/* <div className="preview-blk-titlee"></div> */}
                         </div>
 
                         <div>
@@ -7789,12 +7744,15 @@ interests and curiosities"
 
                                                             <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
                                                             <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                                                            <div className="preview-blk-titlee"></div>
                                                           </div>
+                                                          
                                                         )}
                                                       </div>
                                                     )
                                                   )}
                                                 </div>
+                                                
                                               ) : (
                                                 <span></span>
                                               )}
@@ -7850,6 +7808,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -7920,11 +7879,12 @@ interests and curiosities"
                                                                   "" ? (
                                                                   <p className="fontt">{`${item.input4} to Present`}</p>
                                                                 ) : (
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fontt"></p>
                                                                 )}
                                                                 {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -7992,7 +7952,9 @@ interests and curiosities"
                                                                   <p className="fonttt">
                                                                     {
                                                                       item.input6
+                                                                      
                                                                     }
+                                                                     <div className="preview-blk-titlee"></div>
                                                                   </p>
                                                                 </div>
                                                               )}
@@ -8058,6 +8020,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -8122,6 +8085,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -8200,6 +8164,7 @@ interests and curiosities"
 
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -8261,6 +8226,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input5}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
