@@ -7582,7 +7582,7 @@ interests and curiosities"
                               <div key={object.id} className="ill">
                                 <div
                                   className="progress-bar-container"
-                                  id="secondProgressBarContainerr"
+                                  id="secondProgressBarContainer"
                                 >
                                   {studentSkills.map((skill, index) => (
                                     <div
@@ -7663,13 +7663,14 @@ interests and curiosities"
                             {editorHtml === "" ? (
                               <span></span>
                             ) : (
-                                <h2 className="temp3-proff"><BsFillPersonFill/>Summary</h2>
+                              <h2 className="temp3-proff"><BsFillPersonFill/>Summary</h2>
                             )}
                             <div
                               className="mess"
                               dangerouslySetInnerHTML={{ __html: editorHtml }}
                             />
                           </div>
+                          {/* <div className="preview-blk-titlee"></div> */}
                         </div>
 
                         <div>
@@ -7721,12 +7722,15 @@ interests and curiosities"
 
                                                             <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
                                                             <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                                                            <div className="preview-blk-titlee"></div>
                                                           </div>
+                                                          
                                                         )}
                                                       </div>
                                                     )
                                                   )}
                                                 </div>
+                                                
                                               ) : (
                                                 <span></span>
                                               )}
@@ -7779,6 +7783,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -7846,11 +7851,12 @@ interests and curiosities"
                                                                   "" ? (
                                                                   <p className="fontt">{`${item.input4} to Present`}</p>
                                                                 ) : (
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fontt"></p>
                                                                 )}
                                                                 {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -7915,7 +7921,9 @@ interests and curiosities"
                                                                   <p className="fonttt">
                                                                     {
                                                                       item.input6
+                                                                      
                                                                     }
+                                                                     <div className="preview-blk-titlee"></div>
                                                                   </p>
                                                                 </div>
                                                               )}
@@ -7978,6 +7986,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -8039,6 +8048,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -8114,6 +8124,7 @@ interests and curiosities"
 
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -8172,6 +8183,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input5}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}

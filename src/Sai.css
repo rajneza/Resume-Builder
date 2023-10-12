@@ -725,31 +725,10 @@ textarea {
     margin-left: 29px;
 }
 
-/* .name1{
-    font-size: 2.4rem;
-    font-weight: 600;
-    margin: 1.8rem 0;
-    position: relative;
-}
-
-.name1::after {
-    position: absolute;
-    content: "";
-    bottom: -10px;
-    width: 50px;
-    height: 1.5px;
-    background-color: rgba(255, 255, 255, 0.5);
-    left: 50%;
-    transform: translateX(-50%);
-} */
-.name1 {
-    display: none;
-    /* Initially hide the styles */
-}
 
 .name1.active {
     display: block;
-    /* Display the styles when the "active" class is present */
+  
     font-size: 2.4rem;
     font-weight: 600;
     margin: 1.8rem 0;
@@ -1103,6 +1082,9 @@ textarea {
  .name11capital{
     text-transform: uppercase;
  }
- .secondProgressBarContainerr{
-    color: black;
+
+ .preview-blk-titlee{
+    letter-spacing: 0.5px;
+    border-bottom: 0.5px solid #00382f;
+    padding-bottom: 0.5rem;
  }

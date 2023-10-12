@@ -2031,7 +2031,7 @@ select {
       min-height: 100px;
       max-height: auto;
       background-color: white;
-      border-bottom: 1px solid gray;
+      /* border-bottom: 1px solid gray; */
       display: flex;
       margin-bottom: 0%;
     }
