@@ -2104,7 +2104,44 @@ select {
        margin-top: 6%;
     }
 
+   
+    /* .temp5-right-section{
+      
+    }
+    .temp5-left-section{
+
+    } */
+    .temp5-right-section {
+      flex: 1;
+      /* padding: 10px; */
+     
+      overflow-y: auto; /* Add this line to enable vertical scrolling */
+      min-height: auto;
+      max-height: auto;
+      width: 70%;
+      }
+      .temp5-left-section {
+      flex: 1;
+      /* padding: 10px; */
+
+      overflow-y: auto; /* Add this line to enable vertical scrolling */
+      min-height: auto;
+      max-height: auto;
+      width: 30%;
+      }
+      .vertical-border {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background-color: #b30707;
+      content: '';
+      }
+
+
     .temp5-right-section{
       background-color: hotpink;
     }
    
+
