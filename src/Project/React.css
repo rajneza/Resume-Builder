@@ -450,14 +450,12 @@
   margin-top: 0%;
   font-weight: lighter;
   margin-left: 50%;
-
   width: 100%;
 }
 
 .courr {
   font-weight: lighter;
   margin-left: 50%;
-
   width: 100%;
 
 }
@@ -501,8 +499,11 @@
 }
 
 .movement {
-  /* background-color: #c3e5fe; */
   margin-left: 9%;
+  pointer-events: none;
+}
+
+.movement-temp3{
   pointer-events: none;
 }
 

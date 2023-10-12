@@ -43,20 +43,24 @@ Popup.css .popup {
 }
 
 .dropzone {
-
-
   text-align: center;
   cursor: pointer;
   width: 4vw;
   height: 8vh;
 }
 
-.dropzone img {
+.rounded-image {
   width: 100%;
   height: 100%;
   display: block;
 
 
+}
+
+.rounded-image-temp3{
+  width: 185%;
+  height: 100%;
+  display: block;
 }
 
 .image {
@@ -240,6 +244,7 @@ Popup.css .popup {
 
 .details {
   margin-top: 5%;
+
 }
 
 
@@ -318,6 +323,7 @@ Popup.css .popup {
   font-size: 16px;
 }
 
+
 .edit-details {
   display: flex;
 }
@@ -373,6 +379,9 @@ Popup.css .popup {
   margin-bottom: 5px;
 }
 
+.temp3-summary{
+  margin-top:5%;
+}
 .resume-profile-content {
   position: relative;
 }
@@ -572,18 +581,21 @@ Popup.css .popup {
   height: 8vh;
 }
 
-.dropzone img {
+/* .dropzone img {
   width: 100%;
   height: 100%;
   display: block;
 
-}
+} */
 
 .image {
   height: 8vh;
   display: flex;
 }
 
+.image-temp3{
+  height: 15vh;
+}
 .icon {
   width: 100%;
   height: 100%;
@@ -737,9 +749,14 @@ Popup.css .popup {
   font-size: 10px;
   background-color: white;
   width: 50vw;
-  height: 88vh;
+  /* height: 88vh; */
   border-radius: 5px;
   padding: 10px;
+ overflow: visible;
+ overflow-y: visible;
+ overflow: auto;
+ min-height: 92vh;
+ max-height: auto;
   
 }
 
@@ -759,11 +776,10 @@ Popup.css .popup {
 
 .personal-data {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   /* position: relative; */
   bottom: 15px;
   flex-wrap: wrap;
-  
 }
 
 .personal-data p{
@@ -775,10 +791,11 @@ Popup.css .popup {
 }
 
 .pic-container {
-  height: 100px;
+  height: 135px;
   flex-wrap: wrap;
-  background-color: #5dffd4;
-  
+  background-color: #08d2ff;
+
+
 }
 
 .two-one {
@@ -1019,7 +1036,7 @@ margin-top: 10px;
 .pincode {
   text-align: left;
   margin-left: 15%;
-  margin-top: -65px;
+  margin-top: 55px;
 }
 
 .heading {
@@ -1386,6 +1403,9 @@ margin-top: 10px;
     page-break-before: always;
     /* Ensure each content section starts on a new page */
   
+  }
+  .temp3-container{
+    width: 100%;
   }
 
 }
@@ -1805,6 +1825,11 @@ select {
   display: flex;
 }
 
+.temp3-heading{
+  font-size: 16px;
+  margin-top: 5%;
+}
+
 .template1 {
   /* background-color: rgb(39, 216, 4); */
   /* border: 1px solid #ddd; */
@@ -1838,7 +1863,13 @@ select {
   /* margin: 10px; */
   cursor: pointer;
 }
-
+.template5 {
+  /* background-color: #0596c7; */
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  /* margin: 10px; */
+  cursor: pointer;
+}
 #color-picker {
   width: 30px;
   height: 30px;
@@ -2073,3 +2104,6 @@ select {
        margin-top: 6%;
     }
    
+    .temp5-right-section{
+      background-color: hotpink;
+    }
