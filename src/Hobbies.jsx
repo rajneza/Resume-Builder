@@ -5850,7 +5850,7 @@ interests and curiosities"
                     ref={contentDivRef}
                     contentEditable={false}
                     style={{
-                      width: "97%",
+                      width: "100%",
                     }}
                   >
                     <div className="temp3-container" >
@@ -5901,25 +5901,20 @@ interests and curiosities"
                             {job}
                           </h6> */}
                            <div className="name1"></div>
-                          <h6 className="namee text-uppercase">{job}</h6>
+                          <h6 className="text-uppercase temp3-role">{job}</h6>
                           <div className="personal-data">
                             <p className="cont">{address}</p>
                             <p className="resume-city">{generateName(city)}</p>
                             <p className="resume-code">{post}</p>
                             <p className="resume-country">{generateName(country)}</p>
                           </div>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-4">
-                        <div className="details">
+                          <div className="temp5-phone-email">
                             <div>
                               {phone === "" ? (
                                 <span></span>
                               ) : (
                                 <div>
-                                <h6 className="temp3-heading">Phone</h6>
-                                <p className="cit">{`+${phone}`}</p>
+                                <p className="cit temp5-phone">{`+${phone}`}</p>
                                 </div>
                               )}
                             </div>
@@ -5928,16 +5923,19 @@ interests and curiosities"
                                 <span></span>
                               ) : (
                                 <div>
-                                <h6 className="temp3-heading">Email</h6>
                                 <p className="cit">{`${email}`}</p>
                                 </div>
                               )}
                             </div>
                           </div>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="col-4">
                           <div>
                             {place || birth !== "" ? (
                                 <h4 className="temp3-heading">
-                                  Place/Date of Birth
+                                  Date / Place of Birth
                                 </h4>
                             ):<span></span> }
                             <div>
@@ -6114,9 +6112,9 @@ interests and curiosities"
                                                   {three.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head temp3-heading">
+                                                    <h4 className="head temp3-heading">
                                                       References
-                                                    </h2>
+                                                    </h4>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -6146,9 +6144,9 @@ interests and curiosities"
                                                   {objects.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head temp3-heading">
+                                                    <h4 className="head temp3-heading">
                                                       Employment
-                                                    </h2>
+                                                    </h4>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -6208,9 +6206,9 @@ interests and curiosities"
                                                   {education.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head temp3-heading">
+                                                    <h4 className="head temp3-heading">
                                                       Education
-                                                    </h2>
+                                                    </h4>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -6279,9 +6277,9 @@ interests and curiosities"
                                                   {four.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head temp3-heading">
+                                                    <h4 className="head temp3-heading">
                                                       Extra-curricular activites
-                                                    </h2>
+                                                    </h4>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -6345,9 +6343,9 @@ interests and curiosities"
                                                   {course.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <h4 className="head">
                                                       Course
-                                                    </h2>
+                                                    </h4>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -6406,9 +6404,9 @@ interests and curiosities"
                                                   {five.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head temp3-heading">
+                                                    <h4 className="head temp3-heading">
                                                       Internships
-                                                    </h2>
+                                                    </h4>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -6467,9 +6465,9 @@ interests and curiosities"
                                                   {project.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head temp3-heading">
+                                                    <h4 className="head temp3-heading">
                                                       Projects
-                                                    </h2>
+                                                    </h4>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -6542,9 +6540,9 @@ interests and curiosities"
                                                   {cust.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <h4 className="head">
                                                       {store.head}
-                                                    </h2>
+                                                    </h4>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
