@@ -2114,34 +2114,40 @@ select {
     .temp5-right-section {
       flex: 1;
       /* padding: 10px; */
-     
-      overflow-y: auto; /* Add this line to enable vertical scrolling */
+      /* border: 1px solid black; */
+      min-width: 60%;
+      max-width: auto;
       min-height: auto;
       max-height: auto;
-      width: 70%;
+     
       }
       .temp5-left-section {
       flex: 1;
       /* padding: 10px; */
-
-      overflow-y: auto; /* Add this line to enable vertical scrolling */
+      /* border: 1px solid black; */
+      min-width: 35%;
+      max-width: auto;
       min-height: auto;
       max-height: auto;
-      width: 30%;
+      
       }
       .vertical-border {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 1px;
-      background-color: #b30707;
-      content: '';
-      }
+        position: absolute;
+        top: 123px;
+        bottom: 0;
+        left: 38%;
+        width: 0px;
+        /* background-color: #b30707; */
+        content: '';
+        border-right: 2px solid black;
+    }
 
 
     .temp5-right-section{
-      background-color: hotpink;
+      /* background-color: hotpink; */
     }
-   
+   .temp5-sa{
+    display: flex;
+    column-gap: 10px;
+   }
 
