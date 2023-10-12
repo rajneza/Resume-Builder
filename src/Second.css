@@ -2048,12 +2048,12 @@ select {
       min-height: 100px;
       max-height: auto;
       background-color: white;
-      border-bottom: 1px solid gray;
+      background-color: rgb(182, 182, 182);
       display: flex;
       margin-bottom: 0%;
     }
     .summryA{
-      background-color: gray;
+      background-color: rgb(182, 182, 182);
       border-radius: 10px;
       padding-left: 5px;
       padding-bottom: 1px;
@@ -2097,7 +2097,7 @@ select {
       border: none;
     }
     .skill-bg{
-      background-color: gray;
+      background-color: rgb(182, 182, 182);
       width: 90%;
       min-height: 70px;
       max-height: auto;
