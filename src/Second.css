@@ -1392,6 +1392,9 @@ margin-top: 10px;
 .label {
   margin-left: 6.7%;
 }
+.cit1{
+  margin-top: 5%;
+}
 
 
 @media print {
@@ -2165,4 +2168,50 @@ select {
     display: flex;
     column-gap: 10px;
    }
+#con-head{
+  margin-bottom: -3%;
+  
+}
+#add-id{
+  margin-bottom: 0%;
+}
+.add-iconn{
+  margin-bottom: 2%;
+  margin-right: 1%;
+}
+#gendr{
+ margin-top: 3%;
+}
+.gendr-iconn{
+  position: relative;
+  bottom: 2px;
+  margin-right: 1%;
+}
+#nation{
+  margin-top: 3%;
+}
+#nation-id{
+  position: relative;
+  bottom: 5px;
+}
+.nation-iconn{
+  position: relative;
+  bottom: 2px;
+  margin-right: 1%;
+}
+#gen-id{
+  position: relative;
+  bottom: 5px;
+}
+#placebirth{
+  margin-top: 2%;
+}
+.place-iconn{
+  position: relative;
+  bottom: 2px;
+}
+.add-main{
+  position: relative;
+  bottom: 4px;
+}
 

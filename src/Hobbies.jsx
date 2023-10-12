@@ -7501,29 +7501,29 @@ interests and curiosities"
                               <span></span>
                             ) : (
                              
-                                <h4 className="heading div-heading">
+                                <h4 className="heading div-heading" id="con-head">
                                  <BsFillTelephoneFill/> Contact
                                 </h4>
                              
                             )}
-                            <div>
+                            <div className="cit1">
                               {phone === "" ? (
                                 <span></span>
                               ) : (
-                                <p className="cit">{`+${phone}`}</p>
+                                <p className="cit" id="phonn">{`+${phone}`}</p>
                               )}
                             </div>
                             <div>
                               <p className="conte">{email}</p>
                             </div>
                           </div>
-                          <div>
+                          <div className="add-main" >
                             {address === "" ? (
                               <span></span>
                             ) : (
                               
-                                <h4 className="heading div-heading">
-                                  <AiFillBank/>Address
+                                <h4 className="heading div-heading" id="add-id">
+                                  <AiFillBank className="add-iconn"/>Address
                                 </h4>
                               
                             )}
@@ -7564,28 +7564,28 @@ interests and curiosities"
                               <span></span>
                             ) : (
                              
-                                <h4 className="heading1"><FaUserFriends/>Gender</h4>
+                                <h4 className="heading1" id="gendr"><FaUserFriends className="gendr-iconn"/>Gender</h4>
                              
                             )}
                             <div>
-                              <p className="cit">{licence}</p>
+                              <p className="cit" id="gen-id">{licence}</p>
                             </div>
                           </div>
                           <div>
                             {nation && (
                               
-                                <h4 className="heading1"><FaWordpressSimple/>Nation</h4>
+                                <h4 className="heading1" id="nation"><FaWordpressSimple className="nation-iconn"/>Nation</h4>
                               
                             )}
                             <div>
-                              <p className="cit">{generateName(nation)}</p>
+                              <p className="cit" id="nation-id">{generateName(nation)}</p>
                             </div>
                           </div>
                           <div>
                             {place && birth !== "" ? (
                               
-                                <h4 className="heading1">
-                                 <FaCalendarAlt/> Place/Date of Birth
+                                <h4 className="heading1" id="placebirth">
+                                 <FaCalendarAlt className="place-iconn"/> Place/Date of Birth
                                 </h4>
                               
                             ) : place !== "" ? (
@@ -7598,12 +7598,13 @@ interests and curiosities"
                             ) : (
                               <span></span>
                             )}
+                           
+                            <div>
+                              <p className="cit">{generateName(place)}</p>
+                            </div>
                             <div>
                               <p className="cit">{birth}</p>
                               {/* <p className="cit">{place}</p> */}
-                            </div>
-                            <div>
-                              <p className="cit">{generateName(place)}</p>
                             </div>
                           </div>
                            
