@@ -198,7 +198,10 @@ function Hobbies(props) {
   const [studentSkills, setStudentSkills] = useState([]);
   const [selectedSkill, setSelectedSkill] = useState("");
   const [selectedStage, setSelectedStage] = useState("Fresher");
-
+  const [leftData, setLeftData] = useState("");
+  const [rightData, setRightData] = useState("");
+  const hasLeftData = leftData !== "";
+  const hasRightData = rightData !== "";
 
   
 
@@ -7486,7 +7489,9 @@ interests and curiosities"
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col-4 temp5-left-section">
+                        <div className="col-4 temp5-left-section"
+                         contentEditable
+                         onInput={(e) => setLeftData(e.target.textContent)}>{leftData}
                        
                         <div className="details">
                             {email === "" ? (
@@ -7701,8 +7706,9 @@ interests and curiosities"
                               ))}
                             </div>
                           </div>
-                        </div>
-                        <div className="col-8 temp5-right-section">
+                        </div>   {(hasLeftData || hasRightData) && <div className="vertical-border"></div>}
+                        <div className="col-8 temp5-right-section"  contentEditable
+        onInput={(e) => setRightData(e.target.textContent)}> {rightData}
                         <div>
                           <div className="temp3-summary">
                             {editorHtml === "" ? (
