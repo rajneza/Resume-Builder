@@ -4985,10 +4985,7 @@ interests and curiosities"
                     ref={contentDivRef}
                     contentEditable={false}
                     style={{
-                      // border: '1px solid #ccc',
-                      // minHeight: '200px',
-                      // padding: '10px',
-                      // marginBottom: '20px',
+                     
                       width: "97%",
                     }}
                   >
@@ -5044,8 +5041,7 @@ interests and curiosities"
                                 " " +
                                 generateName(lastName, true)}
                             </h3>
-                            {/* <h3 className="name1">{name}</h3>
-                          <h3 className="name2">{lastname}</h3>  */}
+                          
                           </div>
                           <div className="name1"></div>
                           <h6 className="namee text-uppercase">{job}</h6>
@@ -5087,21 +5083,13 @@ interests and curiosities"
                               <p className="cont">{address}</p>
                             </div>
                             <div>
-                              {/* {country && (
-                                <div className="preview-blk-title">
-                                  <h4 className="heading11">Country</h4>
-                                </div>
-                              )} */}
+                              
                               <div>
                                 <p className="cit">{generateName(country)}</p>
                               </div>
                             </div>
                             <div>
-                              {/* {city && (
-                                <div className="preview-blk-title">
-                                  <h4 className="heading11">City</h4>
-                                </div>
-                              )} */}
+                              
                               <div>
                                 <p className="cit">{generateName(city)}</p>
                               </div>
@@ -5109,7 +5097,7 @@ interests and curiosities"
                            {
                              post === "" ? <p className="cit"></p> : <p className="cit"> {post}</p>
                            }
-                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                          
                          </div>
                             </div>
                           </div>
@@ -7441,52 +7429,17 @@ interests and curiosities"
                                 " " +
                                 generateName(lastName, true)}
                             </h3>
-                              <h6 className="namee text-uppercase right-title">
+                              <h6 className="namee text-uppercase right-title ">
                             {job}
                           </h6>
                          
                         </div>
                         <div className="col-8 custom-height-column personal ">
                           <div className="resume-name">
-                            {/* <h3 className="name11">
-                              {generateName(name, true) +
-                                " " +
-                                generateName(lastName, true)}
-                            </h3> */}
+                           
                           </div>
-                          {/* <h6 className="namee text-uppercase right-title">
-                            {job}
-                          </h6> */}
-                           {/* <Dropzone
-                            onDrop={handleDrop}
-                            accept="image/*"
-                            multiple={false}
-                          >
-                            {({ getRootProps, getInputProps }) => (
-                              <div
-                                className="dropzone"
-                                id="drop"
-                                {...getRootProps()}
-                              >
-                                <input {...getInputProps()} />
-                                {selectedFile ? (
-                                  <div className="image-temp3">
-                                    <div className="image-container">
-                                      <img
-                                        src={URL.createObjectURL(selectedFile)}
-                                        alt="Uploaded"
-                                        className="rounded-image-temp3"
-                                        onClick={handleView}
-                                        
-                                      />
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <div style={{ display: "flex" }}></div>
-                                )}
-                              </div>
-                            )}
-                          </Dropzone> */}
+                          
+                           
                           <div className="personal-data">
                          
                           </div>
@@ -7501,7 +7454,7 @@ interests and curiosities"
                               <span></span>
                             ) : (
                              
-                                <h4 className="heading div-heading" id="con-head">
+                                <h4 className="heading div-heading temp5-heading">
                                  <BsFillTelephoneFill/> Contact
                                 </h4>
                              
@@ -7522,7 +7475,7 @@ interests and curiosities"
                               <span></span>
                             ) : (
                               
-                                <h4 className="heading div-heading" id="add-id">
+                                <h4 className="heading div-heading temp5-heading" id="add-id">
                                   <AiFillBank className="add-iconn"/>Address
                                 </h4>
                               
@@ -7532,21 +7485,13 @@ interests and curiosities"
                               <p className="cont">{address}</p>
                             </div>
                             <div>
-                              {/* {country && (
-                                <div className="preview-blk-title">
-                                  <h4 className="heading11">Country</h4>
-                                </div>
-                              )} */}
+                          
                               <div>
                                 <p className="cit">{generateName(country)}</p>
                               </div>
                             </div>
                             <div>
-                              {/* {city && (
-                                <div className="preview-blk-title">
-                                  <h4 className="heading11">City</h4>
-                                </div>
-                              )} */}
+                            
                               <div>
                                 <p className="cit">{generateName(city)}</p>
                               </div>
@@ -7554,7 +7499,7 @@ interests and curiosities"
                            {
                              post === "" ? <p className="cit"></p> : <p className="cit"> {post}</p>
                            }
-                           {/* <p className="cit">{`${city} , ${post}`}</p> */}
+                          
                          </div>
                             </div>
                           </div>
@@ -7564,7 +7509,7 @@ interests and curiosities"
                               <span></span>
                             ) : (
                              
-                                <h4 className="heading1" id="gendr"><FaUserFriends className="gendr-iconn"/>Gender</h4>
+                                <h4 className="heading1 temp5-heading" id="gendr"><FaUserFriends className="gendr-iconn"/>Gender</h4>
                              
                             )}
                             <div>
@@ -7574,7 +7519,7 @@ interests and curiosities"
                           <div>
                             {nation && (
                               
-                                <h4 className="heading1" id="nation"><FaWordpressSimple className="nation-iconn"/>Nation</h4>
+                                <h4 className="heading1 temp5-heading" id="nation"><FaWordpressSimple className="nation-iconn"/>Nation</h4>
                               
                             )}
                             <div>
@@ -7584,27 +7529,26 @@ interests and curiosities"
                           <div>
                             {place && birth !== "" ? (
                               
-                                <h4 className="heading1" id="placebirth">
+                                <h4 className="heading1 temp5-heading" id="placebirth">
                                  <FaCalendarAlt className="place-iconn"/> Place/Date of Birth
                                 </h4>
                               
                             ) : place !== "" ? (
                              
-                              <h4 className="heading1">Place of Birth</h4>
+                              <h4 className="heading1 temp5-heading">Place of Birth</h4>
                             ) : birth !== "" ? (
                              
-                                <h4 className="heading1">Date of Birth</h4>
+                                <h4 className="heading1 temp5-heading">Date of Birth</h4>
                               
                             ) : (
                               <span></span>
                             )}
-                           
-                            <div>
-                              <p className="cit">{generateName(place)}</p>
-                            </div>
                             <div>
                               <p className="cit">{birth}</p>
                               {/* <p className="cit">{place}</p> */}
+                            </div>
+                            <div>
+                              <p className="cit">{generateName(place)}</p>
                             </div>
                           </div>
                            
@@ -7613,7 +7557,15 @@ interests and curiosities"
                             {website.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4 className="div-heading">🔗Links</h4>
+
+                              
+                              
+
+                              <div>
+                                <h4 className="div-heading temp5-heading ">🔗Links</h4>
+                                <div className="heading-underline"></div>
+                                </div>
+
                             )}
                             {website.map((object) => (
                               <div key={object.id}>
@@ -7630,14 +7582,16 @@ interests and curiosities"
                             {skill.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4><FaStream/>Skills</h4>
-                              
+                              <div>
+                                <h4 className="temp5-heading"><FaStream/>Skills</h4>
+                                <div className="heading-underline"></div>
+                                </div>
                             )}
                             {skill.map((object) => (
                               <div key={object.id} className="ill">
                                 <div
                                   className="progress-bar-container"
-                                  id="secondProgressBarContainerr"
+                                  id="secondProgressBarContainer"
                                 >
                                   {studentSkills.map((skill, index) => (
                                     <div
@@ -7676,7 +7630,7 @@ interests and curiosities"
                             {six.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4>
+                                <h4 className="temp5-heading">
                                  🎮  Hobbies
                                 </h4>
                             )}
@@ -7692,9 +7646,12 @@ interests and curiosities"
                             {seven.length === 0 ? (
                               <span></span>
                             ) : (
-                                <h4>
+                              <div>
+                                <h4 className="temp5-heading">
                                   💬Languages
                                 </h4>
+                                <div className="heading-underline"></div>
+                                </div>
                             )}
                             <div>
                               {seven.map((object) => (
@@ -7718,13 +7675,21 @@ interests and curiosities"
                             {editorHtml === "" ? (
                               <span></span>
                             ) : (
-                                <h2 className="temp3-proff"><BsFillPersonFill/>Summary</h2>
+
+                             
+
+                              <div>
+                                <h2 className="temp3-proff temp5-heading"><BsFillPersonFill/>Summary</h2>
+                                <div className="heading-underline-right"></div>
+                                </div>
+
                             )}
                             <div
                               className="mess"
                               dangerouslySetInnerHTML={{ __html: editorHtml }}
                             />
                           </div>
+                          {/* <div className="preview-blk-titlee"></div> */}
                         </div>
 
                         <div>
@@ -7758,9 +7723,12 @@ interests and curiosities"
                                                   {three.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <div>
+                                                    <h2 className="head temp5-heading">
                                                       <BsFillMegaphoneFill/>References
                                                     </h2>
+                                                    <div className="heading-underline-right"></div>
+                                                    </div>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -7776,12 +7744,15 @@ interests and curiosities"
 
                                                             <p className="fontt">{`${item.input1} from ${item.input2}`}</p>
                                                             <p className="fontt">{`${item.input4} | ${item.input5}`}</p>
+                                                            <div className="preview-blk-titlee"></div>
                                                           </div>
+                                                          
                                                         )}
                                                       </div>
                                                     )
                                                   )}
                                                 </div>
+                                                
                                               ) : (
                                                 <span></span>
                                               )}
@@ -7790,9 +7761,12 @@ interests and curiosities"
                                                   {objects.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <div>
+                                                    <h2 className="head temp5-heading">
                                                       <IoIosBriefcase/>Employment
                                                     </h2>
+                                                    <div className="heading-underline-right"></div>
+                                                    </div>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -7834,6 +7808,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -7852,9 +7827,12 @@ interests and curiosities"
                                                   {education.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <div>
+                                                    <h2 className="head temp5-heading">
                                                      <FaLayerGroup/> Education
                                                     </h2>
+                                                    <div className="heading-underline-right"></div>
+                                                    </div>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -7901,11 +7879,12 @@ interests and curiosities"
                                                                   "" ? (
                                                                   <p className="fontt">{`${item.input4} to Present`}</p>
                                                                 ) : (
-                                                                  <p className="fontt">{`${item.input4} to ${item.input5}`}</p>
+                                                                  <p className="fontt"></p>
                                                                 )}
                                                                 {/* <p className="fontt">{`${item.input4} to ${item.input5}`}</p> */}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -7923,9 +7902,12 @@ interests and curiosities"
                                                   {four.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <div>
+                                                    <h2 className="head temp5-heading">
                                                       <TbSeeding/>Extra-curricular activites
                                                     </h2>
+                                                    <div className="heading-underline-right"></div>
+                                                    </div>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -7970,7 +7952,9 @@ interests and curiosities"
                                                                   <p className="fonttt">
                                                                     {
                                                                       item.input6
+                                                                      
                                                                     }
+                                                                     <div className="preview-blk-titlee"></div>
                                                                   </p>
                                                                 </div>
                                                               )}
@@ -7989,9 +7973,12 @@ interests and curiosities"
                                                   {course.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <div>
+                                                    <h2 className="head temp5-heading">
                                                       <AiFillRead/>Course
                                                     </h2>
+                                                    <div className="heading-underline-right"></div>
+                                                    </div>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -8033,6 +8020,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -8050,9 +8038,12 @@ interests and curiosities"
                                                   {five.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <div>
+                                                    <h2 className="head temp5-heading">
                                                      <BsPeopleFill/> Internships
                                                     </h2>
+                                                    <div className="heading-underline-right"></div>
+                                                    </div>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -8094,6 +8085,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -8111,9 +8103,12 @@ interests and curiosities"
                                                   {project.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <div>
+                                                    <h2 className="head temp5-heading">
                                                       <BsFront/>Projects
                                                     </h2>
+                                                    <div className="heading-underline-right"></div>
+                                                    </div>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -8169,6 +8164,7 @@ interests and curiosities"
 
                                                                 <p className="fonttt">
                                                                   {item.input6}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
@@ -8186,9 +8182,12 @@ interests and curiosities"
                                                   {cust.length === 0 ? (
                                                     <span></span>
                                                   ) : (
-                                                    <h2 className="head">
+                                                    <div>
+                                                    <h2 className="head temp5-heading">
                                                      <IoStar/> {store.head}
                                                     </h2>
+                                                    <div className="heading-underline-right"></div>
+                                                    </div>
                                                   )}
                                                   {store.it.map(
                                                     (item, index) => (
@@ -8227,6 +8226,7 @@ interests and curiosities"
                                                                 )}
                                                                 <p className="fonttt">
                                                                   {item.input5}
+                                                                  <div className="preview-blk-titlee"></div>
                                                                 </p>
                                                               </div>
                                                             )}
