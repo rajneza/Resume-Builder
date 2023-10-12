@@ -589,7 +589,7 @@ Popup.css .popup {
 } */
 
 .image {
-  height: 8vh;
+  height: 10vh;
   display: flex;
 }
 
@@ -637,7 +637,7 @@ Popup.css .popup {
 .image-fullview img {
   max-width: 80%;
   max-height: 80%;
-  border-radius: 50%;
+  border-radius: 25%;
 }
 
 .job-title {
