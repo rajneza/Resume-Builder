@@ -751,7 +751,7 @@ Popup.css .popup {
   width: 50vw;
   /* height: 88vh; */
   border-radius: 5px;
-  padding: 10px;
+  padding: 30px;
  overflow: visible;
  overflow-y: visible;
  overflow: auto;
@@ -791,11 +791,25 @@ Popup.css .popup {
 }
 
 .pic-container {
-  height: 135px;
+  min-height: 135px;
+  max-height: fit-content;
   flex-wrap: wrap;
-  background-color: #08d2ff;
+  background-color: #9AEBFE;
 
 
+}
+
+.temp5-phone-email{
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.temp5-phone{
+  margin-right: 5px;
+}
+.temp3-role{
+  font-size: 14px;
+  margin-top: 5px;
 }
 
 .two-one {
@@ -1826,8 +1840,9 @@ select {
 }
 
 .temp3-heading{
-  font-size: 16px;
+  font-size: 15px;
   margin-top: 5%;
+  font-weight: 600;
 }
 
 .template1 {
