@@ -7559,7 +7559,7 @@ interests and curiosities"
                             ) : (
 
                               
-                                <h4 className="div-heading">🔗Links</h4>
+                              
 
                               <div>
                                 <h4 className="div-heading temp5-heading ">🔗Links</h4>
@@ -7676,7 +7676,7 @@ interests and curiosities"
                               <span></span>
                             ) : (
 
-                              <h2 className="temp3-proff"><BsFillPersonFill/>Summary</h2>
+                             
 
                               <div>
                                 <h2 className="temp3-proff temp5-heading"><BsFillPersonFill/>Summary</h2>
