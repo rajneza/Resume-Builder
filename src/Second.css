@@ -244,6 +244,7 @@ Popup.css .popup {
 
 .details {
   margin-top: 5%;
+
 }
 
 
@@ -321,6 +322,7 @@ Popup.css .popup {
   font-weight: 500;
   font-size: 16px;
 }
+
 
 .edit-details {
   display: flex;
@@ -747,10 +749,14 @@ Popup.css .popup {
   font-size: 10px;
   background-color: white;
   width: 50vw;
-  height: 88vh;
+  /* height: 88vh; */
   border-radius: 5px;
-  padding: 30px;
-  overflow: overlay;
+  padding: 10px;
+ overflow: visible;
+ overflow-y: visible;
+ overflow: auto;
+ min-height: 92vh;
+ max-height: auto;
   
 }
 
@@ -788,7 +794,8 @@ Popup.css .popup {
   height: 135px;
   flex-wrap: wrap;
   background-color: #08d2ff;
-  
+
+
 }
 
 .two-one {
@@ -1856,7 +1863,13 @@ select {
   /* margin: 10px; */
   cursor: pointer;
 }
-
+.template5 {
+  /* background-color: #0596c7; */
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  /* margin: 10px; */
+  cursor: pointer;
+}
 #color-picker {
   width: 30px;
   height: 30px;
