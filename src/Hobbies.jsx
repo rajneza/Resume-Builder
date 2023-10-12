@@ -193,21 +193,6 @@ function Hobbies(props) {
   const [isPrinting, setIsPrinting] = useState(false);
   const { template, additionalProp } = props;
   const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [chooseTemplate , setchooseTemplate] = useState("")
-  const handletemplate = () =>{
-    setshowTeemplate(true)
-    setchooseTemplate("template1")
-    console.log(chooseTemplate);
-    <Link to='/template1'/>
-  }
-  const handletemplate1 = () =>{
-    setshowTeemplate(true)
-    setchooseTemplate("template2")
-    console.log(chooseTemplate);
-    <Link to='/template2'/>
-   // console.log(template);
-   
-  }
 
   const handleClick = () => {
     setSelectedTemplate(template);
@@ -4141,73 +4126,79 @@ interests and curiosities"
               Generate PDF
             </button>
           </div>
-          {
-            showtemplate === false ?
-              <Scrollbars>
-                <div style={{ display: "flex" }} className="main-temp">
-                  <img src={rajeshsir} alt="" className="temp-image"  onClick={handletemplate}/>
-                  <img src={mrssai} alt="" className="temp-image" onClick={handletemplate1}/>
-                </div>
-                <div style={{ display: "flex" }} className="main-temp">
-                  <img src={ushamadam} alt="" className="temp-image" />
-                  <img src={mrssai} alt="" className="temp-image" />
-                </div>
-              </Scrollbars>
-
-              :
-              <Scrollbars>
-                { (template || chooseTemplate) == 'template1' ? (
-                  <div className="template1">
-
-                    {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
-                    <div className="main-full" id="pdf-content" ref={contentDivRef}
-                      contentEditable={false}
-                      style={{
-                        // border: '1px solid #ccc',
-                        // minHeight: '200px',
-                        // padding: '10px',
-                        // marginBottom: '20px',
-                        width: "97%"
-                      }}>
-
-                      <div className="main-right">
-                        <div>
-                          <div style={{ display: "flex" }} className="cont-1">
-                            <div className="profile-pic">
-                              <Dropzone
-                                onDrop={handleDrop}
-                                accept="image/*"
-                                multiple={false}
-                              >
-                                {({ getRootProps, getInputProps }) => (
-                                  <div
-                                    className="dropzone"
-                                    id="drop"
-                                    {...getRootProps()}
-                                  >
-                                    <input {...getInputProps()} />
-                                    {selectedFile ? (
-                                      <div className="image">
-                                        <div className="image-container">
-                                          <img
-                                            src={URL.createObjectURL(selectedFile)}
-                                            alt="Uploaded"
-                                            className="rounded-image"
-                                            onClick={handleView}
-                                          />
-                                        </div>
+          {showtemplate === false ? (
+            <Scrollbars>
+              <div style={{ display: "flex" }} className="main-temp">
+                <img src={rajeshsir} alt="" className="temp-image" />
+                <img src={mrssai} alt="" className="temp-image" />
+              </div>
+              <div style={{ display: "flex" }} className="main-temp">
+                <img src={ushamadam} alt="" className="temp-image" />
+                <img src={mrssai} alt="" className="temp-image" />
+              </div>
+            </Scrollbars>
+          ) : (
+            <Scrollbars>
+              {template === "template1" && (
+                <div className="template1">
+                  {/* <p>{`Additional Prop: ${additionalProp}`}</p> */}
+                  <div
+                    className="main-full"
+                    id="pdf-content"
+                    ref={contentDivRef}
+                    contentEditable={false}
+                    style={{
+                      // border: '1px solid #ccc',
+                      // minHeight: '200px',
+                      // padding: '10px',
+                      // marginBottom: '20px',
+                      width: "97%",
+                    }}
+                  >
+                    <div className="main-right">
+                      <div>
+                        <div style={{ display: "flex" }} className="cont-1">
+                          <div className="profile-pic">
+                            <Dropzone
+                              onDrop={handleDrop}
+                              accept="image/*"
+                              multiple={false}
+                            >
+                              {({ getRootProps, getInputProps }) => (
+                                <div
+                                  className="dropzone"
+                                  id="drop"
+                                  {...getRootProps()}
+                                >
+                                  <input {...getInputProps()} />
+                                  {selectedFile ? (
+                                    <div className="image">
+                                      <div className="image-container">
+                                        <img
+                                          src={URL.createObjectURL(
+                                            selectedFile
+                                          )}
+                                          alt="Uploaded"
+                                          className="rounded-image"
+                                          onClick={handleView}
+                                        />
                                       </div>
-                                    ) : (
-                                      <div style={{ display: "flex" }}></div>
-                                    )}
-                                  </div>
-                                )}
-                              </Dropzone>
-                            </div>
-                            <div>
-                              <div style={{ display: "flex" }}>
-                                <h3 className="name1">{generateName(name, true) + " " + generateName(lastName, true)}</h3>
-                                {/* <h3 className="name1">{name}</h3>
+                                    </div>
+                                  ) : (
+                                    <div style={{ display: "flex" }}></div>
+                                  )}
+                                </div>
+                              )}
+                            </Dropzone>
+                          </div>
+                          <div>
+                            <div style={{ display: "flex" }}>
+                              <h3 className="name1">
+                                {generateName(name, true) +
+                                  " " +
+                                  generateName(lastName, true)}
+                              </h3>
+                              {/* <h3 className="name1">{name}</h3>
                         <h3 className="name2">{lastname}</h3> */}
                             </div>
                             <div>
