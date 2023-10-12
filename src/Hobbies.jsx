@@ -13774,10 +13774,9 @@ interests and curiosities"
                           </div>
                         </div>
                       </div>
-                      <div className="row">
+                      <div className="row temp5-sa">
                         <div className="col-4 temp5-left-section"
-                         contentEditable
-                         onInput={(e) => setLeftData(e.target.textContent)}>{leftData}
+                         >{leftData}
                        
                         <div className="details">
                             {email === "" ? (
@@ -13992,9 +13991,9 @@ interests and curiosities"
                               ))}
                             </div>
                           </div>
-                        </div>   {(hasLeftData || hasRightData) && <div className="vertical-border"></div>}
-                        <div className="col-8 temp5-right-section"  contentEditable
-        onInput={(e) => setRightData(e.target.textContent)}> {rightData}
+                        </div>  
+                        <div className="col-8 temp5-right-section" 
+       > {rightData}
                         <div>
                           <div className="temp3-summary">
                             {editorHtml === "" ? (
