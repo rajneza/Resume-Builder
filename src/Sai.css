@@ -787,16 +787,16 @@ textarea {
 
 
 .preview-blk-title h2 {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 0.5px;
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
     padding-bottom: 0.5rem;
 }
 
 .preview-blk-title h4 {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 0.5px;
-    border-bottom: 0.5px solid gainsboro;
+    border-bottom: 0.5px solid #00382f;
     padding-bottom: 0.5rem;
 }
 
@@ -979,29 +979,31 @@ textarea {
     justify-content: center;
     align-items: center;
 }
+.pincodee {
+    text-align: left;
+    margin-left: 15%;
+    margin-top: 5px;
+  }
 
 .main-sai {
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 .proff {
 
-    text-align: left;
-    width: 100%;
-    flex-wrap: wrap;
-    height: fit-content;
-    margin-bottom: 30px;
-    margin-left: 0%;
+    margin-bottom: 0%;
+    font-size: 18px;
 
 }
 
 .proff {
-    margin-right: 3%;
+    /* margin-right: 3%; */
     border-bottom: 0.5px solid rgb(230, 224, 224);
-
+    font-size: 18px;
 }
 
-.proff {
+.proff ,
+.temp3-proff{
     margin-bottom: 0%;
     font-size: 18px;
 
@@ -1009,7 +1011,7 @@ textarea {
 
 .headd {
     margin-bottom: 0%;
-    margin-top: 3%;
+    margin-top: -1%;
     font-size: 18px;
     border-bottom: 0.5px solid rgb(230, 224, 224);
     margin-right: 3%;
@@ -1017,7 +1019,10 @@ textarea {
 
 .headingg {
     border-bottom: 0.5px solid rgb(230, 224, 224);
-    width: 90%;
+    width: 80%;
+    margin-bottom: 5%;
+    margin-top: 7%;
+    font-size: 16px;
 }
 
 .heading11 {
@@ -1025,9 +1030,22 @@ textarea {
     font-size: 16px;
     margin-top: 10%;
     margin-bottom: 5%;
-    width: 90%;
+    width: 80%;
 }
 .fonn {
+    font-size: 15.8px;
+    font-weight: bolder;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    /* background-color: rgba(0, 0, 0, 0.03); */
+    width: 98%;
+    font-weight: bolder;
+    border-radius: 10px;
+  }
+  .fonnn{
     font-size: 12.8px;
     font-weight: bolder;
     margin-top: 2%;
@@ -1035,10 +1053,10 @@ textarea {
     display: block;
     font-weight: 600;
     margin-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.03);
+    /* background-color: rgba(0, 0, 0, 0.03); */
     width: 98%;
+    font-style: italic;
   }
-  
 .fontttee {
     font-size: 12.8px;
     font-weight: bold;
@@ -1047,18 +1065,19 @@ textarea {
     display: block;
     font-weight: 600;
     margin-bottom: 1rem;
-    background-color: rgba(0, 0, 0, 0.03);
+    /* background-color: rgba(0, 0, 0, 0.03); */
     width: 98%;
   }
   
 .fonttw {
-    font-size: 10.8px;
+    font-size: 12.0px;
     font-weight: bold;
     margin-top: 0%;
     margin-bottom: 0%;
-    margin-right: 1rem;
-    background-color: var(--clr-green);
-    color: var(--clr-white);
+    margin-right: 2rem;
+    margin-left: -10px;
+    /* background-color: var(--clr-green);
+    color: var(--clr-white); */
     padding: 0 1rem;
     border-radius: 0.6rem;
     white-space: nowrap;
@@ -1071,3 +1090,19 @@ textarea {
     margin-bottom: 0%;
     
   }
+  .picc-container {
+    max-height: auto;
+    min-height: 100px;
+    flex-wrap: wrap;
+   
+   border-bottom: 1px solid black;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  }
+ .name11capital{
+    text-transform: uppercase;
+ }
+ .secondProgressBarContainerr{
+    color: black;
+ }
