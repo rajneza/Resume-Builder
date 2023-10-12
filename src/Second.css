@@ -184,7 +184,7 @@ Popup.css
   }
   .place{
     margin-top: 5%;
-
+  }
 .popup.visible {
   display: block;
 }
@@ -2010,4 +2010,5 @@ select {
        margin-left: 2%;
        margin-top: 6%;
     }
+
    
