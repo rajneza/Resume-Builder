@@ -43,20 +43,25 @@ Popup.css .popup {
 }
 
 .dropzone {
-  /* border: 2px solid #cccccc; */
-
   text-align: center;
   cursor: pointer;
-  width: 4vw;
-  height: 8vh;
+  width: 100%;
+  height: 150%;
+  display: flex;
 }
 
-.dropzone img {
+.rounded-image {
   width: 100%;
-  height: 100%;
+  height: 150%;
   display: block;
 
 
+}
+
+.rounded-image-temp3{
+  width: 185%;
+  height: 100%;
+  display: block;
 }
 
 .image {
@@ -80,10 +85,7 @@ Popup.css .popup {
   left: 100%;
 }
 
-.image-container {
-  position: relative;
-  display: inline-block;
-}
+
 
 .rounded-image {
   cursor: pointer;
@@ -108,8 +110,22 @@ Popup.css .popup {
   border-radius: 50%;
 }
 
+.select-photo-container {
+  display: flex;
+
+}
+
+.photo-icon {
+  font-size: 2rem;
+}
+
+.photo-edit-container {
+  margin-top: -13.55%;
+  margin-bottom: 0%;
+}
+
 .job-title {
-   margin-bottom: 15px;
+  margin-bottom: 15px;
   display: flex;
 }
 
@@ -194,11 +210,11 @@ Popup.css .popup {
   display: flex;
 }
 
-#pdf-content {
+/* #pdf-content {
   background-color: black;
-  width: 70%;
-  padding: 0%;
-}
+  width: 100%;
+  padding: 100%;
+} */
 
 .two-one {
   width: 70%;
@@ -225,9 +241,10 @@ Popup.css .popup {
 }
 
 .details {
+  margin-top: 5%;
 
-  margin-top: 50%;
 }
+
 
 .place {
   margin-top: 5%;
@@ -248,7 +265,7 @@ Popup.css .popup {
 }
 
 .resume-title {
-  position: relative;
+
   font-size: 24px;
   font-weight: 500;
   padding: 0 32px;
@@ -266,6 +283,7 @@ Popup.css .popup {
   /* max-width: 100%; */
   height: 35px;
   display: flex;
+
 }
 
 .score-body {
@@ -303,6 +321,7 @@ Popup.css .popup {
   font-size: 16px;
 }
 
+
 .edit-details {
   display: flex;
 }
@@ -314,9 +333,10 @@ Popup.css .popup {
 .left-pdetails-container {
   margin-bottom: 30px;
 }
-.css-i4bv87-MuiSvgIcon-root{
-  height:25px !important;
-  width:25px !important;
+
+.css-i4bv87-MuiSvgIcon-root {
+  height: 25px !important;
+  width: 25px !important;
 }
 
 .score-content {
@@ -357,6 +377,9 @@ Popup.css .popup {
   margin-bottom: 5px;
 }
 
+.temp3-summary{
+  margin-top:5%;
+}
 .resume-profile-content {
   position: relative;
 }
@@ -411,7 +434,8 @@ Popup.css .popup {
   background-color: transparent;
 
 }
-.handle-heading h3{
+
+.handle-heading h3 {
   font-size: 23px;
   margin-right: 4px;
   font-weight: 600;
@@ -448,12 +472,14 @@ Popup.css .popup {
   height: 100%;
   max-width: 850px;
   width: 50%;
+
 }
 
 .resume-left-content {
   padding: 45px;
   height: inherit;
   width: inherit;
+
 }
 
 .content-box input {
@@ -471,11 +497,12 @@ Popup.css .popup {
   font-weight: 500;
 }
 
-.edit-icon{
+.edit-icon {
   margin-right: 200px;
 }
-.css-i4bv87-MuiSvgIcon-root{
-  fill:blue !important;
+
+.css-i4bv87-MuiSvgIcon-root {
+  fill: blue !important;
 }
 
 .progress-score {
@@ -512,13 +539,14 @@ Popup.css .popup {
   justify-content: center;
   align-items: center;
 }
-.color-button{
+
+.color-button {
   width: 8px;
   height: 8px;
-  background-color:#0f3871;
+  background-color: #0f3871;
   margin-top: 13%;
-  margin-left:5px;
-  
+  margin-left: 5px;
+
 }
 
 .container {
@@ -559,10 +587,13 @@ Popup.css .popup {
 }
 
 .image {
-  height: 8vh;
+  height: 10vh;
   display: flex;
 }
 
+.image-temp3{
+  height: 15vh;
+}
 .icon {
   width: 100%;
   height: 100%;
@@ -604,7 +635,7 @@ Popup.css .popup {
 .image-fullview img {
   max-width: 80%;
   max-height: 80%;
-  border-radius: 50%;
+  border-radius: 25%;
 }
 
 .job-title {
@@ -631,7 +662,7 @@ Popup.css .popup {
 .job input,
 .photo input {
   padding: 12px 16px;
-  ;
+
 }
 
 .edit {
@@ -706,9 +737,77 @@ Popup.css .popup {
 }
 
 #pdf-content {
-  background-color: black;
-  width: 70%;
+  /* background-color: black; */
+  width: 100%;
   padding: 0%;
+  min-height: 300px !important;
+}
+
+.temp3-container {
+  font-size: 10px;
+  background-color: white;
+  width: 50vw;
+  /* height: 88vh; */
+  border-radius: 5px;
+  padding: 30px;
+ overflow: visible;
+ overflow-y: visible;
+ overflow: auto;
+ min-height: 92vh;
+ max-height: auto;
+  
+}
+
+.resume-name {
+  display: flex;
+}
+
+.right-title {
+  font-size: 12px;
+  /* position: relative; */
+  bottom: 8px;
+  font-weight: 500;
+  display: block;
+  margin-top: 10px;
+
+}
+
+.personal-data {
+  display: flex;
+  /* align-items: center; */
+  /* position: relative; */
+  bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.personal-data p{
+  margin-right: 3px;
+}
+
+.custom-height-column {
+  flex-wrap: wrap;
+}
+
+.pic-container {
+  min-height: 135px;
+  max-height: fit-content;
+  flex-wrap: wrap;
+  background-color: #9AEBFE;
+
+
+}
+
+.temp5-phone-email{
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.temp5-phone{
+  margin-right: 5px;
+}
+.temp3-role{
+  font-size: 14px;
+  margin-top: 5px;
 }
 
 .two-one {
@@ -735,10 +834,9 @@ Popup.css .popup {
 
 }
 
-.details {
-
+/* .details {
   margin-top: 50%;
-}
+} */
 
 .place {
   margin-top: 5%;
@@ -760,11 +858,28 @@ Popup.css .popup {
   height: fit-content;
   margin-bottom: 30px;
   margin-left: 0%;
+margin-top: 10px;
+}
+
+.summry {
+  margin-right: 3%;
+  /* border-bottom: 0.5px solid rgb(230, 224, 224); */
+  margin-top: 10px;
+}
+.prof {
+
+  text-align: left;
+  width: 100%;
+  flex-wrap: wrap;
+  height: fit-content;
+  margin-bottom: 30px;
+  margin-left: 0%;
 
 }
-.summry{
+
+.prof {
   margin-right: 3%;
-  
+  /* border-bottom: 0.5px solid rgb(230, 224, 224); */
 }
 
 .prof {
@@ -787,9 +902,7 @@ Popup.css .popup {
   text-align: left;
 }
 
-/* #pdf-content{
-    height: 100%;
-  } */
+
 .inp1 {
   background-color: aqua;
 }
@@ -797,37 +910,60 @@ Popup.css .popup {
 
 .main-full {
   background-color: gray;
-  width: 70%;
-  min-height: 800px;
+  width: 90% !important;
+  min-height: 600px;
   max-height: auto;
-
+  overflow: visible;
   display: flex;
-  margin-left: 15%;
-  margin-top: 5%;
-  margin-bottom: 10%;
+  margin-left: 4.8%;
+  margin-top: 1%;
+  margin-right: 0%;
+  margin-bottom: 5%;
+ 
+}
+.main-fulll{
+  background-color: gray;
+  width: 90% !important;
+  min-height: 600px;
+  max-height: auto;
+  overflow: visible;
+  margin-left: 4.8%;
+  margin-top: 1%;
+  margin-right: 0%;
+  margin-bottom: 5%;
+}
+.second-full{
+  display: flex;
 }
 
 .main-right {
   width: 70%;
   background-color: white;
-  overflow-y: auto;
-  min-height: 800px;
+  overflow-y: visible;
+  overflow: auto;
+  min-height: 92vh;
   max-height: auto;
+  scroll-behavior: none;
 }
 
 .main-left {
   width: 30%;
-  min-height: 800px;
+  min-height: 600px;
   max-height: auto;
   background-color: #0f3871;
   overflow-y: auto;
   color: white;
+  text-align: justify!important;
+
+
+  
 }
 
 .name1 {
   margin-bottom: 0%;
   margin-left: 9%;
   margin-right: 5%;
+  border: none;
 }
 
 .name2 {
@@ -851,6 +987,7 @@ Popup.css .popup {
   font-weight: bolder;
   margin-top: 2%;
   margin-bottom: 1%;
+  
 }
 
 .head {
@@ -884,8 +1021,10 @@ Popup.css .popup {
   margin-bottom: 5px;
 }
 
-.emp-main input {
-  padding: 12px;
+.emp-main input,
+.emp-main select {
+  padding: 10px;
+  margin: 8px 1vw 8px 0;
 }
 
 .emp-container {
@@ -909,6 +1048,7 @@ Popup.css .popup {
 .pincode {
   text-align: left;
   margin-left: 15%;
+  margin-top: 55px;
 }
 
 .heading {
@@ -942,10 +1082,10 @@ Popup.css .popup {
   font-size: 16px;
   margin-top: 10%;
   margin-bottom: 5%;
-  
+
 }
-.res
-.div-heading{
+
+.res .div-heading {
   font-size: 17px;
 }
 
@@ -953,9 +1093,11 @@ Popup.css .popup {
   margin-top: 15%;
 }
 
-.ill {
+/* .ill {
   display: flex;
-}
+  width: 100%;
+  border: 1px solid black;
+} */
 
 .ski {
   margin-top: -100%;
@@ -968,7 +1110,7 @@ Popup.css .popup {
   margin-bottom: 0%;
   width: 20px;
   /* background-color: aqua; */
-  margin-top: 0%;
+  margin-top: 10%;
 
 }
 
@@ -983,16 +1125,21 @@ Popup.css .popup {
   overflow: hidden;
 }
 
+/* 
 .main-full {
   background-color: black;
 
-}
+} */
 
 .delete {
   background-color: white;
   border: none;
   color: blue;
   font-size: large;
+}
+#emp-delete{
+  margin-top: -1%;
+  
 }
 
 .add {
@@ -1009,16 +1156,18 @@ Popup.css .popup {
   /* background-color: #0f3871; */
   margin-right: 0%;
 }
-.add-section-container{
+
+.add-section-container {
   cursor: default;
 }
-.drag{
+
+.drag {
   cursor: grab;
 
 
- margin-left: -3%;
- position: relative;
- top: 3px;
+  margin-left: -3%;
+  position: relative;
+  top: -3px;
 
 }
 
@@ -1089,7 +1238,7 @@ Popup.css .popup {
   margin-top: 20px;
 }
 
-.intern-job-emp{
+.intern-job-emp {
   display: flex;
 }
 
@@ -1144,23 +1293,26 @@ Popup.css .popup {
 
 .photo-heading h4 {
   width: 10vw;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 10px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
 }
-.mainphoto-heading{
+
+.mainphoto-heading {
   background-color: #ec930c;
 }
-.select-image{
+
+.select-image {
   display: flex;
   position: relative;
   right: 33px;
 }
-.person-icon{
+
+.person-icon {
   height: 100%;
   width: 100%;
 
@@ -1185,7 +1337,7 @@ Popup.css .popup {
 .add-section-container,
 .education-container,
 .add_section_box,
-.main-div{
+.main-div {
   margin-bottom: 30px;
 }
 
@@ -1223,100 +1375,333 @@ Popup.css .popup {
 
 .custom-section p {
   margin-top: 10px;
-  font-family: TT Commons,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
-    font-size: 16px;
-    
+  font-family: TT Commons, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  font-size: 16px;
+
 }
+
+
+
+
+#reference {
+  width: 43vw;
+}
+
+.label {
+  margin-left: 6.7%;
+}
+.cit1{
+  margin-top: 5%;
+}
+
+
+@media print {
+  body {
+    margin: 0px;
+    /* Remove page margins */
+  }
+
+  @page {
+    margin: 0;
+    /* Remove margins for the printed page */
+  }
+
+  #pdf-content {
+    width: 99% !important;
+    /* Set the width to 100% for printing */
+    height: 100%;
+    /* Set the height to 100% for printing */
+    padding: 0;
+    /* Remove padding for printing */
+    margin: 0;
+    /* Remove margin for printing */
+    page-break-before: always;
+    /* Ensure each content section starts on a new page */
+  
+  }
+  .temp3-container{
+    width: 100%;
+  }
+
+}
+
+
+
+
+.generate {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+
+ 
 
 
 
 .skill-info {
-	text-align: right;
-	font-size: 14px;
-	color: black;
-	flex-grow: 1;
-}
-.skill-name{
-  background-color: #1a91f0;
+  text-align: right;
+  font-size: 14px;
+  color: black;
+  flex-grow: 1;
 }
 
 .progress-container {
-	text-align: center;
-	position: relative;
+  text-align: center;
+  position: relative;
 }
 
 .stage-heading {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
+#myProgressBar {
+  display: flex;
+  width: 175%;
+  height: 40px;
+  margin-top: 6px;
+
+}
+
+.main-skillls {
+  display: flex;
+  column-gap: 10px;
+  width: 100%;
+
+}
+
+
+#skillsContainer {
+  padding: 10px;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  font-size: 10px;
+}
+
+#skillsContainer button {
+  font-size: 10px;
+}
+
+
 .progress {
-	width: 100%;
-	height: 30px;
-	background-color: rgb(39, 175, 175);
-	position: relative;
-	cursor: pointer;
-	margin-bottom: 20px;
-	overflow: hidden;
+  width: 100%;
+  height: 30px;
+  background-color: rgb(39, 175, 175);
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 20px;
+  overflow: hidden;
+
 }
 
 .progress-stage {
-	height: 100%;
-	width: 25%;
-	float: left;
-	transition: background-color 0.3s ease-in-out;
+  height: 100%;
+  width: 100%;
+  float: left;
+  transition: background-color 0.3s ease-in-out;
+
 }
 
 .progress-text {
-	position: absolute;
-	top: -30px;
-	font-weight: bold;
-	width: 100%;
-	text-align: center;
+  position: sticky;
+  color: rgb(118, 119, 118);
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  margin-left: 65px;
+    margin-top: -20px;
+}
+
+#sec-progress {
+  margin-top: -20px;
 }
 
 .progress-bar {
-	width: 100%;
-	height: 20px;
-	background-color: #ccc;
-	border-radius: 4px;
-	overflow: hidden;
-	margin-right: 10px;
+  width: 100%;
+  height: 5px;
+  /* background-color: hsl(140, 93%, 49%); */
+  border-radius: 4px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+#myProgressBar button {
+  font-size: 13px;
 }
 
 .fresher {
   background-color: green;
+  color: white;
+  transition: background-color 1.3s ease;
+  animation: colorChange 8s infinite alternate;
+  animation-delay: 2s;
+}
+
+.fresher:hover {
+  background-color: rgb(4, 158, 4);
+
+
 }
 
 .experience {
-	background-color: orange;
+  background-color: rgb(2, 156, 2);
+  color: white;
+  animation-delay: 2s;
+  animation: colorChange1 8s infinite alternate;
+  transition: background-color 1.3s ease;
+}
+
+.experience:hover {
+  background-color: rgb(26, 207, 26);
+
 }
 
 .export {
-  background-color: skyblue;
+  background-color: rgb(19, 167, 19);
+  color: white;
+  animation-delay: 6s;
+  animation: colorChange2 8s infinite alternate;
+  transition: background-color 1.5s ease;
 }
 
-.medium {
-	background-color: blue;
+.export:hover {
+  background-color: rgb(75, 250, 75);
+
 }
 
-/* Your existing CSS styles */
+.pro {
+  background-color: rgb(36, 177, 36);
+  color: white;
+  animation-delay: 7s;
+  animation: colorChange3 8s infinite alternate;
+  transition: background-color 1.6s ease;
+}
+
+.pro :hover {
+  background-color: rgb(131, 248, 131);
+
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: #8be90f;
+    /* Initial color */
+  }
+
+  25% {
+    background-color: #2ecc71;
+  }
+
+  50% {
+    background-color: #37fab9;
+  }
+
+  75% {
+    background-color: #07d195;
+  }
+
+  100% {
+    background-color: #0fd139;
+    /* Back to initial color */
+  }
+}
+
+@keyframes colorChange1 {
+  0% {
+    background-color: #46e96f;
+    /* Initial color */
+  }
+
+  25% {
+    background-color: #2fc46d;
+  }
+
+  50% {
+    background-color: #2ce414;
+  }
+
+  75% {
+    background-color: #a3e606;
+  }
+
+  100% {
+    background-color: #98e983;
+    /* Back to initial color */
+  }
+}
+
+@keyframes colorChange2 {
+  0% {
+    background-color: hsl(113, 81%, 47%);
+    /* Initial color */
+  }
+
+  25% {
+    background-color: #5db481;
+  }
+
+  50% {
+    background-color: hsl(135, 69%, 54%);
+  }
+
+  75% {
+    background-color: #98f540;
+  }
+
+  100% {
+    background-color: #07b407;
+    /* Back to initial color */
+  }
+}
+
+@keyframes colorChange3 {
+  0% {
+    background-color: #0eeb3d;
+    /* Initial color */
+  }
+
+  25% {
+    background-color: #2ecc71;
+  }
+
+  50% {
+    background-color: #3ce77e;
+  }
+
+  75% {
+    background-color: #2adb5f;
+  }
+
+  100% {
+    background-color: #1cdf0a;
+    /* Back to initial color */
+  }
+}
 
 .progress-bar-container {
-	margin-top: 20px;
+  display: flex;
+
+  /* width: 165%; */
+  flex-direction: column;
+  row-gap: 5px;
 }
 
-.progress-bar {
-  height: 5px;
-  width: 100%;
-  background-color: #eeecec;
-  position: relative;
-  margin-bottom: 10px;
+#secondProgressBarContainer {
+  width: 500%;
 }
 
 .inner-progress {
-	height: 10%;
-	width: 0;
-	transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  height: 5%;
+  width: 0;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 /* Specific CSS for second progress bar background color based on stages */
@@ -1328,44 +1713,518 @@ Popup.css .popup {
 }
 
 .progress-bar-container[data-stage="Experience"] .progress-bar .inner-progress {
-  background-color: orange;
+  background-color: rgb(3, 170, 3);
   height: 0%;
   /* Set a fixed height for all inner progress bars */
 }
 
 .progress-bar-container[data-stage="Export"] .progress-bar .inner-progress {
-  background-color: skyblue;
+  background-color: rgb(3, 212, 3);
   height: 100%;
+  color: white;
   /* Set a fixed height for all inner progress bars */
 }
 
 .progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
-	background-color: blue;
-	height: 100%;
-	/* Set a fixed height for all inner progress bars */
+  background-color: rgb(16, 228, 16) !important;
+  height: 100%;
+  color: white;
+  /* Set a fixed height for all inner progress bars */
 }
 
 /* In your App.css or a separate CSS file */
 .custom-toast {
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ill {
+  display: flex;
+  width: 100%;
+  column-gap: 2px;
+  max-width: 150%;
+}
+
+
+.present-date {
+  margin-left: 52%;
+}
+
+.present-date:hover {
+  color: #1a91f0;
+  font-weight: 500;
+
+}
+
+
+
+
+.inner-progress {
+  height: 5%;
+  width: 0;
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Specific CSS for second progress bar background color based on stages */
+
+.progress-bar-container[data-stage="Fresher"] .progress-bar .inner-progress {
+  background-color: green;
+  height: 100%;
+  /* Set a fixed height for all inner progress bars */
+}
+
+.progress-bar-container[data-stage="Experience"] .progress-bar .inner-progress {
+  background-color: rgb(3, 170, 3);
+  height: 0%;
+  /* Set a fixed height for all inner progress bars */
+}
+
+.progress-bar-container[data-stage="Export"] .progress-bar .inner-progress {
+  background-color: rgb(3, 212, 3);
+  height: 100%;
+  color: white;
+  /* Set a fixed height for all inner progress bars */
+}
+
+.progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
+  background-color: rgb(16, 228, 16) !important;
+  height: 100%;
+  color: white;
+  /* Set a fixed height for all inner progress bars */
+}
+
+/* In your App.css or a separate CSS file */
+.custom-toast {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ill {
+  display: flex;
+  width: 100%;
+  column-gap: 2px;
+  max-width: 150%;
+
+}
+
+p {
+  font-size: 13px;
+}
+
+label {
+  font-size: 13px;
+}
+
+.text-area {
+  font-size: 13px;
+}
+
+.workk {
+  font-size: 13px;
+}
+
+option {
+  font-size: 13px;
+}
+
+select {
+  font-size: 13px;
+}
+
+.skill-name {
+  font-size: 13px;
+}
+.immages{
+  display: flex;
+}
+
+.temp3-heading{
+  font-size: 15px;
+  margin-top: 5%;
+  font-weight: 600;
+}
+
+.template1 {
+  /* background-color: rgb(39, 216, 4); */
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  /* margin: 10px; */
+  cursor: pointer;
+}
+
+.template2 {
+  /* background-color: rgb(47, 68, 189); */
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  /* margin: 10px; */
+  cursor: pointer;
+  display: flex;
+ 
+}
+
+.template3 {
+  /* background-color: rgb(189, 47, 89); */
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  /* margin: 10px; */
+  cursor: pointer;
+}
+
+.template4 {
+  /* background-color: #0596c7; */
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  /* margin: 10px; */
+  cursor: pointer;
+}
+.template5 {
+  /* background-color: #0596c7; */
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  /* margin: 10px; */
+  cursor: pointer;
+}
+#color-picker {
+  width: 30px;
+  height: 30px;
+  background-color: #3498db;
+  /* You can change the color code */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  /* Text color */
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.generate #color-picker-button {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+.inner-progress {
+    height: 5%;
+    width: 0;
+    transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
   }
-  #reference{
-    width: 43vw;
+  
+  /* Specific CSS for second progress bar background color based on stages */
+  
+  .progress-bar-container[data-stage="Fresher"] .progress-bar .inner-progress {
+    background-color: green;
+    height: 100%;
+    /* Set a fixed height for all inner progress bars */
   }
-  .label{
-    margin-left: 6.7%;
+  
+  .progress-bar-container[data-stage="Experience"] .progress-bar .inner-progress {
+    background-color: rgb(3, 170, 3);
+    height: 0%;
+    /* Set a fixed height for all inner progress bars */
   }
+  
+  .progress-bar-container[data-stage="Export"] .progress-bar .inner-progress {
+    background-color: rgb(3, 212, 3);
+    height: 100%;
+    color: white;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  .progress-bar-container[data-stage="Pro"] .progress-bar .inner-progress {
+    background-color: rgb(16, 228, 16)!important;
+    height: 100%;
+    color: white;
+    /* Set a fixed height for all inner progress bars */
+  }
+  
+  /* In your App.css or a separate CSS file */
+  .custom-toast {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    }
+    .ill{
+      display: flex;
+      width: 100%;
+    column-gap: 2px;
+    max-width: 150%;
 
+    }
+    p{
+      font-size: 13px;
+    }
+    label{
+      font-size: 13px;
+    }
+    .text-area{
+      font-size: 13px;
+    }
+    .workk{
+      font-size: 13px;
+    }
+    option{
+      font-size: 13px;
+    }
+    select{
+      font-size: 13px;
+    }
+    .skill-name{
+      font-size: 13px;
+    }
+    .question-icon{
+      font-size: 2rem;
+      color: #07d195;
+    }
+    .my-tooltip{
+      width: 100px;
+      background-color: #07d195;
+      color: black;
+      height: 50px;
+    }
+    .competion{
+      width: 100%;
+      min-height: 5vh;
+      max-height: auto;
+      background-color: #07d195;
+      border-radius: 15px;
+      padding: 5px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .percentage{
+      margin-left: 3%;
+      font-size: 1.5rem;
+    }
 
+    .temp5-heading{
+      text-transform: uppercase;
+    }
 
+    .heading-underline{
+      border-bottom: 2px solid grey;
+      width:10%;
+      margin-top: 5px;
+      margin-left: 10%;
+    }
+    .heading-underline-right{
+      border-bottom: 2px solid grey;
+      width:10%;
+      margin-top: 5px;
+      margin-left: 7%;
+    }
+    .main-heading{
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .main-gender{
+     
+      background-color: #eff2f9;
+      width: 20vw;
+      height: 6vh;
+      display: flex;
+      
+      align-items: center;
+    }
+    .gender{
+      margin-right: 7%;
 
-  .generate{
-    background-color: white;
-    position: relative;
-    left: 350px;
-    top: 20px;
+    }
+    .temp-image{
+      width: 40%;
+      height: 25%;
+      margin-left: 7%;
+    }
+    .main-temp{
+      padding: 15px;
+    }
+    .main-top{
+      width: 100%;
+      min-height: 100px;
+      max-height: auto;
+      background-color: white;
+      /* border-bottom: 1px solid gray; */
+      display: flex;
+      margin-bottom: 0%;
+    }
+    .summryA{
+      background-color: rgb(182, 182, 182);
+      border-radius: 10px;
+      padding-left: 5px;
+      padding-bottom: 1px;
+      margin-top: 0%;
+    }
+    .headingA{
+      margin-top: 2%;
+      margin-bottom: 0%;
+      font-size: small;
+    }
+    .NameA{
+      margin-top: 0%;
+      margin-bottom: 0%;
+      border: none;
+    }
+    .detailsA{
+      margin-top: 0%;
+      
+    }
+    .nameA{
+      margin-bottom: 0%;
+      margin-top: 1%;
+      font-weight: bold;
+      border: none;
+    }
+    .nameAA{
+      margin-bottom: 3%;
+      margin-left: 0%;
+      border: none;
+    }
+    .top-right{
+      width: 70%;
+      padding-right: 10px;
+    }
+    .top-left{
+      width: 30%;
+      padding-left: 10px;
+      padding-top: 5px;
+    }
+    #name{
+      border: none;
+    }
+    .skill-bg{
+      background-color: rgb(182, 182, 182);
+      width: 90%;
+      min-height: 70px;
+      max-height: auto;
+      margin-left: 5%;
+      padding-bottom: 10px;
+      border-radius: 10px;
+      padding-left: 10px;
+    }
+    .contA{
+      margin-top: 0%;
+    }
+    .citA{
+      font-size: small;
+    }
+    .size{
+      font-size: 1rem;
+    }
+    .fon1{
+      background-color: black;
+      width: fit-content;
+      color: white;
+    }
+    .fonA{
+      margin-top: 0%;
+    }
+    .fonB{
+      margin-bottom: 0%;
+    }
+    #main-right{
+      margin-top: 0%;
+      margin-left: 0%;
+      
+    }
+    #movement{
+       margin-left: 2%;
+       margin-top: 6%;
+    }
+
+   
+    /* .temp5-right-section{
+      
+    }
+    .temp5-left-section{
+
+    } */
+    .temp5-right-section {
+      flex: 1;
+      /* padding: 10px; */
+      /* border: 1px solid black; */
+      min-width: 60%;
+      max-width: auto;
+      min-height: auto;
+      max-height: auto;
+     
+      }
+      .temp5-left-section {
+      flex: 1;
+      /* padding: 10px; */
+      /* border: 1px solid black; */
+      min-width: 35%;
+      max-width: auto;
+      min-height: auto;
+      max-height: auto;
+      
+      }
+      .vertical-border {
+        position: absolute;
+        top: 123px;
+        bottom: 0;
+        left: 38%;
+        width: 0px;
+        /* background-color: #b30707; */
+        content: '';
+        border-right: 2px solid black;
+    }
+
 
  
+   .temp5-sa{
+    display: flex;
+    column-gap: 10px;
+   }
+#con-head{
+  margin-bottom: -3%;
+  
+}
+#add-id{
+  margin-bottom: 0%;
+}
+.add-iconn{
+  margin-bottom: 2%;
+  margin-right: 1%;
+}
+#gendr{
+ margin-top: 3%;
+}
+.gendr-iconn{
+  position: relative;
+  bottom: 2px;
+  margin-right: 1%;
+}
+#nation{
+  margin-top: 3%;
+}
+#nation-id{
+  position: relative;
+  bottom: 5px;
+}
+.nation-iconn{
+  position: relative;
+  bottom: 2px;
+  margin-right: 1%;
+}
+#gen-id{
+  position: relative;
+  bottom: 5px;
+}
+#placebirth{
+  margin-top: 2%;
+}
+.place-iconn{
+  position: relative;
+  bottom: 2px;
+}
+.add-main{
+  position: relative;
+  bottom: 4px;
+}
 

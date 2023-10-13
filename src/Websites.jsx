@@ -1,41 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Tooltip } from 'react-tooltip';
+//import 'react-tooltip/dist/react-tooltip.css'
 
-function Websites() {
-  const [inputValue, setInputValue] = useState('Default Value');
-  const [isEditable, setIsEditable] = useState(false);
-
-  const handleEditClick = () => {
-    setIsEditable(true);
-  };
-
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSaveClick = () => {
-    setIsEditable(false);
-    // You can perform any additional logic here, like submitting the edited value to an API.
-  };
-
+const Websites = () => {
   return (
     <div>
-      {isEditable ? (
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleChange}
-        />
-      ) : (
-        <span>{inputValue}</span>
-      )}
-
-      {isEditable ? (
-        <button onClick={handleSaveClick}>Save</button>
-      ) : (
-        <button onClick={handleEditClick}>Edit</button>
-      )}
+      <a data-tooltip-className="my-tooltip" data-tooltip-content="Hello world!"><h1>hii</h1>
+</a>
+      <Tooltip className="my-tooltip" />
     </div>
   );
-}
+};
 
 export default Websites;
