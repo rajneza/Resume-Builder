@@ -5008,7 +5008,7 @@ interests and curiosities"
                               >
                                 <input {...getInputProps()} />
                                 {selectedFile ? (
-                                  <div className="image">
+                                  
                                     <div className="image-container">
                                       <img
                                         src={URL.createObjectURL(selectedFile)}
@@ -5022,7 +5022,7 @@ interests and curiosities"
                                         style={{ borderRadius: "50%" }}
                                       />
                                     </div>
-                                  </div>
+                                
                                 ) : (
                                   <div style={{ display: "flex" }}></div>
                                 )}
@@ -7459,24 +7459,24 @@ interests and curiosities"
                                 </h4>
                              
                             )}
-                            <div className="cit1">
+                            <div>
                               {phone === "" ? (
                                 <span></span>
                               ) : (
-                                <p className="cit" id="phonn">{`+${phone}`}</p>
+                                <p className="cit">{`+${phone}`}</p>
                               )}
                             </div>
                             <div>
                               <p className="conte">{email}</p>
                             </div>
                           </div>
-                          <div className="add-main" >
+                          <div>
                             {address === "" ? (
                               <span></span>
                             ) : (
                               
-                                <h4 className="heading div-heading temp5-heading" id="add-id">
-                                  <AiFillBank className="add-iconn"/>Address
+                                <h4 className="heading div-heading temp5-heading">
+                                  <AiFillBank/>Address
                                 </h4>
                               
                             )}
@@ -7509,28 +7509,28 @@ interests and curiosities"
                               <span></span>
                             ) : (
                              
-                                <h4 className="heading1 temp5-heading" id="gendr"><FaUserFriends className="gendr-iconn"/>Gender</h4>
+                                <h4 className="heading1 temp5-heading"><FaUserFriends/>Gender</h4>
                              
                             )}
                             <div>
-                              <p className="cit" id="gen-id">{licence}</p>
+                              <p className="cit">{licence}</p>
                             </div>
                           </div>
                           <div>
                             {nation && (
                               
-                                <h4 className="heading1 temp5-heading" id="nation"><FaWordpressSimple className="nation-iconn"/>Nation</h4>
+                                <h4 className="heading1 temp5-heading"><FaWordpressSimple/>Nation</h4>
                               
                             )}
                             <div>
-                              <p className="cit" id="nation-id">{generateName(nation)}</p>
+                              <p className="cit">{generateName(nation)}</p>
                             </div>
                           </div>
                           <div>
                             {place && birth !== "" ? (
                               
-                                <h4 className="heading1 temp5-heading" id="placebirth">
-                                 <FaCalendarAlt className="place-iconn"/> Place/Date of Birth
+                                <h4 className="heading1 temp5-heading">
+                                 <FaCalendarAlt/> Place/Date of Birth
                                 </h4>
                               
                             ) : place !== "" ? (
@@ -7545,7 +7545,7 @@ interests and curiosities"
                             )}
                             <div>
                               <p className="cit">{birth}</p>
-                              {/* <p className="cit">{place}</p> */}
+                             
                             </div>
                             <div>
                               <p className="cit">{generateName(place)}</p>
