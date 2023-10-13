@@ -708,7 +708,7 @@ textarea {
 
 .preview-image {
     width: 100%;
-    height: 100%;
+    height: 150%;
     border-radius: 50%;
     /* overflow: hidden; */
     margin-right: auto;
@@ -719,7 +719,7 @@ textarea {
 
 .preview-image img {
     width: 200%;
-    height: 200%;
+    height: 220%;
     object-fit: cover;
     border: none;
     margin-left: 29px;
@@ -751,6 +751,7 @@ textarea {
     justify-content: center;
     align-items: center;
     font-size: 13px;
+    margin-top: 10px;
 }
 
 .preview-blk {
@@ -947,7 +948,7 @@ textarea {
 
 .fullname_dsp {
     font-size: 1.5rem;
-    margin-bottom: 0.2rem;
+    margin-top: 50px;
     opacity: 0.95;
     /* min-width: 200px; */
     max-width: 450px;

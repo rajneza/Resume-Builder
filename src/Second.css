@@ -45,13 +45,14 @@ Popup.css .popup {
 .dropzone {
   text-align: center;
   cursor: pointer;
-  width: 4vw;
-  height: 8vh;
+  width: 100%;
+  height: 150%;
+  display: flex;
 }
 
 .rounded-image {
   width: 100%;
-  height: 100%;
+  height: 150%;
   display: block;
 
 
@@ -84,10 +85,7 @@ Popup.css .popup {
   left: 100%;
 }
 
-.image-container {
-  position: relative;
-  display: inline-block;
-}
+
 
 .rounded-image {
   cursor: pointer;
@@ -581,12 +579,12 @@ Popup.css .popup {
   height: 8vh;
 }
 
-/* .dropzone img {
+.dropzone img {
   width: 100%;
   height: 100%;
   display: block;
 
-} */
+}
 
 .image {
   height: 10vh;
