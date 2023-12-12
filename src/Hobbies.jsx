@@ -166,7 +166,7 @@ function Hobbies() {
   const [selectedColor, setSelectedColor] = useState('#0f3871'); // Initial color
 
   const handleColorChange = (event) => {
-    const newColor = event.target.value;
+    
     setSelectedColor(newColor);
   };
 
